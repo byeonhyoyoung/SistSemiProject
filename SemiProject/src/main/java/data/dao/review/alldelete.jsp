@@ -1,3 +1,4 @@
+<%@page import="data.dao.ReviewDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,6 +11,19 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+	String nums=request.getParameter("nums");
+	String currentPage=request.getParameter("currentPage");
+	
+	String num[]=nums.split(",");
 
+	ReviewDao dao=new ReviewDao();
+	
+	for(String n:num){
+		dao.deleteReview(n);
+	}
+	
+	response.sendRedirect("../index.jsp?main=review/reviewlist.jsp");
+%>
 </body>
 </html>

@@ -45,11 +45,6 @@
     position: relative;
 }
 
-#primary_nav_wrap ul li.current-menu-item
-{
-	background:#ddd;
-}
-
 #primary_nav_wrap ul li:hover
 {
 	background:#f6f6f6;
@@ -107,8 +102,6 @@
   <li><a href="#">벚꽃테마</a>
     <ul>
       <li><a href="#">Sub Menu 1</a></li>
-      <li><a href="#">Sub Menu 2</a></li>
-      <li><a href="#">Sub Menu 3</a></li>
       <li><a href="#">Sub Menu 4</a>
         <ul>
           <li><a href="#">Deep Menu 1</a>
@@ -122,14 +115,11 @@
           <li><a href="#">Deep Menu 2</a></li>
         </ul>
       </li>
-      <li><a href="#">Sub Menu 5</a></li>
     </ul>
   </li>
   <li><a href="#">교토 소개</a>
     <ul>
       <li><a href="#">Sub Menu 1</a></li>
-      <li><a href="#">Sub Menu 2</a></li>
-      <li><a href="#">Sub Menu 3</a></li>
     </ul>
   </li>
   <li><a href="#">지역별 교토 탐색</a>
@@ -151,7 +141,13 @@
   </li>
   <li><a href="#">먹거리</a></li>
   <li><a href="#">숙박시설</a></li>
-  <li><a href="#">커뮤니티</a></li>
+  <li><a href="#">커뮤니티</a>
+  	<ul>
+      <li><a href="#">공지사항</a></li>
+      <li><a href="index.jsp?main=review/reviewlist.jsp">후기<br>게시판</a></li>
+      <li><a href="#">Q&A</a></li>
+    </ul>
+  </li>
  <!--  <li><a href="#">Contact Us</a></li> -->
 </ul>
 </nav>

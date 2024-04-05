@@ -10,6 +10,20 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+	request.setCharacterEncoding("utf-8");
+%>
 
+<jsp:useBean id="dao" class="data.dao.ReviewDao"/>
+<jsp:useBean id="dto" class="data.dto.ReviewDto"/>
+<jsp:setProperty property="*" name="dto"/>
+
+<%
+	dao.updateReview(dto);
+	String r_num=request.getParameter("r_num");
+	String currentPage=request.getParameter("currentPage");
+	
+	response.sendRedirect("../index.jsp?main=review/contentview.jsp?r_num="+r_num+"&currentPage="+currentPage);
+%>
 </body>
 </html>

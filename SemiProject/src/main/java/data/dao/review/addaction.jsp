@@ -11,6 +11,21 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+	request.setCharacterEncoding("utf-8");
+%>
 
+<jsp:useBean id="dao" class="data.dao.ReviewDao"/>
+<jsp:useBean id="dto" class="data.dto.ReviewDto"/>
+<jsp:setProperty property="*" name="dto"/>
+
+<%
+	dao.insertReview(dto);
+	//일단 목록.. 나중에 디테일페이지로 이동
+	int r_num=dao.getMaxNum();
+	String currentPage=request.getParameter("currentPage");
+	
+	response.sendRedirect("../index.jsp?main=review/contentview.jsp?r_num="+r_num+"&currentPage="+1);
+%>
 </body>
 </html>
