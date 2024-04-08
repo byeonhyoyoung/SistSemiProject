@@ -19,7 +19,7 @@
    
    width: 400px;
    height: 230px;
-   border: 1px solid gray;
+   border: 0px solid gray;
    margin-bottom: 10px;
    }
    
@@ -30,36 +30,38 @@
    }
    
       a.goDetail{
-	
-	text-decoration: none;
-	color: black;
+   
+   text-decoration: none;
+   color: black;
 }
 
    a:hover {
-	text-decoration: underline;
-	color: gray;
+   text-decoration: underline;
+   color: gray;
 }
 </style>
 <script type="text/javascript">
   $(function(){
-	  
-	  
-	  $("a.goDetail").click(function(){
-		  var h_num=$(this).attr("h_num");
-		  var h_category=$(this).attr("h_category");
-		  //alert(h_num);
-		  
-		  //디테일 페이지로 이동
-		  location.href="index.jsp?main=hotel/hoteldetailview.jsp?h_num="+h_num+"&h_category="+h_category;
-	  })
+     
+     
+     $("a.goDetail").click(function(){
+        var h_num=$(this).attr("h_num");
+        var h_category=$(this).attr("h_category");
+        //alert(h_num);
+        
+        //디테일 페이지로 이동
+        location.href="index.jsp?main=hotel/hoteldetailview.jsp?h_num="+h_num+"&h_category="+h_category;
+     })
   });
 
 </script>
 </head>
 <%
+ 
   HotelDao dao=new HotelDao();
   List<HotelDto> list=dao.getAllHotels();
   NumberFormat nf=NumberFormat.getCurrencyInstance();
+  
 
 %>
 <body>
@@ -68,13 +70,13 @@
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li class="nav-item">
-      <a class="nav-link active" data-bs-toggle="tab" href="#tabs-total">전체</a>
+      <a class="nav-link active" data-bs-toggle="tab" href="#tabs-total" style="text-decoration: none; color:gray;">전체</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="tab" href="#tabs-hotel">호텔</a>
+      <a class="nav-link" data-bs-toggle="tab" href="#tabs-hotel" style="text-decoration: none; color:gray;">호텔</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="tab" href="#tabs-ryokan">료칸</a>
+      <a class="nav-link" data-bs-toggle="tab" href="#tabs-ryokan" style="text-decoration: none; color:gray;">료칸</a>
     </li>
     
   </ul>
@@ -84,37 +86,35 @@
     <div id="tabs-total" class="container tab-pane active"><br>
       <h3>전체</h3>
       <p>
-        <table class="shoptable table table-bordered" style="width: 500px;">
+        <table class="shoptable table " style="width: 500px;">
            <tr>
               <%
                  int i=0;
                 for(HotelDto dto: list)
                 {
-                	//20~50까지 난수발생
-                	int sale=(int)(Math.random()*31)+20;
-                	%>
-                	<td>
-                	
-                	  <a h_num="<%=dto.getH_num()%>" h_category=<%=dto.getH_category() %> style="cursor: pointer;" class="goDetail">
-                	     <img alt="" src="hotel/image_hotel/<%=dto.getH_image()%>" class="photo">
-                	     <br>
-                	     <%=dto.getH_content() %><br></a>
-                	  
-                	     <span style="float: right;">
-                	        <div style="color: gray; font-size: 12px;">
-                	        
-                	     </span>
-                	  
-                	</td>
-                	
-                	<%
-                	  if((i+1)%3==0)
-                	  {%>
-                		  </tr><tr>
-                	  <%}
-                	
-                	 i++;
-                	%>
+                   
+                   %>
+                   <td>
+                   
+                     <a h_num="<%=dto.getH_num()%>" h_category=<%=dto.getH_category() %> style="cursor: pointer;" class="goDetail">
+                        <img alt="" src="hotel/image_hotel/<%=dto.getH_image()%>" class="photo">
+                        
+                        <br>
+                        <%=dto.getH_content() %><br></a>
+                        
+                     
+                       
+                     
+                   </td>
+                   
+                   <%
+                     if((i+1)%3==0)
+                     {%>
+                        </tr><tr>
+                     <%}
+                   
+                    i++;
+                   %>
                 <%}
               %>
            </tr> 
@@ -127,44 +127,40 @@
     
     
     
-     <div  id="tabs-hotel" class="container tab-pane fade"><br>
+     <div id="tabs-hotel" class="container tab-pane fade"><br>
       <h3>호텔</h3>
       <p>
-		<table class="shoptable table table-bordered" style="width: 500px;">
+      <table class="shoptable table " style="width: 500px;">
            <tr>
               <%
                   i=0;
                 for(HotelDto dto: list)
                 {
-                	
-                	if(dto.getH_category().equals("hotel")){
-                	//20~50까지 난수발생
-                	int sale=(int)(Math.random()*31)+20;
-                	%>
-                	<td>
-                	  <a h_num="<%=dto.getH_num()%>" h_category=<%=dto.getH_category() %> style="cursor: pointer;" class="goDetail">
-                	     <img alt="" src="hotel/image_hotel/<%=dto.getH_image()%>" class="photo">
-                	     <br>
-                	     <%=dto.getH_content() %><br></a>
-                	  
-                	     <span style="float: right;">
-                	        <div style="color: gray; font-size: 12px;">
-                	        
-                	     </span>
-                	  
-                	</td>
-                	
-                	<%
-                	  if((i+1)%3==0)
-                	  {%>
-                		  </tr><tr>
-                	  <%}
-                	
-                	 i++;
-                	 
-                	}
-                	%>
-                	
+                   
+                   if(dto.getH_category().equals("hotel")){
+                 
+                   %>
+                   <td>
+                     <a h_num="<%=dto.getH_num()%>" h_category=<%=dto.getH_category() %> style="cursor: pointer;" class="goDetail">
+                        <img alt="" src="hotel/image_hotel/<%=dto.getH_image()%>" class="photo">
+                        <br>
+                        <%=dto.getH_content() %><br></a>
+                     
+
+                     
+                   </td>
+                   
+                   <%
+                     if((i+1)%3==0)
+                     {%>
+                        </tr><tr>
+                     <%}
+                   
+                    i++;
+                    
+                   }
+                   %>
+                   
                 <%}
               %>
            </tr> 
@@ -176,41 +172,36 @@
     <div  id="tabs-ryokan" class="container tab-pane fade"><br>
       <h3>료칸</h3>
       <p>
-        <table class="shoptable table table-bordered" style="width: 500px;">
+        <table class="shoptable table" style="width: 500px;">
            <tr>
               <%
                   i=0;
                 for(HotelDto dto: list)
                 {
-                	
-                	if(dto.getH_category().equals("ryokan")){
-                	//20~50까지 난수발생
-                	int sale=(int)(Math.random()*31)+20;
-                	%>
-                	<td>
-                	  <a h_num="<%=dto.getH_num()%>" style="cursor: pointer;" class="goDetail">
-                	     <img alt="" src="hotel/image_hotel/<%=dto.getH_image()%>" class="photo">
-                	     <br>
-                	     <%=dto.getH_content() %><br></a>
-                	  
-                	     <span style="float: right;">
-                	        <div style="color: gray; font-size: 12px;">
-                	        
-                	     </span>
-                	  
-                	</td>
-                	
-                	<%
-                	  if((i+1)%3==0)
-                	  {%>
-                		  </tr><tr>
-                	  <%}
-                	
-                	 i++;
-                	 
-                	}
-                	%>
-                	
+                   
+                   if(dto.getH_category().equals("ryokan")){
+
+                   %>
+                   <td>
+                     <a h_num="<%=dto.getH_num()%>" h_category=<%=dto.getH_category() %> style="cursor: pointer;" class="goDetail">
+                        <img alt="" src="hotel/image_hotel/<%=dto.getH_image()%>" class="photo">
+                        <br>
+                        <%=dto.getH_content()%><br></a>
+ 
+                     
+                   </td>
+                   
+                   <%
+                     if((i+1)%3==0)
+                     {%>
+                        </tr><tr>
+                     <%}
+                   
+                    i++;
+                    
+                   }
+                   %>
+                   
                 <%}
               %>
            </tr> 
