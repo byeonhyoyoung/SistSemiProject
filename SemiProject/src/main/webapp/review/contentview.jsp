@@ -125,6 +125,39 @@
 			})
 		})
 		
+		$("span.likes").click(function() {
+		    var r_num = $(this).attr("r_num");
+		    var c = $(this);
+		    
+		    if (c.hasClass("liked")) {
+		        // 이미 좋아요를 누른 상태이므로 좋아요 취소
+		        $.ajax({
+		            type: "get",
+		            url: "review/decrelikes.jsp",
+		            data: { "r_num": r_num },
+		            dataType: "json",
+		            success: function(res) {
+		                c.removeClass("liked");
+		                c.find("i.bi-heart-fill").removeClass("bi-heart-fill").addClass("bi-heart");
+		                c.next().text(res.likes);
+		            }
+		        });
+		    } else {
+		        // 좋아요를 누르지 않은 상태이므로 좋아요 추가
+		        $.ajax({
+		            type: "get",
+		            url: "review/increlikes.jsp",
+		            data: { "r_num": r_num },
+		            dataType: "json",
+		            success: function(res) {
+		                c.addClass("liked");
+		                c.find("i.bi-heart").removeClass("bi-heart").addClass("bi-heart-fill");
+		                c.next().text(res.likes);
+		            }
+		        });
+		    }
+		});
+		
 	})
 
 	function funcdel(r_num, currentPage){
@@ -197,6 +230,11 @@
 			
 			<tr>
 				<td colspan="5" align="right">
+					<span class="likes" style="margin-left: 10px; float: left; cursor: pointer;" r_num=<%=dto.getR_num() %>>
+					좋아요 <i class="bi bi-heart" style="color: red"></i></span>
+					<span class="likesnum" style="float: left; margin-left: 10px;"><%=dto.getR_likes() %></span>
+					<i class="bi bi-heart-fill" style="font-size: 0px; color: red"></i>
+					
 					<button type="button" class="btn btn-success btn-sm" name="btnlist"
 					onclick="location.href='index.jsp?main=review/reviewlist.jsp?currentPage=<%=currentPage%>'">목록</button>
 					<button type="button" class="btn btn-primary btn-sm" name="btnlist"
