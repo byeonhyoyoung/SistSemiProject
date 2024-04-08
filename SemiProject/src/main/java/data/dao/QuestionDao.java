@@ -7,26 +7,26 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import data.dto.ReviewDto;
+import data.dto.QuestionDto;
 import mysql.db.DbConnect;
 
-public class ReviewDao {
+public class QuestionDao {
 
 	DbConnect db=new DbConnect();
 	
 		//추가
-		public void insertReview(ReviewDto dto) {
+		public void insertQusetion(QuestionDto dto) {
 			Connection conn=db.getConnection();
 			PreparedStatement pstmt=null;
-			
-			String sql="insert into review(r_writer,r_subject,r_content,r_image,r_writeday) values(?,?,?,?,now())";
-			
+				
+			String sql="insert into question(q_writer,q_subject,q_content,q_image,q_writeday) values(?,?,?,?,now())";
+				
 			try {
 				pstmt=conn.prepareStatement(sql);
-				pstmt.setString(1, dto.getR_writer());
-				pstmt.setString(2, dto.getR_subject());
-				pstmt.setString(3, dto.getR_content());
-				pstmt.setString(4, dto.getR_image());
+				pstmt.setString(1, dto.getQ_writer());
+				pstmt.setString(2, dto.getQ_subject());
+				pstmt.setString(3, dto.getQ_content());
+				pstmt.setString(4, dto.getQ_image());
 				pstmt.execute();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -37,29 +37,29 @@ public class ReviewDao {
 		}
 		
 		//전체목록
-		public List<ReviewDto> getAllReview(){
-			List<ReviewDto> list=new ArrayList<ReviewDto>();
+		public List<QuestionDto> getAllQusetion(){
+			List<QuestionDto> list=new ArrayList<QuestionDto>();
 					
 			Connection conn=db.getConnection();
 			PreparedStatement pstmt=null;
 			ResultSet rs=null;
 				
-			String sql="select * from review order by r_num desc";
+			String sql="select * from question order by q_num desc";
 					
 			try {
 				pstmt=conn.prepareStatement(sql);
 				rs=pstmt.executeQuery();
 						
 				while(rs.next()) {
-					ReviewDto dto=new ReviewDto();
-					dto.setR_num(rs.getString("r_num"));
-					dto.setR_writer(rs.getString("r_writer"));
-					dto.setR_subject(rs.getString("r_subject"));
-					dto.setR_content(rs.getString("r_content"));
-					dto.setR_image(rs.getString("r_image"));
-					dto.setR_likes(rs.getInt("r_likes"));
-					dto.setR_readcount(rs.getInt("r_readcount"));
-					dto.setR_writeday(rs.getTimestamp("r_writeday"));
+					QuestionDto dto=new QuestionDto();
+					dto.setQ_num(rs.getString("q_num"));
+					dto.setQ_writer(rs.getString("q_writer"));
+					dto.setQ_subject(rs.getString("q_subject"));
+					dto.setQ_content(rs.getString("q_content"));
+					dto.setQ_image(rs.getString("q_image"));
+					dto.setQ_likes(rs.getInt("q_likes"));
+					dto.setQ_readcount(rs.getInt("q_readcount"));
+					dto.setQ_writeday(rs.getTimestamp("q_writeday"));
 							
 					list.add(dto);
 				}
@@ -73,14 +73,14 @@ public class ReviewDao {
 		}
 		
 		//페이징 리스트
-		public List<ReviewDto> getList(int startNum,int perPage){
-			List<ReviewDto> list=new ArrayList<ReviewDto>();
+		public List<QuestionDto> getList(int startNum,int perPage){
+			List<QuestionDto> list=new ArrayList<QuestionDto>();
 
 			Connection conn=db.getConnection();
 			PreparedStatement pstmt=null;
 			ResultSet rs=null;
 			
-			String sql="select * from review order by r_num desc limit ?,?";
+			String sql="select * from question order by q_num desc limit ?,?";
 			
 			try {
 				pstmt=conn.prepareStatement(sql);
@@ -89,15 +89,15 @@ public class ReviewDao {
 				rs=pstmt.executeQuery();
 
 				while(rs.next()) {
-					ReviewDto dto=new ReviewDto();
-					dto.setR_num(rs.getString("r_num"));
-					dto.setR_writer(rs.getString("r_writer"));
-					dto.setR_subject(rs.getString("r_subject"));
-					dto.setR_content(rs.getString("r_content"));
-					dto.setR_image(rs.getString("r_image"));
-					dto.setR_likes(rs.getInt("r_likes"));
-					dto.setR_readcount(rs.getInt("r_readcount"));
-					dto.setR_writeday(rs.getTimestamp("r_writeday"));
+					QuestionDto dto=new QuestionDto();
+					dto.setQ_num(rs.getString("q_num"));
+					dto.setQ_writer(rs.getString("q_writer"));
+					dto.setQ_subject(rs.getString("q_subject"));
+					dto.setQ_content(rs.getString("q_content"));
+					dto.setQ_image(rs.getString("q_image"));
+					dto.setQ_likes(rs.getInt("q_likes"));
+					dto.setQ_readcount(rs.getInt("q_readcount"));
+					dto.setQ_writeday(rs.getTimestamp("q_writeday"));
 					
 					list.add(dto);
 				}
@@ -117,7 +117,7 @@ public class ReviewDao {
 			PreparedStatement pstmt=null;
 			ResultSet rs=null;
 			
-			String sql="select count(*) from review";
+			String sql="select count(*) from question";
 			
 			try {
 				pstmt=conn.prepareStatement(sql);
@@ -134,29 +134,29 @@ public class ReviewDao {
 		}
 		
 		//num에 해당하는 dto반환
-		public ReviewDto getData(String r_num) {
-			ReviewDto dto=new ReviewDto();
+		public QuestionDto getData(String q_num) {
+			QuestionDto dto=new QuestionDto();
 			
 			Connection conn=db.getConnection();
 			PreparedStatement pstmt=null;
 			ResultSet rs=null;
 			
-			String sql="select * from review where r_num=?";
+			String sql="select * from question where q_num=?";
 			
 			try {
 				pstmt=conn.prepareStatement(sql);
-				pstmt.setString(1, r_num);
+				pstmt.setString(1, q_num);
 				rs=pstmt.executeQuery();
 				
 				if(rs.next()) {
-					dto.setR_num(rs.getString("r_num"));
-					dto.setR_writer(rs.getString("r_writer"));
-					dto.setR_subject(rs.getString("r_subject"));
-					dto.setR_content(rs.getString("r_content"));
-					dto.setR_image(rs.getString("r_image"));
-					dto.setR_likes(rs.getInt("r_likes"));
-					dto.setR_readcount(rs.getInt("r_readcount"));
-					dto.setR_writeday(rs.getTimestamp("r_writeday"));
+					dto.setQ_num(rs.getString("q_num"));
+					dto.setQ_writer(rs.getString("q_writer"));
+					dto.setQ_subject(rs.getString("q_subject"));
+					dto.setQ_content(rs.getString("q_content"));
+					dto.setQ_image(rs.getString("q_image"));
+					dto.setQ_likes(rs.getInt("q_likes"));
+					dto.setQ_readcount(rs.getInt("q_readcount"));
+					dto.setQ_writeday(rs.getTimestamp("q_writeday"));
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -168,15 +168,15 @@ public class ReviewDao {
 		}
 		
 		//readcount
-		public void updateReadcount(String r_num) {
+		public void updateReadcount(String q_num) {
 			Connection conn=db.getConnection();
 			PreparedStatement pstmt=null;
 			
-			String sql="update review set r_readcount=r_readcount+1 where r_num=?";
+			String sql="update question set q_readcount=q_readcount+1 where q_num=?";
 			
 			try {
 				pstmt=conn.prepareStatement(sql);
-				pstmt.setString(1, r_num);
+				pstmt.setString(1, q_num);
 				pstmt.execute();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -194,7 +194,7 @@ public class ReviewDao {
 			PreparedStatement pstmt=null;
 			ResultSet rs=null;
 			
-			String sql="select max(r_num) max from review";
+			String sql="select max(q_num) max from question";
 			
 			try {
 				pstmt=conn.prepareStatement(sql);
@@ -213,20 +213,20 @@ public class ReviewDao {
 		}
 		
 		//수정
-		public void updateReview(ReviewDto dto) {
+		public void updateQusetion(QuestionDto dto) {
 			Connection conn=db.getConnection();
 			PreparedStatement pstmt=null;
 			
-			String sql="update review set r_writer=?,r_subject=?,r_content=?,r_image=? where r_num=?";
+			String sql="update question set q_writer=?,q_subject=?,q_content=?,q_image=? where q_num=?";
 			
 			try {
 				pstmt=conn.prepareStatement(sql);
 				
-				pstmt.setString(1, dto.getR_writer());
-				pstmt.setString(2, dto.getR_subject());
-				pstmt.setString(3, dto.getR_content());
-				pstmt.setString(4, dto.getR_image());
-				pstmt.setString(5, dto.getR_num());
+				pstmt.setString(1, dto.getQ_writer());
+				pstmt.setString(2, dto.getQ_subject());
+				pstmt.setString(3, dto.getQ_content());
+				pstmt.setString(4, dto.getQ_image());
+				pstmt.setString(5, dto.getQ_num());
 				
 				pstmt.execute();
 			} catch (SQLException e) {
@@ -238,15 +238,15 @@ public class ReviewDao {
 		}
 		
 		//삭제
-		public void deleteReview(String r_num) {
+		public void deleteQusetion(String q_num) {
 			Connection conn=db.getConnection();
 			PreparedStatement pstmt=null;
 			
-			String sql="delete from review where r_num=?";
+			String sql="delete from question where q_num=?";
 			
 			try {
 				pstmt=conn.prepareStatement(sql);
-				pstmt.setString(1, r_num);
+				pstmt.setString(1, q_num);
 				pstmt.execute();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -257,15 +257,15 @@ public class ReviewDao {
 		}
 		
 		//추천 클릭시 추천 증가
-		public void updateLikes(String r_num) {
+		public void updateLikes(String q_num) {
 			Connection conn=db.getConnection();
 			PreparedStatement pstmt=null;
 			
-			String sql="update review set r_likes=r_likes+1 where r_num=?";
+			String sql="update question set q_likes=q_likes+1 where q_num=?";
 			
 			try {
 				pstmt=conn.prepareStatement(sql);
-				pstmt.setString(1, r_num);
+				pstmt.setString(1, q_num);
 				pstmt.execute();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -276,15 +276,15 @@ public class ReviewDao {
 		}
 		
 		//추천 클릭시 추천 감소
-		public void decreLikes(String r_num) {
+		public void decreLikes(String q_num) {
 			Connection conn=db.getConnection();
 			PreparedStatement pstmt=null;
 					
-			String sql="update review set r_likes=r_likes-1 where r_num=?";
+			String sql="update question set q_likes=q_likes-1 where q_num=?";
 					
 			try {
 				pstmt=conn.prepareStatement(sql);
-				pstmt.setString(1, r_num);
+				pstmt.setString(1, q_num);
 				pstmt.execute();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
