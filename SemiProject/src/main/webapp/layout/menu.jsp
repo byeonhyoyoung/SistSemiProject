@@ -121,7 +121,7 @@ i.flower{
       </li>
     </ul>
   </li>
-  <li><a href="#">교토 소개</a>
+  <li><a href="index.jsp?main=intro/intromain.jsp">교토 소개</a>
     <ul>
       <li><a href="#">Sub Menu 1</a></li>
     </ul>
