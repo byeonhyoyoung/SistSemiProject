@@ -92,13 +92,6 @@ i.flower{
    String root=request.getContextPath();
 %>
 <body>
-   <%-- <a href="<%=root%>/">메인</a>&nbsp;&nbsp;&nbsp;
-   <a href="<%=root%>/">로그인</a>&nbsp;&nbsp;&nbsp;
-   <a href="index.jsp?main=member/addForm.jsp">회원가입</a>&nbsp;&nbsp;&nbsp;
-   <a href="<%=root%>/">Q & A</a>&nbsp;&nbsp;&nbsp;
-   <a href="<%=root%>/">방명록</a>&nbsp;&nbsp;&nbsp;
-   <a href="<%=root%>/">숲게시판</a>&nbsp;&nbsp;&nbsp;  --%>
-   
 <nav id="primary_nav_wrap">
 <ul>
   <li class="current-menu-item"><a href="#">홈</a></li>
