@@ -7,11 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.naming.ReferralException;
-
-import com.mysql.cj.exceptions.RSAException;
-import com.mysql.cj.protocol.FullReadInputStream;
-
 import data.dto.ReviewDto;
 import mysql.db.DbConnect;
 
@@ -24,7 +19,7 @@ public class ReviewDao {
 			Connection conn=db.getConnection();
 			PreparedStatement pstmt=null;
 			
-			String sql="insert into view(r_writer,r_subject,r_content,r_image,writeday) values(?,?,?,?,now())";
+			String sql="insert into review(r_writer,r_subject,r_content,r_image,writeday) values(?,?,?,?,now())";
 			
 			try {
 				pstmt=conn.prepareStatement(sql);
@@ -65,7 +60,6 @@ public class ReviewDao {
 					dto.setR_likes(rs.getInt("r_likes"));
 					dto.setR_readcount(rs.getInt("r_readcount"));
 					dto.setR_writeday(rs.getTimestamp("r_writeday"));
-						
 					list.add(dto);
 				}
 			} catch (SQLException e) {
@@ -177,7 +171,7 @@ public class ReviewDao {
 			Connection conn=db.getConnection();
 			PreparedStatement pstmt=null;
 			
-			String sql="update review set readcount=readcount+1 where r_num=?";
+			String sql="update review set r_readcount=r_readcount+1 where r_num=?";
 			
 			try {
 				pstmt=conn.prepareStatement(sql);
@@ -199,7 +193,7 @@ public class ReviewDao {
 			PreparedStatement pstmt=null;
 			ResultSet rs=null;
 			
-			String sql="select max(num) max from review";
+			String sql="select max(r_num) max from review";
 			
 			try {
 				pstmt=conn.prepareStatement(sql);
@@ -222,7 +216,7 @@ public class ReviewDao {
 			Connection conn=db.getConnection();
 			PreparedStatement pstmt=null;
 			
-			String sql="update review set r_writer=?,r_subject=?, r_content=?, r_image=? where r_num=?";
+			String sql="update review set r_writer=?,r_subject=?,r_content=?,r_image=? where r_num=?";
 			
 			try {
 				pstmt=conn.prepareStatement(sql);
@@ -260,4 +254,42 @@ public class ReviewDao {
 				db.dbClose(pstmt, conn);
 			}
 		}
+		
+		//추천 클릭시 추천 증가
+		public void updateLikes(String r_num) {
+			Connection conn=db.getConnection();
+			PreparedStatement pstmt=null;
+			
+			String sql="update review set r_likes=r_likes+1 where r_num=?";
+			
+			try {
+				pstmt=conn.prepareStatement(sql);
+				pstmt.setString(1, r_num);
+				pstmt.execute();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				db.dbClose(pstmt, conn);
+			}
+		}
+		
+		//추천 클릭시 추천 감소
+			public void decreLikes(String r_num) {
+				Connection conn=db.getConnection();
+				PreparedStatement pstmt=null;
+					
+				String sql="update review set r_likes=r_likes-1 where r_num=?";
+				
+				try {
+					pstmt=conn.prepareStatement(sql);
+					pstmt.setString(1, r_num);
+					pstmt.execute();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}finally {
+					db.dbClose(pstmt, conn);
+				}
+			}
 }

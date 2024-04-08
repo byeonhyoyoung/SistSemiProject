@@ -12,8 +12,14 @@ public class ReviewDto {
 	private int r_likes;
 	private int r_readcount;
 	private Timestamp r_writeday;
+	private int answercount;
 	
-	
+	public int getAnswercount() {
+		return answercount;
+	}
+	public void setAnswercount(int answercount) {
+		this.answercount = answercount;
+	}
 	public String getR_num() {
 		return r_num;
 	}
