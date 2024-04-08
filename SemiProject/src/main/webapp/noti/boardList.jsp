@@ -28,19 +28,8 @@
 	#head{
 		font-size: 1.5em;
 		color: black;
-		text-align: center;
+		padding-top: 50px;
 	}
-	
-	/* .plusbtn{
-		text-decoration: none;
-		color: green;
-		margin-left: 400px;
-		border: none !important; /* 테두리 없애기 */
-	    box-shadow: none !important; /* 그림자 없애기 */
-	    outline: none !important; /* 아웃라인 없애기 */
-	    border-color: transparent !important; /* 테두리 색상 투명으로 설정 */
-	    background-color: transparent !important; /* 배경색 투명으로 설정 */
-	} */
 	
 	 /* 테이블 오른쪽과 왼쪽 테두리 제거 */
    table.table-bordered {
@@ -52,11 +41,18 @@
        border-right: none;
        border-left: none;
    }
+   
+   i.bi-plus{
+   	color: green;
+   }
 	
 </style>
 <script type="text/javascript">
   //head단에서는 $(function)
   $(function(){
+	  
+	//내용 숨겼더
+	  $("tr.noticontent").hide();
 	  
 	  //전체체크 클릭시 체크값 얻어서 모든체크값에 전달
 	  $(".alldelcheck").click(function(){
@@ -96,7 +92,61 @@
 		  }
 	  })
 	  
+	  //아이콘 누르면 나왔다가 없어지게
+	  /* $(document).on("click","i.bi-plus",function(){
+		  $(this).closest("tr").next("tr.noticontent").slideToggle();
+		  $(this).removeClass("bi-plus").addClass("bi-dash");
+		  
+	  }) */
+	  
+	  
+		    // bi-plus 아이콘을 클릭했을 때 content 내용을 보이거나 숨김
+		    $(document).on("click", "i.bi-plus", function() {
+		        var contentDiv = $(this).closest("tr").next("tr.noticontent"); // 해당 공지사항의 content div 요소 가져오기
+		        contentDiv.slideToggle(); // content 내용을 보이거나 숨김
+
+		        // 아이콘 클래스 변경: bi-plus에서 bi-dash로 바꿈
+		        $(this).removeClass("bi-plus").addClass("bi-dash");
+		    });
+
+		    // bi-dash 아이콘을 클릭했을 때 content 내용을 숨김
+		    $(document).on("click", "i.bi-dash", function() {
+		        var contentDiv = $(this).closest("tr").next("tr.noticontent"); // 해당 공지사항의 content div 요소 가져오기
+		        contentDiv.slideToggle(); // content 내용을 보이거나 숨김
+
+		        // 아이콘 클래스 변경: bi-dash에서 bi-plus로 바꿈
+		        $(this).removeClass("bi-dash").addClass("bi-plus");
+		    });
+		
+	  
   })
+  
+	$(document).ready(function() {
+    // 공지사항 제목을 클릭했을 때 내용 표시
+	    $(".noti-link").click(function() {
+	        var n_num = $(this).data("n_num"); // 해당 공지사항의 번호 가져오기
+	        var contentDiv = $(this).next(".noti-content"); // 해당 공지사항의 내용을 담을 div 가져오기
+	
+	        // 이미 내용이 로드되어 있는지 확인
+	        if (contentDiv.html().trim().length === 0) {
+	            // Ajax를 통해 공지사항 내용 가져오기
+	            $.ajax({
+	                type: "get",
+	                url: "noti/contentView.jsp", // 내용을 가져올 서버의 주소
+	                data: { "n_num": n_num }, // 공지사항 번호 전달
+	                success: function (res) {
+	                    contentDiv.html(res); // 가져온 내용을 해당 div에 삽입
+	                    contentDiv.show(); // 내용을 보이도록 설정
+	                }
+	            });
+	        } else {
+	            // 이미 내용이 로드되어 있는 경우, 내용을 보이거나 숨김
+	            contentDiv.toggle();
+	        }
+	
+	        return false; // 링크의 기본 동작 방지
+	    });
+	});
   
   
   
@@ -108,7 +158,7 @@ NotiDao dao=new NotiDao();
 
 //전체갯수
 int totalCount=dao.getTotalCount();
-int perPage=10; //한페이지당 보여질 글의 갯수
+int perPage=5; //한페이지당 보여질 글의 갯수
 int perBlock=5; //한블럭당 보여질 페이지 갯수
 int startNum; //db에서 가져올 글의 시작번호(mysql은 첫글이0번,오라클은 1번);
 int startPage; //각블럭당 보여질 시작페이지
@@ -153,15 +203,18 @@ List<NotiDto>list=dao.getList(startNum, perPage);
 SimpleDateFormat sdf=new SimpleDateFormat("yyyy.MM.dd");
 //int count=list.size();
 
+//컨텐츠 내용 가져오기
+String n_num=request.getParameter("n_num");
+NotiDto ndto=dao.getData(n_num);
 
 
 %>
 
 <body>
-<div style="margin: 50px 100px; width: 900px;">
+<div style="margin: 0 auto; width: 900px;">
    
    
-   <h6 style="padding-bottom: 25px;" id="head"><b>공지사항</b></h6>
+   <h6 style="" id="head"><b>공지사항</b></h6>
    <table class="table table-bordered">
    	  <caption align="top" style="padding-bottom: 15px;"><b>총 <%=totalCount %>건의 글이 있습니다</b></caption>
       <%-- <caption align="top" style="padding-bottom: 20px;"><b>공지사항</b></caption>
@@ -172,6 +225,7 @@ SimpleDateFormat sdf=new SimpleDateFormat("yyyy.MM.dd");
          <!-- <th width="150">작성자</th> -->
          <th width="130">등록일</th>
          <!-- <th width="80">조회수</th> -->
+         <th width="80"></th>
       </tr>
       
       <%
@@ -188,22 +242,32 @@ SimpleDateFormat sdf=new SimpleDateFormat("yyyy.MM.dd");
         		  <td align="center">
         		  <input type="checkbox" value="<%=dto.getN_num()%>" class="alldel">&nbsp;&nbsp;
         		  <%=no-- %></td>
+        		  
         		  <td style="font-family: 'Noto Sans KR';">
+				    <a href="#" class="noti-link" data-n_num="<%=dto.getN_num()%>">
+				        <%=dto.getN_subject() %>
+				    </a>
+				    <!-- <div class="noti-content" style="display: none;"></div> 공지사항 내용을 담을 div 추가 -->
+				  </td>
         		  
-        		  <a href="index.jsp?main=noti/contentView.jsp?n_num=<%=dto.getN_num()%>&currentPage=<%=currentPage%>" >
-        		  
-        		  <%=dto.getN_subject() %></a>
-        		  <!-- <button style="border: none !important; box-shadow: none !important;"><i class="bi bi-plus-lg plusbtn"></i></button> -->
-        		  
-        		  </td>
         		  <%-- <td align="center"><%=dto.getN_writer() %></td> --%>
         		  <td align="center" style="font-family: 'Noto Sans KR';"><%=sdf.format(dto.getN_writeday()) %></td>
         		  <%-- <td align="center"><%=dto.getN_readcount() %></td> --%>
+        		  <td><i class="bi bi-plus fs-3" n_num="<%=dto.getN_num() %>"
+        		  style="cursor: pointer;"></i></td>
+        		  
+        		</tr>
+        		
+        		<tr class="noticontent">
+        			<td></td>
+        			<td>
+        				<%=dto.getN_content() %>
+        			</td>
         		</tr>
         	<%}%>
         	
         	<tr>
-			    <td colspan="5">
+			    <td colspan="4">
 			        <input type="checkbox" style="margin-left: 22px;" class="alldelcheck"> 전체선택
 			        <span style="float: right;">
 			            <span style="margin-right: 0px;">
