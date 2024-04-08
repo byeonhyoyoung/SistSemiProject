@@ -191,7 +191,7 @@
                 	  <a h_num="<%=dto.getH_num()%>" style="cursor: pointer;" class="goDetail">
                 	     <img alt="" src="hotel/image_hotel/<%=dto.getH_image()%>" class="photo">
                 	     <br>
-                	     <%=dto.getH_subject() %><br></a>
+                	     <%=dto.getH_content() %><br></a>
                 	  
                 	     <span style="float: right;">
                 	        <div style="color: gray; font-size: 12px;">

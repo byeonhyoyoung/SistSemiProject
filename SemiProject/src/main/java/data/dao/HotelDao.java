@@ -76,7 +76,7 @@ public class HotelDao {
 					dto.setH_link(rs.getString("h_link"));
 					dto.setH_category(rs.getString("h_category"));
 					dto.setH_writeday(rs.getTimestamp("h_writeday"));
-					dto.setH_googlemap(rs.getString("googlemap"));
+					dto.setH_googlemap(rs.getString("h_googlemap"));
 					
 					list.add(dto);
 				}
@@ -116,7 +116,7 @@ public class HotelDao {
 					dto.setH_link(rs.getString("h_link"));
 					dto.setH_category(rs.getString("h_category"));
 					dto.setH_writeday(rs.getTimestamp("h_writeday"));
-					dto.setH_googlemap(rs.getString("googlemap"));
+					dto.setH_googlemap(rs.getString("h_googlemap"));
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
