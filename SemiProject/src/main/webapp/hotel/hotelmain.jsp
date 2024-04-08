@@ -45,11 +45,12 @@
 	  
 	  
 	  $("a.goDetail").click(function(){
-		  var shopnum=$(this).attr("shopnum");
-		  //alert(shopnum);
+		  var h_num=$(this).attr("h_num");
+		  var h_category=$(this).attr("h_category");
+		  //alert(h_num);
 		  
 		  //디테일 페이지로 이동
-		  //location.href="index.jsp?main=shop/detailpage.jsp?shopnum="+shopnum;
+		  location.href="index.jsp?main=hotel/hoteldetailview.jsp?h_num="+h_num+"&h_category="+h_category;
 	  })
   });
 
@@ -70,10 +71,10 @@
       <a class="nav-link active" data-bs-toggle="tab" href="#tabs-total">전체</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="tab" href="#tabs-outer">호텔</a>
+      <a class="nav-link" data-bs-toggle="tab" href="#tabs-hotel">호텔</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="tab" href="#tabs-top">료칸</a>
+      <a class="nav-link" data-bs-toggle="tab" href="#tabs-ryokan">료칸</a>
     </li>
     
   </ul>
@@ -93,10 +94,11 @@
                 	int sale=(int)(Math.random()*31)+20;
                 	%>
                 	<td>
-                	  <a h_num="<%=dto.getH_num()%>" style="cursor: pointer;" class="goDetail">
+                	
+                	  <a h_num="<%=dto.getH_num()%>" h_category=<%=dto.getH_category() %> style="cursor: pointer;" class="goDetail">
                 	     <img alt="" src="hotel/image_hotel/<%=dto.getH_image()%>" class="photo">
                 	     <br>
-                	     <%=dto.getH_subject() %><br></a>
+                	     <%=dto.getH_content() %><br></a>
                 	  
                 	     <span style="float: right;">
                 	        <div style="color: gray; font-size: 12px;">
@@ -125,42 +127,35 @@
     
     
     
-  <%--   <div id="tabs-outer" class="container tab-pane fade"><br>
+     <div  id="tabs-hotel" class="container tab-pane fade"><br>
       <h3>호텔</h3>
       <p>
 		<table class="shoptable table table-bordered" style="width: 500px;">
            <tr>
               <%
                   i=0;
-                for(ShopDto dto: list)
+                for(HotelDto dto: list)
                 {
                 	
-                	if(dto.getCategory().equals("아우터")){
+                	if(dto.getH_category().equals("hotel")){
                 	//20~50까지 난수발생
                 	int sale=(int)(Math.random()*31)+20;
                 	%>
                 	<td>
-                	  <a shopnum="<%=dto.getShopnum()%>" style="cursor: pointer;" class="goDetail">
-                	     <img alt="" src="shopsave/<%=dto.getPhoto()%>" class="photo">
+                	  <a h_num="<%=dto.getH_num()%>" h_category=<%=dto.getH_category() %> style="cursor: pointer;" class="goDetail">
+                	     <img alt="" src="hotel/image_hotel/<%=dto.getH_image()%>" class="photo">
                 	     <br>
-                	     <%=dto.getSangpum() %><br></a>
-                	     <b style="color: red; " ><%=sale %>%</b>
+                	     <%=dto.getH_content() %><br></a>
+                	  
                 	     <span style="float: right;">
                 	        <div style="color: gray; font-size: 12px;">
-                	          <%
-                	            int price=(int)(dto.getPrice()+(dto.getPrice()*(sale/100.0)));
-                	          %>
-                	          <strike><%=nf.format(price) %></strike>
-                	        </div>
-                	        <div style="color: black;">
-                	           <%=nf.format(dto.getPrice()) %>
-                	        </div>
+                	        
                 	     </span>
                 	  
                 	</td>
                 	
                 	<%
-                	  if((i+1)%6==0)
+                	  if((i+1)%3==0)
                 	  {%>
                 		  </tr><tr>
                 	  <%}
@@ -178,42 +173,35 @@
       
       </p>
     </div>
-    <div id="tabs-top" class="container tab-pane fade"><br>
+    <div  id="tabs-ryokan" class="container tab-pane fade"><br>
       <h3>료칸</h3>
       <p>
-         <table class="shoptable table table-bordered" style="width: 500px;">
+        <table class="shoptable table table-bordered" style="width: 500px;">
            <tr>
               <%
                   i=0;
-                for(ShopDto dto: list)
+                for(HotelDto dto: list)
                 {
                 	
-                	if(dto.getCategory().equals("상의")){
+                	if(dto.getH_category().equals("ryokan")){
                 	//20~50까지 난수발생
                 	int sale=(int)(Math.random()*31)+20;
                 	%>
                 	<td>
-                	  <a shopnum="<%=dto.getShopnum()%>" style="cursor: pointer;" class="goDetail">
-                	     <img alt="" src="shopsave/<%=dto.getPhoto()%>" class="photo">
+                	  <a h_num="<%=dto.getH_num()%>" style="cursor: pointer;" class="goDetail">
+                	     <img alt="" src="hotel/image_hotel/<%=dto.getH_image()%>" class="photo">
                 	     <br>
-                	     <%=dto.getSangpum() %> </a><br>
-                	     <b style="color: red; " ><%=sale %>%</b>
+                	     <%=dto.getH_content() %><br></a>
+                	  
                 	     <span style="float: right;">
                 	        <div style="color: gray; font-size: 12px;">
-                	          <%
-                	            int price=(int)(dto.getPrice()+(dto.getPrice()*(sale/100.0)));
-                	          %>
-                	          <strike><%=nf.format(price) %></strike>
-                	        </div>
-                	        <div style="color: black;">
-                	           <%=nf.format(dto.getPrice()) %>
-                	        </div>
+                	        
                 	     </span>
-                	 
+                	  
                 	</td>
                 	
                 	<%
-                	  if((i+1)%6==0)
+                	  if((i+1)%3==0)
                 	  {%>
                 		  </tr><tr>
                 	  <%}
@@ -225,9 +213,10 @@
                 	
                 <%}
               %>
-           </tr>  --%>
+           </tr> 
         
         </table>
+      
       </p>
     </div>
     

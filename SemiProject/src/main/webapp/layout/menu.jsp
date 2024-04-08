@@ -81,6 +81,10 @@
    top:0;
    left:100%;
 }
+
+i.flower{
+	color: pink;
+}
 </style>
 </head>
 <%
@@ -99,7 +103,7 @@
 <ul>
   <li class="current-menu-item"><a href="#">홈</a></li>
   
-  <li><a href="#">벚꽃테마</a>
+  <li><a href="#"><i class="bi bi-flower3 flower"></i>벚꽃테마</a>
     <ul>
       <li><a href="#">Sub Menu 1</a></li>
       <li><a href="#">Sub Menu 4</a>
