@@ -45,8 +45,29 @@
    }
    
    i.bi-plus{
-   	color: gray;
+   	   color: gray;
    }
+   
+   /* hover 효과 적용 */
+    tr.hover-effect:hover td {
+        background-color: rgba(128, 128, 128, 0.1); /* 마우스를 갖다대면 배경색 변경 */
+        cursor: pointer; /* 마우스 커서를 포인터로 변경 */
+    }
+    
+    /* 페이지 네이션 테두리 제거 */
+	ul.pagination {
+	    border: none;
+	}
+	
+	ul.pagination li.page-item a.page-link {
+	    border: none;
+	    border-radius: 0; /* 필요에 따라 테두리의 모서리를 조정할 수 있습니다 */
+	}
+	
+	ul.pagination li.page-item.active a.page-link {
+	    background-color: #007bff; /* 활성 페이지의 배경색을 원하시는 색상으로 변경하세요 */
+	    color: #fff; /* 활성 페이지의 텍스트 색상을 원하시는 색상으로 변경하세요 */
+	}
 	
 </style>
 <script type="text/javascript">
@@ -119,7 +140,13 @@
 		        // 아이콘 클래스 변경: bi-dash에서 bi-plus로 바꿈
 		        $(this).removeClass("bi-dash").addClass("bi-plus");
 		    });
-		
+		    
+		    
+		    $(document).on("mouseover", "#effect", function() {
+		        $(this).addClass("hover");
+		    }).on("mouseout", "#effect", function() {
+		        $(this).removeClass("hover");
+		    });
 	  
   })
   
@@ -149,9 +176,7 @@
 	        return false; // 링크의 기본 동작 방지
 	    });
     
-    
 	});
-  
  
   
 
@@ -260,7 +285,7 @@ SemiMemberDto sdto=sdao.getMemberById(myid);
         <%}else{
         	for(NotiDto dto:list)
         	{%>
-        		<tr class="hover">
+        		<tr class="hover-effect">
         		  <td width="80" style="vertical-align: middle; font-size: 0.8em; color: gray;">공지사항</td>
         		  
         		  <td style="font-family: 'Noto Sans KR'; vertical-align: middle; width: 450">
@@ -316,7 +341,8 @@ SemiMemberDto sdto=sdao.getMemberById(myid);
   if(startPage>1)
   {%>
 	  <li class="page-item ">
-	   <a class="page-link" href="index.jsp?main=noti/boardList.jsp?currentPage=<%=startPage-1%>" style="color: black;">이전</a>
+	  	<a class="page-link" href="index.jsp?main=noti/boardList.jsp?currentPage=<%=startPage-1%>">
+	  	<img src="image/semi/left-arrow-bold.png" style="width: 13px; height: 15px;"></a>
 	  </li>
   <%}
     for(int pp=startPage;pp<=endPage;pp++)
@@ -338,8 +364,8 @@ SemiMemberDto sdto=sdao.getMemberById(myid);
     if(endPage<totalPage)
     {%>
     	<li class="page-item">
-    		<a  class="page-link" href="index.jsp?main=noti/boardList.jsp?currentPage=<%=endPage+1%>"
-    		style="color: black;">다음</a>
+    		<a  class="page-link" href="index.jsp?main=noti/boardList.jsp?currentPage=<%=endPage+1%>">
+    		<img src="image/semi/right-arrow-bold.png" style="width: 13px; height: 15px;"></a>
     	</li>
     <%}
   %>
