@@ -146,7 +146,7 @@ i.flower{
   <li><a href="#">먹거리</a></li>
   <li><a href="#">숙박시설</a></li>
   <li><a href="#">커뮤니티</a>
-     <ul>
+     <ul>  
       <li><a href="index.jsp?main=noti/boardList.jsp">공지사항</a></li>
       <li><a href="index.jsp?main=review/reviewlist.jsp">후기<br>게시판</a></li>
       <li><a href="#">Q&A</a></li>
