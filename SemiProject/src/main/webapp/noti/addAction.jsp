@@ -23,7 +23,7 @@
   
   //디테일 페이지로..
   int n_num=dao.getMaxNum();
-  response.sendRedirect("../index.jsp?main=noti/contentView.jsp?n_num="+n_num+"&currentPage="+1);
+  response.sendRedirect("../index.jsp?main=noti/boardList.jsp?currentPage="+1);
   //새로작성된글 contentview.jsp?num19&currentPage=1 출력
 %>
 </body>

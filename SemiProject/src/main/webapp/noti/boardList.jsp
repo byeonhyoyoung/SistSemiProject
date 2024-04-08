@@ -1,3 +1,5 @@
+<%@page import="data.dto.SemiMemberDto"%>
+<%@page import="data.dao.SemiMemberDao"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="data.dto.NotiDto"%>
 <%@page import="java.util.List"%>
@@ -43,7 +45,7 @@
    }
    
    i.bi-plus{
-   	color: green;
+   	color: gray;
    }
 	
 </style>
@@ -146,14 +148,19 @@
 	
 	        return false; // 링크의 기본 동작 방지
 	    });
+    
+    
 	});
   
-  
+ 
   
 
 </script>
 </head>
 <%
+String loginok=(String)session.getAttribute("loginok");
+String myid=(String)session.getAttribute("myid");
+
 NotiDao dao=new NotiDao();
 
 //전체갯수
@@ -207,6 +214,9 @@ SimpleDateFormat sdf=new SimpleDateFormat("yyyy.MM.dd");
 String n_num=request.getParameter("n_num");
 NotiDto ndto=dao.getData(n_num);
 
+SemiMemberDao sdao=new SemiMemberDao();
+SemiMemberDto sdto=sdao.getMemberById(myid);
+
 
 %>
 
@@ -214,11 +224,23 @@ NotiDto ndto=dao.getData(n_num);
 <div style="margin: 0 auto; width: 900px;">
    
    
-   <h6 style="" id="head"><b>공지사항</b></h6>
-   <table class="table table-bordered">
-   	  <caption align="top" style="padding-bottom: 15px;"><b>총 <%=totalCount %>건의 글이 있습니다</b></caption>
-      <%-- <caption align="top" style="padding-bottom: 20px;"><b>공지사항</b></caption>
-      <h6><b>총 <%=totalCount %>건의 글이 있습니다</b></h6> --%>
+   <h6 style="" id="head"><b>공지사항</b>
+   <%
+   
+   		if(loginok!=null && sdto.getId().equals("admin"))
+   		{%>
+   			<button type="button" class="btn btn-secondary btn-sm" style="float: right;" onclick="location.href='index.jsp?main=noti/addForm.jsp'">글쓰기</button>
+   		<%}
+   
+   %>
+   		
+   		
+   </h6><br>
+   <table class="table table-group-divider">
+   
+   	  <%-- <caption align="top" style="padding-bottom: 15px;"><b>총 <%=totalCount %>건의 글이 있습니다</b></caption>
+      <caption align="top" style="padding-bottom: 20px;"><b>공지사항</b></caption>
+      <h6><b>총 <%=totalCount %>건의 글이 있습니다</b></h6>
       <tr style="text-align: center;" class="table-group-divider">
          <th width="80">번호</th>
          <th width="450">제목</th>
@@ -226,7 +248,7 @@ NotiDto ndto=dao.getData(n_num);
          <th width="130">등록일</th>
          <!-- <th width="80">조회수</th> -->
          <th width="80"></th>
-      </tr>
+      </tr> --%>
       
       <%
         if(totalCount==0){%>
@@ -238,12 +260,10 @@ NotiDto ndto=dao.getData(n_num);
         <%}else{
         	for(NotiDto dto:list)
         	{%>
-        		<tr>
-        		  <td align="center">
-        		  <input type="checkbox" value="<%=dto.getN_num()%>" class="alldel">&nbsp;&nbsp;
-        		  <%=no-- %></td>
+        		<tr class="hover">
+        		  <td width="80" style="vertical-align: middle; font-size: 0.8em; color: gray;">공지사항</td>
         		  
-        		  <td style="font-family: 'Noto Sans KR';">
+        		  <td style="font-family: 'Noto Sans KR'; vertical-align: middle; width: 450">
 				    <a href="#" class="noti-link" data-n_num="<%=dto.getN_num()%>">
 				        <%=dto.getN_subject() %>
 				    </a>
@@ -251,41 +271,44 @@ NotiDto ndto=dao.getData(n_num);
 				  </td>
         		  
         		  <%-- <td align="center"><%=dto.getN_writer() %></td> --%>
-        		  <td align="center" style="font-family: 'Noto Sans KR';"><%=sdf.format(dto.getN_writeday()) %></td>
+        		  <td align="center" style="font-family: 'Noto Sans KR'; vertical-align: middle; width:180"><%=sdf.format(dto.getN_writeday()) %></td>
         		  <%-- <td align="center"><%=dto.getN_readcount() %></td> --%>
-        		  <td><i class="bi bi-plus fs-3" n_num="<%=dto.getN_num() %>"
+        		  <td style="width: 50px;"><i class="bi bi-plus fs-3" n_num="<%=dto.getN_num() %>"
         		  style="cursor: pointer;"></i></td>
         		  
         		</tr>
         		
         		<tr class="noticontent">
-        			<td></td>
-        			<td>
+        			
+        			<td colspan="4">
         				<%=dto.getN_content() %>
+        				<div align="right">	
+        				<%
+        					if(loginok!=null && sdto.getId().equals("admin"))
+        					{%>
+        						<button type="button" class="btn btn-secondary btn-sm" 
+  						        	onclick="location.href='index.jsp?main=noti/updateForm.jsp?n_num=<%=n_num%>&currentPage=<%=currentPage%>'">수정</button>
+						        <button type="button" class="btn btn-secondary btn-sm" 
+  						        	onclick="funcdel(<%=n_num%>,<%=currentPage%>)">삭제</button>
+        					<%}
+        				%>
+        				
+    				    </div>
         			</td>
         		</tr>
+        	
+        		
+        		
         	<%}%>
         	
-        	<tr>
-			    <td colspan="4">
-			        <input type="checkbox" style="margin-left: 22px;" class="alldelcheck"> 전체선택
-			        <span style="float: right;">
-			            <span style="margin-right: 0px;">
-			                <button type="button" class="btn btn-secondary btn-sm" onclick="location.href='index.jsp?main=noti/addForm.jsp'">글쓰기</button>
-			            </span>
-			            <span style="margin-right: 15px;">
-			                <button type="button" class="btn btn-secondary btn-sm" id="btndel">삭제</button>&nbsp;
-			            </span>
-			        </span>
-			    </td>
-			</tr>
+        	
         	
         <%}
       %>
    </table>
 </div>
 
-<div style="margin: 50px 100px; width: 800px;">
+<div style="margin: 50px auto; width: 800px; text-align: center;">
   <!-- 페이지 번호 출력 -->
   <ul class="pagination justify-content-center">
   <%
