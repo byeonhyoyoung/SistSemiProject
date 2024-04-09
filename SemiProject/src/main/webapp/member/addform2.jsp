@@ -11,14 +11,13 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <title>Insert title here</title>
 <style type="text/css">
-
-label{
-font-size: 11pt;
-
+label {
+	font-size: 11pt;
 }
-
 </style>
 
 <script type="text/javascript">
@@ -39,9 +38,24 @@ font-size: 11pt;
 				},
 				success : function(res) {
 					if (res.count == 1) {
-						$("span.idsuccess").text("not ok!!");
+				
+						Swal.fire({
+							  position: "center",
+							  icon: "error",
+							  title: "중복 아이디가 존재합니다.",
+							  showConfirmButton: true,
+							  
+							});
+						
 					} else {
-						$("span.idsuccess").text("ok!!");
+						Swal.fire({
+							  position: "center",
+							  icon: "success",
+							  title: "ok!",
+							  showConfirmButton: true,
+							 
+							});
+					
 					}
 				}
 			});
@@ -77,69 +91,72 @@ font-size: 11pt;
 
 </head>
 <body>
-	<div style="margin: 0 auto; width: 350px;">
+	<div style="margin: 0 auto; width: 320px; border: 1px solid pink;">
 		<form action="member/addaction.jsp" method="post"
 			onsubmit="return check(this)">
 
-			<h3>
-				<strong>KyotoInside<strong> 회원가입
-						<h3>
-							<label for="id">아이디</label><br>
-							<div class="d-inline-flex">
-								<input type="text" name="id" id="id" maxlength="8"
-									class="form-control" required="required" style="width: 120px; background-color: #eeeeee;">
-								<button type="button" class="btn btn-warning" id="btnIdCheck"
-									style="margin-left: 10px; background-color: #F8BBD0; border-color: #F8BBD0; color: white;">중복체크</button>
-								<span class="idsuccess" style="color: blue; margin-left: 10px;"></span>
+			<h3 align="center">
+				<strong>KyotoInside</strong> 회원가입
+				<h3>
+					<label for="id">아이디</label><br>
+					<div class="d-inline-flex">
+						<input type="text" name="id" id="id" maxlength="8"
+							class="form-control" required="required"
+							style="width: 200px; background-color: #eeeeee;">
+						<button type="button" class="btn btn-warning" id="btnIdCheck"
+							style="width: 105px; margin-left: 10px; background-color: #F8BBD0; border-color: #F8BBD0; color: white;">중복체크</button>
+						<span class="idsuccess" style="color: blue; margin-left: 10px;"></span>
 
-							</div>
-							<br>
-							<label for="pass">비밀번호</label><br>
-							
-							<div class="d-inline-flex">
-								<input type="password" name="pass" class="form-control"
-									required="required" style="width: 120px; background-color: #eeeeee;" placeholder="비밀번호">
-								<input type="password" name="pass2" class="form-control"
-									required="required" style="width: 150px; margin-left: 5px;background-color: #eeeeee;"
-									placeholder="비밀번호 확인">
-							</div>
-							<br>
-							<label for="name">이름</label>
-							<input type="text" name="name" class="form-control"
-								required="required" style="width: 120px; background-color: #eeeeee;">
+					</div>
+					<br> <label for="pass">비밀번호</label><br>
 
+					<div class="d-inline-flex">
+						<input type="password" name="pass" class="form-control"
+							required="required"
+							style="width: 150px; background-color: #eeeeee;"
+							placeholder="비밀번호"> <input type="password" name="pass2"
+							class="form-control" required="required"
+							style="width: 150px; margin-left: 15px; background-color: #eeeeee;"
+							placeholder="비밀번호 확인">
+					</div>
+					<br> <label for="name">이름</label> <input type="text"
+						name="name" class="form-control" required="required"
+						style="width: 315px; background-color: #eeeeee;"> <label
+						for="hp">핸드폰</label> <input type="text" name="hp"
+						class="form-control" required="required"
+						style="width: 315px; background-color: #eeeeee;"> <label
+						for="addr">주소</label> <input type="text" name="addr"
+						class="form-control" required="required"
+						style="width: 315px; background-color: #eeeeee;"> <label
+						for="email">이메일</label><br>
+					<div class="d-inline-flex">
+						<input type="text" name="email1" class="form-control"
+							required="required"
+							style="width: 90px; background-color: #eeeeee;">&nbsp;<label>@</label>&nbsp;
 
-							<label for="hp">핸드폰</label>
-							<input type="text" name="hp" class="form-control"
-								required="required" style="width: 120px;">
-							<label for="addr">주소</label>
-							<input type="text" name="addr" class="form-control"
-								required="required" style="width: 120px;">
-							<label for="email">이메일</label>
-							<div class="d-inline-flex">
-								<input type="text" name="email1" class="form-control"
-									required="required" style="width: 80px; background-color: #eeeeee;"> <b
-									style="margin-left: 10px; margin-right: 10px;">@</b> <input
-									type="text" name="email2" id="email2" class="form-control"
-									required="required" style="width: 80px;"> <select
-									id="selemail" class="form-control" style="margin-left: 10px; background-color: #eeeeee;">
-									<option value="-">직접입력</option>
-									<option value="naver.com">네이버</option>
-									<option value="gmail.com">구글</option>
-									<option value="nate.com">네이트</option>
-									<option value="daum.net">다음</option>
-								</select>
-							</div>
-
-							<div>
-								<button type="submit" class="btn btn-outline-info"
-									style="background-color: #EEEEEE; border-color: #EEEEEE;">저장하기</button>
-								<button type="reset" class="btn btn-outline-info"
-									style="background-color: #EEEEEE; border-color: #EEEEEE;">초기화</button>
+						<input type="text" name="email2" id="email2" class="form-control"
+							required="required"
+							style="width: 90px; background-color: #eeeeee;"> <select
+							id="selemail" class="form-control"
+							style="margin-left: 10px; background-color: #eeeeee; width: 90px;">
+							<option value="-">직접입력</option>
+							<option value="naver.com">네이버</option>
+							<option value="gmail.com">구글</option>
+							<option value="nate.com">네이트</option>
+							<option value="daum.net">다음</option>
+						</select>
+					</div>
 
 
+					<br>
+					<br>
 
-							</div>
+					<div align="center">
+						<button type="submit" class="btn btn-info"
+							style="background-color: pink; border: pink; color: white;">저장하기</button>
+						<button type="reset" class="btn btn-info"
+							style="background-color: pink; border: pink; color: white;">초기화</button>
+					</div>
 		</form>
 	</div>
 </body>
