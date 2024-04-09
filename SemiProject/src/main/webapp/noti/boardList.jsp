@@ -296,7 +296,7 @@ SemiMemberDto sdto=sdao.getMemberById(myid);
 				  </td>
         		  
         		  <%-- <td align="center"><%=dto.getN_writer() %></td> --%>
-        		  <td align="center" style="font-family: 'Noto Sans KR'; font-size: 0.9em; color: gray; vertical-align: middle; width:180"><%=sdf.format(dto.getN_writeday()) %></td>
+        		  <td align="center" style="font-family: 'Noto Sans KR'; font-size: 0.9em; vertical-align: middle; width:180"><%=sdf.format(dto.getN_writeday()) %></td>
         		  <%-- <td align="center"><%=dto.getN_readcount() %></td> --%>
         		  <td style="width: 50px;"><i class="bi bi-plus fs-3" n_num="<%=dto.getN_num() %>"
         		  style="cursor: pointer;"></i></td>
