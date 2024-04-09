@@ -69,6 +69,97 @@
 	    color: #fff; /* 활성 페이지의 텍스트 색상을 원하시는 색상으로 변경하세요 */
 	}
 	
+	/* 검색창 css */
+	.select {
+    position: relative;
+    margin: 0;
+    width: 100%;
+    height: 42px;
+    z-index: 99;
+    font-size: 14px;
+    font-weight: 400;
+    color: #6a6e76;
+    z-index: 1;
+	}
+    
+    input[type="text"] {
+    display: block;
+    width: 100%;
+    height: 54px;
+    background: #fff;
+    border: 1px solid #e1e6ee;
+    color: #6a6e76;
+    font-size: 16px;
+    line-height: 53px;
+    text-indent: 20px;
+	} 
+	
+	.board_srch {
+    display: flex;
+    margin-left: auto;
+    position: relative;
+    width: 380px
+	}
+
+	.board_srch .select_gy {
+    display: flex;
+	}
+
+	.board_srch .bs_ipt {
+    display: flex;
+    align-items: center;
+    width: 240px;
+    height: 42px;
+    border: 1px solid #e7e8ed;
+    border-left: none;
+    background: #f8f9fb;
+    font-size: 0;
+	}
+	
+	.board_srch .bs_ipt2 {
+    display: flex;
+    width: 110px;
+    height: 42px;
+    border-left: none;
+    background: #f8f9fb;
+    font-size: 0;
+    
+	}
+
+	.board_srch .bs_ipt input[type="text"] {
+    padding: 0;
+    margin: 0;
+    width: calc(100% - 60px);
+    height: 40px;
+    border: none;
+    background: #f8f9fb;
+    color: #6a6e76;
+    font-size: 14px;
+    }
+
+	.board_srch .bs_ipt input:focus {
+    outline: none;
+	}
+
+	#searchButton{
+    margin-left: auto;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+	}
+	
+	.select select {
+    display: block;
+    width: 100%; /* 전체 너비로 설정하여 한 칸으로 표시 */
+    height: 42px;
+    background: #f8f9fb; /* 배경색 조정 */
+    border: 1px solid #e1e6ee;
+    color: #6a6e76;
+    font-size: 16px;
+    line-height: 53px;
+    padding: 0 20px; /* 입력 상자의 패딩 조정 */
+    margin: 0;
+    }
 </style>
 <script type="text/javascript">
   //head단에서는 $(function)
@@ -82,7 +173,7 @@
 		  
 		  //전체 체크값 얻기(alldelcheck를 this라고하면)
 		  var chk=$(this).is(":checked");
-		  console.log(chk);
+		  //console.log(chk);
 		  
 		  //전체체크값을 글앞에 체크에 일괄 전달하기
 		  $(".alldel").prop("checked",chk);
@@ -177,6 +268,13 @@
 	    });
     
 	});
+  
+  function funcdel(n_num, currentPage){
+	   var ans = confirm("삭제하려면 [확인]을 눌러주세요");
+	   if(ans){
+		   location.href='noti/delete.jsp?n_num='+n_num+"&currentPage="+currentPage;
+	   }
+  }
  
   
 
@@ -237,7 +335,6 @@ SimpleDateFormat sdf=new SimpleDateFormat("yyyy.MM.dd");
 
 //컨텐츠 내용 가져오기
 String n_num=request.getParameter("n_num");
-NotiDto ndto=dao.getData(n_num);
 
 SemiMemberDao sdao=new SemiMemberDao();
 SemiMemberDto sdto=sdao.getMemberById(myid);
@@ -248,33 +345,23 @@ SemiMemberDto sdto=sdao.getMemberById(myid);
 <body>
 <div style="margin: 0 auto; width: 900px;">
    
-   
-   <h6 style="" id="head"><b>공지사항</b>
-   <%
-   
-   		if(loginok!=null && sdto.getId().equals("admin"))
-   		{%>
-   			<button type="button" class="btn btn-secondary btn-sm" style="float: right;" onclick="location.href='index.jsp?main=noti/addForm.jsp'">글쓰기</button>
-   		<%}
-   
-   %>
-   		
-   		
-   </h6><br>
+   <h6 id="head"><b>공지사항</b>
+	   <div class="board_srch" style="margin-right: -20px;">
+	        <div class="bs_ipt2">
+			    <div class="select">
+			        <select id="searchType" class="search_input" autocomplete="off">
+			            <option value="1">일반</option>
+			            <option value="2">중요</option>
+			        </select>
+			    </div>
+			</div>
+	        <div class="bs_ipt">
+	            <input type="text" id="searchKeyword" name="" class="search_input" autocomplete="off">
+	            <label id="searchButton"><img src="./image/semi/btn_srch.png"></label>
+	        </div>
+	    </div>
+    </h6><br>
    <table class="table table-group-divider">
-   
-   	  <%-- <caption align="top" style="padding-bottom: 15px;"><b>총 <%=totalCount %>건의 글이 있습니다</b></caption>
-      <caption align="top" style="padding-bottom: 20px;"><b>공지사항</b></caption>
-      <h6><b>총 <%=totalCount %>건의 글이 있습니다</b></h6>
-      <tr style="text-align: center;" class="table-group-divider">
-         <th width="80">번호</th>
-         <th width="450">제목</th>
-         <!-- <th width="150">작성자</th> -->
-         <th width="130">등록일</th>
-         <!-- <th width="80">조회수</th> -->
-         <th width="80"></th>
-      </tr> --%>
-      
       <%
         if(totalCount==0){%>
         	<tr>
@@ -286,10 +373,10 @@ SemiMemberDto sdto=sdao.getMemberById(myid);
         	for(NotiDto dto:list)
         	{%>
         		<tr class="hover-effect">
-        		  <td width="80" style="vertical-align: middle; font-size: 0.8em; color: gray;">공지사항</td>
+        		  <td width="80" style="vertical-align: middle; font-size: 0.8em; color: gray;"><%=dto.getN_juje() %></td>
         		  
         		  <td style="font-family: 'Noto Sans KR'; vertical-align: middle; width: 450">
-				    <a href="#" class="noti-link" data-n_num="<%=dto.getN_num()%>">
+				    <a href="#" class="noti-link" n_num="<%=dto.getN_num()%>">
 				        <%=dto.getN_subject() %>
 				    </a>
 				    <!-- <div class="noti-content" style="display: none;"></div> 공지사항 내용을 담을 div 추가 -->
@@ -312,25 +399,26 @@ SemiMemberDto sdto=sdao.getMemberById(myid);
         					if(loginok!=null && sdto.getId().equals("admin"))
         					{%>
         						<button type="button" class="btn btn-secondary btn-sm" 
-  						        	onclick="location.href='index.jsp?main=noti/updateForm.jsp?n_num=<%=n_num%>&currentPage=<%=currentPage%>'">수정</button>
+  						        	onclick="location.href='index.jsp?main=noti/updateForm.jsp?n_num=<%=dto.getN_num()%>&currentPage=<%=currentPage%>'">수정</button>
 						        <button type="button" class="btn btn-secondary btn-sm" 
-  						        	onclick="funcdel(<%=n_num%>,<%=currentPage%>)">삭제</button>
+  						        	onclick="funcdel(<%=dto.getN_num()%>,<%=currentPage%>)">삭제</button>
         					<%}
         				%>
-        				
     				    </div>
         			</td>
         		</tr>
-        	
-        		
-        		
         	<%}%>
-        	
-        	
-        	
         <%}
       %>
    </table>
+   <%
+   
+   		if(loginok!=null && sdto.getId().equals("admin"))
+   		{%>
+   			<button type="button" class="btn btn-secondary btn-sm" style="float: right;"
+   			onclick="location.href='index.jsp?main=noti/addForm.jsp'">글쓰기</button>
+   		<%}
+   %>
 </div>
 
 <div style="margin: 50px auto; width: 800px; text-align: center;">
@@ -369,10 +457,7 @@ SemiMemberDto sdto=sdao.getMemberById(myid);
     	</li>
     <%}
   %>
-  
   </ul>
-  
-  
 </div>
 </body>
 </html>
