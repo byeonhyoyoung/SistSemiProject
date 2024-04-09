@@ -28,7 +28,7 @@ label {
 
 			//id읽기
 			var id = $("#id").val();
-			alert(id);
+			
 			$.ajax({
 				type : "get",
 				url : "member/idCheck.jsp",
@@ -91,7 +91,7 @@ label {
 
 </head>
 <body>
-	<div style="margin: 0 auto; width: 320px; border: 1px solid pink;">
+	<div style="margin: 0 auto; width: 320px; margin-top: 30px;">
 		<form action="member/addaction.jsp" method="post"
 			onsubmit="return check(this)">
 
