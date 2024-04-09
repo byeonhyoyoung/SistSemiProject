@@ -19,7 +19,7 @@
    
    width: 400px;
    height: 230px;
-   border: 1px solid gray;
+   border: 2px solid gray;
    margin-bottom: 10px;
    }
    
