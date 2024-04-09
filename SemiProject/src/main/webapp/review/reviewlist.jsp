@@ -27,6 +27,19 @@
 	
 	i.del{color: red;}
 	i.write{color: blue;}
+	
+	/* hover 효과 적용 */
+    tr.hover-effect:hover td {
+    background-color: rgba(128, 128, 128, 0.1); /* 마우스를 갖다대면 배경색 변경 */
+    cursor: pointer; /* 마우스 커서를 포인터로 변경 */
+    }
+    
+    .list{
+    font-size: 1.2em;
+    color: black;
+    padding-top: 30px;
+    padding-bottom: 25px;
+    }
 </style>
 
 <script type="text/javascript">
@@ -74,7 +87,7 @@
 	ReviewDao dao=new ReviewDao();
 	//전체갯수
 	int totalCount=dao.getTotalCount();
-	int perPage=3; //한페이지당 보여질 글의 갯수
+	int perPage=5; //한페이지당 보여질 글의 갯수
 	int perBlock=5; //한 블럭당 보여질 페이지 갯수
 	int startNum; //db에서 가져올 글의 시작번호(mysql은 첫글이 0번, 오라클은 1번)
 	int startPage; //각 블럭당 보여질 시작페이지
@@ -131,17 +144,17 @@
 		dto.setAnswercount(acount);
 	}
 	
-	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+	SimpleDateFormat sdf=new SimpleDateFormat("yyyy.MM.dd");
 %>
 <body>
-<div style="margin: 0 auto; width: 800px;">
+<div style="margin: 0 auto; width: 900px;">
 	
 	<br>
-	<h6 align="left"><b>총 <%=totalCount %>개의 글이 있습니다</b></h6>
-	<table class="table table-borderd">
-		<caption align="top"><b>후기게시판 목록</b></caption>
+	<%-- <h6 align="left"><b>총 <%=totalCount %>개의 글이 있습니다</b></h6> --%>
+	<table class="table table-group-divider">
+		<caption align="top" class="list"><b>후기게시판 목록</b></caption>
 		<tr class="table-light">
-			<th width="80" style="text-align: center">번호</th>
+			<th width="100" style="text-align: center">번호</th>
 			<th width="380" style="text-align: center">제목</th>
 			<th width="200" style="text-align: center">작성자</th>
 			<th width="200" style="text-align: center">작성일</th>
@@ -165,7 +178,7 @@
 				</tr>
 			<%}else{
 				for(ReviewDto dto:list){%>
-					<tr>
+					<tr class="hover-effect">
 						<td align="center">
 						<input type="checkbox" value="<%=dto.getR_num()%>" class="alldel">&nbsp;&nbsp;
 						<%=no-- %></td>
@@ -191,11 +204,11 @@
 					<td colspan="6">
 						&nbsp;<input type="checkbox" class="alldelcheck">&nbsp;&nbsp;전체선택
 						<span style="float: right;">
-							<button type="button" class="btn btn-outline-danger btn-sm" id="btndel">
-							<i class="bi bi-x-circle del"></i> 전체삭제</button>
-							<button type="button" class="btn btn-outline-primary btn-sm"
+							<button type="button" class="btn btn-secondary btn-sm" id="btndel">
+							전체삭제</button>
+							<button type="button" class="btn btn-secondary btn-sm"
 							onclick="location.href='index.jsp?main=review/addform.jsp'">
-							<i class="bi bi-pencil-fill write"></i> 글쓰기</button>
+							글쓰기</button>
 						</span>
 					</td>
 				</tr>
@@ -210,9 +223,10 @@
 		//이전
 		if(startPage>1){
 		%>
-			<li class="page-item">
-			  <a class="page-link" href="index.jsp?main=review/reviewlist.jsp?currentPage=<%=startPage-1%>" style="color: black">이전</a>
-			</li>	
+			<li class="page-item ">
+		       <a class="page-link" href="index.jsp?main=noti/boardList.jsp?currentPage=<%=startPage-1%>">
+		       <img src="image/semi/left-arrow-bold.png" style="width: 13px; height: 15px;"></a>
+		    </li>	
 		<%}
 		for(int pp=startPage;pp<=endPage;pp++){
 			if(pp==currentPage){
@@ -232,9 +246,9 @@
 		if(endPage<totalPage){
 		%>
 			<li class="page-item">
-			<a class="page-link" href="index.jsp?main=review/reviewlist.jsp?currentPage=<%=endPage+1%>"
-			style="color: black">다음</a>
-			</li>
+	           <a  class="page-link" href="index.jsp?main=noti/boardList.jsp?currentPage=<%=endPage+1%>">
+	           <img src="image/semi/right-arrow-bold.png" style="width: 13px; height: 15px;"></a>
+	        </li>
 		<%}
 	%>
 	</ul>
