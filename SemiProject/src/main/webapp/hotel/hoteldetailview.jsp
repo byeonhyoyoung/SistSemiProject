@@ -1,4 +1,4 @@
-<%@page import="data.dto.HotelDto"%>
+ <%@page import="data.dto.HotelDto"%>
 <%@page import="data.dao.HotelDao"%>
 <%@page import="java.text.NumberFormat"%>
 

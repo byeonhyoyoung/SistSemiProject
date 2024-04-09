@@ -16,7 +16,7 @@
 #primary_nav_wrap
 {
    margin-top: -100px;
-   text-align: center; /* 가운데 정렬을 위한 설정 */
+   text-align: center; /* 가운데 정렬을 위한 설정 */ 
    
 }
 
