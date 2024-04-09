@@ -79,7 +79,13 @@ i {
 
 		<% 
 
+         if(myid.equals("admin")){%>
 
+		<a href="index.jsp?main=member/memberlist.jsp"><i
+			class="bi bi-person-lines-fill fs-2" data-bs-container="body"
+			data-bs-toggle="popover" data-bs-placement="bottom"
+			data-bs-content="회원목록"></i></a>
+		<%  }
     	  
       }else{%>
 		 <a href="index.jsp?main=login/loginForm3.jsp"> <i
