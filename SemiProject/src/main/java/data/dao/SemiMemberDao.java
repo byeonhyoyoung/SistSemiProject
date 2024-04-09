@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Vector;
 
 import data.dto.SemiMemberDto;
 import mysql.db.DbConnect;
@@ -180,6 +182,162 @@ public class SemiMemberDao {
 			
 			
 			return name;
+		}
+		
+		//회원목록
+		public List<SemiMemberDto> getAllMembers()
+		{
+			List<SemiMemberDto> list=new Vector<SemiMemberDto>();
+			
+			Connection conn=db.getConnection();
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			
+			String sql="select * from semimember order by id";
+			
+			try {
+				pstmt=conn.prepareStatement(sql);
+				rs=pstmt.executeQuery();
+				
+				while(rs.next())
+				{
+					SemiMemberDto dto=new SemiMemberDto();
+					
+					dto.setNum(rs.getString("num"));
+					dto.setName(rs.getString("name"));
+					dto.setId(rs.getString("id"));
+					dto.setHp(rs.getString("hp"));
+					dto.setAddr(rs.getString("addr"));
+					dto.setEmail(rs.getString("email"));
+					dto.setGaipday(rs.getTimestamp("gaipday"));
+					
+					list.add(dto);
+							
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				db.dbClose(rs, pstmt, conn);
+			}
+			
+			return list;
+		}
+		
+		//삭제
+		public void deleteMember(String num)
+		{
+			Connection conn=db.getConnection();
+			PreparedStatement pstmt=null;
+			
+			String sql="delete from semimember where num=?";
+			
+			try {
+				pstmt=conn.prepareStatement(sql);
+				
+				pstmt.setString(1, num);
+				pstmt.execute();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				db.dbClose(pstmt, conn);
+			}
+			
+		}
+		
+		//수정
+		public void updateMember(SemiMemberDto dto)
+		{
+			Connection conn=db.getConnection();
+			PreparedStatement pstmt=null;
+			
+			String sql="update semimember set name=?,hp=?,addr=?,email=? where num=?";
+			
+			try {
+				pstmt=conn.prepareStatement(sql);
+				
+				pstmt.setString(1, dto.getName());
+				pstmt.setString(2, dto.getHp());
+				pstmt.setString(3, dto.getAddr());
+				pstmt.setString(4, dto.getEmail());
+				pstmt.setString(5, dto.getNum());
+				
+				pstmt.execute();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				db.dbClose(pstmt, conn);
+			}
+				
+		}
+		
+		//비밀번호 체크
+		public boolean isEqualPass(String num,String pass)
+		{
+			boolean b=false;
+			
+			Connection conn=db.getConnection();
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			
+			String sql="select * from semimember where num=? and pass=?";
+			try {
+				pstmt=conn.prepareStatement(sql);
+				pstmt.setString(1, num);
+				pstmt.setString(2, pass);
+				rs=pstmt.executeQuery();
+				
+				if(rs.next())
+					b=true;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				db.dbClose(rs, pstmt, conn);
+			}
+			
+			
+			return b;
+		}
+		
+		//회원 dto반환
+		public SemiMemberDto getDataMember(String num)
+		{
+			SemiMemberDto dto=new SemiMemberDto();
+			
+			Connection conn=db.getConnection();
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			
+			String sql="select * from semimember where num=?";
+			
+			try {
+				pstmt=conn.prepareStatement(sql);
+				
+				pstmt.setString(1, num);
+				rs=pstmt.executeQuery();
+				
+				if(rs.next())
+				{
+					dto.setNum(rs.getString("num"));
+					dto.setName(rs.getString("name"));
+					dto.setId(rs.getString("id"));
+					dto.setHp(rs.getString("hp"));
+					dto.setAddr(rs.getString("addr"));
+					dto.setEmail(rs.getString("email"));
+					dto.setGaipday(rs.getTimestamp("gaipday"));
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				db.dbClose(rs, pstmt, conn);
+			}
+			
+			
+			return dto;
 		}
 
 }
