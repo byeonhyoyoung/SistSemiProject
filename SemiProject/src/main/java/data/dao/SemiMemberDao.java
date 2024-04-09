@@ -181,8 +181,5 @@ public class SemiMemberDao {
 			
 			return name;
 		}
-		
-		
-	
 
 }

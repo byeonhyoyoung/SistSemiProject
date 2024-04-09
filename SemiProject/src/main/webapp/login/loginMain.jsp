@@ -18,7 +18,7 @@
 	{%>
 		<jsp:include page="loginForm.jsp"/>
 	<%}else{%>
-			 <jsp:include page="../index.jsp"/>
+		<jsp:include page="../index.jsp"/>
 	<%}
 %>
 </body>

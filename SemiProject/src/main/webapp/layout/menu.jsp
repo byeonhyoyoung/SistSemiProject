@@ -92,13 +92,6 @@ i.flower{
    String root=request.getContextPath();
 %>
 <body>
-   <%-- <a href="<%=root%>/">메인</a>&nbsp;&nbsp;&nbsp;
-   <a href="<%=root%>/">로그인</a>&nbsp;&nbsp;&nbsp;
-   <a href="index.jsp?main=member/addForm.jsp">회원가입</a>&nbsp;&nbsp;&nbsp;
-   <a href="<%=root%>/">Q & A</a>&nbsp;&nbsp;&nbsp;
-   <a href="<%=root%>/">방명록</a>&nbsp;&nbsp;&nbsp;
-   <a href="<%=root%>/">숲게시판</a>&nbsp;&nbsp;&nbsp;  --%>
-   
 <nav id="primary_nav_wrap">
 <ul>
   <li class="current-menu-item"><a href="#">홈</a></li>
@@ -106,45 +99,26 @@ i.flower{
   <li><a href="#"><i class="bi bi-flower3 flower"></i>벚꽃테마</a>
     <ul>
       <li><a href="#">Sub Menu 1</a></li>
-      <li><a href="#">Sub Menu 4</a>
-        <ul>
-          <li><a href="#">Deep Menu 1</a>
-            <ul>
-              <li><a href="#">Sub Deep 1</a></li>
-              <li><a href="#">Sub Deep 2</a></li>
-              <li><a href="#">Sub Deep 3</a></li>
-                <li><a href="#">Sub Deep 4</a></li>
-            </ul>
-          </li>
-          <li><a href="#">Deep Menu 2</a></li>
-        </ul>
-      </li>
+      <li><a href="#">Sub Menu 2</a></li>
     </ul>
   </li>
-  <li><a href="#">교토 소개</a>
-    <ul>
-      <li><a href="#">Sub Menu 1</a></li>
-    </ul>
-  </li>
+  <li><a href="index.jsp?main=intro/intromain.jsp">교토 소개</a></li>
   <li><a href="#">지역별 교토 탐색</a>
     <ul>
       <li class="dir"><a href="#">Sub Menu 1</a></li>
-      <li class="dir"><a href="#">Sub Menu 2 THIS IS SO LONG IT MIGHT CAUSE AN ISSEUE BUT MAYBE NOT?</a>
-        <ul>
-          <li><a href="#">Category 1</a></li>
-          <li><a href="#">Category 2</a></li>
-          <li><a href="#">Category 3</a></li>
-          <li><a href="#">Category 4</a></li>
-          <li><a href="#">Category 5</a></li>
-        </ul>
-      </li>
+      <li class="dir"><a href="#">Sub Menu 2</a></li>
       <li><a href="#">Sub Menu 3</a></li>
       <li><a href="#">Sub Menu 4</a></li>
       <li><a href="#">Sub Menu 5</a></li>
     </ul>
   </li>
   <li><a href="#">먹거리</a></li>
-  <li><a href="#">숙박시설</a></li>
+  <li><a href="index.jsp?main=hotel/hotelmain.jsp">숙박시설</a>
+  	<ul>
+	   <li><a href="#">호텔</a></li>
+	   <li><a href="#">료칸</a></li>
+  	</ul>
+  </li>
   <li><a href="#">커뮤니티</a>
      <ul>  
       <li><a href="index.jsp?main=noti/boardList.jsp">공지사항</a></li>
