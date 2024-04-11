@@ -14,7 +14,7 @@ public class ReviewDao {
 
 	DbConnect db=new DbConnect();
 	
-	//추가
+		//추가
 		public void insertReview(ReviewDto dto) {
 			Connection conn=db.getConnection();
 			PreparedStatement pstmt=null;
@@ -279,9 +279,9 @@ public class ReviewDao {
 		public void decreLikes(String r_num) {
 			Connection conn=db.getConnection();
 			PreparedStatement pstmt=null;
-			
+					
 			String sql="update review set r_likes=r_likes-1 where r_num=?";
-			
+					
 			try {
 				pstmt=conn.prepareStatement(sql);
 				pstmt.setString(1, r_num);
@@ -293,5 +293,4 @@ public class ReviewDao {
 				db.dbClose(pstmt, conn);
 			}
 		}
-		
 }
