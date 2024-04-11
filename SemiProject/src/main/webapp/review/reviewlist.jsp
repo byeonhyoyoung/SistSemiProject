@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <title>Insert title here</title>
 <style type="text/css">
+
 	a:link, a:visited{
 	text-decoration: none;
 	color: black;
@@ -27,6 +28,56 @@
 	
 	i.del{color: red;}
 	i.write{color: blue;}
+	
+	/* hover 효과 적용 */
+    tr.hover-effect:hover td {
+    background-color: rgba(128, 128, 128, 0.1); /* 마우스를 갖다대면 배경색 변경 */
+    cursor: pointer; /* 마우스 커서를 포인터로 변경 */
+    }
+    
+    .list{
+    font-size: 1.2em;
+    color: black;
+    padding-top: 30px;
+    padding-bottom: 25px;
+    }
+    
+    /* 페이지 네이션 테두리 제거 */
+    ul.pagination {
+       border: none;
+    }
+   
+    ul.pagination li.page-item a.page-link {
+       border: none;
+       border-radius: 0; /* 필요에 따라 테두리의 모서리를 조정할 수 있습니다 */
+    }
+   
+    ul.pagination li.page-item.active a.page-link {
+       background-color: #007bff; /* 활성 페이지의 배경색을 원하시는 색상으로 변경하세요 */
+       color: #fff; /* 활성 페이지의 텍스트 색상을 원하시는 색상으로 변경하세요 */
+    }
+    
+    .reviewimg {
+    	width: 65px;
+    	height: 65px;
+    }
+
+	.image-and-text {
+	    display: flex; /* 부모 요소를 플렉스 컨테이너로 설정하여 내부 요소를 가로로 나란히 배치 */
+	    align-items: center; /* 내부 요소를 수직 중앙 정렬 */
+	    background-color: rgba(128, 128, 128, 0.1);
+	    width: 900px;
+	    height: 140px;
+	    padding-left: 15px;
+	    padding-right: 15px;
+	    
+	}
+	
+	.board-text {
+	    margin-left: 10px; /* 이미지와 텍스트 사이의 간격 조정 */
+	    font-size: 15px;
+	    font-weight: bold;
+	}
 </style>
 
 <script type="text/javascript">
@@ -74,7 +125,7 @@
 	ReviewDao dao=new ReviewDao();
 	//전체갯수
 	int totalCount=dao.getTotalCount();
-	int perPage=3; //한페이지당 보여질 글의 갯수
+	int perPage=5; //한페이지당 보여질 글의 갯수
 	int perBlock=5; //한 블럭당 보여질 페이지 갯수
 	int startNum; //db에서 가져올 글의 시작번호(mysql은 첫글이 0번, 오라클은 1번)
 	int startPage; //각 블럭당 보여질 시작페이지
@@ -131,17 +182,44 @@
 		dto.setAnswercount(acount);
 	}
 	
-	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+	SimpleDateFormat sdf=new SimpleDateFormat("yyyy.MM.dd");
 %>
 <body>
-<div style="margin: 0 auto; width: 800px;">
-	
+
+<div class="image-and-text" style="margin: 40px auto 0;">
+    <img class="reviewimg" src="noti/image_noti/reviewimg.png">
+    <div>    
+        <b class="board-text">후기게시판</b><br>
+        <span class="board-text" style="color: gray; font-size: 0.8em;">고객님들의 진솔한 후기를 들려주세요.</span>
+    </div>
+</div>
+
+<div style="margin: 0 auto; width: 900px;">	
 	<br>
-	<h6 align="left"><b>총 <%=totalCount %>개의 글이 있습니다</b></h6>
-	<table class="table table-borderd">
-		<caption align="top"><b>후기게시판 목록</b></caption>
+	<%-- <h6 align="left"><b>총 <%=totalCount %>개의 글이 있습니다</b></h6> --%>
+	<table class="table table-group-divider">
+		<caption align="top" class="list">
+        <!-- <b>후기게시판 목록</b> -->
+        <div class="d-flex justify-content-end" style="margin: 1px auto 0; ">
+            <form action="">
+                <span class="select-text"></span>
+                <span>
+                    <select class="select-dropbox">
+                        <option value="s-title">제목</option>
+                        <option value="s-writer">글쓴이</option>
+                        <option value="s-">작성일</option>
+                    </select>
+                </span>
+                <span>
+                    <input type="text" name="search" class="select-textbox">
+                    <input type="submit" class="button-black" value="검색" />
+                </span>
+            </form>
+        </div>
+    	</caption>		
+		
 		<tr class="table-light">
-			<th width="80" style="text-align: center">번호</th>
+			<th width="100" style="text-align: center">번호</th>
 			<th width="380" style="text-align: center">제목</th>
 			<th width="200" style="text-align: center">작성자</th>
 			<th width="200" style="text-align: center">작성일</th>
@@ -165,7 +243,7 @@
 				</tr>
 			<%}else{
 				for(ReviewDto dto:list){%>
-					<tr>
+					<tr class="hover-effect">
 						<td align="center">
 						<input type="checkbox" value="<%=dto.getR_num()%>" class="alldel">&nbsp;&nbsp;
 						<%=no-- %></td>
@@ -191,11 +269,11 @@
 					<td colspan="6">
 						&nbsp;<input type="checkbox" class="alldelcheck">&nbsp;&nbsp;전체선택
 						<span style="float: right;">
-							<button type="button" class="btn btn-outline-danger btn-sm" id="btndel">
-							<i class="bi bi-x-circle del"></i> 전체삭제</button>
-							<button type="button" class="btn btn-outline-primary btn-sm"
+							<button type="button" class="btn btn-secondary btn-sm" id="btndel">
+							삭제</button>
+							<button type="button" class="btn btn-secondary btn-sm"
 							onclick="location.href='index.jsp?main=review/addform.jsp'">
-							<i class="bi bi-pencil-fill write"></i> 글쓰기</button>
+							글쓰기</button>
 						</span>
 					</td>
 				</tr>
@@ -210,9 +288,10 @@
 		//이전
 		if(startPage>1){
 		%>
-			<li class="page-item">
-			  <a class="page-link" href="index.jsp?main=review/reviewlist.jsp?currentPage=<%=startPage-1%>" style="color: black">이전</a>
-			</li>	
+			<li class="page-item ">
+		       <a class="page-link" href="index.jsp?main=noti/boardList.jsp?currentPage=<%=startPage-1%>">
+		       <img src="image/semi/left-arrow-bold.png" style="width: 13px; height: 15px;"></a>
+		    </li>	
 		<%}
 		for(int pp=startPage;pp<=endPage;pp++){
 			if(pp==currentPage){
@@ -232,9 +311,9 @@
 		if(endPage<totalPage){
 		%>
 			<li class="page-item">
-			<a class="page-link" href="index.jsp?main=review/reviewlist.jsp?currentPage=<%=endPage+1%>"
-			style="color: black">다음</a>
-			</li>
+	           <a  class="page-link" href="index.jsp?main=noti/boardList.jsp?currentPage=<%=endPage+1%>">
+	           <img src="image/semi/right-arrow-bold.png" style="width: 13px; height: 15px;"></a>
+	        </li>
 		<%}
 	%>
 	</ul>
