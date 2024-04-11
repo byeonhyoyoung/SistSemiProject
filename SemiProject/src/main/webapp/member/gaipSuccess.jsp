@@ -42,10 +42,10 @@ String name = dto.getName(); // 수정된 부분
 				<h5><%=id %>(<%=name %>)님, 회원가입에 성공했습니다.
 				</h5>
 				<br>
-				<button type="button" class="btn btn-warning" style="background-color: pink; border: pink;"
-					onclick="location.href='index.jsp?main=login/loginMain.jsp'">로그인</button>
-				<button type="button" class="btn btn-success"
-					onclick="location.href='index.jsp'">메인</button>
+				<button type="button" class="btn btn-warning"
+					onclick="location.href='index.jsp?main=login/loginMain.jsp'" style="background: pink; border-color: pink;">로그인</button>
+				<button type="button" class="btn btn-success" 
+					onclick="location.href='index.jsp'" >메인</button>
 			</div>
 		</div>
 	</div>

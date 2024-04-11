@@ -79,7 +79,29 @@
     background: #f8f9fb;
     font-size: 0;
     float: right;
-   
+    }
+  
+   .reviewimg {
+    	width: 65px;
+    	height: 65px;
+    }
+
+	.image-and-text {
+	    display: flex; /* 부모 요소를 플렉스 컨테이너로 설정하여 내부 요소를 가로로 나란히 배치 */
+	    align-items: center; /* 내부 요소를 수직 중앙 정렬 */
+	    background-color: rgba(128, 128, 128, 0.1);
+	    width: 900px;
+	    height: 140px;
+	    padding-left: 15px;
+	    padding-right: 15px;
+	    
+	}
+	
+	.board-text {
+	    margin-left: 10px; /* 이미지와 텍스트 사이의 간격 조정 */
+	    font-size: 15px;
+	    font-weight: bold;
+	}
 </style>
 <script type="text/javascript">
   //head단에서는 $(function)
@@ -125,15 +147,7 @@
            location.href="noti/allDelete.jsp?nums="+n; //num을 보냈는데 여러개야
         }
      })
-     
-     //아이콘 누르면 나왔다가 없어지게
-     /* $(document).on("click","i.bi-plus",function(){
-        $(this).closest("tr").next("tr.noticontent").slideToggle();
-        $(this).removeClass("bi-plus").addClass("bi-dash");
-        
-     }) */
-     
-     
+
           // bi-plus 아이콘을 클릭했을 때 content 내용을 보이거나 숨김
           $(document).on("click", "i.bi-plus", function() {
               var contentDiv = $(this).closest("tr").next("tr.noticontent"); // 해당 공지사항의 content div 요소 가져오기
@@ -263,9 +277,15 @@ SemiMemberDto sdto=sdao.getMemberById(myid);
 %>
 
 <body>
+<div class="image-and-text" style="margin: 40px auto 0;">
+	<img class="reviewimg" src="noti/image_noti/mega.png">
+    <div>    
+        <b class="board-text">공지사항</b><br>
+        <span class="board-text" style="color: gray; font-size: 0.8em;">공지사항을 안내합니다.</span>
+    </div>
+</div>
+
 <div style="margin: 0 auto; width: 900px;">
-   
-   <h6 style="" id="head"><b>공지사항</b>
       <div class="bs_ipt">
        <input type="text" id="searchKeyword" name="" class="search_input" autocomplete="off">
           <a class="btn_del" style="display: none;">삭제</a>
@@ -273,19 +293,6 @@ SemiMemberDto sdto=sdao.getMemberById(myid);
       </div>
    </h6><br>
    <table class="table table-group-divider">
-   
-        <%-- <caption align="top" style="padding-bottom: 15px;"><b>총 <%=totalCount %>건의 글이 있습니다</b></caption>
-      <caption align="top" style="padding-bottom: 20px;"><b>공지사항</b></caption>
-      <h6><b>총 <%=totalCount %>건의 글이 있습니다</b></h6>
-      <tr style="text-align: center;" class="table-group-divider">
-         <th width="80">번호</th>
-         <th width="450">제목</th>
-         <!-- <th width="150">작성자</th> -->
-         <th width="130">등록일</th>
-         <!-- <th width="80">조회수</th> -->
-         <th width="80"></th>
-      </tr> --%>
-      
       <%
         if(totalCount==0){%>
            <tr>
@@ -354,7 +361,7 @@ SemiMemberDto sdto=sdao.getMemberById(myid);
   {%>
      <li class="page-item ">
         <a class="page-link" href="index.jsp?main=noti/boardList.jsp?currentPage=<%=startPage-1%>">
-        <img src="image/semi/left-arrow-bold.png" style="width: 13px; height: 15px;"></a>
+        <img src="noti/image_noti/left-arrow-bold.png" style="width: 13px; height: 15px;"></a>
      </li>
   <%}
     for(int pp=startPage;pp<=endPage;pp++)
@@ -377,7 +384,7 @@ SemiMemberDto sdto=sdao.getMemberById(myid);
     {%>
        <li class="page-item">
           <a  class="page-link" href="index.jsp?main=noti/boardList.jsp?currentPage=<%=endPage+1%>">
-          <img src="image/semi/right-arrow-bold.png" style="width: 13px; height: 15px;"></a>
+          <img src="noti/image_noti/right-arrow-bold.png" style="width: 13px; height: 15px;"></a>
        </li>
     <%}
   %>

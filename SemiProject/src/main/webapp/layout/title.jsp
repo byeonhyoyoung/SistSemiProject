@@ -32,39 +32,41 @@ i {
 </style>
 
 <script type="text/javascript">
-	$(document).ready(function() {
-		// 팝오버 호버로 변경
-		$('.bi').hover(function() {
-			$(this).popover('show');
-		}, function() {
-			$(this).popover('hide');
-		});
-	});
+  $(document).ready(function(){
+    // 팝오버 호버로 변경
+    $('.bi').hover(function(){
+        $(this).popover('show');
+    }, function(){
+        $(this).popover('hide');
+    });
+  });
 </script>
 
 </head>
 <%
-//프로젝트 경로
-String root = request.getContextPath();
+   //프로젝트 경로
+   String root=request.getContextPath();
+   
 %>
 <body>
 	<a href="<%=root%>" style="color: black;"><img
 		src="<%=root%>/image/semi/logo3.png" style="width: 200px;"></a>
 	<div class="btnlog">
 		<%
-		//로그인 세션얻기
-		String loginok = (String) session.getAttribute("loginok");
-
-		//아이디얻기
-		String myid = (String) session.getAttribute("myid");
-
-		SemiMemberDao dao = new SemiMemberDao();
-		String name = dao.getName(myid);
-
-		if (loginok != null) {
-		%>
+      //로그인 세션얻기
+      String loginok=(String)session.getAttribute("loginok");
+      
+      //아이디얻기
+      String myid=(String)session.getAttribute("myid");
+      
+      SemiMemberDao dao=new SemiMemberDao();
+      String name=dao.getName(myid);
+      
+      
+      if(loginok!=null){
+    	  %>
 		<b style="font-size: 10pt; color: gray;"><i
-			class="bi bi-person-lock "></i><%=name%>님 로그인상태</b>
+			class="bi bi-person-lock "></i><%=name %>님 로그인상태</b>
 		<!--lmy: 로그인한 상태에서 마이페이지로 넘어감! -->
 		<a href="index.jsp?main=member/mypage.jsp"> <i
 			class="bi bi-balloon-heart fs-2" data-bs-container="body"
@@ -75,20 +77,18 @@ String root = request.getContextPath();
 			data-bs-content="로그아웃"></i></a>
 
 
-		<%
-		if (myid.equals("admin")) {
-		%>
+		<% 
+
+         if(myid.equals("admin")){%>
 
 		<a href="index.jsp?main=member/memberlist.jsp"><i
 			class="bi bi-person-lines-fill fs-2" data-bs-container="body"
 			data-bs-toggle="popover" data-bs-placement="bottom"
 			data-bs-content="회원목록"></i></a>
-		<%
-		}
-
-		} else {
-		%>
-		<a href="index.jsp?main=login/loginForm3.jsp"> <i
+		<%  }
+    	  
+      }else{%>
+		 <a href="index.jsp?main=login/loginForm3.jsp"> <i
 			class="bi bi-door-open fs-2" data-bs-container="body"
 			data-bs-toggle="popover" data-bs-placement="bottom"
 			data-bs-content="로그인"></i></a> <a
@@ -96,9 +96,8 @@ String root = request.getContextPath();
 			class="bi bi-person-plus fs-2" data-bs-container="body"
 			data-bs-toggle="popover" data-bs-placement="bottom"
 			data-bs-content="회원가입"></i></a>
-		<%
-		}
-		%>
+		<%}
+   %>
 
 
 

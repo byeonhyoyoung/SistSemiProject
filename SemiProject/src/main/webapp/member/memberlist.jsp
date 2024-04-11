@@ -70,19 +70,19 @@ function delfunc(num) {
           int no=1;
          for(SemiMemberDto dto:list)
          {%>
-            <tr align="center">
-               <td><%=no++ %></td>
-               <td><%=dto.getName() %></td>
-               <td><%=dto.getId() %></td>
-               <td><%=dto.getHp() %></td>
-               <td><%=dto.getAddr() %></td>
-               <td><%=dto.getEmail() %></td>
-               <td><%=sdf.format(dto.getGaipday()) %></td>
-               <td>
-                 <button type="button" class="btn btn-danger btn-sm"
-                 onclick="delfunc('<%=dto.getNum()%>')">강퇴</button>
-               </td>
-            </tr>
+        	 <tr align="center">
+        	    <td><%=no++ %></td>
+        	    <td><%=dto.getName() %></td>
+        	    <td><%=dto.getId() %></td>
+        	    <td><%=dto.getHp() %></td>
+        	    <td><%=dto.getAddr() %></td>
+        	    <td><%=dto.getEmail() %></td>
+        	    <td><%=sdf.format(dto.getGaipday()) %></td>
+        	    <td>
+        	      <button type="button" class="btn btn-danger btn-sm"
+        	      onclick="delfunc('<%=dto.getNum()%>')">강퇴</button>
+        	    </td>
+        	 </tr>
          <%}
          %>
      </table>
