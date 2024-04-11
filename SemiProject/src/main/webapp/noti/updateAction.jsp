@@ -22,7 +22,7 @@
   dao.updateNoti(dto);
 
   //contenview
-  response.sendRedirect("../index.jsp?main=noti/contentView.jsp?n_num="+n_num+"&currentPage="+currentPage);
+  response.sendRedirect("../index.jsp?main=noti/boardList.jsp?n_num="+n_num+"&currentPage="+currentPage);
 %>
 </body>
 </html>
