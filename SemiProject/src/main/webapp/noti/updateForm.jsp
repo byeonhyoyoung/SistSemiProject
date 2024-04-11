@@ -49,7 +49,7 @@
 	             <option value="중요" <%=dto.getN_juje().equals("중요") ? "selected" : "" %>>중요</option>
 	          </select>
 	        </td>
-        </tr>
+    </tr>
 		
 		<tr>
 		  <!-- <th width="100" class="table-light">제목</th> -->

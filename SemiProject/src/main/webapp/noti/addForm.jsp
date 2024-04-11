@@ -51,8 +51,7 @@
          <td colspan="3">
             <textarea name="n_content" id="n_content"      
                required="required"         
-               style="width: 100%;height: 300px;display: none;">
-            </textarea>
+               style="width: 100%;height: 300px;display: none;"></textarea>
          </td>
       </tr>
       <tr>

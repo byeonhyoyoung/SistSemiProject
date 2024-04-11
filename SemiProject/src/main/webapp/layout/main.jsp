@@ -34,7 +34,7 @@
     
 	.img_list img{
 		width: 100%;
-        height: 100%;
+        height: 700px;
         object-fit: cover;
 	}
 </style>
@@ -60,15 +60,18 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-<ul class="img_list">
+<ul class="container mt-3 img_list">
 	<li>
-		<img src="<%=root %>/image/semi/10.jpg" alt="">
+		<img src="<%=root %>/image/semi/main1.jpg" alt="">
 	</li>
 	<li>
-		<img src="<%=root %>/image/semi/12.jpg" alt="">
+		<img src="<%=root %>/image/semi/main2.jpg" alt="">
 	</li>
 	<li>
-		<img src="<%=root %>/image/semi/11.jpg" alt="">
+		<img src="<%=root %>/image/semi/main3.jpg" alt="">
+	</li>
+	<li>
+		<img src="<%=root %>/image/semi/main4.jpg" alt="">
 	</li>
 </ul>
 </body>

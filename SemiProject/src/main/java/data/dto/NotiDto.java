@@ -54,6 +54,4 @@ public class NotiDto {
    public void setN_writeday(Timestamp n_writeday) {
       this.n_writeday = n_writeday;
    }
-      
-   
 }

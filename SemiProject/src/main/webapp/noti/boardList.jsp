@@ -125,7 +125,7 @@
            location.href="noti/allDelete.jsp?nums="+n; //num을 보냈는데 여러개야
         }
      })
-     
+    
           // bi-plus 아이콘을 클릭했을 때 content 내용을 보이거나 숨김
           $(document).on("click", "i.bi-plus", function() {
               var contentDiv = $(this).closest("tr").next("tr.noticontent"); // 해당 공지사항의 content div 요소 가져오기
@@ -264,7 +264,6 @@ SemiMemberDto sdto=sdao.getMemberById(myid);
       </div>
    </h6><br>
    <table class="table table-group-divider">
-
       <%
         if(totalCount==0){%>
            <tr>
