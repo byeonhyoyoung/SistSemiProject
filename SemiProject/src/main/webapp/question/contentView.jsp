@@ -108,7 +108,7 @@
 		//수정
 		$(document).on("click", "#btnupdate",function(){
 			
-			var qa_writer=$("#uwriter").val(); 
+			var qa_writer=$("#uwriter").val();
 			var qa_content=$("#ucontent").val();
 			//alert(writer+","+content);
 			
