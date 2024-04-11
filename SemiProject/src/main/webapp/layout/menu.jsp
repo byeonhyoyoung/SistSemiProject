@@ -123,7 +123,7 @@ i.flower{
      <ul>  
       <li><a href="index.jsp?main=noti/boardList.jsp">공지사항</a></li>
       <li><a href="index.jsp?main=review/reviewlist.jsp">후기<br>게시판</a></li>
-      <li><a href="#">Q&A</a></li>
+      <li><a href="index.jsp?main=question/questionList.jsp">Q&A</a></li>
     </ul>
   </li>
  <!--  <li><a href="#">Contact Us</a></li> -->

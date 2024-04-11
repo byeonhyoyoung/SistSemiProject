@@ -37,25 +37,25 @@
 	 <!-- hidden으로 넘겨줄것 2개있음 -->
      <input type="hidden" name="n_num" value="<%=n_num%>">
      <input type="hidden" name="currentPage" value="<%=currentPage%>">
-	 <table style="width: 800px;margin-left: 100px; margin: 0 auto;" class="table table-bordered">
+	 <table style="width: 800px;margin: 0 auto;" class="table table-bordered">
 		<caption align="top" style="padding: 20px 0 20px 0;"><b>공지사항 수정</b></caption>
 		
-		
-		<%-- <tr>
-		  <th width="100" class="table-light">주제</th>
-		  <td>
-		    <input type="text" name="writer" class="form-control"
-		    required="required" style="width: 130px;"
-		    value="<%=dto.getN_writer()%>">
-		  </td>
-		</tr> --%>
+		<tr>
+        <!-- <th width="100" class="table-light" style="background-color: #cccccc;">말머리</th> -->
+	        <td>
+	          <select class="form-control" style="width: 200px;" name="n_juje" id="n_juje">
+	             <option value="일반">말머리 선택</option>
+	             <option value="일반" <%=dto.getN_juje().equals("일반") ? "selected" : "" %>>일반</option>
+	             <option value="중요" <%=dto.getN_juje().equals("중요") ? "selected" : "" %>>중요</option>
+	          </select>
+	        </td>
+    </tr>
 		
 		<tr>
-		  <th width="100" class="table-light">제목</th>
+		  <!-- <th width="100" class="table-light">제목</th> -->
 		  <td>
 		    <input type="text" name="n_subject" class="form-control"
-		    required="required" style="width: 500px;"
-		    value="<%=dto.getN_subject()%>">
+		    required="required" value="<%=dto.getN_subject()%>">
 		  </td>
 		</tr>
 		

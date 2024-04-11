@@ -3,8 +3,8 @@
 <%
 	request.setCharacterEncoding("utf-8");
 %>
- <jsp:useBean id="dao" class="data.dao.ReviewAnswerDao"/>
- <jsp:useBean id="dto" class="data.dto.ReviewAnswerDto"/>
+ <jsp:useBean id="dao" class="data.dao.QuestionAnswerDao"/>
+ <jsp:useBean id="dto" class="data.dto.QuestionAnswerDto"/>
  <jsp:setProperty property="*" name="dto"/>
 <%
 	dao.insertAnswer(dto);
