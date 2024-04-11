@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <title>Insert title here</title>
 <style type="text/css">
+
 	a:link, a:visited{
 	text-decoration: none;
 	color: black;
@@ -40,6 +41,43 @@
     padding-top: 30px;
     padding-bottom: 25px;
     }
+    
+    /* 페이지 네이션 테두리 제거 */
+    ul.pagination {
+       border: none;
+    }
+   
+    ul.pagination li.page-item a.page-link {
+       border: none;
+       border-radius: 0; /* 필요에 따라 테두리의 모서리를 조정할 수 있습니다 */
+    }
+   
+    ul.pagination li.page-item.active a.page-link {
+       background-color: #007bff; /* 활성 페이지의 배경색을 원하시는 색상으로 변경하세요 */
+       color: #fff; /* 활성 페이지의 텍스트 색상을 원하시는 색상으로 변경하세요 */
+    }
+    
+    .reviewimg {
+    	width: 65px;
+    	height: 65px;
+    }
+
+	.image-and-text {
+	    display: flex; /* 부모 요소를 플렉스 컨테이너로 설정하여 내부 요소를 가로로 나란히 배치 */
+	    align-items: center; /* 내부 요소를 수직 중앙 정렬 */
+	    background-color: rgba(128, 128, 128, 0.1);
+	    width: 900px;
+	    height: 140px;
+	    padding-left: 15px;
+	    padding-right: 15px;
+	    
+	}
+	
+	.board-text {
+	    margin-left: 10px; /* 이미지와 텍스트 사이의 간격 조정 */
+	    font-size: 15px;
+	    font-weight: bold;
+	}
 </style>
 
 <script type="text/javascript">
@@ -147,12 +185,39 @@
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy.MM.dd");
 %>
 <body>
-<div style="margin: 0 auto; width: 900px;">
-	
+
+<div class="image-and-text" style="margin: 40px auto 0;">
+    <img class="reviewimg" src="noti/image_noti/reviewimg.png">
+    <div>    
+        <b class="board-text">후기게시판</b><br>
+        <span class="board-text" style="color: gray; font-size: 0.8em;">고객님들의 진솔한 후기를 들려주세요.</span>
+    </div>
+</div>
+
+<div style="margin: 0 auto; width: 900px;">	
 	<br>
 	<%-- <h6 align="left"><b>총 <%=totalCount %>개의 글이 있습니다</b></h6> --%>
 	<table class="table table-group-divider">
-		<caption align="top" class="list"><b>후기게시판 목록</b></caption>
+		<caption align="top" class="list">
+        <!-- <b>후기게시판 목록</b> -->
+        <div class="d-flex justify-content-end" style="margin: 1px auto 0; ">
+            <form action="">
+                <span class="select-text"></span>
+                <span>
+                    <select class="select-dropbox">
+                        <option value="s-title">제목</option>
+                        <option value="s-writer">글쓴이</option>
+                        <option value="s-">작성일</option>
+                    </select>
+                </span>
+                <span>
+                    <input type="text" name="search" class="select-textbox">
+                    <input type="submit" class="button-black" value="검색" />
+                </span>
+            </form>
+        </div>
+    	</caption>		
+		
 		<tr class="table-light">
 			<th width="100" style="text-align: center">번호</th>
 			<th width="380" style="text-align: center">제목</th>
@@ -205,7 +270,7 @@
 						&nbsp;<input type="checkbox" class="alldelcheck">&nbsp;&nbsp;전체선택
 						<span style="float: right;">
 							<button type="button" class="btn btn-secondary btn-sm" id="btndel">
-							전체삭제</button>
+							삭제</button>
 							<button type="button" class="btn btn-secondary btn-sm"
 							onclick="location.href='index.jsp?main=review/addform.jsp'">
 							글쓰기</button>

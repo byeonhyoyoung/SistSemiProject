@@ -36,7 +36,7 @@
 	<input type="hidden" name="r_num" value="<%=r_num%>">
 	<input type="hidden" name="currentPage" value="<%=currentPage%>">
 	
-	<table style="width: 800px;margin: 0 auto;" class="table table-bordered">
+	<table style="width: 900px;margin: 0 auto;" class="table table-bordered">
 		<caption align="top"><b>후기게시판 수정</b></caption>
 		<tr>
 			<th width="100" class="table-light" valign="middle">작성자</th>

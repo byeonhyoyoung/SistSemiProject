@@ -276,21 +276,22 @@ public class ReviewDao {
 		}
 		
 		//추천 클릭시 추천 감소
-				public void decreLikes(String r_num) {
-					Connection conn=db.getConnection();
-					PreparedStatement pstmt=null;
-					
-					String sql="update review set r_likes=r_likes-1 where r_num=?";
-					
-					try {
-						pstmt=conn.prepareStatement(sql);
-						pstmt.setString(1, r_num);
-						pstmt.execute();
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}finally {
-						db.dbClose(pstmt, conn);
-					}
-				}
+		public void decreLikes(String r_num) {
+			Connection conn=db.getConnection();
+			PreparedStatement pstmt=null;
+			
+			String sql="update review set r_likes=r_likes-1 where r_num=?";
+			
+			try {
+				pstmt=conn.prepareStatement(sql);
+				pstmt.setString(1, r_num);
+				pstmt.execute();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				db.dbClose(pstmt, conn);
+			}
+		}
+		
 }
