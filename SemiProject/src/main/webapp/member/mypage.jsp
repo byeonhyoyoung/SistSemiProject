@@ -1,9 +1,7 @@
 <%@page import="data.dto.SemiMemberDto"%>
 <%@page import="data.dao.SemiMemberDao"%>
 <%@page import="java.text.SimpleDateFormat"%>
-
 <%@page import="java.util.List"%>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,35 +15,36 @@
 <title>Insert title here</title>
 <style type="text/css">
   #mainimg{
-        width:100px;
-        height:100px;
-        border-radius: 100px;
+        width:120px;
+        height:120px;
         margin-top: 30px;
-        margin-left: 20px;
-        border: 1px solid tomato;
+        margin: 0 auto;
   }
 </style>
 <script type="text/javascript">
-  function delfunc(num){
-     //alert(num);
-     $("#delnum").val(num);
-     $("#myModal").modal('show');
-     
-     
-     //삭제버튼이벤트
-     $("button.btndel").click(function(){
-        
-        //num,pass읽기
+  $(document).ready(function(){
+    $(".btnUpdate").click(function(){
+      var num = $(this).data('num');
+      $("#updateNum").val(num);
+      $("#updatePasswordModal").modal('show');
+    });
+
+    $(".btnUpdatePassword").click(function(){
+      var num = $("#updateNum").val();
+      var pass = $("#updatePass").val();
+      location.href = "member/updatepassaction.jsp?num=" + num + "&pass=" + pass;
+    });
+
+    function delfunc(num){
+      $("#delnum").val(num);
+      $("#myModal").modal('show');
+      $("button.btndel").click(function(){
         var num=$("#delnum").val();
         var pass=$("#delpass").val();
-        
-        //alert(num+","+pass);
-        //삭제파일 호출
         location.href="member/deletemypage.jsp?num="+num+"&pass="+pass;
-        
-     })
-  }
-
+      });
+    }
+  });
 </script>
 </head>
 <%
@@ -57,21 +56,21 @@
   String myid=(String)session.getAttribute("myid");
 %>
 <body>
-    <div  style="margin: 200px 100px; width: 800px;">
+    <div  style="margin: 200px auto; width: 800px;">
        <table class="table table-bordered">
          <%
            for(SemiMemberDto dto:list)
            {
              if(loginok!=null && myid.equals(dto.getId())){
            %>
-              <tr>
+            <tr>
                 <td rowspan="6" align="center" valign="middle" style="width: 200px;">
-                   <img src="image/shopimg.png" id="mainimg">
+                   <img src="member/member_image/cherryblossom_logo.png" id="mainimg">
                 </td>
+                마이페이지
                 <td style="width: 300px;">회원명: <%=dto.getName() %></td>
                 <td rowspan="6" style="width: 150px;" align="center" valign="middle">
-                   <button type="button" class="btn btn-outline-info"
-                   onclick="location.href='index.jsp?main=member/updatepassform.jsp?num=<%=dto.getNum()%>'">수정</button><br><br>
+                    <button type="button" class="btn btn-outline-info btnUpdate" data-num="<%=dto.getNum()%>">수정</button><br><br>
                    <button type="button" class="btn btn-outline-danger" onclick="delfunc('<%=dto.getNum()%>')">탈퇴</button>
                 </td>
               </tr>
@@ -90,40 +89,51 @@
               <tr>
                 <td>가입일: <%=sdf.format(dto.getGaipday()) %></td>
               </tr>
+
            <%}
          %>
-         
         <%  }%>
        </table>
     </div>
     
-    
-    <!-- The Modal -->
-<div class="modal fade" id="myModal">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content ">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">삭제확인</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+    <!-- Update Password Modal -->
+    <div class="modal fade" id="updatePasswordModal">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">비밀번호 확인</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body d-inline-flex">
+            <input type="hidden" id="updateNum">
+            <b>비밀번호: </b>
+            <input type="password" id="updatePass" class="form-control" style="width: 120px; margin-left: 10px;">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary btnUpdatePassword" data-bs-dismiss="modal">확인</button>
+          </div>
+        </div>
       </div>
-
-      <!-- Modal body -->
-      <div class="modal-body d-inline-flex">
-        <input type="hidden" id="delnum">
-        <b>삭제비밀번호: </b>
-        <input type="password" id="delpass" class="form-control" style="width: 120px; margin-left: 10px;">
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger btndel" data-bs-dismiss="modal">삭제</button>
-      </div>
-
     </div>
-  </div>
-</div>
     
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">삭제확인</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body d-inline-flex">
+            <input type="hidden" id="delnum">
+            <b>삭제비밀번호: </b>
+            <input type="password" id="delpass" class="form-control" style="width: 120px; margin-left: 10px;">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger btndel" data-bs-dismiss="modal">삭제</button>
+          </div>
+        </div>
+      </div>
+    </div>
 </body>
 </html>

@@ -13,14 +13,35 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&family=Noto+Serif+KR&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <title>Insert title here</title>
 <script type="text/javascript">
-  function delfunc(num)
-  {
-	  var yes=confirm("정말 강퇴처리 하시겠어요?");
-	  if(yes)
-		  location.href='member/memberdelete.jsp?num='+num;
-  }
+function delfunc(num) {
+    Swal.fire({
+        title: "정말로 강퇴하시겠습니까?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "강퇴",
+        cancelButtonText: "취소",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Perform deletion here
+            location.href = 'member/memberdelete.jsp?num=' + num;
+            
+         
+                Swal.fire({
+                  title: "Deleted!",
+                  text: "Your file has been deleted.",
+                  icon: "success"
+                });
+           
+        }
+    });
+}
+
 </script>
 </head>
 <%
@@ -29,9 +50,9 @@
   SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 %>
 <body>
-  <div style="margin: 100px 100px; width: 1000px;">
+  <div style="margin: 100px auto; width: 1000px; align-self: center;">
   
-  <h5 class="alert alert-light">총 <%=list.size() %>명의 회원이 있습니다</h5>
+  <h5 class="alert alert-light" >총 <%=list.size() %>명의 회원이 있습니다</h5>
      <table class="table table-bordered">
        <caption align="top"><b>전체 회원명단</b></caption>
          <tr class="table-light">
