@@ -79,13 +79,13 @@
 
 %>
 <body>
-<div style="margin: 100px 200px; width: 500px;">
+<div style="margin: 100px auto; width: 500px;">
 	<form action="member/updateaction.jsp" method="post" onsubmit="return check(this)">
 	<input type="hidden" name="num" value="<%=num %>">
 	   <table class="table table-bordered" >
 	      <caption align="top"><b>마이정보수정</b></caption>
 	      <tr>
-	        <th width="100" class="table-success">아이디</th>
+	        <th width="100" class="table-success" style="background: #eeeeee; border: grey;" >아이디</th>
 	        <td>
 	        	<b><%=dto.getId() %></b>
 	          </div>
@@ -94,7 +94,7 @@
 	      
 	      
 	      <tr>
-	        <th width="100" class="table-success">이름</th>
+	        <th width="100" class="table-success" style="background: #eeeeee; border: grey;">이름</th>
 	        <td>
 	          <input type="text" name="name" class="form-control" required="required" style="width: 120px;"
 	          value="<%=dto.getName()%>">
@@ -102,21 +102,21 @@
 	      </tr>
 	      
 	      <tr>
-	        <th width="100" class="table-success">핸드폰</th>
+	        <th width="100" class="table-success" style="background: #eeeeee; border: grey;">핸드폰</th>
 	        <td>
 	          <input type="text" name="hp" class="form-control" required="required" style="width: 180px;"
 	          value="<%=dto.getHp()%>">
 	        </td>
 	      </tr>
 	      <tr>
-	        <th width="100" class="table-success">주소</th>
+	        <th width="100" class="table-success" style="background: #eeeeee; border: grey;">주소</th>
 	        <td>
 	          <input type="text" name="addr" class="form-control" required="required" style="width: 330px;"
 	          value="<%=dto.getAddr()%>">
 	        </td>
 	      </tr>
 	      <tr>
-	        <th width="100" class="table-success">이메일</th>
+	        <th width="100" class="table-success" style="background: #eeeeee; border: grey;">이메일</th>
 	        <td>
 	         <div class="d-inline-flex">
 	          <input type="text" name="email1" class="form-control" required="required"
@@ -138,10 +138,10 @@
 	      
 	      <tr>
 	        <td colspan="2" align="center">
-	            <button type="submit" class="btn btn-outline-info"
-	            style="width: 100px;">수정하기</button>
-	            <button type="reset" class="btn btn-outline-info"
-	            style="width: 100px;">초기화</button>
+	            <button type="submit" class="btn btn-info"
+	            style="width: 100px; background-color: pink; border: pink; color: white;">수정하기</button>
+	            <button type="reset" class="btn btn-info"
+	            style="width: 100px; background-color: pink; border: pink; color: white;">초기화</button>
 	        </td>
 	      </tr>
 	   </table>
