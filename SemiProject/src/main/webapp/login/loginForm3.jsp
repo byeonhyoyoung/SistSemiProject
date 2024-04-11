@@ -62,7 +62,7 @@
                 <div class="d-sm-flex mb-5 align-items-center">
                   <label class="control control--checkbox mb-3 mb-sm-0"><span class="caption">아이디 저장</span>
                     <input type="checkbox" checked="checked"  name="savechk" <%=save?"checked":"" %>/>
-                    <div class="control__indicator"></div>
+
                   </label>
                   
                 </div>
