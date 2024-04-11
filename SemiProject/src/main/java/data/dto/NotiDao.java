@@ -27,7 +27,7 @@ public class NotiDao {
          pstmt.setString(1, dto.getN_writer());
          pstmt.setString(2, dto.getN_subject());
          pstmt.setString(3, dto.getN_content());
-         pstmt.setString(4, dto.getN_juje());
+         pstmt.setString(4, dto.getN_image());
          
          pstmt.execute();
          
@@ -65,7 +65,7 @@ public class NotiDao {
             dto.setN_writer(rs.getString("n_writer"));
             dto.setN_subject(rs.getString("n_subject"));
             dto.setN_content(rs.getString("n_content"));
-            dto.setN_juje(rs.getString("n_juje"));
+            dto.setN_image(rs.getString("n_image"));
             dto.setN_readcount(rs.getInt("n_readcount"));
             dto.setN_writeday(rs.getTimestamp("n_writeday"));
             
@@ -136,7 +136,7 @@ public class NotiDao {
             dto.setN_writer(rs.getString("n_writer"));
             dto.setN_subject(rs.getString("n_subject"));
             dto.setN_content(rs.getString("n_content"));
-            dto.setN_juje(rs.getString("n_juje"));
+            dto.setN_image(rs.getString("n_image"));
             dto.setN_readcount(rs.getInt("n_readcount"));
             dto.setN_writeday(rs.getTimestamp("n_writeday"));
          }

@@ -37,12 +37,12 @@
 	 <!-- hidden으로 넘겨줄것 2개있음 -->
      <input type="hidden" name="n_num" value="<%=n_num%>">
      <input type="hidden" name="currentPage" value="<%=currentPage%>">
-	<table style="width: 800px;margin-left: 100px;" class="table table-bordered">
+	 <table style="width: 800px;margin-left: 100px; margin: 0 auto;" class="table table-bordered">
 		<caption align="top" style="padding: 20px 0 20px 0;"><b>공지사항 수정</b></caption>
 		
 		
 		<%-- <tr>
-		  <th width="100" class="table-light">작성자</th>
+		  <th width="100" class="table-light">주제</th>
 		  <td>
 		    <input type="text" name="writer" class="form-control"
 		    required="required" style="width: 130px;"

@@ -2,8 +2,7 @@
 <%@page import="data.dao.SemiMemberDao"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,39 +11,54 @@
 <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&family=Noto+Serif+KR&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-<title>Insert title here</title>
+<title>My Page</title>
 <style type="text/css">
-  #mainimg{
+  #mainimg {
         width:120px;
         height:120px;
         margin-top: 30px;
         margin: 0 auto;
   }
+  
+  .btnUpdate {
+    background-color: white; /* transparent background */
+    color: gray; /* gray text */
+    border: 1px solid gray; /* gray border */
+}
+
+.btnUpdate:hover {
+    background-color: #eeeeee; /* gray background on hover */
+    border: 1px solid gray; /* gray border on hover */
+}
+
 </style>
 <script type="text/javascript">
-  $(document).ready(function(){
+$(document).ready(function(){
     $(".btnUpdate").click(function(){
-      var num = $(this).data('num');
-      $("#updateNum").val(num);
-      $("#updatePasswordModal").modal('show');
+        var num = $(this).data('num');
+        $("#updateNum").val(num);
+        $("#updatePasswordModal").modal('show');
     });
 
     $(".btnUpdatePassword").click(function(){
-      var num = $("#updateNum").val();
-      var pass = $("#updatePass").val();
-      location.href = "member/updatepassaction.jsp?num=" + num + "&pass=" + pass;
+        var num = $("#updateNum").val();
+        var pass = $("#updatePass").val();
+        location.href = "member/updatepassaction.jsp?num=" + num + "&pass=" + pass;
     });
 
-    function delfunc(num){
-      $("#delnum").val(num);
-      $("#myModal").modal('show');
-      $("button.btndel").click(function(){
+    $(".btndel").click(function(){
         var num=$("#delnum").val();
         var pass=$("#delpass").val();
         location.href="member/deletemypage.jsp?num="+num+"&pass="+pass;
-      });
-    }
-  });
+    });
+
+    $(".btnDelete").click(function(){
+        var num = $(this).data('num');
+        $("#delnum").val(num);
+        $("#myModal").modal('show');
+    });
+});
+
 </script>
 </head>
 <%
@@ -56,7 +70,8 @@
   String myid=(String)session.getAttribute("myid");
 %>
 <body>
-    <div  style="margin: 200px auto; width: 800px;">
+    <div  style="margin: 70px auto; width: 800px;">
+    <div style="font-size: 15pt;">마이페이지</div>
        <table class="table table-bordered">
          <%
            for(SemiMemberDto dto:list)
@@ -64,31 +79,39 @@
              if(loginok!=null && myid.equals(dto.getId())){
            %>
             <tr>
-                <td rowspan="6" align="center" valign="middle" style="width: 200px;">
+                <td  rowspan="6" align="center" valign="middle" style="width: 130px;">
                    <img src="member/member_image/cherryblossom_logo.png" id="mainimg">
+                   
+                 
+                 
                 </td>
-                마이페이지
-                <td style="width: 300px;">회원명: <%=dto.getName() %></td>
-                <td rowspan="6" style="width: 150px;" align="center" valign="middle">
-                    <button type="button" class="btn btn-outline-info btnUpdate" data-num="<%=dto.getNum()%>">수정</button><br><br>
-                   <button type="button" class="btn btn-outline-danger" onclick="delfunc('<%=dto.getNum()%>')">탈퇴</button>
-                </td>
+
+                <td style="width: 100px;">회원명</td> <td> <%=dto.getName() %></td>
+              </tr>
+              
+              <tr>
+                <td width="100px;">아이디</td> <td width="150px;"><%=dto.getId() %></td>
               </tr>
               <tr>
-                <td>아이디: <%=dto.getId() %></td>
+                <td width="100px;">이메일</td> <td width="150px;"> <%=dto.getEmail() %></td>
               </tr>
               <tr>
-                <td>이메일: <%=dto.getEmail() %></td>
+                <td width="100px;">핸드폰</td> <td width="150px;"> <%=dto.getHp() %></td>
               </tr>
               <tr>
-                <td>핸드폰: <%=dto.getHp() %></td>
+                <td width="100px;">주소</td> <td width="150px;"> <%=dto.getAddr() %></td>
               </tr>
               <tr>
-                <td>주소: <%=dto.getAddr() %></td>
+                <td width="100px;">가입일</td> <td width="150px;"> <%=sdf.format(dto.getGaipday()) %></td>
               </tr>
-              <tr>
-                <td>가입일: <%=sdf.format(dto.getGaipday()) %></td>
-              </tr>
+              
+              
+              <td colspan="3" align="center">
+              
+              
+                   <button type="button"  class="btn btn-outline-info btnUpdate" data-num="<%=dto.getNum()%>"><i class="bi bi-pencil-square"></i> 수정</button>&nbsp;
+                   <button type="button" class="btn btn-outline-danger btnDelete" data-num="<%=dto.getNum()%>"><i class="bi bi-trash3" style="color: red;"></i> 탈퇴</button>
+              </td>
 
            <%}
          %>
