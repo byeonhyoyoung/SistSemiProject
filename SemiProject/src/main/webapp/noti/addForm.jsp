@@ -31,9 +31,7 @@
 <form action="noti/addAction.jsp" method="post">
    <table style="width: 800px;margin: 0 auto;" class="table table-bordered">
       <caption align="top" style="padding: 40px 0 50px 0;" id="head"><b>공지사항</b></caption>
-      
       <tr>
-        <!-- <th width="100" class="table-light" style="background-color: #cccccc;">말머리</th> -->
         <td>
           <select class="form-control" style="width: 200px;" name="n_juje" id="n_juje">
              <option value="일반">말머리 선택</option>
@@ -43,7 +41,6 @@
         </td>
       </tr>
       <tr>
-        <!-- <th width="100" class="table-light" style="background-color: #cccccc; padding-top: 15px;">제목</th> -->
         <td>
           <input type="text" name="n_subject" class="form-control"
           required="required" placeholder="제목을 입력해 주세요">
@@ -54,8 +51,7 @@
          <td colspan="3">
             <textarea name="n_content" id="n_content"      
                required="required"         
-               style="width: 100%;height: 300px;display: none;"></textarea>      
-         
+               style="width: 100%;height: 300px;display: none;"></textarea>
          </td>
       </tr>
       <tr>
