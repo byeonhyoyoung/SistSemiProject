@@ -16,40 +16,41 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
-   a:link ,a:visited{
+	a:link ,a:visited{
 	
 	text-decoration: none;
 	color: black;
-}
+	}
 
-   a:hover {
+	a:hover {
 	text-decoration: underline;
 	color: gray;
-}
+	}
 
 	#head{
+		display: flex;
 		font-size: 1.5em;
 		color: black;
 		padding-top: 50px;
 	}
 	
 	 /* 테이블 오른쪽과 왼쪽 테두리 제거 */
-   table.table-bordered {
+	table.table-bordered {
        border-left: none;
        border-right: none;
-   }
+	}
    
-   table.table-bordered th, table.table-bordered td {
+	table.table-bordered th, table.table-bordered td {
        border-right: none;
        border-left: none;
-   }
+	}
    
-   i.bi-plus{
+	i.bi-plus{
    	   color: gray;
-   }
+	}
    
-   /* hover 효과 적용 */
-    tr.hover-effect:hover td {
+	/* hover 효과 적용 */
+	tr.hover-effect:hover td {
         background-color: rgba(128, 128, 128, 0.1); /* 마우스를 갖다대면 배경색 변경 */
         cursor: pointer; /* 마우스 커서를 포인터로 변경 */
     }
@@ -71,100 +72,101 @@
 	
 	/* 검색창 css */
 	.select {
-    position: relative;
-    margin: 0;
-    width: 100%;
-    height: 42px;
-    z-index: 99;
-    font-size: 14px;
-    font-weight: 400;
-    color: #6a6e76;
-    z-index: 1;
+	    position: relative;
+	    margin: 0;
+	    width: 100%;
+	    height: 42px;
+	    z-index: 99;
+	    font-size: 14px;
+	    font-weight: 400;
+	    color: #6a6e76;
+	    z-index: 1;
 	}
     
     input[type="text"] {
-    display: block;
-    width: 100%;
-    height: 54px;
-    background: #fff;
-    border: 1px solid #e1e6ee;
-    color: #6a6e76;
-    font-size: 16px;
-    line-height: 53px;
-    text-indent: 20px;
+	    display: block;
+	    width: 100%;
+	    height: 54px;
+	    background: #fff;
+	    border: 1px solid #e1e6ee;
+	    color: #6a6e76;
+	    font-size: 16px;
+	    line-height: 53px;
+	    text-indent: 20px;
 	} 
 	
 	.board_srch {
-    display: flex;
-    margin-left: auto;
-    position: relative;
-    width: 380px
+	    display: flex;
+	    margin-left: auto;
+	    margin-right: -50px;
+	    position: relative;
+	    width: 380px;
 	}
 
 	.board_srch .select_gy {
-    display: flex;
+	    display: flex;
 	}
 
 	.board_srch .bs_ipt {
-    display: flex;
-    align-items: center;
-    width: 240px;
-    height: 42px;
-    border: 1px solid #e7e8ed;
-    border-left: none;
-    background: #f8f9fb;
-    font-size: 0;
+	    display: flex;
+	    align-items: center;
+	    width: 220px;
+	    height: 35px;
+	    border: 1px solid #e7e8ed;
+	    border-left: none;
+	    background: #f8f9fb;
+	    font-size: 0;
 	}
 	
 	.board_srch .bs_ipt2 {
-    display: flex;
-    width: 110px;
-    height: 42px;
-    border-left: none;
-    background: #f8f9fb;
-    font-size: 0;
+	    display: flex;
+	    width: 100px;
+	    height: 35px;
+	    border-left: none;
+	    background: #f8f9fb;
+	    font-size: 0;
     
 	}
 
 	.board_srch .bs_ipt input[type="text"] {
-    padding: 0;
-    margin: 0;
-    width: calc(100% - 60px);
-    height: 40px;
-    border: none;
-    background: #f8f9fb;
-    color: #6a6e76;
-    font-size: 14px;
+	    padding: 0;
+	    margin: 0;
+	    width: calc(100% - 60px);
+	    height: 35px;
+	    border: 1px solid #e7e8ed;
+	    background: #f8f9fb;
+        border-right: none;
+	    color: #6a6e76;
+	    font-size: 14px;
     }
 
 	.board_srch .bs_ipt input:focus {
-    outline: none;
+	    outline: none;
 	}
 
 	#searchButton{
-    margin-left: auto;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
+	    margin-left: auto;
+	    width: 30px;
+	    height: 30px;
+	    cursor: pointer;
 	}
 	
 	.select select {
-    display: block;
-    width: 100%; /* 전체 너비로 설정하여 한 칸으로 표시 */
-    height: 42px;
-    background: #f8f9fb; /* 배경색 조정 */
-    border: 1px solid #e1e6ee;
-    color: #6a6e76;
-    font-size: 16px;
-    line-height: 53px;
-    padding: 0 20px; /* 입력 상자의 패딩 조정 */
-    margin: 0;
+	    display: block;
+	    width: 100%; /* 전체 너비로 설정하여 한 칸으로 표시 */
+	    height: 35px;
+	    background: #f8f9fb; /* 배경색 조정 */
+	    border: 1px solid #e1e6ee;
+	    color: #6a6e76;
+	    font-size: 14px;
+	    line-height: 53px;
+	    padding: 0 20px; /* 입력 상자의 패딩 조정 */
+	    margin: 0;
     }
 </style>
 <script type="text/javascript">
   //head단에서는 $(function)
   $(function(){
-	  
 	//내용 숨겼더
 	  $("tr.noticontent").hide();
 	  
@@ -204,140 +206,139 @@
 			  //삭제파일로 전송
 			  location.href="noti/allDelete.jsp?nums="+n; //num을 보냈는데 여러개야
 		  }
-	  })
-	  
-	  //아이콘 누르면 나왔다가 없어지게
-	  /* $(document).on("click","i.bi-plus",function(){
-		  $(this).closest("tr").next("tr.noticontent").slideToggle();
-		  $(this).removeClass("bi-plus").addClass("bi-dash");
-		  
-	  }) */
-	  
-	  
-		    // bi-plus 아이콘을 클릭했을 때 content 내용을 보이거나 숨김
-		    $(document).on("click", "i.bi-plus", function() {
-		        var contentDiv = $(this).closest("tr").next("tr.noticontent"); // 해당 공지사항의 content div 요소 가져오기
-		        contentDiv.slideToggle(); // content 내용을 보이거나 숨김
+		})
+		// bi-plus 아이콘을 클릭했을 때 content 내용을 보이거나 숨김
+		$(document).on("click", "i.bi-plus", function() {
+			var contentDiv = $(this).closest("tr").next("tr.noticontent"); // 해당 공지사항의 content div 요소 가져오기
+		    contentDiv.slideToggle(); // content 내용을 보이거나 숨김
 
-		        // 아이콘 클래스 변경: bi-plus에서 bi-dash로 바꿈
-		        $(this).removeClass("bi-plus").addClass("bi-dash");
+		    // 아이콘 클래스 변경: bi-plus에서 bi-dash로 바꿈
+		    $(this).removeClass("bi-plus").addClass("bi-dash");
 		    });
 
-		    // bi-dash 아이콘을 클릭했을 때 content 내용을 숨김
-		    $(document).on("click", "i.bi-dash", function() {
-		        var contentDiv = $(this).closest("tr").next("tr.noticontent"); // 해당 공지사항의 content div 요소 가져오기
-		        contentDiv.slideToggle(); // content 내용을 보이거나 숨김
+		// bi-dash 아이콘을 클릭했을 때 content 내용을 숨김
+		$(document).on("click", "i.bi-dash", function() {
+			var contentDiv = $(this).closest("tr").next("tr.noticontent"); // 해당 공지사항의 content div 요소 가져오기
+		    contentDiv.slideToggle(); // content 내용을 보이거나 숨김
 
-		        // 아이콘 클래스 변경: bi-dash에서 bi-plus로 바꿈
-		        $(this).removeClass("bi-dash").addClass("bi-plus");
+		    // 아이콘 클래스 변경: bi-dash에서 bi-plus로 바꿈
+		    $(this).removeClass("bi-dash").addClass("bi-plus");
 		    });
 		    
 		    
-		    $(document).on("mouseover", "#effect", function() {
-		        $(this).addClass("hover");
+		$(document).on("mouseover", "#effect", function() {
+		    $(this).addClass("hover");
 		    }).on("mouseout", "#effect", function() {
 		        $(this).removeClass("hover");
 		    });
-	  
-  })
-  
-	$(document).ready(function() {
-    // 공지사항 제목을 클릭했을 때 내용 표시
-	    $(".noti-link").click(function() {
-	        var n_num = $(this).data("n_num"); // 해당 공지사항의 번호 가져오기
-	        var contentDiv = $(this).next(".noti-content"); // 해당 공지사항의 내용을 담을 div 가져오기
-	
-	        // 이미 내용이 로드되어 있는지 확인
-	        if (contentDiv.html().trim().length === 0) {
-	            // Ajax를 통해 공지사항 내용 가져오기
-	            $.ajax({
-	                type: "get",
-	                url: "noti/contentView.jsp", // 내용을 가져올 서버의 주소
-	                data: { "n_num": n_num }, // 공지사항 번호 전달
-	                success: function (res) {
-	                    contentDiv.html(res); // 가져온 내용을 해당 div에 삽입
-	                    contentDiv.show(); // 내용을 보이도록 설정
-	                }
-	            });
-	        } else {
-	            // 이미 내용이 로드되어 있는 경우, 내용을 보이거나 숨김
-	            contentDiv.toggle();
-	        }
-	
-	        return false; // 링크의 기본 동작 방지
-	    });
-    
-	});
-  
+		
+		//검색버튼 누르고 검색
+		/* $("#searchButton").click(function() {
+	    	var searchKeyword=$("#searchKeyword").val();
+	    	//alert(searchKeyword);
+	    	//search(str);
+	    	$.ajax({
+				type:"post",
+				url:"noti/search.jsp",
+				data:{"searchKeyword":searchKeyword},
+				dataType:"json",
+				success:function(res){
+					
+					var s = "<table>";
+	                $.each(res, function(idx,item){
+	                    s += "<tr>";
+	                    s += "<td>" + item.n_num + "</td>";
+	                    s += "<td>" + item.n_content + "</td>";
+	                    s += "<td>" + item.n_jeju + "</td>";
+	                    s += "<td>" + item.n_readcount + "</td>";
+	                    s += "<td>" + item.n_writeday + "</td>";
+	                    s += "</tr>";
+	                })
+	                s+="</table>";
+				$("div.show").html(s);
+		        }
+			})
+		}); */
+  });
+   
   function funcdel(n_num, currentPage){
 	   var ans = confirm("삭제하려면 [확인]을 눌러주세요");
 	   if(ans){
 		   location.href='noti/delete.jsp?n_num='+n_num+"&currentPage="+currentPage;
 	   }
   }
- 
   
-
+  /* function search(str){
+	  $.ajax({
+			type:"get",
+			url:"noti/search.jsp",
+			//data:{"str":str},
+			dataType:"json",
+			success:function(res){
+				alert("success");
+          	}
+		})
+  } */
 </script>
 </head>
 <%
-String loginok=(String)session.getAttribute("loginok");
-String myid=(String)session.getAttribute("myid");
-
-NotiDao dao=new NotiDao();
-
-//전체갯수
-int totalCount=dao.getTotalCount();
-int perPage=5; //한페이지당 보여질 글의 갯수
-int perBlock=5; //한블럭당 보여질 페이지 갯수
-int startNum; //db에서 가져올 글의 시작번호(mysql은 첫글이0번,오라클은 1번);
-int startPage; //각블럭당 보여질 시작페이지
-int endPage; //각블럭당 보여질 끝페이지
-int currentPage;  //현재페이지
-int totalPage; //총페이지수
-int no; //각페이지당 출력할 시작번호
-
-//현재페이지 읽는데 단 null일경우는 1페이지로 준다
-if(request.getParameter("currentPage")==null)
-	currentPage=1;
-else
-	currentPage=Integer.parseInt(request.getParameter("currentPage")); //계산해야하니까 int로 변환
-
-//총페이지수 구한다
-//총글갯수/한페이지당보여질갯수로 나눔(7/5=1)
-//나머지가 1이라도 있으면 무조건 1페이지 추가(1+1=2페이지가 필요) //로직 복사사용하기
-totalPage=totalCount/perPage+(totalCount%perPage==0?0:1);
-
-//각 블럭당(하단 숫자1 2 3 4 5 6) 보여질 시작페이지
-//perBlock=5일경우 현재페이지가 1~5일경우 시작페이지가1,끝페이지가 5
-//현재가 13일경우 시작:11 끝:15
-startPage=(currentPage-1)/perBlock*perBlock+1; //이런 공식이다..
-endPage=startPage+perBlock-1;
-
-//총페이지가 23일경우 마지막블럭은 끝페이지가 25가 아니라 23
-if(endPage>totalPage)
-	endPage=totalPage;
-
-//각페이지에서 보여질 시작번호
-//1페이지:0, 2페이지:5 3페이지: 10.....
-startNum=(currentPage-1)*perPage;
-
-//각페이지당 출력할 시작번호 구하기
-//총글개수가 23  , 1페이지:23 2페이지:18  3페이지:13
-no=totalCount-(currentPage-1)*perPage;
-
-//페이지에서 보여질 글만 가져오기
-List<NotiDto>list=dao.getList(startNum, perPage);
-
-//List<SimpleBoardDto>list=dao.getAllDatas();
-SimpleDateFormat sdf=new SimpleDateFormat("yyyy.MM.dd");
-//int count=list.size();
-
-//컨텐츠 내용 가져오기
-String n_num=request.getParameter("n_num");
-
-SemiMemberDao sdao=new SemiMemberDao();
-SemiMemberDto sdto=sdao.getMemberById(myid);
+	String loginok=(String)session.getAttribute("loginok");
+	String myid=(String)session.getAttribute("myid");
+	
+	NotiDao dao=new NotiDao();
+	
+	//전체갯수
+	int totalCount=dao.getTotalCount();
+	int perPage=5; //한페이지당 보여질 글의 갯수
+	int perBlock=5; //한블럭당 보여질 페이지 갯수
+	int startNum; //db에서 가져올 글의 시작번호(mysql은 첫글이0번,오라클은 1번);
+	int startPage; //각블럭당 보여질 시작페이지
+	int endPage; //각블럭당 보여질 끝페이지
+	int currentPage;  //현재페이지
+	int totalPage; //총페이지수
+	int no; //각페이지당 출력할 시작번호
+	
+	//현재페이지 읽는데 단 null일경우는 1페이지로 준다
+	if(request.getParameter("currentPage")==null)
+		currentPage=1;
+	else
+		currentPage=Integer.parseInt(request.getParameter("currentPage")); //계산해야하니까 int로 변환
+	
+	//총페이지수 구한다
+	//총글갯수/한페이지당보여질갯수로 나눔(7/5=1)
+	//나머지가 1이라도 있으면 무조건 1페이지 추가(1+1=2페이지가 필요) //로직 복사사용하기
+	totalPage=totalCount/perPage+(totalCount%perPage==0?0:1);
+	
+	//각 블럭당(하단 숫자1 2 3 4 5 6) 보여질 시작페이지
+	//perBlock=5일경우 현재페이지가 1~5일경우 시작페이지가1,끝페이지가 5
+	//현재가 13일경우 시작:11 끝:15
+	startPage=(currentPage-1)/perBlock*perBlock+1; //이런 공식이다..
+	endPage=startPage+perBlock-1;
+	
+	//총페이지가 23일경우 마지막블럭은 끝페이지가 25가 아니라 23
+	if(endPage>totalPage)
+		endPage=totalPage;
+	
+	//각페이지에서 보여질 시작번호
+	//1페이지:0, 2페이지:5 3페이지: 10.....
+	startNum=(currentPage-1)*perPage;
+	
+	//각페이지당 출력할 시작번호 구하기
+	//총글개수가 23  , 1페이지:23 2페이지:18  3페이지:13
+	no=totalCount-(currentPage-1)*perPage;
+	
+	//페이지에서 보여질 글만 가져오기
+	List<NotiDto>list=dao.getList(startNum, perPage);
+	
+	//List<SimpleBoardDto>list=dao.getAllDatas();
+	SimpleDateFormat sdf=new SimpleDateFormat("yyyy.MM.dd");
+	//int count=list.size();
+	
+	//컨텐츠 내용 가져오기
+	String n_num=request.getParameter("n_num");
+	
+	SemiMemberDao sdao=new SemiMemberDao();
+	SemiMemberDto sdto=sdao.getMemberById(myid);
 
 
 %>
@@ -346,21 +347,23 @@ SemiMemberDto sdto=sdao.getMemberById(myid);
 <div style="margin: 0 auto; width: 900px;">
    
    <h6 id="head"><b>공지사항</b>
-	   <div class="board_srch" style="margin-right: -20px;">
+	   <div class="board_srch">
 	        <div class="bs_ipt2">
 			    <div class="select">
-			        <select id="searchType" class="search_input" autocomplete="off">
+			        <select id="searchType" class="search_input" autocomplete="off" style="font-size: 14px;">
 			            <option value="1">일반</option>
 			            <option value="2">중요</option>
 			        </select>
 			    </div>
 			</div>
 	        <div class="bs_ipt">
-	            <input type="text" id="searchKeyword" name="" class="search_input" autocomplete="off">
+	            <input type="text" id="searchKeyword" name="searchKeyword"
+	            class="search_input" autocomplete="off">
 	            <label id="searchButton"><img src="./image/semi/btn_srch.png"></label>
 	        </div>
 	    </div>
     </h6><br>
+    <div class="show"></div>
    <table class="table table-group-divider">
       <%
         if(totalCount==0){%>
@@ -375,7 +378,7 @@ SemiMemberDto sdto=sdao.getMemberById(myid);
         		<tr class="hover-effect">
         		  <td width="80" style="vertical-align: middle; font-size: 0.8em; color: gray;"><%=dto.getN_juje() %></td>
         		  
-        		  <td style="font-family: 'Noto Sans KR'; vertical-align: middle; width: 450">
+        		  <td name="n_subject" style="font-family: 'Noto Sans KR'; vertical-align: middle; width: 450">
 				    <a href="#" class="noti-link" n_num="<%=dto.getN_num()%>">
 				        <%=dto.getN_subject() %>
 				    </a>

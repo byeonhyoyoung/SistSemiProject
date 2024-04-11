@@ -253,5 +253,41 @@ public class NotiDao {
       
    }
    
-   
+ //검색어 찾기
+   public List<NotiDto> getSearch(String str)
+   {
+      List<NotiDto> list=new ArrayList<NotiDto>();
+      Connection conn=db.getConnection();
+      PreparedStatement pstmt=null;
+      ResultSet rs=null;
+      
+      String sql="select * from noti where n_subject like ? order by n_num desc";
+      
+      try {
+         pstmt=conn.prepareStatement(sql);
+         pstmt.setString(1, "%"+str+"%");
+         rs=pstmt.executeQuery();
+         
+         while(rs.next())
+         {
+            NotiDto dto=new NotiDto();
+            
+            dto.setN_num(rs.getString("n_num"));
+            dto.setN_writer(rs.getString("n_writer"));
+            dto.setN_subject(rs.getString("n_subject"));
+            dto.setN_content(rs.getString("n_content"));
+            dto.setN_juje(rs.getString("n_juje"));
+            dto.setN_readcount(rs.getInt("n_readcount"));
+            dto.setN_writeday(rs.getTimestamp("n_writeday"));
+            
+            list.add(dto);
+         }
+      } catch (SQLException e) {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+      }finally {
+         db.dbClose(rs, pstmt, conn);
+      }
+      return list;
+   }
 }
