@@ -43,9 +43,10 @@
   <%
    for(FoodDto dto: list){%>
     <div class="img-box">
-    <a f_num="<%=dto.getF_num()%>" style="cursor: pointer;" class="goDetail">
-     <img alt="" src="food/image_food/<%=dto.getF_image()%>" class="photo">
     
+    <a f_num="<%=dto.getF_num()%>" style="cursor: pointer; color: white;" class="goDetail" >
+     <img alt="" src="food/image_food/<%=dto.getF_image()%>" class="photo">
+   
     
       <div class="transparent-box">
         <div class="caption">
@@ -54,7 +55,7 @@
         </div>
       </div> 
     </div>
-   </a>
+    </a>
    
    <%}%>
   
