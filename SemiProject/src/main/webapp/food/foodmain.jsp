@@ -11,7 +11,7 @@
 <meta charset="UTF-8">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&family=Noto+Serif+KR&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Raleway:600,900" rel="stylesheet">
 <link rel="stylesheet" href="food_menu_design_2/dist/style.css">
@@ -37,7 +37,8 @@
 
 
 <body>
-<div class="container mt-3" align="center">
+
+ <div class="container mt-3" align="center">
   <p class="heading">식당</p>
   <div class="gallery-image">
   
@@ -54,7 +55,7 @@
           <p><%=dto.getF_subject_k() %></p>
           <p class="opacity-low"><%=dto.getF_subject() %></p>
         </div>
-      </div>  
+      </div> 
     </div>
     </a>
    

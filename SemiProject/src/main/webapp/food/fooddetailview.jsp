@@ -86,9 +86,17 @@ i.clock {
 					<h6>
 						<i class="bi bi-ban ban"></i>
 						<%=dto.getF_holiday() %></h6>
+						
+					<%
+					if(dto.getF_menu() != null){
+					
+					%>
 					<h6>
 						<i class="bi bi-clipboard-check"></i>
 						<%=dto.getF_menu() %></h6>
+					<%
+					}
+					%>
 
 				</div>
 				<div class="col-md-6" style="padding-top: 50px;">
