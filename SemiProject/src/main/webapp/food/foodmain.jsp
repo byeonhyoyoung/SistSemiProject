@@ -14,7 +14,7 @@
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Raleway:600,900" rel="stylesheet">
-<link rel="stylesheet" href="food/food_menu_design_2/dist/style.css">
+<link rel="stylesheet" href="food_menu_design_2/dist/style.css">
 
 
 <title>Insert title here</title>
@@ -37,7 +37,9 @@
 
 
 <body>
-  <p class="heading">CSS Gallery</p>
+
+ <div class="container mt-3" align="center">
+  <p class="heading">FOOD</p>
   <div class="gallery-image">
   
   <%
@@ -74,7 +76,7 @@ $(function(){
     
   </div>
   
-  
+  </div>
 </body>
 </html>
 
