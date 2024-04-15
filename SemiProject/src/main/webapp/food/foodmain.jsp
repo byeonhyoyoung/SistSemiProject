@@ -53,7 +53,7 @@
           <p><%=dto.getF_subject_k() %></p>
           <p class="opacity-low"><%=dto.getF_subject() %></p>
         </div>
-      </div> 
+      </div>  
     </div>
     </a>
    
