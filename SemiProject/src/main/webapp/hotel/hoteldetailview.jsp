@@ -49,7 +49,7 @@
            
              %>
              
-             <a style="color: gray; text-decoration: none;" href="index.jsp?main=hotel/hotelmain.jsp">료칸</a>
+             <a style="color: gray; text-decoration: none;" href="#" onclick="history.back();">료칸</a>
              <% 
              
              }
@@ -59,7 +59,7 @@
            
              %>
              
-             <a style="color: gray; text-decoration: none;" href="index.jsp?main=hotel/hotelmain.jsp">호텔</a>
+             <a style="color: gray; text-decoration: none;" href="#" onclick="history.back();">호텔</a>
              <% 
              
              }
