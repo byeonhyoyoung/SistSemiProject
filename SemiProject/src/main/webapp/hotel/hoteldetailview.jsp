@@ -1,4 +1,4 @@
- <%@page import="data.dto.HotelDto"%>
+<%@page import="data.dto.HotelDto"%>
 <%@page import="data.dao.HotelDao"%>
 <%@page import="java.text.NumberFormat"%>
 
@@ -49,7 +49,7 @@
            
              %>
              
-             <a style="color: gray; text-decoration: none;" href="index.jsp?main=hotel/hotelmain.jsp">료칸</a>
+             <a style="color: gray; text-decoration: none;" href="#" onclick="history.back();" >료칸</a>
              <% 
              
              }
@@ -59,7 +59,7 @@
            
              %>
              
-             <a style="color: gray; text-decoration: none;" href="index.jsp?main=hotel/hotelmain.jsp">호텔</a>
+             <a style="color: gray; text-decoration: none;" href="#" onclick="history.back();">호텔</a>
              <% 
              
              }
@@ -76,8 +76,6 @@
                 <h6><i class="bi bi-geo-alt-fill loc"></i>  <%=dto.getH_location() %></h6>
                	<br>
                 <iframe src="<%=dto.getH_googlemap() %>" width="500" height="310" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-               
-               
             </div>
         </div>
     </form>

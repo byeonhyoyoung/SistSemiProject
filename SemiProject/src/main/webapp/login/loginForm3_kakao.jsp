@@ -69,7 +69,7 @@
 
                 <input type="submit" value="로그인" class="btn btn-block btn-primary" style="background-color: pink; border: pink;">
 	            <a href="javascript:kakaoLogin();"><img src="https://www.gb.go.kr/Main/Images/ko/member/certi_kakao_login.png" style="height:50px; weight: auto;" /></a>
-	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 	
 	<script>
 		//99109d0aa151ec0d0ef16ee43e6ede32

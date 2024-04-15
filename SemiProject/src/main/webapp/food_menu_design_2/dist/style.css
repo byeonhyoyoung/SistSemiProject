@@ -15,6 +15,7 @@ body {
     letter-spacing: 1px;
     padding: 40px;
     color: black;
+    font-family: Noto Sans KR;
 }
 
 .gallery-image {
@@ -41,6 +42,8 @@ body {
   color: white;
   position: relative;
   background-color: white;
+  text-align: left; /* 왼쪽 정렬 추가 */
+  
 }
 
 .caption {
@@ -59,7 +62,10 @@ body {
   top: 0;
   left: 0;
   transition: background-color 0.3s ease;
+  
+  
 }
+
 
 .img-box:hover img { 
   transform: scale(1.1);

@@ -39,7 +39,7 @@
 <body>
 
  <div class="container mt-3" align="center">
-  <p class="heading">FOOD</p>
+  <p class="heading">식당</p>
   <div class="gallery-image">
   
   <%
