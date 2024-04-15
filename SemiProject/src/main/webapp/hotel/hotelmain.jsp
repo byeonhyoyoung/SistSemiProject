@@ -4,41 +4,50 @@
 <%@page import="java.util.List"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&family=Noto+Serif+KR&display=swap" rel="stylesheet">
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<link
+   href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+   rel="stylesheet">
+<link
+   href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&family=Noto+Serif+KR&display=swap"
+   rel="stylesheet">
+<script
+   src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Raleway:600,900"
+   rel="stylesheet">
+<link rel="stylesheet" href="food_menu_design_2/dist/style.css">
 <title>Insert title here</title>
 <style type="text/css">
-   img.photo{
-   
-   width: 400px;
-   height: 230px;
-   border: 0px solid gray;
-   margin-bottom: 10px;
+
+   a.goDetail {
+      text-decoration: none;
+      color: black;
    }
-   
-   .shoptable{
-      padding: 10px;
-      height: 150px;
-      
-   }
-   
-      a.goDetail{
-   
-   text-decoration: none;
-   color: black;
-}
 
    a:hover {
-   text-decoration: underline;
-   color: gray;
-}
+      text-decoration: underline;
+      color: gray;
+   }
+
+   .nav-tabs {
+     
+      width: 1100px; /* Adjust the width as needed */
+   }
+
+   .nav-tabs .nav-item {
+      display: inline-block;
+      margin-right: 10px; /* Adjust margin between tabs */
+   }
+
+   .nav-tabs .nav-link {
+     padding: .5rem 1.5rem; /* Increase padding */
+   }
+   
 </style>
 <script type="text/javascript">
   $(function(){
@@ -65,152 +74,133 @@
 
 %>
 <body>
-<div class="container mt-3">
-  
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    <li class="nav-item">
-      <a class="nav-link active" data-bs-toggle="tab" href="#tabs-total" style="text-decoration: none; color:gray;">전체</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="tab" href="#tabs-hotel" style="text-decoration: none; color:gray;">호텔</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="tab" href="#tabs-ryokan" style="text-decoration: none; color:gray;">료칸</a>
-    </li>
-    
-  </ul>
+   <div class="container mt-3" align="center">
+   
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+         <li class="nav-item"><a class="nav-link active"
+            data-bs-toggle="tab" href="#tabs-total"
+            style="text-decoration: none; color: gray;">전체</a></li>
+         <li class="nav-item"><a class="nav-link" data-bs-toggle="tab"
+            href="#tabs-hotel" style="text-decoration: none; color: gray;">호텔</a>
+         </li>
+         <li class="nav-item"><a class="nav-link" data-bs-toggle="tab"
+            href="#tabs-ryokan" style="text-decoration: none; color: gray;">료칸</a>
+         </li>
 
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <div id="tabs-total" class="container tab-pane active"><br>
-      <h3>전체</h3>
-      <p>
-        <table class="shoptable table " style="width: 500px;">
-           <tr>
-              <%
-                 int i=0;
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+         <div id="tabs-total" class="container tab-pane active">
+            <br>
+              <div class="gallery-image">
+            <p>
+
+               <%
+             
                 for(HotelDto dto: list)
                 {
                    
                    %>
-                   <td>
-                   
-                     <a h_num="<%=dto.getH_num()%>" h_category=<%=dto.getH_category() %> style="cursor: pointer;" class="goDetail">
-                        <img alt="" src="hotel/image_hotel/<%=dto.getH_image()%>" class="photo">
-                        
-                        <br>
-                        <%=dto.getH_content() %><br></a>
-                        
-                     
-                       
-                     
-                   </td>
-                   
-                   <%
-                     if((i+1)%3==0)
-                     {%>
-                        </tr><tr>
-                     <%}
-                   
-                    i++;
-                   %>
-                <%}
-              %>
-           </tr> 
-        
-        </table>
-      
+               <div class="img-box">
+
+            <a h_num="<%=dto.getH_num()%>" h_category=<%=dto.getH_category() %>
+                  style="cursor: pointer; color: white" class="goDetail"> <img alt=""
+                  src="hotel/image_hotel/<%=dto.getH_image()%>" class="photo">
+
+                  <div class="transparent-box">
+                     <div class="caption">
+                        <p><%=dto.getH_content() %></p>
+                        <p class="opacity-low"><%=dto.getH_subject() %></p>
+                     </div>
+                  </div>
+                  </a>
+         </div>
+         
+
+         <%}%>}
+
+
       </p>
+    </div>
     </div>
     
     
     
-    
-     <div id="tabs-hotel" class="container tab-pane fade"><br>
-      <h3>호텔</h3>
+     <div id="tabs-hotel" class="container tab-pane fade">
+            <br>
+       <div class="gallery-image">
       <p>
-      <table class="shoptable table " style="width: 500px;">
-           <tr>
+      
+      
               <%
-                  i=0;
+               
                 for(HotelDto dto: list)
                 {
                    
                    if(dto.getH_category().equals("hotel")){
                  
-                   %>
-                   <td>
-                     <a h_num="<%=dto.getH_num()%>" h_category=<%=dto.getH_category() %> style="cursor: pointer;" class="goDetail">
-                        <img alt="" src="hotel/image_hotel/<%=dto.getH_image()%>" class="photo">
-                        <br>
-                        <%=dto.getH_content() %><br></a>
-                     
+                       
+                       %>
+                   <div class="img-box">
 
-                     
-                   </td>
-                   
-                   <%
-                     if((i+1)%3==0)
-                     {%>
-                        </tr><tr>
-                     <%}
-                   
-                    i++;
-                    
-                   }
-                   %>
-                   
-                <%}
-              %>
-           </tr> 
-        
-        </table>
+                <a h_num="<%=dto.getH_num()%>" h_category=<%=dto.getH_category() %>
+                      style="cursor: pointer; color: white" class="goDetail"> <img alt=""
+                      src="hotel/image_hotel/<%=dto.getH_image()%>" class="photo">
+
+                      <div class="transparent-box">
+                         <div class="caption">
+                            <p><%=dto.getH_content() %></p>
+                            <p class="opacity-low"><%=dto.getH_subject() %></p>
+                         </div>
+                      </div>
+                      </a>
+             </div>
+             
+
+             <%}}%>
+  
       
       </p>
     </div>
-    <div  id="tabs-ryokan" class="container tab-pane fade"><br>
-      <h3>료칸</h3>
+    </div>
+    <div id="tabs-ryokan" class="container tab-pane fade">
+            <br>
+        <div class="gallery-image">
       <p>
-        <table class="shoptable table" style="width: 500px;">
-           <tr>
+        
+      
               <%
-                  i=0;
+                 
                 for(HotelDto dto: list)
                 {
                    
                    if(dto.getH_category().equals("ryokan")){
 
+                                      
                    %>
-                   <td>
-                     <a h_num="<%=dto.getH_num()%>" h_category=<%=dto.getH_category() %> style="cursor: pointer;" class="goDetail">
-                        <img alt="" src="hotel/image_hotel/<%=dto.getH_image()%>" class="photo">
-                        <br>
-                        <%=dto.getH_content()%><br></a>
- 
-                     
-                   </td>
-                   
-                   <%
-                     if((i+1)%3==0)
-                     {%>
-                        </tr><tr>
-                     <%}
-                   
-                    i++;
-                    
-                   }
-                   %>
-                   
-                <%}
-              %>
-           </tr> 
-        
-        </table>
+               <div class="img-box">
+
+            <a h_num="<%=dto.getH_num()%>" h_category=<%=dto.getH_category() %>
+                  style="cursor: pointer; color: white" class="goDetail"> <img alt=""
+                  src="hotel/image_hotel/<%=dto.getH_image()%>" class="photo">
+
+                  <div class="transparent-box">
+                     <div class="caption">
+                        <p><%=dto.getH_content() %></p>
+                        <p class="opacity-low"><%=dto.getH_subject() %></p>
+                     </div>
+                  </div>
+                  </a>
+         </div>
+         
+
+         <%}}%>
       
       </p>
     </div>
-    
+    </div>
     
    
     

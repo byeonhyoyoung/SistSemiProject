@@ -6,7 +6,7 @@
 
 body {
   font-family: Raleway;
-  background-color: #202125;
+  
 }
 
 .heading {
@@ -14,7 +14,8 @@ body {
     font-size: 2.0em;
     letter-spacing: 1px;
     padding: 40px;
-    color: white;
+    color: black;
+    font-family: Noto Sans KR;
 }
 
 .gallery-image {
