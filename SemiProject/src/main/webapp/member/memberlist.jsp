@@ -31,7 +31,7 @@ function delfunc(num) {
             // Perform deletion here
             location.href = 'member/memberdelete.jsp?num=' + num;
             
-         
+            
                 Swal.fire({
                   title: "Deleted!",
                   text: "Your file has been deleted.",
