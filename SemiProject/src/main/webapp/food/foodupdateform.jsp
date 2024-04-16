@@ -19,9 +19,6 @@
 
 <%
    String f_num=request.getParameter("f_num");
-
-   String loginok=(String)session.getAttribute("loginok");
-   String myid=(String)session.getAttribute("myid");
    FoodDao sdao=new FoodDao();
    FoodDto dto=sdao.getFood(f_num);
    NumberFormat nf=NumberFormat.getCurrencyInstance();
@@ -30,7 +27,7 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
-     $('#foodForm').submit(function(e){
+     $('#foodForm2').submit(function(e){
        e.preventDefault(); // Prevent form submission
        // Perform AJAX submission if needed, then show SweetAlert
        Swal.fire({
@@ -39,8 +36,9 @@ $(document).ready(function(){
          title: "저장되었습니다!",
          showConfirmButton: true,
        });
-       // You may also submit the form programmatically after showing the alert
        this.submit();
+       
+       
      });
    });
 
@@ -50,10 +48,10 @@ $(document).ready(function(){
 <body>
 <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
 <div style="margin: 50px 100px; width: 600px;">
-    <form id="foodForm" action="food/foodaddaction.jsp" method="post" enctype="multipart/form-data">
+    <form id="foodForm2" action="food/foodupdateaction.jsp" method="post" enctype="multipart/form-data">
        <table class="table table-bordered">
           <caption align="top"><b>식당등록</b></caption>
-          
+          <input type="hidden" name="f_num" value="<%=f_num %>" >
           <tr>
              <td style="width: 150px;" class="table-light"><b>이름</b></td>
              <td>
@@ -74,7 +72,7 @@ $(document).ready(function(){
              <td style="width: 150px;" class="table-light"><b>이미지</b></td>
              <td>
                <input type="file" name="f_image" class="form-control"
-               style="width: 300px;" value="food/food_image/<%=dto.getF_image()%>">
+               style="width: 300px;" value="food/image_food/<%=dto.getF_image()%>">
              </td>
           </tr>
           
@@ -146,5 +144,11 @@ $(document).ready(function(){
        </table>
     </form>
 </div>
+
+
+<div>
+<img alt="" src="food/image_food/<%=dto.getF_image()%>" width="300px">
+</div>
+
 </body>
 </html>

@@ -1,4 +1,4 @@
-<%@page import="data.dao.SemiMemberDao"%>
+<%@page import="data.dao.FoodDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,12 +11,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<!-- 관리자가 강퇴시키는 페이지 -->
+<!-- 관리자가 식당 데이터를 지우는 내용 -->
 <%
-  String num=request.getParameter("num");
-  SemiMemberDao dao=new SemiMemberDao();
-  dao.deleteMember(num);
-  response.sendRedirect("../index.jsp?main=member/memberlist.jsp");
+  String f_num=request.getParameter("f_num");
+  FoodDao dao=new FoodDao();
+  dao.deleteFood(f_num);
+  response.sendRedirect("../index.jsp?main=food/foodmainlist.jsp");
 %>
 </body>
 </html>

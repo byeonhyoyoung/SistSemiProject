@@ -11,11 +11,11 @@
 <head>
 <meta charset="UTF-8">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&family=Noto+Serif+KR&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Raleway:600,900" rel="stylesheet">
 <link rel="stylesheet" href="food_menu_design_2/dist/style.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <title>식당 메뉴</title>
 <style type="text/css">
@@ -41,9 +41,17 @@
   position: absolute;
   top: 50px;
   left: 10px;
-  color: blue;
+  color: black;
+  background-color: #eeeeee;
+  border-color: #eeeeee;
 
   }
+  .write-btn:hover {
+    background-color: gray; /* 마우스를 올렸을 때 배경색을 검정색으로 유지 */
+    border-color: gray; /* 마우스를 올렸을 때 테두리 색상을 검정색으로 유지 */
+  }
+  
+  
   .bi-pencil{
   color: blue;
   }
@@ -69,6 +77,32 @@ $(function(){
        location.href="index.jsp?main=food/foodupdateform.jsp?f_num="+f_num;
     })
  });
+
+function delfunc(f_num) {
+    Swal.fire({
+        title: "정말로 삭제하시겠습니까?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "삭제",
+        cancelButtonText: "취소",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Perform deletion here
+            location.href = 'food/fooddelete.jsp?f_num=' + f_num;
+            
+            
+                Swal.fire({
+                  title: "삭제됨!",
+                  text: "해당 데이터가 삭제되었습니다.",
+                  icon: "success"
+                });
+           
+        }
+    });
+}
+
 </script>
 <%
   FoodDao dao=new FoodDao();
@@ -95,6 +129,8 @@ $(function(){
   <% } %>
   
   <a href="index.jsp?main=food/foodmain.jsp"><i class="bi bi-grid-fill fs-2 lili" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="앨범형 보기"></i></a>
+  
+  
   <table class="table table-striped">
     <thead>
       <tr>
@@ -138,10 +174,10 @@ $(function(){
             <td>
             
              <a f_num="<%=dto.getF_num()%>" style="cursor: pointer;"  class="goUpdate" >
-              <i class="bi bi-pencil-square fs-4 pencil"></i>
+              <i  class="bi bi-pencil-square fs-4 pencil"></i>
              </a>
-              
-              <i class="bi bi-trash fs-4 trash"></i>
+             
+              <a style="cursor: pointer;" onclick="delfunc('<%=dto.getF_num()%>')"><i class="bi bi-trash fs-4 trash"></i></a>
             </td>
           <% } %>
           
@@ -149,13 +185,10 @@ $(function(){
         </tr>
       <% i++; } %>
       
-      
-    </tbody>
+          </tbody>
   </table>
-  
-  
-
 </div>
 
 </body>
 </html>
+      
