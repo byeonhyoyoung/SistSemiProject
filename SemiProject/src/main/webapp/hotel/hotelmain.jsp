@@ -34,12 +34,8 @@
       color: gray;
    }
 
-   .img-box {
-      display: inline-block;
-      text-align: center; /* 이미지들을 가운데 정렬 */
-   }
-   
    .nav-tabs {
+     
       width: 1100px; /* Adjust the width as needed */
    }
 
@@ -52,7 +48,6 @@
      padding: .5rem 1.5rem; /* Increase padding */
    }
    
-    
 </style>
 <script type="text/javascript">
   $(function(){
@@ -80,7 +75,7 @@
 %>
 <body>
    <div class="container mt-3" align="center">
-	
+   
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist">
          <li class="nav-item"><a class="nav-link active"
