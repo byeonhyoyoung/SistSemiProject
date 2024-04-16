@@ -14,7 +14,7 @@ public class FoodDao {
 	DbConnect db=new DbConnect();
 
 	//insert
-	public void insertHotel(FoodDto dto) {
+	public void insertFood(FoodDto dto) {
 
 		Connection conn  = db.getConnection();
 		PreparedStatement pstmt =null;

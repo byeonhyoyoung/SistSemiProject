@@ -14,7 +14,6 @@
 <body>
 <%
    session.removeAttribute("loginok");
-   String myid=(String)session.getAttribute("myid");
 
    response.sendRedirect("../index.jsp");
 %>
