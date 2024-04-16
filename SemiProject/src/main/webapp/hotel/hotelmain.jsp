@@ -66,7 +66,6 @@
 %>
 <body>
 <div class="container mt-3">
-  
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li class="nav-item">
@@ -129,7 +128,7 @@
     
      <div id="tabs-hotel" class="container tab-pane fade"><br>
       <h3>호텔</h3>
-      <p>
+      <p>fade
       <table class="shoptable table " style="width: 500px;">
            <tr>
               <%
