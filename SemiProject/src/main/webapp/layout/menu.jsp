@@ -107,9 +107,9 @@ i.flower{
   
   <li><a href="index.jsp?main=tour/tourmain.jsp">교토 관광</a>
     <ul>
-      <li><a href="#">사원 및 신사</a></li>
-      <li><a href="#">박물관</a></li>
-      <li><a href="#">축제</a></li>
+      <li><a href="index.jsp?main=tour/tourmain.jsp#tabs-sawon">사원 및 신사</a></li>
+      <li><a href="index.jsp?main=tour/tourmain.jsp#tabs-mus">박물관</a></li>
+      <li><a href="index.jsp?main=tour/tourmain.jsp#tabs-event">축제</a></li>
     </ul>
   </li>
   <li><a href="index.jsp?main=food/foodmain.jsp">먹거리</a>
