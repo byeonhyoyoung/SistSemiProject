@@ -14,13 +14,20 @@
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Raleway:600,900" rel="stylesheet">
-<link rel="stylesheet" href="food/food_menu_design_2/dist/style.css">
+<link rel="stylesheet" href="food_menu_design_2/dist/style.css">
 
 
 <title>Insert title here</title>
 <style type="text/css">
-
-
+  .container {
+    position: relative;
+  }
+  .lili{
+    position: absolute;
+    top: 50px;
+    right: 150px;
+    z-index: 999;
+  }
 </style>
 
 
@@ -37,7 +44,12 @@
 
 
 <body>
-  <p class="heading">CSS Gallery</p>
+
+ <div class="container mt-3" align="center">
+  <p class="heading">식당</p>
+  
+  <a href="index.jsp?main=food/foodmainlist.jsp"><i class="bi bi-list fs-2 lili" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="목록형 보기"></i></a>
+
   <div class="gallery-image">
   
   <%
@@ -74,7 +86,6 @@ $(function(){
     
   </div>
   
-  
+  </div>
 </body>
 </html>
-
