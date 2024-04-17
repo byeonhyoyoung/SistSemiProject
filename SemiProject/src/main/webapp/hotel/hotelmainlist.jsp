@@ -3,7 +3,6 @@
 <%@page import="data.dao.HotelDao"%>
 <%@page import="java.text.NumberFormat"%>
 <%@page import="java.util.List"%>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -22,6 +21,8 @@
 <link href="https://fonts.googleapis.com/css?family=Raleway:600,900"
     rel="stylesheet">
 <link rel="stylesheet" href="food_menu_design_2/dist/style.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <title>Insert title here</title>
 <style type="text/css">
 a.goDetail {
@@ -75,6 +76,7 @@ a:hover {
     color: black;
     background-color: #eeeeee;
     border-color: #eeeeee;
+    z-index: 100;
 }
 
 .write-btn:hover {
@@ -95,12 +97,12 @@ $(function(){
     })
   
     $("a.goUpdate").click(function(){
-        var f_num=$(this).attr("f_num");
-        location.href="index.jsp?main=food/foodupdateform.jsp?f_num="+f_num;
+        var h_num=$(this).attr("h_num");
+        location.href="index.jsp?main=hotel/hotelupdateform.jsp?h_num="+h_num;
     })
 });
 
-function delfunc(f_num) {
+function delfunc(h_num) {
     Swal.fire({
         title: "정말로 삭제하시겠습니까?",
         icon: "warning",
@@ -111,7 +113,7 @@ function delfunc(f_num) {
         cancelButtonText: "취소",
     }).then((result) => {
         if (result.isConfirmed) {
-            location.href = 'hotel/hoteldelete.jsp?f_num=' + f_num;
+            location.href = 'hotel/hoteldelete.jsp?h_num=' + h_num;
             Swal.fire({
                 title: "삭제됨!",
                 text: "해당 데이터가 삭제되었습니다.",

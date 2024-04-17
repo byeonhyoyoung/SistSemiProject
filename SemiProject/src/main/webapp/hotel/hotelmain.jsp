@@ -1,3 +1,4 @@
+<%@page import="data.dao.SemiMemberDao"%>
 <%@page import="data.dto.HotelDto"%>
 <%@page import="data.dao.HotelDao"%>
 <%@page import="java.text.NumberFormat"%>
@@ -48,6 +49,23 @@
      padding: .5rem 1.5rem; /* Increase padding */
    }
    
+   .lili{
+   
+  position: absolute;
+  top: 280px;
+    right: 250px;
+    z-index: 999;
+   }
+
+
+
+.write-btn {
+    color: black;
+    background-color: #eeeeee;
+    border-color: #eeeeee;
+    z-index: 100;
+}s
+   
 </style>
 <script type="text/javascript">
   $(function(){
@@ -71,11 +89,18 @@
   List<HotelDto> list=dao.getAllHotels();
   NumberFormat nf=NumberFormat.getCurrencyInstance();
   
+  String loginok=(String)session.getAttribute("loginok");
+  String myid=(String)session.getAttribute("myid");
+  SemiMemberDao sdao=new SemiMemberDao();
+  String name=sdao.getName(myid);
+  
 
 %>
 <body>
    <div class="container mt-3" align="center">
    
+
+  
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist">
          <li class="nav-item"><a class="nav-link active"
@@ -89,13 +114,23 @@
          </li>
 
       </ul>
+      
+      
+      <div >
+        <a href="index.jsp?main=hotel/hotelmainlist.jsp"><i
+            class="bi bi-list fs-2 lili" data-bs-container="body"
+            data-bs-toggle="popover" data-bs-placement="top"
+            data-bs-content="목록형 보기"></i></a>
+   </div>
 
       <!-- Tab panes -->
       <div class="tab-content">
          <div id="tabs-total" class="container tab-pane active">
-            <br>
+          <br><br>
               <div class="gallery-image">
             <p>
+            
+           
 
                <%
              
@@ -129,7 +164,7 @@
     
     
      <div id="tabs-hotel" class="container tab-pane fade">
-            <br>
+            <br><br>
        <div class="gallery-image">
       <p>
       
@@ -166,7 +201,7 @@
     </div>
     </div>
     <div id="tabs-ryokan" class="container tab-pane fade">
-            <br>
+         <br><br>
         <div class="gallery-image">
       <p>
         
