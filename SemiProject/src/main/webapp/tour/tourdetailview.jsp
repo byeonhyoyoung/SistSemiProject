@@ -15,29 +15,29 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
-img.large {
-	height: 400px;
-}
-
-i.loc {
-	color: green;
-}
-
-i.globe {
-	color: green;
-}
-
-i.telephone {
-	color: blue;
-}
-
-i.clock {
-	color: brown;
-}
-
-i.coin {
-	color: gold;
-}
+	img.large {
+		height: 400px;
+	}
+	
+	i.loc {
+		color: green;
+	}
+	
+	i.globe {
+		color: green;
+	}
+	
+	i.telephone {
+		color: blue;
+	}
+	
+	i.clock {
+		color: brown;
+	}
+	
+	i.coin {
+		color: gold;
+	}
 </style>
 </head>
 <%
@@ -49,7 +49,7 @@ i.coin {
    NumberFormat nf=NumberFormat.getCurrencyInstance();
 %>
 <body>
-	<div style="margin: 50px 100px;">
+	<div class="container">
 		<form id="frm">
 			<div class="row">
 				<div class="col-md-6" style="padding-top: 50px;">

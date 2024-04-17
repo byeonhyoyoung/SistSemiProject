@@ -26,7 +26,6 @@
    a.goDetail{
       text-decoration: none;
       color: black;
-      z-index: 999;
    }
 
    a:hover {
@@ -39,7 +38,7 @@
     $(document).on("click", "a.goDetail", function(e){
         var t_num = $(this).attr("t_num");
         var t_category = $(this).attr("t_category");
-        alert(t_num);
+        //alert(t_num);
         //디테일 페이지로 이동
         location.href = "index.jsp?main=tour/tourdetailview.jsp?t_num=" + t_num + "&t_category=" + t_category;
      });
@@ -98,7 +97,7 @@
                 <td colspan="2" rowspan="2">
                   <!-- 이미지와 관광 정보 제목을 표시하며, 디테일 페이지로 이동할 수 있는 링크 -->
                   <a t_num="<%=dto.getT_num()%>" t_category="<%=dto.getT_category()%>" style="cursor: pointer; color: white;" class="goDetail" >
-                  <div class="gallery-image-lg">
+                  <div class="gallery-image-lg" style="z-index: 999;">
                   	<div class="img-box-lg">
                     <img src="tour/image_tour/<%=dto.getT_image()%>" class="photo">
 	                    <div class="transparent-box-lg">
@@ -183,7 +182,7 @@
         for (int i = 0; i <slist.size(); i+=5) {
         %>
           <tr>
-            <% for (int j = i; j < i + 5 && j < list.size(); j++) {
+            <% for (int j = i; j < i + 5 && j < slist.size(); j++) {
             	TourDto sdto=slist.get(j);
               if (j == i) { %>
                 <td colspan="2" rowspan="2">
@@ -274,7 +273,7 @@
         for (int i = 0; i < mlist.size(); i+=5) {
         %>
           <tr>
-            <% for (int j = i; j < i + 5 && j < list.size(); j++) {
+            <% for (int j = i; j < i + 5 && j < mlist.size(); j++) {
             	TourDto mdto=mlist.get(j);
               if (j == i) { %>
                 <td colspan="2" rowspan="2">
@@ -365,7 +364,7 @@
         for (int i = 0; i < elist.size(); i+=5) { 
         %>
           <tr>
-            <% for (int j = i; j < i + 5 && j < list.size(); j++) {
+            <% for (int j = i; j < i + 5 && j < elist.size(); j++) {
             	TourDto edto=elist.get(j);
               if (j == i) { %>
                 <td colspan="2" rowspan="2">
