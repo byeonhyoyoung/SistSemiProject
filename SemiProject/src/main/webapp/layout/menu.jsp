@@ -103,20 +103,9 @@ i.flower{
     </ul>
   </li>
   <li><a href="index.jsp?main=intro/intromain.jsp">교토 소개</a></li>
-  <li><a href="index.jsp?main=tour/tourmain.jsp">교토 관광</a>
-    <ul>
-      <li><a href="#">사원 및 신사</a></li>
-      <li><a href="#">박물관</a></li>
-      <li><a href="#">축제</a></li>
-    </ul>
-  </li>
+  <li><a href="index.jsp?main=tour/tourmain.jsp">교토 관광</a></li>
   <li><a href="#">먹거리</a></li>
-  <li><a href="index.jsp?main=hotel/hotelmain.jsp">숙박시설</a>
-  	<ul>
-	   <li><a href="#">호텔</a></li>
-	   <li><a href="#">료칸</a></li>
-  	</ul>
-  </li>
+  <li><a href="index.jsp?main=hotel/hotelmain.jsp">숙박시설</a></li>
   <li><a href="#">커뮤니티</a>
      <ul>  
       <li><a href="index.jsp?main=noti/boardList.jsp">공지사항</a></li>

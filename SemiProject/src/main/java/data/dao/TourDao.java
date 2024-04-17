@@ -179,4 +179,61 @@ public class TourDao {
 		}
 		return list;
 	}
+	
+	 //삭제
+	   public void deleteTour(String t_num)
+	   {
+	      Connection conn=db.getConnection();
+	      PreparedStatement pstmt=null;
+	      
+	      String sql="delete from tour where t_num=?";
+	      
+	      try {
+	      pstmt=conn.prepareStatement(sql);
+	      pstmt.setString(1, t_num);
+	      pstmt.execute();
+	      
+	      } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      }finally {
+	         db.dbClose(pstmt, conn);
+	      }
+	      
+	   }
+	   
+	   //수정
+	   public void updateTour(TourDto dto)
+	   {
+	      Connection conn=db.getConnection();
+	      PreparedStatement pstmt=null;
+	      
+	      String sql="update tour set t_category=?,t_subject=?,t_subject_j=?,t_content=?,t_image=?,t_location=?,t_link=?,t_time=?,t_tel=?,t_price=?,t_googlemap=? where t_num=?";
+	      
+	      try {
+	      pstmt=conn.prepareStatement(sql);
+	      
+	      pstmt.setString(1, dto.getT_category());
+	      pstmt.setString(2, dto.getT_subject());
+	      pstmt.setString(3, dto.getT_subject_j());
+	      pstmt.setString(4, dto.getT_content());
+	      pstmt.setString(5, dto.getT_image());
+	      pstmt.setString(6, dto.getT_location());
+	      pstmt.setString(7, dto.getT_link());
+	      pstmt.setString(8, dto.getT_time());
+	      pstmt.setString(9, dto.getT_tel());
+	      pstmt.setString(10, dto.getT_price());
+	      pstmt.setString(11, dto.getT_googlemap());
+	      
+	      pstmt.execute();
+	      
+	      } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      }finally {
+	         db.dbClose(pstmt, conn);
+	      }      
+	      
+	   }
+	
 }
