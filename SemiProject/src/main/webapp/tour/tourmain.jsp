@@ -11,18 +11,13 @@
 <meta charset="UTF-8">
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Hahmlet:wght@100..900&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&family=Poor+Story&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="food_menu_design_2/dist/style.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<link rel="stylesheet" href="food_menu_design_2/dist/style.css">
+<link href="https://fonts.googleapis.com/css?family=Raleway:600,900" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
-   img.photo{
-      width: 300px;
-      height: 200px;
-      border: 0px solid gray;
-      margin-right: 10px;
-   }
-   
    .tour{
       padding: 10px;
       height: 150px;
@@ -31,6 +26,7 @@
    a.goDetail{
       text-decoration: none;
       color: black;
+      z-index: 999;
    }
 
    a:hover {
@@ -40,13 +36,13 @@
 </style>
 <script type="text/javascript">
   $(function(){
-     $("a.goDetail").click(function(){
-        var t_num=$(this).attr("t_num");
-        var t_category=$(this).attr("t_category");
-        //alert(t_num);
+    $(document).on("click", "a.goDetail", function(e){
+        var t_num = $(this).attr("t_num");
+        var t_category = $(this).attr("t_category");
+        alert(t_num);
         //디테일 페이지로 이동
-        location.href="index.jsp?main=tour/tourdetailview.jsp?t_num="+t_num+"&t_category="+t_category;
-     })
+        location.href = "index.jsp?main=tour/tourdetailview.jsp?t_num=" + t_num + "&t_category=" + t_category;
+     });
   });
 </script>
 
@@ -78,7 +74,9 @@
   <!-- tab panes -->
   <div class="tab-content">
     <div id="tabs-total" class="container tab-pane active"><br>
-      <h3>전체</h3>
+      <p class="heading">전체</p>
+      <button type="button" class="btn btn-success" onclick="location.href='index.jsp?main=tour/addform.jsp'">등록</button>
+      <button type="button" class="btn btn-info" onclick="location.href='index.jsp?main=tour/tourlist.jsp'">목록</button>
       <br>
       <table class="tour" style="width: 500px;">
         <% for (int i = 0; i < list.size(); i+=5) { %>
@@ -89,9 +87,18 @@
                  <!-- 한 행의 첫 번째 열 -->
                 <td colspan="2" rowspan="2">
                   <!-- 이미지와 관광 정보 제목을 표시하며, 디테일 페이지로 이동할 수 있는 링크 -->
-                  <a t_num="<%=dto.getT_num()%>" t_category="<%=dto.getT_category()%>" style="cursor: pointer;" class="goDetail">
-                    <img src="tour/image_tour/<%=dto.getT_image()%>" class="photo" style="width: 650px; height: 435px;">
-                    <br><%=dto.getT_subject()%>
+                  <a t_num="<%=dto.getT_num()%>" t_category="<%=dto.getT_category()%>" style="cursor: pointer; color: white;" class="goDetail" >
+                  <div class="gallery-image-lg">
+                     <div class="img-box-lg">
+                    <img src="tour/image_tour/<%=dto.getT_image()%>" class="photo">
+                       <div class="transparent-box-lg">
+                       <div class="caption">
+                         <p><%=dto.getT_subject()%></p>
+                         <p class="opacity-low"><%=dto.getT_subject_j() %></p>
+                       </div>
+                   </div>
+                     </div>
+                  </div>
                   </a>
                 </td>
               <% } else {
@@ -101,25 +108,52 @@
                     </tr>
                     <tr>
                         <td>
-                          <a t_num="<%=dto.getT_num()%>" t_category="<%=dto.getT_category()%>" style="cursor: pointer;" class="goDetail">
-                            <img src="tour/image_tour/<%=dto.getT_image()%>" class="photo">
-                            <br><%=dto.getT_subject()%>
-                          </a>
-                        </td>
+                     <a t_num="<%=dto.getT_num()%>" t_category="<%=dto.getT_category()%>" style="cursor: pointer;" class="goDetail">
+                        <div class="gallery-image">
+                                <div class="img-box">
+                                  <img src="tour/image_tour/<%=dto.getT_image()%>" class="photo">
+                                  <div class="transparent-box">
+                                <div class="caption">
+                                  <p><%=dto.getT_subject() %></p>
+                                  <p class="opacity-low"><%=dto.getT_subject_j() %></p>
+                                </div>
+                            </div>
+                               </div>
+                        </div>
+                           </a>
+                          </td>
                     <%}else if(j%5==4){
                     %>
-                       <td>
-                             <a t_num="<%=dto.getT_num()%>" t_category="<%=dto.getT_category()%>" style="cursor: pointer;" class="goDetail">
-                               <img src="tour/image_tour/<%=dto.getT_image()%>" class="photo">
-                               <br><%=dto.getT_subject()%>
-                             </a>
+                  <td>
+                     <a t_num="<%=dto.getT_num()%>" t_category="<%=dto.getT_category()%>" style="cursor: pointer;" class="goDetail">
+                        <div class="gallery-image">
+                                <div class="img-box">
+                                  <img src="tour/image_tour/<%=dto.getT_image()%>" class="photo">
+                                  <div class="transparent-box">
+                                <div class="caption">
+                                  <p><%=dto.getT_subject() %></p>
+                                  <p class="opacity-low"><%=dto.getT_subject_j() %></p>
+                                </div>
+                            </div>
+                               </div>
+                        </div>
+                           </a>
                            </td>
                     <%}else{
                     %>
                        <td>
                              <a t_num="<%=dto.getT_num()%>" t_category="<%=dto.getT_category()%>" style="cursor: pointer;" class="goDetail">
-                               <img src="tour/image_tour/<%=dto.getT_image()%>" class="photo">
-                               <br><%=dto.getT_subject()%>
+                             <div class="gallery-image">
+                                <div class="img-box">
+                                  <img src="tour/image_tour/<%=dto.getT_image()%>" class="photo">
+                                  <div class="transparent-box">
+                                <div class="caption">
+                                  <p><%=dto.getT_subject() %></p>
+                                  <p class="opacity-low"><%=dto.getT_subject_j() %></p>
+                                </div>
+                            </div>
+                               </div>
+                             </div>
                              </a>
                            </td>
                     <%}
@@ -131,7 +165,7 @@
    </div>
    
     <div id="tabs-sawon" class="container tab-pane fade"><br>
-      <h3>사원 및 신사</h3>
+      <p class="heading">사원 및 신사</p>
       <br>
       <table class="tour" style="width: 500px;">
          <% 
@@ -143,18 +177,19 @@
                TourDto sdto=slist.get(j);
               if (j == i) { %>
                 <td colspan="2" rowspan="2">
+                  <!-- 이미지와 관광 정보 제목을 표시하며, 디테일 페이지로 이동할 수 있는 링크 -->
                   <a t_num="<%=sdto.getT_num()%>" t_category="<%=sdto.getT_category()%>" style="cursor: pointer;" class="goDetail">
-  				  <div class="img-box-large">
-                    <img src="tour/image_tour/<%=sdto.getT_image()%>" class="photo" style="width: 650px; height: 435px;">
-                    <div class="transparent-box">
-				        <div class="caption">
-				          <p>Library</p>
-				          <p class="opacity-low">Architect Design</p>
-				        </div>
-				      </div> 
-				    </div>
-                    
-                    <br><%=sdto.getT_subject()%>
+                  <div class="gallery-image-lg">
+                     <div class="img-box-lg">
+                    <img src="tour/image_tour/<%=sdto.getT_image()%>" class="photo">
+                       <div class="transparent-box-lg">
+                       <div class="caption">
+                         <p><%=sdto.getT_subject()%></p>
+                         <p class="opacity-low"><%=sdto.getT_subject_j() %></p>
+                       </div>
+                   </div>
+                     </div>
+                     </div>
                   </a>
                 </td>
               <% } else {
@@ -162,28 +197,55 @@
                     %>
                     </tr>
                     <tr>
-                        <td>
-                          <a t_num="<%=sdto.getT_num()%>" t_category="<%=sdto.getT_category()%>" style="cursor: pointer;" class="goDetail">
-                            <img src="tour/image_tour/<%=sdto.getT_image()%>" class="photo">
-                            <br><%=sdto.getT_subject()%>
-                          </a>
-                    </td>
+                  <td>
+                     <a t_num="<%=sdto.getT_num()%>" t_category="<%=sdto.getT_category()%>" style="cursor: pointer;" class="goDetail">
+                        <div class="gallery-image">
+                                <div class="img-box">
+                                  <img src="tour/image_tour/<%=sdto.getT_image()%>" class="photo">
+                                  <div class="transparent-box">
+                                <div class="caption">
+                                  <p><%=sdto.getT_subject() %></p>
+                                  <p class="opacity-low"><%=sdto.getT_subject_j() %></p>
+                                </div>
+                            </div>
+                               </div>
+                        </div>
+                           </a>
+                          </td>
                     <%}else if(j%5==4){
                     %>
-                       <td>
-                             <a t_num="<%=sdto.getT_num()%>" t_category="<%=sdto.getT_category()%>" style="cursor: pointer;" class="goDetail">
-                               <img src="tour/image_tour/<%=sdto.getT_image()%>" class="photo">
-                               <br><%=sdto.getT_subject()%>
-                             </a>
-                       </td>
+                  <td>
+                     <a t_num="<%=sdto.getT_num()%>" t_category="<%=sdto.getT_category()%>" style="cursor: pointer;" class="goDetail">
+                        <div class="gallery-image">
+                                <div class="img-box">
+                                  <img src="tour/image_tour/<%=sdto.getT_image()%>" class="photo">
+                                  <div class="transparent-box">
+                                <div class="caption">
+                                  <p><%=sdto.getT_subject() %></p>
+                                  <p class="opacity-low"><%=sdto.getT_subject_j() %></p>
+                                </div>
+                            </div>
+                               </div>
+                        </div>
+                           </a>
+                        </td>
                     <%}else{
                     %>
                        <td>
-                             <a t_num="<%=sdto.getT_num()%>" t_category="<%=sdto.getT_category()%>" style="cursor: pointer;" class="goDetail">
-                               <img src="tour/image_tour/<%=sdto.getT_image()%>" class="photo">
-                               <br><%=sdto.getT_subject()%>
-                             </a>
-                       </td>
+                     <a t_num="<%=sdto.getT_num()%>" t_category="<%=sdto.getT_category()%>" style="cursor: pointer;" class="goDetail">
+                        <div class="gallery-image">
+                                <div class="img-box">
+                                  <img src="tour/image_tour/<%=sdto.getT_image()%>" class="photo">
+                                  <div class="transparent-box">
+                                <div class="caption">
+                                  <p><%=sdto.getT_subject() %></p>
+                                  <p class="opacity-low"><%=sdto.getT_subject_j() %></p>
+                                </div>
+                            </div>
+                               </div>
+                        </div>
+                           </a>
+                        </td>
                     <%}
                  }
             }
@@ -194,7 +256,7 @@
    </div>
    
     <div id="tabs-mus" class="container tab-pane fade"><br>
-      <h3>박물관</h3>
+      <p class="heading">박물관</p>
       <br>
       <table class="tour" style="width: 500px;">
          <% 
@@ -206,9 +268,19 @@
                TourDto mdto=mlist.get(j);
               if (j == i) { %>
                 <td colspan="2" rowspan="2">
+                  <!-- 이미지와 관광 정보 제목을 표시하며, 디테일 페이지로 이동할 수 있는 링크 -->
                   <a t_num="<%=mdto.getT_num()%>" t_category="<%=mdto.getT_category()%>" style="cursor: pointer;" class="goDetail">
-                    <img src="tour/image_tour/<%=mdto.getT_image()%>" class="photo" style="width: 650px; height: 435px;">
-                    <br><%=mdto.getT_subject()%>
+                  <div class="gallery-image-lg">
+                     <div class="img-box-lg">
+                    <img src="tour/image_tour/<%=mdto.getT_image()%>" class="photo">
+                       <div class="transparent-box-lg">
+                       <div class="caption">
+                         <p><%=mdto.getT_subject()%></p>
+                         <p class="opacity-low"><%=mdto.getT_subject_j() %></p>
+                       </div>
+                   </div>
+                     </div>
+                     </div>
                   </a>
                 </td>
               <% } else {
@@ -217,27 +289,54 @@
                     </tr>
                     <tr>
                         <td>
-                          <a t_num="<%=mdto.getT_num()%>" t_category="<%=mdto.getT_category()%>" style="cursor: pointer;" class="goDetail">
-                            <img src="tour/image_tour/<%=mdto.getT_image()%>" class="photo">
-                            <br><%=mdto.getT_subject()%>
-                          </a>
+                     <a t_num="<%=mdto.getT_num()%>" t_category="<%=mdto.getT_category()%>" style="cursor: pointer;" class="goDetail">
+                        <div class="gallery-image">
+                                <div class="img-box">
+                                  <img src="tour/image_tour/<%=mdto.getT_image()%>" class="photo">
+                                  <div class="transparent-box">
+                                <div class="caption">
+                                  <p><%=mdto.getT_subject() %></p>
+                                  <p class="opacity-low"><%=mdto.getT_subject_j() %></p>
+                                </div>
+                            </div>
+                               </div>
+                        </div>
+                           </a>
                         </td>
                     <%}else if(j%5==4){
                     %>
                        <td>
-                             <a t_num="<%=mdto.getT_num()%>" t_category="<%=mdto.getT_category()%>" style="cursor: pointer;" class="goDetail">
-                               <img src="tour/image_tour/<%=mdto.getT_image()%>" class="photo">
-                               <br><%=mdto.getT_subject()%>
-                             </a>
-                       </td>
+                     <a t_num="<%=mdto.getT_num()%>" t_category="<%=mdto.getT_category()%>" style="cursor: pointer;" class="goDetail">
+                        <div class="gallery-image">
+                                <div class="img-box">
+                                  <img src="tour/image_tour/<%=mdto.getT_image()%>" class="photo">
+                                  <div class="transparent-box">
+                                <div class="caption">
+                                  <p><%=mdto.getT_subject() %></p>
+                                  <p class="opacity-low"><%=mdto.getT_subject_j() %></p>
+                                </div>
+                            </div>
+                               </div>
+                        </div>
+                           </a>
+                        </td>
                     <%}else{
                     %>
                        <td>
-                             <a t_num="<%=mdto.getT_num()%>" t_category="<%=mdto.getT_category()%>" style="cursor: pointer;" class="goDetail">
-                               <img src="tour/image_tour/<%=mdto.getT_image()%>" class="photo">
-                               <br><%=mdto.getT_subject()%>
-                             </a>
-                       </td>
+                     <a t_num="<%=mdto.getT_num()%>" t_category="<%=mdto.getT_category()%>" style="cursor: pointer;" class="goDetail">
+                        <div class="gallery-image">
+                                <div class="img-box">
+                                  <img src="tour/image_tour/<%=mdto.getT_image()%>" class="photo">
+                                  <div class="transparent-box">
+                                <div class="caption">
+                                  <p><%=mdto.getT_subject() %></p>
+                                  <p class="opacity-low"><%=mdto.getT_subject_j() %></p>
+                                </div>
+                            </div>
+                               </div>
+                        </div>
+                           </a>
+                        </td>
                     <%}
                  }
             }
@@ -248,7 +347,7 @@
    </div>
     
     <div id="tabs-event" class="container tab-pane fade"><br>
-      <h3>축제</h3>
+      <p class="heading">축제</p>
       <br>
       <table class="tour" style="width: 500px;">
          <%
@@ -260,9 +359,19 @@
                TourDto edto=elist.get(j);
               if (j == i) { %>
                 <td colspan="2" rowspan="2">
+                  <!-- 이미지와 관광 정보 제목을 표시하며, 디테일 페이지로 이동할 수 있는 링크 -->
                   <a t_num="<%=edto.getT_num()%>" t_category="<%=edto.getT_category()%>" style="cursor: pointer;" class="goDetail">
-                    <img src="tour/image_tour/<%=edto.getT_image()%>" class="photo" style="width: 650px; height: 435px;">
-                    <br><%=edto.getT_subject()%>
+                  <div class="gallery-image-lg">
+                     <div class="img-box-lg">
+                    <img src="tour/image_tour/<%=edto.getT_image()%>" class="photo">
+                       <div class="transparent-box-lg">
+                       <div class="caption">
+                         <p><%=edto.getT_subject()%></p>
+                         <p class="opacity-low"><%=edto.getT_subject_j() %></p>
+                       </div>
+                   </div>
+                     </div>
+                     </div>
                   </a>
                 </td>
               <% } else {
@@ -271,27 +380,54 @@
                     </tr>
                     <tr>
                         <td>
-                          <a t_num="<%=edto.getT_num()%>" t_category="<%=edto.getT_category()%>" style="cursor: pointer;" class="goDetail">
-                            <img src="tour/image_tour/<%=edto.getT_image()%>" class="photo">
-                            <br><%=edto.getT_subject()%>
-                          </a>
-                    </td>
+                     <a t_num="<%=edto.getT_num()%>" t_category="<%=edto.getT_category()%>" style="cursor: pointer;" class="goDetail">
+                        <div class="gallery-image">
+                                <div class="img-box">
+                                  <img src="tour/image_tour/<%=edto.getT_image()%>" class="photo">
+                                  <div class="transparent-box">
+                                <div class="caption">
+                                  <p><%=edto.getT_subject() %></p>
+                                  <p class="opacity-low"><%=edto.getT_subject_j() %></p>
+                                </div>
+                            </div>
+                               </div>
+                        </div>
+                           </a>
+                        </td>
                     <%}else if(j%5==4){
                     %>
                        <td>
-                             <a t_num="<%=edto.getT_num()%>" t_category="<%=edto.getT_category()%>" style="cursor: pointer;" class="goDetail">
-                               <img src="tour/image_tour/<%=edto.getT_image()%>" class="photo">
-                               <br><%=edto.getT_subject()%>
-                             </a>
-                       </td>
+                     <a t_num="<%=edto.getT_num()%>" t_category="<%=edto.getT_category()%>" style="cursor: pointer;" class="goDetail">
+                        <div class="gallery-image">
+                                <div class="img-box">
+                                  <img src="tour/image_tour/<%=edto.getT_image()%>" class="photo">
+                                  <div class="transparent-box">
+                                <div class="caption">
+                                  <p><%=edto.getT_subject() %></p>
+                                  <p class="opacity-low"><%=edto.getT_subject_j() %></p>
+                                </div>
+                            </div>
+                               </div>
+                        </div>
+                           </a>
+                        </td>
                     <%}else{
                     %>
                        <td>
-                             <a t_num="<%=edto.getT_num()%>" t_category="<%=edto.getT_category()%>" style="cursor: pointer;" class="goDetail">
-                               <img src="tour/image_tour/<%=edto.getT_image()%>" class="photo">
-                               <br><%=edto.getT_subject()%>
-                             </a>
-                       </td>
+                     <a t_num="<%=edto.getT_num()%>" t_category="<%=edto.getT_category()%>" style="cursor: pointer;" class="goDetail">
+                        <div class="gallery-image">
+                                <div class="img-box">
+                                  <img src="tour/image_tour/<%=edto.getT_image()%>" class="photo">
+                                  <div class="transparent-box">
+                                <div class="caption">
+                                  <p><%=edto.getT_subject() %></p>
+                                  <p class="opacity-low"><%=edto.getT_subject_j() %></p>
+                                </div>
+                            </div>
+                               </div>
+                        </div>
+                           </a>
+                        </td>
                     <%}
                  }
             }

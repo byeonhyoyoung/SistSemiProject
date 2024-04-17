@@ -10,33 +10,55 @@ body {
 }
 
 .heading {
-    text-align: center;
-    font-size: 2.0em;
-    letter-spacing: 1px;
-    padding: 40px;
-    color: black;
-    font-family: Noto Sans KR;
+   text-align: center;
+   font-size: 2.0em;
+   letter-spacing: 1px;
+   padding: 40px;
+   color: black;
+   font-family: Noto Sans KR;
 }
 
 .gallery-image {
-  padding: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 .gallery-image img {
-  height: 250px;
-  width: 350px;
+  height: 190px;
+  width: 310px;
+  transform: scale(1.0);
+  transition: transform 0.4s ease;
+}
+.gallery-image-lg {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.gallery-image-lg img {
+  height: 400px;
+  width: 600px;
   transform: scale(1.0);
   transition: transform 0.4s ease;
 }
 
 .img-box {
   box-sizing: content-box;
+  height: 190px;
+  width: 310px;
+  overflow: hidden;
+  display: inline-block;
+  color: white;
+  position: relative;
+  background-color: white;
+  text-align: left; /* 왼쪽 정렬 추가 */
+}
+.img-box-lg {
+  box-sizing: content-box;
   margin: 10px;
-  height: 250px;
-  width: 350px;
+  height: 400px;
+  width: 600px;
   overflow: hidden;
   display: inline-block;
   color: white;
@@ -45,7 +67,6 @@ body {
   text-align: left; /* 왼쪽 정렬 추가 */
   
 }
-
 
 .caption {
   position: absolute;
@@ -56,23 +77,36 @@ body {
 }
 
 .transparent-box {
-  height: 250px;
-  width: 350px;
+  height: 190px;
+  width: 310px;
   background-color:rgba(0, 0, 0, 0);
   position: absolute;
   top: 0;
   left: 0;
   transition: background-color 0.3s ease;
-  
-  
+}
+.transparent-box-lg {
+  height: 400px;
+  width: 600px;
+  background-color:rgba(0, 0, 0, 0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: background-color 0.3s ease;
 }
 
 
 .img-box:hover img { 
   transform: scale(1.1);
 }
+.img-box-lg:hover img { 
+  transform: scale(1.1);
+}
 
 .img-box:hover .transparent-box {
+  background-color:rgba(0, 0, 0, 0.5);
+}
+.img-box-lg:hover .transparent-box-lg {
   background-color:rgba(0, 0, 0, 0.5);
 }
 
@@ -80,8 +114,15 @@ body {
   transform: translateY(-20px);
   opacity: 1.0;
 }
+.img-box-lg:hover .caption {
+  transform: translateY(-20px);
+  opacity: 1.0;
+}
 
 .img-box:hover {
+  cursor: pointer;
+}
+.img-box-lg:hover {
   cursor: pointer;
 }
 
