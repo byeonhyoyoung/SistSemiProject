@@ -58,12 +58,12 @@ function delfunc(t_num) {
 <body>
    <div style="margin: 0 auto; width: 1000px;">
    
-      <h6 class="alert alert-dark" style="width: 200px; height: 50px"><b><%=list.size() %>개</b>의 글이 있습니다</h6>
-      <table class="table table-bordered">
-         <caption align="top"><b>글 목록</b></caption>
-         <button type="button" style="width: 100px; float: right; margin-bottom: -50px;"
-         onclick="location.href='index.jsp?main=tour/addform.jsp'" class="btn btn-success">글쓰기</button>
-         <tr class="table-dark">
+      <h6 class="alert alert-success" style="width: 200px; height: 50px; margin-top: 70px;"><b><%=list.size() %>개</b>의 글이 있습니다</h6>
+      <table class="table table-hover">
+         <caption align="top"><h5>글 목록</h5></caption>
+         <button type="button" style="width: 100px; float: right; margin-bottom: -80px;"
+         onclick="location.href='index.jsp?main=tour/addform.jsp'" class="btn btn-success btn-sm">글쓰기</button>
+         <tr class="table table-group-divider">
             <th width="80" style="text-align: center">번호</th>
             <th width="100" style="text-align: center">카테고리</th>
             <th width="180" style="text-align: center">이미지</th>
@@ -83,11 +83,11 @@ function delfunc(t_num) {
                   <td valign="middle"><%=dto.getT_subject() %></td>
                   <td valign="middle"><%=dto.getT_subject_j() %></td>
                   <td valign="middle">
-                     <i class="bi bi-pencil-square fs-3" style="color: green;"
+                     <i class="bi bi-pencil-square fs-4" style="color: green;"
                      onclick="location.href='index.jsp?main=tour/updateform.jsp?t_num=<%=dto.getT_num() %>'"></i>&nbsp;
-                     <%-- <i class="bi bi-trash fs-3" style="color: red;"
+                     <%-- <i class="bi bi-trash fs-2" style="color: red;"
                      onclick="location.href='tour/deleteaction.jsp?t_num=<%=dto.getT_num() %>'"></i> --%>
-                     <i class="bi bi-trash fs-3" style="color: red; cursor: pointer;" onclick="delfunc('<%=dto.getT_num() %>')"></i>
+                     <i class="bi bi-trash fs-4" style="color: red; cursor: pointer;" onclick="delfunc('<%=dto.getT_num() %>')"></i>
                      
                   </td>
                </tr>

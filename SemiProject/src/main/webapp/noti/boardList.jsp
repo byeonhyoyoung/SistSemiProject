@@ -278,7 +278,7 @@ SemiMemberDto sdto=sdao.getMemberById(myid);
 
 <body>
 <div class="image-and-text" style="margin: 40px auto 0;">
-	<img class="reviewimg" src="noti/image_noti/mega.png">
+	<img class="reviewimg" src="noti/image_noti/공지사항.png">
     <div>    
         <b class="board-text">공지사항</b><br>
         <span class="board-text" style="color: gray; font-size: 0.8em;">공지사항을 안내합니다.</span>
