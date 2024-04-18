@@ -52,7 +52,8 @@
    String myid=(String)session.getAttribute("myid");
    //아이디에 해당하는 멤버 시퀀스
    SemiMemberDao mdao=new SemiMemberDao();
-
+   String num=mdao.getNum(myid);
+   
    //해당상품에대한 데이타
    GiftDao sdao=new GiftDao();
    GiftDto dto=sdao.getGift(g_num);
@@ -65,7 +66,7 @@
 
          <!-- hidden: 장바구니 db에 넣어야 할것 -->
          <input type="hidden" name="g_num" value="<%=g_num%>">
-      
+      	 <input type="hidden" name="num" value="<%=num%>" >	
 
          <table class="table">
             <tr>
@@ -110,13 +111,13 @@
               type: "post",
               dataType: "html",
               data: cartdata,
-              url: "shop/detailprocess.jsp",
+              url: "gift/detailprocess.jsp",
               success: function(){
                   // Confirmation message
                   var a = confirm("장바구니에 저장하였습니다.\n장바구니로 이동하려면 [확인]을 눌려주세요.");
                   if(a){
                       // Redirect to mycart.jsp
-                      location.href = "index.jsp?main=shop/mycart.jsp";
+                      location.href = "index.jsp?main=gift/mycart.jsp";
                   }
               }
           });
