@@ -1,3 +1,4 @@
+
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="data.dto.NotiDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -40,12 +41,7 @@
 </style>
 <script type="text/javascript">
    
-   function funcdel(n_num, currentPage){
-	   var ans = confirm("삭제하려면 [확인]을 눌러주세요");
-	   if(ans){
-		   location.href='noti/delete.jsp?n_num='+n_num+"&currentPage="+currentPage;
-	   }
-   }
+   
     
 </script>
 </head>

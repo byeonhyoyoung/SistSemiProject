@@ -36,16 +36,16 @@ String name = dto.getName(); // 수정된 부분
 	<div class="container mt-5">
 		<div>
 			<div align="center">
-				<img src="<%=root %>/image/miniproject_img/pkmn_1.png" alt=""
+				<img src="member/member_image/gaipsuccess_1.PNG" alt=""
 					width="400px">
 
-				<h3><%=id %>(<%=name %>)님, <br>회원가입에 <br>성공했습니다.
-				</h3>
+				<h5><%=id %>(<%=name %>)님, 회원가입에 성공했습니다.
+				</h5>
 				<br>
 				<button type="button" class="btn btn-warning"
-					onclick="location.href='index.jsp?main=login/loginmain.jsp'">로그인</button>
-				<button type="button" class="btn btn-success"
-					onclick="location.href='index.jsp'">메인</button>
+					onclick="location.href='index.jsp?main=login/loginMain.jsp'" style="background: pink; border-color: pink;">로그인</button>
+				<button type="button" class="btn btn-success" 
+					onclick="location.href='index.jsp'" >메인</button>
 			</div>
 		</div>
 	</div>

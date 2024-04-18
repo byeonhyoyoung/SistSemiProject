@@ -24,7 +24,7 @@
 </head>
 <body>
 <form action="review/addaction.jsp" method="post">
-	<table style="width: 800px;margin: 0 auto;" class="table table-bordered">
+	<table style="width: 900px;margin: 0 auto;" class="table table-bordered">
 		<caption align="top"><b>후기게시판</b></caption>
 		<tr>
 			<th width="100" class="table-light" valign="middle">작성자</th>
@@ -51,11 +51,11 @@
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
-				<button type="button" class="btn btn-outline-info"
+				<button type="button" class="btn btn-secondary btn-sm"
 					style="width: 120px;"
-					onclick="submitContents(this)">DB저장</button>
+					onclick="submitContents(this)">저장</button>
 				
-				<button type="button" class="btn btn-outline-success"
+				<button type="button" class="btn btn-secondary btn-sm"
 					style="width: 120px;"
 					onclick="location.href='index.jsp?main=review/reviewlist.jsp'">목록</button>
 			</td>

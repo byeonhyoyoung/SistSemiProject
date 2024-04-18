@@ -40,8 +40,12 @@ i.flower {
 
 <div class="container mt-3">
 
+   <div style="position: relative;">
    <img src="intro/image_intro/intro_05_01.jpg" style="width: 100%">
-
+    <div style="position: absolute; bottom: 0; right: 0; padding: 10px; color: white; z-index: 100;">
+    뵤도인 사원
+    </div>
+</div>
    <div class="row">
 
       <div class="col-md-4" style="padding-top: 50px; padding-bottom: 50px;">

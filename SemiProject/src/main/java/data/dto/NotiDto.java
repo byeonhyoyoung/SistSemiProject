@@ -8,7 +8,7 @@ public class NotiDto {
    private String n_writer;
    private String n_subject;
    private String n_content;
-   private String n_image;
+   private String n_juje;
    private int n_readcount;
    private Timestamp n_writeday;
    
@@ -36,11 +36,11 @@ public class NotiDto {
    public void setN_content(String n_content) {
       this.n_content = n_content;
    }
-   public String getN_image() {
-      return n_image;
+   public String getN_juje() {
+      return n_juje;
    }
-   public void setN_image(String n_image) {
-      this.n_image = n_image;
+   public void setN_juje(String n_juje) {
+      this.n_juje = n_juje;
    }
    public int getN_readcount() {
       return n_readcount;
@@ -54,6 +54,5 @@ public class NotiDto {
    public void setN_writeday(Timestamp n_writeday) {
       this.n_writeday = n_writeday;
    }
-      
-   
+ 
 }
