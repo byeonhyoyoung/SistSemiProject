@@ -96,22 +96,10 @@ i.flower{
 <ul>
   <li class="current-menu-item"><a href="#">홈</a></li>
   
-  <li><a href="index.jsp?main=kyotomap/kyotoMap.jsp"><i class="bi bi-flower3 flower"></i>벚꽃테마</a>
-    <ul>
-      <li><a href="">Sub Menu 1</a></li>
-      <li><a href="#">Sub Menu 2</a></li>
-    </ul>
-  </li>
+  <li><a href="index.jsp?main=kyotomap/kyotoMap.jsp"><i class="bi bi-flower3 flower"></i>벚꽃테마</a></li>
   <li><a href="index.jsp?main=intro/intromain.jsp">교토 소개</a></li>
-  <li><a href="#">지역별 교토 탐색</a>
-    <ul>
-      <li class="dir"><a href="#">Sub Menu 1</a></li>
-      <li class="dir"><a href="#">Sub Menu 2</a></li>
-      <li><a href="#">Sub Menu 3</a></li>
-      <li><a href="#">Sub Menu 4</a></li>
-      <li><a href="#">Sub Menu 5</a></li>
-    </ul>
-  </li>
+  <li><a href="index.jsp?main=tour/tourmain.jsp">교토 관광</a></li>
+
   <li><a href="index.jsp?main=food/foodmain.jsp">먹거리</a>
   	<ul>
   	   <li><a href="#">음식점</a></li>
