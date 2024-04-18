@@ -16,7 +16,7 @@
 #primary_nav_wrap
 {
    margin-top: -100px;
-   text-align: center; /* 가운데 정렬을 위한 설정 */
+   text-align: center; /* 가운데 정렬을 위한 설정 */ 
    
 }
 
@@ -96,21 +96,40 @@ i.flower{
 <ul>
   <li class="current-menu-item"><a href="#">홈</a></li>
   
-  <li><a href="#"><i class="bi bi-flower3 flower"></i>벚꽃테마</a>
+  <li><a href="index.jsp?main=kyotomap/kyotoMap.jsp"><i class="bi bi-flower3 flower"></i>벚꽃테마</a>
     <ul>
-      <li><a href="#">Sub Menu 1</a></li>
+      <li><a href="">Sub Menu 1</a></li>
       <li><a href="#">Sub Menu 2</a></li>
     </ul>
   </li>
   <li><a href="index.jsp?main=intro/intromain.jsp">교토 소개</a></li>
-  <li><a href="index.jsp?main=tour/tourmain.jsp">교토 관광</a></li>
-  <li><a href="#">먹거리</a></li>
-  <li><a href="index.jsp?main=hotel/hotelmain.jsp">숙박시설</a></li>
+  <li><a href="#">지역별 교토 탐색</a>
+    <ul>
+      <li class="dir"><a href="#">Sub Menu 1</a></li>
+      <li class="dir"><a href="#">Sub Menu 2</a></li>
+      <li><a href="#">Sub Menu 3</a></li>
+      <li><a href="#">Sub Menu 4</a></li>
+      <li><a href="#">Sub Menu 5</a></li>
+    </ul>
+  </li>
+  <li><a href="index.jsp?main=food/foodmain.jsp">먹거리</a>
+  	<ul>
+  	   <li><a href="#">음식점</a></li>
+	   <li><a href="#">카페</a></li>
+  	</ul>
+  </li>
+  
+  <li><a href="index.jsp?main=hotel/hotelmain.jsp">숙박시설</a>
+  	<ul>
+	   <li><a href="#">호텔</a></li>
+	   <li><a href="#">료칸</a></li>
+  	</ul>
+  </li>
   <li><a href="#">커뮤니티</a>
      <ul>  
       <li><a href="index.jsp?main=noti/boardList.jsp">공지사항</a></li>
       <li><a href="index.jsp?main=review/reviewlist.jsp">후기<br>게시판</a></li>
-      <li><a href="#">Q&A</a></li>
+      <li><a href="index.jsp?main=question/questionList.jsp">Q&A</a></li>
     </ul>
   </li>
  <!--  <li><a href="#">Contact Us</a></li> -->
