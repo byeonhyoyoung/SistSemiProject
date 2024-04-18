@@ -122,7 +122,8 @@ $(document).ready(function() {
    String myid=(String)session.getAttribute("myid");
    //아이디에 해당하는 멤버 시퀀스
    SemiMemberDao mdao=new SemiMemberDao();
-
+   String num=mdao.getNum(myid);
+   
    //해당상품에대한 데이타
    GiftDao sdao=new GiftDao();
    GiftDto dto=sdao.getGift(g_num);
@@ -135,9 +136,9 @@ $(document).ready(function() {
 	<div style="margin: 0 auto; width: 1100px;">
 		<form id="frm">
 
-			<!-- hidden: 장바구니 db에 넣어야 할것 -->
-			<input type="hidden" name="g_num" value="<%=g_num%>">
-
+			  <!-- hidden: 장바구니 db에 넣어야 할것 -->
+         <input type="hidden" name="g_num" value="<%=g_num%>">
+      	 <input type="hidden" name="num" value="<%=num%>" >	
 
 
 			<main class="main">

@@ -13,13 +13,8 @@ import mysql.db.DbConnect;
 public class FoodDao {
    DbConnect db=new DbConnect();
 
-<<<<<<< HEAD
-	//insert
-	public void insertFood(FoodDto dto) {
-=======
    //insert
    public void insertFood(FoodDto dto) {
->>>>>>> refs/heads/main
 
       Connection conn  = db.getConnection();
       PreparedStatement pstmt =null;
@@ -136,73 +131,6 @@ public class FoodDao {
          db.dbClose(rs, pstmt, conn);
       }
 
-<<<<<<< HEAD
-		return dto;
-	}
-	
-	
-	
-	
-	//수정..
-	public void updateFood(FoodDto dto)
-	{
-		Connection conn=db.getConnection();
-		PreparedStatement pstmt=null;
-		
-		String sql="update food set f_subject_k=?, f_subject=?,f_image=?, f_content=?,f_location=?,f_link=?,f_time=?,f_holiday=?,f_menu=?,f_googlemap=? where f_num=?";
-		
-		try {
-			pstmt=conn.prepareStatement(sql);
-			
-			pstmt.setString(1, dto.getF_subject_k());
-			pstmt.setString(2, dto.getF_subject());
-			pstmt.setString(3, dto.getF_image());
-			pstmt.setString(4, dto.getF_content());
-			pstmt.setString(5, dto.getF_location());
-			pstmt.setString(6, dto.getF_link());
-			pstmt.setString(7, dto.getF_time());
-			pstmt.setString(8, dto.getF_holiday());
-			pstmt.setString(9, dto.getF_menu());
-			pstmt.setString(10, dto.getF_googlemap());
-			
-			pstmt.setString(11, dto.getF_num());
-			
-			pstmt.execute();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			db.dbClose(pstmt, conn);
-		}
-		
-	}
-	
-	//삭제
-	public void deleteFood(String f_num)
-	{
-		Connection conn=db.getConnection();
-		PreparedStatement pstmt=null;
-		
-		String sql="delete from food where f_num=?";
-		
-		try {
-			pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, f_num);
-			pstmt.execute();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			db.dbClose(pstmt, conn);
-		}
-		
-	}
-	
-	
-	
-	
-}
-=======
       return dto;
    }
    
@@ -268,4 +196,3 @@ public class FoodDao {
    
    
 }
->>>>>>> refs/heads/main
