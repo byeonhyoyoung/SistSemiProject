@@ -110,13 +110,13 @@
               type: "post",
               dataType: "html",
               data: cartdata,
-              url: "shop/detailprocess.jsp",
+              url: "gift/detailprocess.jsp",
               success: function(){
                   // Confirmation message
                   var a = confirm("장바구니에 저장하였습니다.\n장바구니로 이동하려면 [확인]을 눌려주세요.");
                   if(a){
                       // Redirect to mycart.jsp
-                      location.href = "index.jsp?main=shop/mycart.jsp";
+                      location.href = "index.jsp?main=gift/mycart.jsp";
                   }
               }
           });

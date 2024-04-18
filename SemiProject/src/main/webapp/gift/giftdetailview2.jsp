@@ -11,9 +11,7 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
 	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&family=Noto+Serif+KR&display=swap"
-	rel="stylesheet">
+
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Titillium+Web"
 	rel="stylesheet">
@@ -62,10 +60,25 @@ img.large:hover {
 }
 
 .mainBackground {
-    background-image: url('images/new-background.jpg');
-    /* Additional background properties */
+	background-image: url('gift/image_gift/gift_background_01.jpg');
+	/* Additional background properties */
 }
 
+.sliderBlock_positionControls {
+	justify-content: center; /* Center align items horizontally */
+}
+
+.sliderBlock_items {
+	margin-top: 150px;
+}
+
+.sliderBlock_controls {
+	margin-top: 0 auto;
+}
+
+.sliderBlock_controls__navigatin{
+margin-top: 0 auto;
+}
 
 </style>
 
@@ -120,118 +133,125 @@ $(document).ready(function() {
 <body>
 	<!-- partial:index.partial.html -->
 	<div style="margin: 0 auto; width: 1100px;">
-      <form id="frm" >
-      
-       <!-- hidden: 장바구니 db에 넣어야 할것 -->
-         <input type="hidden" name="g_num" value="<%=g_num%>">
-         
+		<form id="frm">
 
-	 
-	<main class="main">
-		<div class="mainWrapper">
-			<div class="mainBackground clearfix">
-				<div class="row">
-					<div class="column small-centered">
-						<div class="productCard_block">
-							<div class="row">
-								<div class="small-12 large-6 columns">
-									<div class="productCard_leftSide clearfix">
+			<!-- hidden: 장바구니 db에 넣어야 할것 -->
+			<input type="hidden" name="g_num" value="<%=g_num%>">
 
 
-										<div class="sliderBlock">
-											<ul class="sliderBlock_items">
-												<li
-													class="sliderBlock_items__itemPhoto sliderBlock_items__showing">
-													<img src="gift/image_gift/<%=dto.getG_image_1()%>">
-												</li>
-												<li class="sliderBlock_items__itemPhoto"><img
-													src="gift/image_gift/<%=dto.getG_image_2()%>"></li>
 
-											</ul>
+			<main class="main">
+				<div class="mainWrapper">
+					<div class="mainBackground clearfix">
+						<div class="row">
+							<div class="column small-centered">
+								<div class="productCard_block">
+									<div class="row">
+										<div class="small-12 large-6 columns">
+											<div class="productCard_leftSide clearfix">
 
 
-											<div class="sliderBlock_controls">
-												<div class="sliderBlock_controls__navigatin">
-													<div class="sliderBlock_controls__wrapper">
-														<div
-															class="sliderBlock_controls__arrow sliderBlock_controls__arrowBackward">
-															<i class="fa fa-angle-left" aria-hidden="true"></i>
+												<div class="sliderBlock">
+													<ul class="sliderBlock_items">
+														<li
+															class="sliderBlock_items__itemPhoto sliderBlock_items__showing">
+															<img src="gift/image_gift/<%=dto.getG_image_1()%>">
+														</li>
+														<li class="sliderBlock_items__itemPhoto"><img
+															src="gift/image_gift/<%=dto.getG_image_2()%>"></li>
+
+													</ul>
+
+
+													<div class="sliderBlock_controls">
+														<div class="sliderBlock_controls__navigatin">
+															<div class="sliderBlock_controls__wrapper">
+																<div
+																	class="sliderBlock_controls__arrow sliderBlock_controls__arrowBackward">
+																	<i class="fa fa-angle-left" aria-hidden="true"></i>
+																</div>
+
+
+																<div
+																	class="sliderBlock_controls__arrow sliderBlock_controls__arrowForward">
+																	<i class="fa fa-angle-right" aria-hidden="true"></i>
+																</div>
+															</div>
 														</div>
-														<div
-															class="sliderBlock_controls__arrow sliderBlock_controls__arrowForward">
-															<i class="fa fa-angle-right" aria-hidden="true"></i>
-														</div>
+
+														<ul class="sliderBlock_positionControls">
+															<li class="sliderBlock_positionControls__paginatorItem sliderBlock_positionControls__active"></li>
+															<li class="sliderBlock_positionControls__paginatorItem"></li>
+															<li class="sliderBlock_positionControls__paginatorItem"></li>
+															<li class="sliderBlock_positionControls__paginatorItem"></li>
+															<li class="sliderBlock_positionControls__paginatorItem"></li>
+
+														</ul>
 													</div>
+
 												</div>
-
-												<ul class="sliderBlock_positionControls">
-													<li
-														class="sliderBlock_positionControls__paginatorItem sliderBlock_positionControls__active"></li>
-													<li class="sliderBlock_positionControls__paginatorItem"></li>
-
-												</ul>
 											</div>
 										</div>
-									</div>
-								</div>
-								<div class="small-12 large-6 columns">
-									<div class="productCard_rightSide">
+										<div class="small-12 large-6 columns">
+											<div class="productCard_rightSide">
 
 
-										<p class="block_model">
-											<span class="block_model__text">Model: </span> <span
-												class="block_model__number"><%=dto.getG_num() %></span>
-										</p>
+												<p class="block_model">
+													<span class="block_model__text">No: </span> <span
+														class="block_model__number"><%=dto.getG_num() %></span>
+												</p>
 
-										<div class="block_product">
-											<h2 class="block_name block_name__mainName"><%=dto.getG_name() %></h2>
-											<!-- <h2 class="block_name block_name__addName"><%=dto.getG_name() %></h2>-->
+												<div class="block_product">
+													<h2 class="block_name block_name__mainName"><%=dto.getG_name() %></h2>
+													<!-- <h2 class="block_name block_name__addName"><%=dto.getG_name() %></h2>-->
 
-											<p class="block_product__advantagesProduct">
-												<%=dto.getG_subject() %>
-											</p>
+													<p class="block_product__advantagesProduct">
+														<%=dto.getG_subject() %>
+													</p>
 
-											<div class="block_informationAboutDevice">
+													<div class="block_informationAboutDevice">
 
 
 
-												<div class="block_descriptionInformation">
-													<span> <%=dto.getG_content() %>
-													</span>
-												</div>
-
-												<br>
-												<br>
-												<br>
-
-												<div class="row ">
-													<div class="large-6 small-12 column left-align">
-														<div class="block_price">
-															<p class="block_price__currency"><%=nf.format(Integer.parseInt(dto.getG_price())*1.15) %></p>
-															<p class="block_price__shipping">Shipping and taxes
-																extra</p>
+														<div class="block_descriptionInformation">
+															<span> <%=dto.getG_content() %>
+															</span>
 														</div>
-														<div class="block_quantity clearfix">
-                                                        <span class="text_specification">Quantity</span>
-                                                        <div class="block_quantity__chooseBlock">
-                                                            <input class="block_quantity__number" name="cnt"
-                                                                   type="text" min="1" value="1">
-                                                            <button class="block_quantity__button block_quantity__up"></button>
-                                                            <button class="block_quantity__button block_quantity__down"></button>
-                                                        </div>
-                                                    </div>
+
+														<br> <br> <br>
+
+														<div class="row ">
+															<div class="large-6 small-12 column left-align">
+																<div class="block_price">
+																	<p class="block_price__currency"><%=nf.format(Integer.parseInt(dto.getG_price())*1.15) %></p>
+																	<p class="block_price__shipping">Shipping and taxes
+																		extra</p>
+																</div>
+																<div class="block_quantity clearfix">
+																	<span class="text_specification">Quantity</span>
+																	<div class="block_quantity__chooseBlock">
+																		<input class="block_quantity__number" name="cnt"
+																			type="text" min="1" value="1">
+																		<button id="btn_left"
+																			class="block_quantity__button block_quantity__up"></button>
+																		<button id="btn_right"
+																			class="block_quantity__button block_quantity__down"></button>
+																	</div>
+																</div>
+															</div>
+															<div class="large-6 small-12 column end">
+																<button type="button" class="button button_addToCard"
+																	onclick="location.href='index.jsp?main=gift/giftmain.jsp'">상품목록</button>
+
+
+																<br>
+																<button type="button" class="button button_addToCard"
+																	id="btncart">장바구니</button>
+
+															</div>
+
+														</div>
 													</div>
-													<div class="large-6 small-12 column end">
-
-
-														<button type="button" class="button button_addToCard"
-															id="btncart">장바구니</button>
-														<br>
-														<button type="button" class="button button_addToCard"
-															onclick="location.href='index.jsp?main=gift/giftmain.jsp'">상품목록</button>
-
-													</div>
-
 												</div>
 											</div>
 										</div>
@@ -241,16 +261,14 @@ $(document).ready(function() {
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
 
-	</main>
-	 </form>
-</div>
+			</main>
+		</form>
+	</div>
 	<!-- partial -->
 	<script src="gift_detail_design/dist/script.js"></script>
-	
-	      <script type="text/javascript">
+
+	<script type="text/javascript">
       $("#btncart").click(function(){
           var login = "<%=loginok%>";
           
