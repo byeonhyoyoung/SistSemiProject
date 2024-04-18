@@ -83,7 +83,7 @@
    <form action="member/updateaction.jsp" method="post" onsubmit="return check(this)">
    <input type="hidden" name="num" value="<%=num %>">
       <table class="table table-bordered" >
-         <caption align="top"><b>마이정보수정</b></caption>
+         <caption align="top"><b>내정보수정</b></caption>
          <tr>
            <th width="100" class="table-success" style="background: #eeeeee; border: grey;" >아이디</th>
            <td>

@@ -61,7 +61,7 @@
        dao.insertFood(dto);
        
        //다시 상품품으로 이동
-       response.sendRedirect("../index.jsp?main=food/foodaddform.jsp");
+       response.sendRedirect("../index.jsp?main=food/foodmainlist.jsp");
     
     }catch(Exception e){
        

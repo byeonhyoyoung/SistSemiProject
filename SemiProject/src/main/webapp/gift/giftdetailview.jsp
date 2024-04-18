@@ -60,7 +60,7 @@
    NumberFormat nf=NumberFormat.getCurrencyInstance();
 %>
 <body>
-   <div style="margin: 0 auto; width: 1100px;">
+   <div style="margin: 0px auto; width: 1000px;">
       <form id="frm" >
 
          <!-- hidden: 장바구니 db에 넣어야 할것 -->
@@ -73,17 +73,17 @@
                   <img alt="" src="gift/image_gift/<%=dto.getG_image_1()%>" class="large img-thumbnail">
                   <img alt="" src="gift/image_gift/<%=dto.getG_image_2()%>" class="large img-thumbnail">
                </td>
-               <td style="width: 600px; padding-top: 50px;" class="product-info">
+               <td style="width: 500px; padding-top: 50px;" class="product-info">
                   <h4>상품명: <%=dto.getG_name() %></h4>
                   <h6>"<%=dto.getG_subject() %>"</h6>
                   <h4 class="price">가격: <%=nf.format(Integer.parseInt(dto.getG_price())*1.15) %></h4>
-                  <p>설명: <%=dto.getG_content()%></p>
+                  <p><%=dto.getG_content()%></p>
                   <!-- 갯수 -->
                   <h4>갯수: <input type="number" min="1" max="10" value="1" step="1" name="cnt"></h4>
 
                   <div class="btn-group">
-                     <button type="button" class="btn btn-info" id="btncart">장바구니</button>
-                     <button type="button" class="btn btn-success" onclick="location.href='index.jsp?main=gift/giftmain.jsp'">상품목록</button>
+                     <button type="button" class="btn btn-info" style="background: pink; border: pink; color: white;" id="btncart">장바구니</button>
+                     <button type="button" class="btn btn-success" style="background: gray; border: gray; color: white;" onclick="location.href='index.jsp?main=gift/giftmain.jsp'">상품목록</button>
                   </div>
                </td>
             </tr>

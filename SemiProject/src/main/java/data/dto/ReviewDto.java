@@ -14,7 +14,6 @@ public class ReviewDto {
 	private Timestamp r_writeday;
 	private int answercount;
 	
-	
 	public int getAnswercount() {
 		return answercount;
 	}

@@ -135,7 +135,7 @@
 </footer>
 
 <script type="text/javascript">
-//만약 스크롤의 값이 500px이 넘어가면 header .badges가 자연스럽게 사라지고 #to-top이 나타나고 아니라면 header .badges가 나타나고 #to-top이 사라진다.
+//만약 스크롤의 값이 200px이 넘어가면 header .badges가 자연스럽게 사라지고 #to-top이 나타나고 아니라면 header .badges가 나타나고 #to-top이 사라진다.
   const toTopEl = document.querySelector('#to-top');
 
   // 스크롤 이벤트 리스너 등록

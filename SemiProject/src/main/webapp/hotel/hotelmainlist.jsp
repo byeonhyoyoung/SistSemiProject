@@ -3,7 +3,6 @@
 <%@page import="data.dao.HotelDao"%>
 <%@page import="java.text.NumberFormat"%>
 <%@page import="java.util.List"%>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -21,7 +20,7 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Raleway:600,900"
     rel="stylesheet">
-
+<link rel="stylesheet" href="food_menu_design_2/dist/style.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <title>Insert title here</title>
@@ -104,9 +103,6 @@ $(function(){
 });
 
 function delfunc(h_num) {
-	
-	
-	console.log("Function called with h_num: ", h_num);
     Swal.fire({
         title: "정말로 삭제하시겠습니까?",
         icon: "warning",

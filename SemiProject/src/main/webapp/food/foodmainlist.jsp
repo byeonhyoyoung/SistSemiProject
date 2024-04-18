@@ -129,8 +129,6 @@ function delfunc(f_num) {
   <% } %>
   
   <a href="index.jsp?main=food/foodmain.jsp"><i class="bi bi-grid-fill fs-2 lili" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="앨범형 보기"></i></a>
-  
-  
   <table class="table table-striped">
     <thead>
       <tr>

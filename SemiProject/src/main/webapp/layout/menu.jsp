@@ -16,7 +16,7 @@
 #primary_nav_wrap
 {
    margin-top: -100px;
-   text-align: center; /* 가운데 정렬을 위한 설정 */
+   text-align: center; /* 가운데 정렬을 위한 설정 */ 
    
 }
 
@@ -96,9 +96,9 @@ i.flower{
 <ul>
   <li class="current-menu-item"><a href="#">홈</a></li>
   
-  <li><a href="#"><i class="bi bi-flower3 flower"></i>벚꽃테마</a>
+  <li><a href="index.jsp?main=kyotomap/kyotoMap.jsp"><i class="bi bi-flower3 flower"></i>벚꽃테마</a>
     <ul>
-      <li><a href="#">Sub Menu 1</a></li>
+      <li><a href="">Sub Menu 1</a></li>
       <li><a href="#">Sub Menu 2</a></li>
     </ul>
   </li>

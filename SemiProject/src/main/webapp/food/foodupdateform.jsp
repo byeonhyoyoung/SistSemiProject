@@ -51,7 +51,7 @@ $(document).ready(function(){
     <form id="foodForm2" action="food/foodupdateaction.jsp" method="post" enctype="multipart/form-data">
        <table class="table table-bordered">
           <caption align="top"><b>식당등록</b></caption>
-          <input type="hidden" name="f_num" value="<%=f_num %>" >
+          <input type="hidden" name="f_num" value=<%=f_num %>">
           <tr>
              <td style="width: 150px;" class="table-light"><b>이름</b></td>
              <td>

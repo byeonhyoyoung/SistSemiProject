@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<!-- 관리자가 식당 데이터를 지우는 내용 -->
+
 <%
   String f_num=request.getParameter("f_num");
   FoodDao dao=new FoodDao();

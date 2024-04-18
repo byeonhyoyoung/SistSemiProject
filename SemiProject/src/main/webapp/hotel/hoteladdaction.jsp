@@ -20,12 +20,10 @@
     System.out.println(uploadPath);
     
     //업로드할사이즈
-    int uploadSize=1024*1024*5;//5mb
-    
-   
+    int uploadSize=1024*1024*5;
     
     try{
-    	MultipartRequest multi=new MultipartRequest(request,uploadPath,uploadSize,"utf-8",new DefaultFileRenamePolicy());
+      MultipartRequest multi=new MultipartRequest(request,uploadPath,uploadSize,"utf-8",new DefaultFileRenamePolicy());
        
        String h_subject=multi.getParameter("h_subject");
        String h_content=multi.getParameter("h_content");
@@ -34,7 +32,6 @@
        String h_link=multi.getParameter("h_link");
        String h_category=multi.getParameter("h_category");
        String h_googlemap=multi.getParameter("h_googlemap");
-       
        
        String h_image=multi.getFilesystemName("h_image");
        

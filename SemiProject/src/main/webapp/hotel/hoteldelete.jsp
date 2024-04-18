@@ -1,4 +1,5 @@
 <%@page import="data.dao.HotelDao"%>
+<%@page import="data.dao.FoodDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,7 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<!-- 관리자가 식당 데이터를 지우는 내용 -->
+
 <%
   String h_num=request.getParameter("h_num");
   HotelDao dao=new HotelDao();

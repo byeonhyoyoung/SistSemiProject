@@ -28,15 +28,12 @@
 <style type="text/css">
 
 .section-products #product-1 .part-1::before {
-    transition: all 0.3s;
-}
+    
 
-.section-products .single-product:hover .part-1::before {
-    transform: scale(1.2, 1.2) rotate(5deg);
+      transition: all 0.3s;
 }
 
 </style>
-
 
 <body>
 <!-- partial:index.partial.html -->
@@ -57,12 +54,13 @@
                   <!-- Single Product -->
                   <div class="col-md-6 col-lg-4 col-xl-3">
                         <div id="product-1" class="single-product">
-                               <div class="part-1" style="background-image: url('gift/image_gift/<%=dto.getG_image_1()%>'); background-size: cover; background-position: center; width: 100%; height: 250px;">
+                              <div class="part-1" style="background-image: url('gift/image_gift/<%=dto.getG_image_1()%>'); background-size: cover; background-position: center; width: 100%; height: 250px;">
+
                               <span class="discount">15% off</span>
                                     <ul>
-                                          <li><a  href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                                          <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
                                           <li><a href="#"><i class="fas fa-heart"></i></a></li>
-                                          <li><a href="index.jsp?main=gift/giftdetailview.jsp?g_num=<%=dto.getG_num() %>"  g_num="<%=dto.getG_num() %>"><i class="fas fa-expand"></i></a></li>
+                                          <li><a href="index.jsp?main=gift/giftdetailview.jsp?g_num=<%=dto.getG_num()%>"><i class="fas fa-expand"></i></a></li>
                                           <li><a href="#"><i class="fas fa-plus"></i></a></li>
                                     </ul>
                               </div>
