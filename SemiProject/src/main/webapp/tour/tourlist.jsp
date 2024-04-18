@@ -59,7 +59,7 @@ function delfunc(t_num) {
    <div style="margin: 0 auto; width: 1000px;">
    
       <h6 class="alert alert-success" style="width: 200px; height: 50px; margin-top: 70px;"><b><%=list.size() %>개</b>의 글이 있습니다</h6>
-      <table class="table table-hover">
+      <table class="table table-striped">
          <caption align="top"><h5>글 목록</h5></caption>
          <button type="button" style="width: 100px; float: right; margin-bottom: -80px;"
          onclick="location.href='index.jsp?main=tour/addform.jsp'" class="btn btn-success btn-sm">글쓰기</button>

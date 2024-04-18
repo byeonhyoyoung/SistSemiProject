@@ -13,8 +13,8 @@
 <body>
 <div style="margin: 0 auto; width: 600px;">
    <form action="tour/addaction.jsp" method="post" enctype="multipart/form-data">
-      <table class="table table-bordered">
-         <caption align="top"><h3>상품등록</h3></caption>      
+      <table class="table table-group-divider">
+         <caption align="top" style="margin-top: 20px;"><h5>상품등록</h5></caption>      
          <tr>
             <td align="center" valign="middle"><b>카테고리</b></td>
             <td>
@@ -97,7 +97,7 @@
          </tr>
          
          <tr>
-            <td colspan="2" align="center">
+            <td colspan="2" align="center" class="table table-group-divider">
             <button type="submit" class="btn btn-info"
             style="width: 100px;">등록</button>
             </td>
