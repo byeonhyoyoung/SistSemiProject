@@ -54,5 +54,8 @@
 <div class="layout main">
 	<jsp:include page="<%=mainPge %>"/>
 </div>
+<div class="laout intro">
+	<jsp:include page="layout/intro.jsp"/>
+</div>
 </body>
 </html>

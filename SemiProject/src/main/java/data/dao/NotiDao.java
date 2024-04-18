@@ -211,14 +211,15 @@ public class NotiDao {
       Connection conn=db.getConnection();
       PreparedStatement pstmt=null;
       
-      String sql="update noti set n_subject=?,n_content=? where n_num=?";
+      String sql="update noti set n_subject=?,n_content=?,n_juje=? where n_num=?";
       
       try {
          pstmt=conn.prepareStatement(sql);
          
          pstmt.setString(1, dto.getN_subject());
          pstmt.setString(2, dto.getN_content());
-         pstmt.setString(3, dto.getN_num());
+         pstmt.setString(3, dto.getN_juje());
+         pstmt.setString(4, dto.getN_num());
          
          pstmt.execute();
          
