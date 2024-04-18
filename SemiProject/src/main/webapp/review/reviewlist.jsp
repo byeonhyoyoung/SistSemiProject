@@ -114,7 +114,7 @@
 				console.log(n);
 				
 				//삭제파일로 전송
-				location.href="smartboard/alldelete.jsp?nums="+n;
+				location.href="review/alldelete.jsp?nums="+n;
 			}
 		})
 	})
@@ -253,7 +253,7 @@
 						<%-- <%
 							if(dto.getAnswercount()>0){
 							%> --%>
-								<a href="index.jsp?main=smartboard/contentview.jsp?r_num=<%=dto.getR_num()%>&currentPage=<%=currentPage %>"
+								<a href="index.jsp?main=review/reviewlist.jsp?r_num=<%=dto.getR_num()%>&currentPage=<%=currentPage %>"
 								style="color: red"><%-- [<%=dto.getAnswercount() %>] --%></a></span>
 							<%-- <%}
 						%> --%>

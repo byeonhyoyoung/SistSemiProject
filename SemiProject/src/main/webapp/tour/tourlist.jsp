@@ -95,5 +95,6 @@ function delfunc(t_num) {
          %>
       </table>
    </div>
+
 </body>
 </html>

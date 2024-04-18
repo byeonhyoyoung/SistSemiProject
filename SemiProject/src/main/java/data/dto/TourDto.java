@@ -4,21 +4,45 @@ import java.sql.Timestamp;
 
 public class TourDto {
 
-   private String t_num;
-   private String t_category;
-   private String t_subject;
-   private String t_subject_j;
-   private String t_content;
-   private String t_image;
-   private String t_location;
-   private String t_link;
-   private String t_time;
-   private String t_tel;
-   private String t_price;
-   private String t_googlemap;
-   private Timestamp t_writeday;
-   
-   
+	private String t_num;
+	private String t_category;
+	private String t_subject;
+	private String t_subject_j;
+	private String t_content;
+	private String t_image;
+	private String t_location;
+	private String t_link;
+	private String t_time;
+	private String t_tel;
+	private String t_price;
+	private String t_googlemap;
+	private Timestamp t_writeday;
+	
+	
+	public String getT_subject_j() {
+		return t_subject_j;
+	}
+	public void setT_subject_j(String t_subject_j) {
+		this.t_subject_j = t_subject_j;
+	}
+	public String getT_time() {
+		return t_time;
+	}
+	public void setT_time(String t_time) {
+		this.t_time = t_time;
+	}
+	public String getT_tel() {
+		return t_tel;
+	}
+	public void setT_tel(String t_tel) {
+		this.t_tel = t_tel;
+	}
+	public String getT_price() {
+		return t_price;
+	}
+	public void setT_price(String t_price) {
+		this.t_price = t_price;
+	}
 	public String getT_num() {
 		return t_num;
 	}
@@ -36,12 +60,6 @@ public class TourDto {
 	}
 	public void setT_subject(String t_subject) {
 		this.t_subject = t_subject;
-	}
-	public String getT_subject_j() {
-		return t_subject_j;
-	}
-	public void setT_subject_j(String t_subject_j) {
-		this.t_subject_j = t_subject_j;
 	}
 	public String getT_content() {
 		return t_content;
@@ -67,24 +85,6 @@ public class TourDto {
 	public void setT_link(String t_link) {
 		this.t_link = t_link;
 	}
-	public String getT_time() {
-		return t_time;
-	}
-	public void setT_time(String t_time) {
-		this.t_time = t_time;
-	}
-	public String getT_tel() {
-		return t_tel;
-	}
-	public void setT_tel(String t_tel) {
-		this.t_tel = t_tel;
-	}
-	public String getT_price() {
-		return t_price;
-	}
-	public void setT_price(String t_price) {
-		this.t_price = t_price;
-	}
 	public String getT_googlemap() {
 		return t_googlemap;
 	}
@@ -97,7 +97,4 @@ public class TourDto {
 	public void setT_writeday(Timestamp t_writeday) {
 		this.t_writeday = t_writeday;
 	}
-   
-   
-   
 }

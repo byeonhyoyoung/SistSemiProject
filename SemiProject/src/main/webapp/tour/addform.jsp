@@ -98,6 +98,7 @@
          
          <tr>
             <td colspan="2" align="center" class="table table-group-divider">
+
             <button type="submit" class="btn btn-info"
             style="width: 100px;">등록</button>
             </td>

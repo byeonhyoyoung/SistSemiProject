@@ -1,5 +1,4 @@
 <%@page import="data.dao.QuestionDao"%>
-<%@page import="data.dao.QuestionAnswerDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
