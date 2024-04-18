@@ -60,7 +60,48 @@ img.large:hover {
 .btn-group {
 	margin-top: 20px;
 }
+
+.mainBackground {
+    background-image: url('images/new-background.jpg');
+    /* Additional background properties */
+}
+
+
 </style>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+    // Select the input field for quantity
+    var quantityInput = $('input[name="cnt"]');
+
+    // Select the up and down buttons
+    var upButton = $('.block_quantity__button.block_quantity__up');
+    var downButton = $('.block_quantity__button.block_quantity__down');
+
+    // Add click event listener for the up button
+    upButton.click(function() {
+        // Increment the quantity value
+        var currentValue = parseInt(quantityInput.val());
+        quantityInput.val(currentValue + 1);
+    });
+
+    // Add click event listener for the down button
+    downButton.click(function() {
+        // Decrement the quantity value if it's greater than 1
+        var currentValue = parseInt(quantityInput.val());
+        if (currentValue > 1) {
+            quantityInput.val(currentValue - 1);
+        }
+    });
+});
+
+
+
+</script>
+
+
+
 </head>
 <%
    String g_num=request.getParameter("g_num");
@@ -78,6 +119,14 @@ img.large:hover {
 <body>
 <body>
 	<!-- partial:index.partial.html -->
+	<div style="margin: 0 auto; width: 1100px;">
+      <form id="frm" >
+      
+       <!-- hidden: 장바구니 db에 넣어야 할것 -->
+         <input type="hidden" name="g_num" value="<%=g_num%>">
+         
+
+	 
 	<main class="main">
 		<div class="mainWrapper">
 			<div class="mainBackground clearfix">
@@ -163,21 +212,22 @@ img.large:hover {
 																extra</p>
 														</div>
 														<div class="block_quantity clearfix">
-															<span class="text_specification">Quantity</span>
-															<div class="block_quantity__chooseBlock">
-                                                            <input class="block_quantity__number" name="quantityNumber"
+                                                        <span class="text_specification">Quantity</span>
+                                                        <div class="block_quantity__chooseBlock">
+                                                            <input class="block_quantity__number" name="cnt"
                                                                    type="text" min="1" value="1">
                                                             <button class="block_quantity__button block_quantity__up"></button>
                                                             <button class="block_quantity__button block_quantity__down"></button>
                                                         </div>
-														</div>
+                                                    </div>
 													</div>
 													<div class="large-6 small-12 column end">
 
 
 														<button type="button" class="button button_addToCard"
 															id="btncart">장바구니</button>
-														<button type="button" class="btn btn-success"
+														<br>
+														<button type="button" class="button button_addToCard"
 															onclick="location.href='index.jsp?main=gift/giftmain.jsp'">상품목록</button>
 
 													</div>
@@ -195,13 +245,44 @@ img.large:hover {
 		</div>
 
 	</main>
-
-	<div class="aboutMe">
-		<a href="https://codepen.io/BlackStar1991/pens/public/" target="_new">
-			<i class='fa fa-codepen'></i> my other Pens
-		</a>
-	</div>
+	 </form>
+</div>
 	<!-- partial -->
 	<script src="gift_detail_design/dist/script.js"></script>
+	
+	      <script type="text/javascript">
+      $("#btncart").click(function(){
+          var login = "<%=loginok%>";
+          
+          if(login == "null"){
+              alert("먼저 로그인을 해주세요");
+              return;
+          }
+          
+          // Form data serialization
+          var cartdata = $("#frm").serialize();
+          
+          // Log serialized data to console for debugging
+          console.log(cartdata);
+          
+          // AJAX request to insert data
+          $.ajax({
+              type: "post",
+              dataType: "html",
+              data: cartdata,
+              url: "gift/detailprocess.jsp",
+              success: function(){
+                  // Confirmation message
+                  var a = confirm("장바구니에 저장하였습니다.\n장바구니로 이동하려면 [확인]을 눌려주세요.");
+                  if(a){
+                      // Redirect to mycart.jsp
+                      location.href = "index.jsp?main=gift/mycart.jsp";
+                  }
+              }
+          });
+      });
+
+      </script>
 
 </body>
+</html>
