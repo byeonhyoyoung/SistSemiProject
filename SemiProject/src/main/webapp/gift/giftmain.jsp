@@ -14,17 +14,11 @@
 <link rel="stylesheet" href="gift_menu_design/dist/style.css">
 
 </head>
-
-
-
-
-
 <%
    GiftDao dao=new GiftDao();
    List<GiftDto> list=dao.getAllGifts();
    NumberFormat nf=NumberFormat.getCurrencyInstance();
 %>
-
 <style type="text/css">
 
 .section-products #product-1 .part-1::before {

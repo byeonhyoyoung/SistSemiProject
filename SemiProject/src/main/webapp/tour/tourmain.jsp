@@ -19,7 +19,7 @@
 <title>Insert title here</title>
 <style type="text/css">
    .tour{
-      padding: 10px;
+      padding: 10px; 
       height: 150px;
    }
    
@@ -32,6 +32,73 @@
       text-decoration: underline;
       color: gray;
    }
+   
+   /* 검색기능 css */
+   .searching {
+      width: 250px; 
+      height: 45px; 
+      border:1px solid rgb(25,206,96);  
+      position:relative;
+      border-radius: 30px;
+      display: inline-block;
+    }
+    
+    #keyword {
+       height: 35px; 
+       width: calc(100% - 50px); 
+       position: absolute;
+       top: 5px; 
+       left: 10px; 
+       border: none;
+       font-size: 17px;
+       padding-right: 40px;
+   }  
+   
+   #keyword:focus {
+      outline: none;
+   }
+    
+    /* input[name="query"]{height: 35px; width: 420px; position: absolute;
+      top: 5px; left: 10px; border: none; font-size: 17px;}
+    input[name="query"]:focus{outline: none;} */
+       
+    .search {
+     width: 45px;
+     height: 46px; 
+     background: none;
+     position: absolute; 
+     right: 0; 
+     top: 0; 
+     border: none; 
+     font-size: 1.5em; /* 검색 아이콘 사이즈 */
+     font-weight: bold; 
+     color: black; /* 아이콘 색상 */
+   }
+   
+   /* 검색 아이콘 위치 조정 */
+   .searchicon {
+     position: absolute; 
+     right: 20px; 
+     top: 50%; 
+     transform: translateY(-50%);
+   }
+   
+   select {
+     box-sizing: border-box;
+     width: 83px;
+     height: 46px;
+     padding: 4px;
+     font-size: 1em;
+     border-radius: 30px;
+     border-color: rgb(25,206,96);
+   }
+   
+   .option {
+     padding: 4px;
+     font-size: 14px;
+     color: black;
+     background: white;
+   }
 </style>
 <script type="text/javascript">
   $(function(){
@@ -42,6 +109,55 @@
         //디테일 페이지로 이동
         location.href = "index.jsp?main=tour/tourdetailview.jsp?t_num=" + t_num + "&t_category=" + t_category;
      });
+    
+    //검색기능
+    $("button.search").click(function(){
+    	
+    	var keyword=$("#keyword").val();
+    	var category=$("#category").val();
+    	//alert(keyword+","+category);
+    	$.ajax({
+    		type:"get",
+    		url:"tour/search.jsp",
+    		data:{"keyword":keyword, "category":category},
+    		dataType:"json",
+    		success:function(res){
+    			//console.log(res); // 콘솔에서 응답 확인
+    			var s="<table style='width: 500px;margin: 20px;'><tr>";
+    			$.each(res, function(i, ele){
+    				// 새로운 행을 시작 (짝수 인덱스에서)
+                	if (i % 2 === 0 && i !== 0) { // 첫 번째 행에서 <tr> 태그를 삽입하지 않도록 변경
+                        s += "<tr>";
+                    }
+    				s+="<td><a t_num='"+ele.t_num+"' t_category='"+ele.t_category+"' style='cursor: pointer; color: white;' class='goDetail' style='margin-left: 50px; margin-right: -10px;'>";
+    				s+="<div class='gallery-image-lg'>";
+    				s+="<div class='img-box-lg'>";
+    				s+="<img src='tour/image_tour/"+ele.t_image+"' class='photo'>";
+    				s+="<div class='transparent-box-lg'>";	
+    				s+="<div class='caption'>";
+    				s+="<p>"+ele.t_subject+"</p>";
+    				s+="<p class='opacity-low'>"+ele.t_subject_j+"</p>";
+                    s+="</div></div></div></div></a></td>"
+                   
+	               	// 행을 닫음 (홀수 인덱스에서 또는 배열의 마지막 요소에서)
+	               	if (i % 2 === 1 || i === res.length - 1) {
+	                	s += "</tr>";
+	                }
+    			})
+    			s+="</table>";
+    			$("div.searchlist").html(s);
+    			
+    			$("#tabs-total").hide();
+    			$("#tabs-sawon").hide();
+    			$("#tabs-mus").hide();
+    			$("#tabs-event").hide();
+    			
+    			$("li.nav-item").click(function(){
+    				location.reload();
+    			})
+    		}
+    	});
+    })
   });
 </script>
 
@@ -69,24 +185,28 @@
       <a class="nav-link" data-bs-toggle="tab" href="#tabs-event" style="text-decoration: none; color:gray;">축제</a>
     </li>
   </ul>
-
+	<br>
   <!-- tab panes -->
   <div class="tab-content">
-    <div id="tabs-total" class="container tab-pane active"><br>
-      <p class="heading">전체</p>
-      
-      &nbsp;&nbsp;<button type="button" class="btn btn-success" onclick="location.href='index.jsp?main=tour/addform.jsp'">등록</button>
-      <button type="button" class="btn btn-info" onclick="location.href='index.jsp?main=tour/tourlist.jsp'">목록</button>
-      <div class="d-inline-flex">
-      <select style="height: 30px; margin-left: 760px;">
-      	<option class="" style="text-align: center;">사원</option>
-      	<option class="" style="text-align: center;">박물관</option>
-      	<option class="" style="text-align: center;">축제</option>
+  
+  <!-- 검색기능 -->
+  	<div class="d-inline-flex">
+      <button type="button" class="btn btn-outline-success" onclick="location.href='index.jsp?main=tour/addform.jsp'"
+      style="margin-left: 20px;">등록</button>
+      <button type="button" class="btn btn-outline-info" onclick="location.href='index.jsp?main=tour/tourlist.jsp'">목록</button>
+      <select name="category" id="category" style="margin-left: 780px;">
+      	<option class="option" style="text-align: center;" value="sawon">사원</option>
+      	<option class="option" style="text-align: center;" value="mus">박물관</option>
+      	<option class="option" style="text-align: center;" value="event">축제</option>
       </select>
-      <input type="text" style="width: 200px; height: 30px;">
-      <button type="button" class="btn btn-info" style="width: 70px; height: 30px;">검색</button>
-      </div>
-      <br>
+	  <div class="searching">
+		<input type="text" name="keyword" id="keyword" placeholder="검색하세요." maxlength="10">
+		<button type="button" class="search"><i class="bi bi-search searchicon"></i></button>
+	  </div>
+    </div>
+    <div class="searchlist"></div>
+      
+    <div id="tabs-total" class="container tab-pane active">
       <table class="tour" style="width: 500px;">
         <% for (int i = 0; i < list.size(); i+=5) { %>
           <tr>
@@ -173,9 +293,7 @@
    </table>
    </div>
    
-    <div id="tabs-sawon" class="container tab-pane fade"><br>
-      <p class="heading">사원 및 신사</p>
-      <br>
+    <div id="tabs-sawon" class="container tab-pane fade">
       <table class="tour" style="width: 500px;">
       	<% 
         	List<TourDto> slist=dao.getAllCategory("sawon");
@@ -264,9 +382,7 @@
    </table>
    </div>
    
-    <div id="tabs-mus" class="container tab-pane fade"><br>
-      <p class="heading">박물관</p>
-      <br>
+    <div id="tabs-mus" class="container tab-pane fade">
       <table class="tour" style="width: 500px;">
       	<% 
         	List<TourDto> mlist=dao.getAllCategory("mus");
@@ -355,9 +471,7 @@
    </table>
    </div>
     
-    <div id="tabs-event" class="container tab-pane fade"><br>
-      <p class="heading">축제</p>
-      <br>
+    <div id="tabs-event" class="container tab-pane fade">
       <table class="tour" style="width: 500px;">
       	<%
         	List<TourDto> elist=dao.getAllCategory("event");

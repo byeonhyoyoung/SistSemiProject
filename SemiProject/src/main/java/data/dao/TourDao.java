@@ -21,10 +21,8 @@ public class TourDao {
 
 		String sql ="insert into tour values(null,?,?,?,?,?,?,?,?,?,?,?,now())";
 
-
 		try {
 			pstmt = conn.prepareStatement(sql);
-
 					
 			pstmt.setString(1, dto.getT_category());
 			pstmt.setString(2, dto.getT_subject());
@@ -234,19 +232,31 @@ public class TourDao {
    }
    
    //검색
-   public List<TourDto> searchTours(String keyword){
+   public List<TourDto> searchTours(String keyword, String category){
 	   List<TourDto> list=new ArrayList<TourDto>();
 	   
 	   Connection conn=db.getConnection();
 	   PreparedStatement pstmt=null;
 	   ResultSet rs=null;
 	   
-	   String sql="select * from tour where t_subject like ? or t_subject_j like ? order by t_num desc";
+	   String sql = "";
+	    if (keyword != null && !keyword.trim().isEmpty()) {
+	        // 키워드가 있는 경우
+	        sql = "SELECT * FROM tour WHERE (t_subject LIKE ? OR t_subject_j LIKE ?) AND t_category = ? ORDER BY t_num DESC";
+	    } else {
+	        // 키워드가 없는 경우
+	        sql = "SELECT * FROM tour WHERE t_category = ? ORDER BY t_num DESC";
+	    }
 	   
 	   try {
 		pstmt=conn.prepareStatement(sql);
-		pstmt.setString(1, "%"+keyword+"%");
-		pstmt.setString(2, "%"+keyword+"%");
+		if (keyword != null && !keyword.trim().isEmpty()) {
+            pstmt.setString(1, "%" + keyword + "%");
+            pstmt.setString(2, "%" + keyword + "%");
+            pstmt.setString(3, category);
+        } else {
+            pstmt.setString(1, category);
+        }
 		rs=pstmt.executeQuery();
 		
 		while(rs.next()) {
@@ -267,12 +277,12 @@ public class TourDao {
 			
 			list.add(dto);
 		}
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}finally {
-		db.dbClose(rs, pstmt, conn);
-	}
+	   } catch (SQLException e) {
+		   // TODO Auto-generated catch block
+		   e.printStackTrace();
+	   }finally {
+		   db.dbClose(rs, pstmt, conn);
+	   }
 	   return list;
    }
 }
