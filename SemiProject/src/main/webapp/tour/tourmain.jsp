@@ -165,7 +165,6 @@
 </head>
 <%
   String loginok=(String)session.getAttribute("loginok");
-  String myid=(String)session.getAttribute("myid");
 
   TourDao dao=new TourDao();
   List<TourDto> list=dao.getAllTour();
