@@ -46,7 +46,7 @@ font-size: 12pt;
 %>
 <body>
 <div class="half" style="margin-top: 50px; margin-left: 100px; margin-right: 100px;">
-    <div class="bg order-1 order-md-2 " style="background-image: url('login-form-03/images/bg_5.jpg');">
+    <div class="bg order-1 order-md-2 " style="">
         <!--  <div class="contents order-2 order-md-1"> -->
 
         <div class="container">

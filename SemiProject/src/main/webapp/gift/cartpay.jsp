@@ -214,7 +214,7 @@
               success: function(response) {
                 // 서버에서의 처리가 성공했을 때 실행할 코드
                 
-                 location.href = "index.jsp?main=gift/paysuccess.jsp";
+                 location.href = "index.jsp?main=gift/paymentaction.jsp?num="+memberNum;
                 
                 
               }
