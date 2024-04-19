@@ -268,6 +268,27 @@ public class GiftDao {
  			
  		}
  		
+ 		//cart구매 성공 후 장바구니에 있는 데이터 삭제(해당 회원번호인 num을 지우기) 
+ 		public void deleteCartAfterPay(String num)
+ 		{
+ 			Connection conn=db.getConnection();
+ 			PreparedStatement pstmt=null;
+ 			
+ 			String sql="delete from cart where num=?";
+ 			
+ 			try {
+ 				pstmt=conn.prepareStatement(sql);
+ 				pstmt.setString(1, num);
+ 				pstmt.execute();
+ 				
+ 			} catch (SQLException e) {
+ 				// TODO Auto-generated catch block
+ 				e.printStackTrace();
+ 			}finally {
+ 				db.dbClose(pstmt, conn);
+ 			}
+ 			
+ 		}
  		
    
    

@@ -83,7 +83,7 @@
                   <h4>갯수: <input type="number" min="1" max="10" value="1" step="1" name="cnt"></h4>
 
                   <div class="btn-group">
-                     <button type="button" class="btn btn-info" style="background: pink; border: pink; color: white;" id="btncart">장바구니</button>
+                     <button type="button" class="btn btn-info" style="background: pink; border: pink; color: white;" id="btncart">상품추가</button>
                      <button type="button" class="btn btn-success" style="background: gray; border: gray; color: white;" onclick="location.href='index.jsp?main=gift/giftmain.jsp'">상품목록</button>
                   </div>
                </td>
@@ -117,7 +117,7 @@
                   var a = confirm("장바구니에 저장하였습니다.\n장바구니로 이동하려면 [확인]을 눌려주세요.");
                   if(a){
                       // Redirect to mycart.jsp
-                      location.href = "index.jsp?main=gift/mycart.jsp";
+                      location.href = "index.jsp?main=gift/cartpay.jsp";
                   }
               }
           });
