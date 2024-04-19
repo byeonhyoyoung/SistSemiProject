@@ -1,3 +1,8 @@
+<%@page import="data.dto.PaymentDto"%>
+<%@page import="data.dto.CartDto"%>
+<%@page import="data.dao.PaymentDao"%>
+<%@page import="data.dto.SemiMemberDto"%>
+<%@page import="data.dao.SemiMemberDao"%>
 <%@page import="data.dao.GiftDao"%>
 <%@page import="java.text.NumberFormat"%>
 <%@page import="java.util.HashMap"%>
@@ -31,13 +36,26 @@
   List<HashMap<String,String>> list=dao.getCartList(id);
   NumberFormat nf=NumberFormat.getInstance();
   int totalmoney=0;
+  
+  SemiMemberDao sdao= new SemiMemberDao();
+  SemiMemberDto sdto = sdao.getMemberById(id);
+  //id를 통해 회원 num받기(그외 정보도 받음)
+  String num = sdto.getNum();
+  String name = sdto.getName();
+  String hp = sdto.getHp();
+  String addr= sdto.getAddr();
+  String email = sdto.getEmail();
+
+
+  
+  
 %>
 
 <body>
 
 <div class="container mt-3" align="center">
  
-<form action="" method="post" onclick="return check(this)">
+
 
 <h4 class="alert alert-info" style="width: 1000px;"><%=id %>님의 장바구니</h4>
 
@@ -87,7 +105,7 @@
    </tr>
 </table>
 
-</form>
+
 </div>
 
 <script
@@ -168,12 +186,14 @@
     // 결제하기 버튼 클릭 시
     $("#btnpayment").click(function(){
       var totalmoney = <%= totalmoney %>;
+     
+      var memberNum = <%=num%>;
       
-      mypayment(totalmoney);
+      mypayment(totalmoney,memberNum);
     });
 
     // 결제 함수
-    function mypayment(totalmoney) {
+    function mypayment(totalmoney,memberNum) {
       const IMP = window.IMP;
       IMP.init("imp48834665"); // 이니시스페이먼츠 가맹점 식별코드
       IMP.request_pay({
@@ -181,26 +201,24 @@
         pay_method: "card",
         name: "KyotoInside",
         amount: totalmoney,
-        buyer_email: "gildong@gmail.com",
-        buyer_name: "홍길동",
-        buyer_tel: "010-4242-4242",
-        buyer_addr: "서울특별시 강남구 신사동",
-        buyer_postcode: "01181",
+      
         
       }, function(rsp) {
           // 결제 결과 콜백 함수
           if (rsp.success) { // 결제 성공 시 로직
-                <%
-
-                //OrderDto 객체 생성 및 데이터 설정
-
-                //DAO를 이용한 데이터베이스 저장
-
-                //주문 상세(OrderDetailDto) 정보 저장
-
-                %>
-                // 결제 성공 후 리다이렉트
-                location.href="index.jsp?main=gift/paysuccess.jsp";
+                  // 결제 성공 후 서버로 데이터 전송
+            $.ajax({
+              type: "POST",
+              url: "", // 결제 완료 후 데이터를 전송할 서버의 엔드포인트
+              data: { totalmoney: totalmoney, memberNum: memberNum },
+              success: function(response) {
+                // 서버에서의 처리가 성공했을 때 실행할 코드
+                
+                 location.href = "index.jsp?main=gift/paymentaction.jsp?num="+memberNum;
+                
+                
+              }
+            });
             } else { // 결제 실패 시
                 console.log(rsp); 
                 alert(rsp.error_msg); 

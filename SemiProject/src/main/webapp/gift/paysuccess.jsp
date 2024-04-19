@@ -22,13 +22,13 @@
 <%
 //프로젝트 경로 : 이것이 사실상 메인 화면이다.
 String root = request.getContextPath();
+String id=(String)session.getAttribute("myid");
 
-//addaction.jsp로부터 id를 받아야 써먹을 수 있다.
-String id = request.getParameter("id");
 
 SemiMemberDao dao = new SemiMemberDao();
 SemiMemberDto dto = dao.getMemberById(id);
 String name = dto.getName(); // 수정된 부분
+String num=dto.getNum();
 	
 %>
 
@@ -39,11 +39,11 @@ String name = dto.getName(); // 수정된 부분
 				<img src="member/member_image/gaipsuccess_1.PNG" alt=""
 					width="400px">
 
-				<h5>결제완료되었습니다.
+				<h5><%=name %>님, 결제완료되었습니다.
 				</h5>
 				<br>
 				<button type="button" class="btn btn-warning"
-					onclick="location.href='index.jsp?main=login/loginMain.jsp'" style="background: pink; border-color: pink;">결제 기록</button>
+					onclick="location.href='index.jsp?main=gift/paymentlist.jps?num=<%=num %>&id=<%=id %>'" style="background: pink; border-color: pink;">결제 기록</button>
 				<button type="button" class="btn btn-success" 
 					onclick="location.href='index.jsp'" >메인</button>
 			</div>
