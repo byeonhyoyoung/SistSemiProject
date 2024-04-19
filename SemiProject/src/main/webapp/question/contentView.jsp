@@ -132,7 +132,7 @@
 		        // 이미 좋아요를 누른 상태이므로 좋아요 취소
 		        $.ajax({
 		            type: "get",
-		            url: "qusetion/decreLikes.jsp",
+		            url: "question/decreLikes.jsp",
 		            data: { "q_num": q_num },
 		            dataType: "json",
 		            success: function(res) {
@@ -145,7 +145,7 @@
 		        // 좋아요를 누르지 않은 상태이므로 좋아요 추가
 		        $.ajax({
 		            type: "get",
-		            url: "qusetion/increLikes.jsp",
+		            url: "question/increLikes.jsp",
 		            data: { "q_num": q_num },
 		            dataType: "json",
 		            success: function(res) {
@@ -223,7 +223,7 @@
 				<td style="text-align: center" valign="middle"><%=dto.getQ_subject() %></td>
 				<td style="text-align: center" valign="middle"><%=dto.getQ_writer() %></td>
 				<td style="text-align: center" valign="middle"><%=dto.getQ_content() %></td>
-				<td style="text-align: center" valign="middle"><%=sdf.format(dto.getQ_writeday()) %></td>
+				<td style="text-align: center" valign="middle"><%= sdf.format(dto.getQ_writeday()) %></td>
 				<td style="text-align: center" valign="middle"><%=dto.getQ_readcount() %></td>
 			</tr>
 			
@@ -237,7 +237,7 @@
 					<button type="button" class="btn btn-success btn-sm" name="btnlist"
 					onclick="location.href='index.jsp?main=question/questionList.jsp?currentPage=<%=currentPage%>'">목록</button>
 					<button type="button" class="btn btn-primary btn-sm" name="btnlist"
-					onclick="location.href='index.jsp?main=questio/addForm.jsp'">글쓰기</button>
+					onclick="location.href='index.jsp?main=question/addForm.jsp'">글쓰기</button>
 					<button type="button" class="btn btn-warning btn-sm" name="btnupdate"
 					onclick="location.href='index.jsp?main=question/updateForm.jsp?q_num=<%=num%>&currentPage=<%=currentPage%>'">수정</button>
 					<button type="button" class="btn btn-danger btn-sm" name="btndelete"

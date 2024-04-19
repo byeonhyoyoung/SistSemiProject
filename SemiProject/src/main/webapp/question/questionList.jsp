@@ -78,6 +78,10 @@
 	    font-size: 15px;
 	    font-weight: bold;
 	}
+	
+	.totaltext {
+		margin-left: 5px;
+	}
 </style>
 
 <script type="text/javascript">
@@ -187,8 +191,8 @@
 <body>
 
 <div class="image-and-text" style="margin: 40px auto 0;">
-    <img class="reviewimg" src="noti/image_noti/Q&A.png" style="">
-    <div>    
+    <img class="reviewimg" src="noti/image_noti/qqqqq.png">
+    <div class="totaltext">    
         <b class="board-text">Q & A</b><br>
         <span class="board-text" style="color: gray; font-size: 0.8em;">질문하고 답해요.</span>
     </div>
@@ -247,13 +251,13 @@
 						<td align="center">
 						<input type="checkbox" value="<%=dto.getQ_num()%>" class="alldel">&nbsp;&nbsp;
 						<%=no-- %></td>
-						<td><a href="index.jsp?main=question/contentView.jsp?r_num=<%=dto.getQ_num()%>&currentPage=<%=currentPage %>">
+						<td><a href="index.jsp?main=question/contentView.jsp?q_num=<%=dto.getQ_num()%>&currentPage=<%=currentPage %>">
 						<span style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 200px; display: block;"><%=dto.getQ_subject() %>  </a>
 						
 						<%-- <%
 							if(dto.getAnswercount()>0){
 							%> --%>
-								<a href="index.jsp?main=question/questionList.jsp?r_num=<%=dto.getQ_num()%>&currentPage=<%=currentPage %>"
+								<a href="index.jsp?main=question/questionList.jsp?q_num=<%=dto.getQ_num()%>&currentPage=<%=currentPage %>"
 								style="color: red"><%-- [<%=dto.getAnswercount() %>] --%></a></span>
 							<%-- <%}
 						%> --%>

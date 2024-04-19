@@ -59,7 +59,8 @@
     
     .reviewimg {
     	width: 65px;
-    	height: 65px;
+    	height: 60px;
+    	margin-left: 10px;
     }
 
 	.image-and-text {
@@ -78,6 +79,11 @@
 	    font-size: 15px;
 	    font-weight: bold;
 	}
+	
+	.totaltext {
+		margin-left: 3px;
+	}
+	
 </style>
 
 <script type="text/javascript">
@@ -187,8 +193,8 @@
 <body>
 
 <div class="image-and-text" style="margin: 40px auto 0;">
-    <img class="reviewimg" src="noti/image_noti/reviewimg.png">
-    <div>    
+    <img class="reviewimg" src="noti/image_noti/review.png">
+    <div class="totaltext">    
         <b class="board-text">후기게시판</b><br>
         <span class="board-text" style="color: gray; font-size: 0.8em;">고객님들의 진솔한 후기를 들려주세요.</span>
     </div>
