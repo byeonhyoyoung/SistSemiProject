@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import data.dto.HotelDto;
-
+import data.dto.TourDto;
 import mysql.db.DbConnect;
 
 public class HotelDao {
@@ -179,5 +179,54 @@ public class HotelDao {
          
       }
       
-      
+	//검색
+	public List<HotelDto> searchHotels(String keyword, String category){
+   	   List<HotelDto> list=new ArrayList<HotelDto>();
+   	   
+   	   Connection conn=db.getConnection();
+   	   PreparedStatement pstmt=null;
+   	   ResultSet rs=null;
+   	   
+   	   String sql = "";
+   	    if (keyword != null && !keyword.trim().isEmpty()) {
+   	        // 키워드가 있는 경우
+   	        sql = "SELECT * FROM hotel WHERE (h_subject LIKE ? OR h_content LIKE ?) AND h_category = ? ORDER BY h_num DESC";
+   	    } else {
+   	        // 키워드가 없는 경우
+   	        sql = "SELECT * FROM hotel WHERE h_category = ? ORDER BY h_num DESC";
+   	    }
+   	   
+   	   try {
+   		pstmt=conn.prepareStatement(sql);
+			if (keyword != null && !keyword.trim().isEmpty()) {
+			   pstmt.setString(1, "%" + keyword + "%");
+			   pstmt.setString(2, "%" + keyword + "%");
+			   pstmt.setString(3, category);
+			} else {
+				pstmt.setString(1, category);
+			}
+   		rs=pstmt.executeQuery();
+   		
+   		while(rs.next()) {
+   			HotelDto dto=new HotelDto();
+            dto.setH_num(rs.getString("h_num"));
+            dto.setH_subject(rs.getString("h_subject"));
+            dto.setH_content(rs.getString("h_content"));
+            dto.setH_image(rs.getString("h_image"));
+            dto.setH_location(rs.getString("h_location"));
+            dto.setH_link(rs.getString("h_link"));
+            dto.setH_category(rs.getString("h_category"));
+            dto.setH_writeday(rs.getTimestamp("h_writeday"));
+            dto.setH_googlemap(rs.getString("h_googlemap"));
+   			
+   			list.add(dto);
+   		}
+	   	   } catch (SQLException e) {
+	   		   // TODO Auto-generated catch block
+	   		   e.printStackTrace();
+	   	   }finally {
+	   		   db.dbClose(rs, pstmt, conn);
+	   	   }
+	   	   return list;
+      }
 }

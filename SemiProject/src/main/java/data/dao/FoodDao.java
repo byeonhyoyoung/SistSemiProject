@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import data.dto.FoodDto;
+import data.dto.TourDto;
 import mysql.db.DbConnect;
 
 public class FoodDao {
@@ -192,7 +193,59 @@ public class FoodDao {
       
    }
    
-   
-   
-   
+ //검색
+   public List<FoodDto> searchFoods(String keyword, String category){
+	   List<FoodDto> list=new ArrayList<FoodDto>();
+	   
+	   Connection conn=db.getConnection();
+	   PreparedStatement pstmt=null;
+	   ResultSet rs=null;
+	   
+	   String sql = "";
+	    if (keyword != null && !keyword.trim().isEmpty()) {
+	        // 키워드가 있는 경우
+	        sql = "SELECT * FROM food WHERE (f_subject LIKE ? OR f_subject_k LIKE ? OR f_content LIKE ?) AND f_category = ? ORDER BY f_num DESC";
+	    } else {
+	        // 키워드가 없는 경우
+	        sql = "SELECT * FROM food WHERE f_category = ? ORDER BY f_num DESC";
+	    }
+	   
+	   try {
+		pstmt=conn.prepareStatement(sql);
+		if (keyword != null && !keyword.trim().isEmpty()) {
+            pstmt.setString(1, "%" + keyword + "%");
+            pstmt.setString(2, "%" + keyword + "%");
+            pstmt.setString(3, "%" + keyword + "%");
+            pstmt.setString(4, category);
+        } else {
+            pstmt.setString(1, category);
+        }
+		rs=pstmt.executeQuery();
+		
+		while(rs.next()) {
+			FoodDto dto=new FoodDto();
+            dto.setF_num(rs.getString("f_num"));
+            dto.setF_subject(rs.getString("f_subject"));
+            dto.setF_subject_k(rs.getString("f_subject_k"));
+            dto.setF_content(rs.getString("f_content"));
+            dto.setF_image(rs.getString("f_image"));
+            dto.setF_location(rs.getString("f_location"));
+            dto.setF_link(rs.getString("f_link"));
+            dto.setF_time(rs.getString("f_time"));            
+            dto.setF_holiday(rs.getString("f_holiday"));
+            dto.setF_menu(rs.getString("f_menu"));
+            dto.setF_googlemap(rs.getString("f_googlemap"));
+            dto.setF_writeday(rs.getTimestamp("f_writeday"));
+            dto.setF_category(rs.getString("f_category"));
+			
+			list.add(dto);
+		}
+	   } catch (SQLException e) {
+		   // TODO Auto-generated catch block
+		   e.printStackTrace();
+	   }finally {
+		   db.dbClose(rs, pstmt, conn);
+	   }
+	   return list;
+   }
 }

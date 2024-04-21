@@ -28,18 +28,82 @@
     right: 150px;
     z-index: 999;
   }
+  
+   /* 검색기능 css */
+   .searching {
+      width: 250px; 
+      height: 45px; 
+      border:1px solid rgb(25,206,96);  
+      position:relative;
+      border-radius: 30px;
+      display: inline-block;
+    }
+    
+    #keyword {
+       height: 35px; 
+       width: calc(100% - 50px); 
+       position: absolute;
+       top: 5px; 
+       left: 10px; 
+       border: none;
+       font-size: 17px;
+       padding-right: 40px;
+   }  
+   
+   #keyword:focus {
+      outline: none;
+   }
+    
+    /* input[name="query"]{height: 35px; width: 420px; position: absolute;
+      top: 5px; left: 10px; border: none; font-size: 17px;}
+    input[name="query"]:focus{outline: none;} */
+       
+    .search {
+     width: 45px;
+     height: 46px; 
+     background: none;
+     position: absolute; 
+     right: 0; 
+     top: 0; 
+     border: none; 
+     font-size: 1.5em; /* 검색 아이콘 사이즈 */
+     font-weight: bold; 
+     color: black; /* 아이콘 색상 */
+   }
+   
+   /* 검색 아이콘 위치 조정 */
+   .searchicon {
+     position: absolute; 
+     right: 20px; 
+     top: 50%; 
+     transform: translateY(-50%);
+   }
+   
+   select {
+     box-sizing: border-box;
+     width: 83px;
+     height: 46px;
+     padding: 4px;
+     font-size: 1em;
+     border-radius: 30px;
+     border-color: rgb(25,206,96);
+   }
+   
+   .option {
+     padding: 4px;
+     font-size: 14px;
+     color: black;
+     background: white;
+   }
 </style>
 
 
 
 </head>
 <%
- 
   FoodDao dao=new FoodDao();
   List<FoodDto> list=dao.getAllFoods();
   NumberFormat nf=NumberFormat.getCurrencyInstance();
-  
-
 %>
 
 
@@ -49,9 +113,24 @@
   <p class="heading">식당</p>
   
   <a href="index.jsp?main=food/foodmainlist.jsp"><i class="bi bi-list fs-2 lili" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="목록형 보기"></i></a>
-
-  <div class="gallery-image">
-  
+	
+	<!-- 검색기능 -->
+  	<div class="d-inline-flex">
+      <select name="category" id="category" style="margin-left: 780px;">
+      	<option class="option" style="text-align: center;" value="east">동부</option>
+      	<option class="option" style="text-align: center;" value="west">서부</option>
+      	<option class="option" style="text-align: center;" value="south">남부</option>
+      	<option class="option" style="text-align: center;" value="north">북부</option>
+      	<option class="option" style="text-align: center;" value="central">중부</option>
+      </select>
+	  <div class="searching">
+		<input type="text" name="keyword" id="keyword" placeholder="검색하세요." maxlength="10">
+		<button type="button" class="search"><i class="bi bi-search searchicon"></i></button>
+	  </div>
+    </div>
+    <div class="searchlist"></div>
+    
+  <div class="gallery-image list">
   <%
    for(FoodDto dto: list){%>
     <div class="img-box">
@@ -82,6 +161,44 @@ $(function(){
        location.href="index.jsp?main=food/fooddetailview.jsp?f_num="+f_num;
     })
  });
+
+//검색기능
+$("button.search").click(function(){
+	
+	var keyword=$("#keyword").val();
+	var category=$("#category").val();
+	//alert(keyword+","+category);
+	$.ajax({
+		type:"get",
+		url:"food/search.jsp",
+		data:{"keyword":keyword, "category":category},
+		dataType:"json",
+		success:function(res){
+			//console.log(res); // 콘솔에서 응답 확인
+			var s="<div class='gallery-image'><p>";
+			$.each(res, function(i, ele){
+				s+="<div class='img-box'>";
+				s+="<a f_num='"+ele.f_num+"' f_category='"+ele.f_category+"' style='cursor: pointer; color: white' class='goDetail'>";
+				s+="<img src='food/image_food/"+ele.f_image+"' class='photo'>";
+				s+="<div class='transparent-box'>";
+				s+="<div class='caption'>";
+				s+="<p>"+ele.f_subject_k+"</p>";
+				s+="<p class='opacity-low'>"+ele.f_subject+"</p>";
+				s+="</div></div></a></div>";
+			})
+			s+="</p></div>";
+			$("div.searchlist").html(s);
+			
+			$("div.list").hide();
+/* 			$("#tabs-total").hide();
+			$("#tabs-hotel").hide(); */
+			
+			/* $("li.nav-item").click(function(){
+				location.reload();
+			}) */
+		}
+	});
+})
 </script>
     
   </div>
