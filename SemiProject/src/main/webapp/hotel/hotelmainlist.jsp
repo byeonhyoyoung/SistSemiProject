@@ -167,8 +167,8 @@ String name=sdao.getName(myid);
                         <tr>
                             <th scope="col">번호</th>
                             <th scope="col">이미지</th>
-                            <th scope="col">한글 이름</th>
-                            <th scope="col">영어 이름</th>
+                            <th scope="col">이름(한글)</th>
+                            <th scope="col">이름(영문)</th>
                             <% if(loginok!=null && myid.equals("admin")) { %>
                             <th scope="col">관리자용</th>
                             <% } %>
