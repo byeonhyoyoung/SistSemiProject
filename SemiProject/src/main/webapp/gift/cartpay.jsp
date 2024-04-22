@@ -19,6 +19,10 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>장바구니와 결제</title>
 <style type="text/css">
+	*{
+	font-family: 'Noto Sans KR';
+}
+
    img.photo{
       width: 60px;
       height: 80px;
@@ -214,7 +218,7 @@
               success: function(response) {
                 // 서버에서의 처리가 성공했을 때 실행할 코드
                 
-                 location.href = "index.jsp?main=gift/paymentaction.jsp?num="+memberNum;
+                 location.href = "index.jsp?main=gift/paymentsuccess.jsp?num="+memberNum;
                 
                 
               }
@@ -231,4 +235,3 @@
 </script>
 </body>
 </html>
-

@@ -8,6 +8,10 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <style type="text/css">
+*{
+	font-family: 'Noto Sans KR';
+}
+
 body {
 	background-color: white;
 	margin: 0; /* body의 기본 마진 제거 */

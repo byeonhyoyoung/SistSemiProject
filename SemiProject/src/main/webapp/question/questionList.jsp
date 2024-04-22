@@ -16,6 +16,10 @@
 <title>Insert title here</title>
 <style type="text/css">
 
+	*{
+	font-family: 'Noto Sans KR';
+}
+
 	a:link, a:visited{
 	text-decoration: none;
 	color: black;
