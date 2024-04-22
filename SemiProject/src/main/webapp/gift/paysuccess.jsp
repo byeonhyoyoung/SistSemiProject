@@ -43,7 +43,7 @@ String num=dto.getNum();
 				</h5>
 				<br>
 				<button type="button" class="btn btn-warning"
-					onclick="location.href='index.jsp?main=gift/paymentlist.jsp?num=<%=num %>&id=<%=id %>'" style="background: pink; border-color: pink;">결제 기록</button>
+					onclick="location.href='index.jsp?main=gift/paymentlist.jps?num=<%=num %>&id=<%=id %>'" style="background: pink; border-color: pink;">결제 기록</button>
 				<button type="button" class="btn btn-success" 
 					onclick="location.href='index.jsp'" >메인</button>
 			</div>

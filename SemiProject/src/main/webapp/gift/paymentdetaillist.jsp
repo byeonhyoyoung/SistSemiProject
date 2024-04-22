@@ -23,9 +23,21 @@ int totalPay = 0;
 %>
 
 <head>
+
 <meta charset="UTF-8">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <title>결제 내역</title>
+<style type="text/css">
+    .container {
+        position: relative;
+    }
+    .total-payment {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin-bottom: 20px; /* Optional: Adjust margin as needed */
+    }
+</style>
 </head>
 <body>
 <div class="container mt-3">
@@ -78,7 +90,7 @@ int totalPay = 0;
                         <td><%= pdto.getG_num() %></td>
                         <td><%= gdao.getGift(pdto.getG_num()).getG_name() %></td>
                         <td><img src="gift/image_gift/<%= gdao.getGift(pdto.getG_num()).getG_image_1()%>" height="60px;"></td>
-                        <td><%= gdao.getGift(pdto.getG_num()).getG_price() %></td>
+                        <td><%= gdao.getGift(pdto.getG_num()).getG_price() %>원</td>
                         <td><%= pdto.getCnt() %>개</td>
                         
                         <%
@@ -94,10 +106,9 @@ int totalPay = 0;
             
         </tbody>
     </table>
-   
-     <div style="text-align: right;">
-    <button type="button" class="btn btn-success" onclick="location.href='index.jsp?main=gift/paymentlist.jsp'">결제 내역 목록으로</button>
-   <div>합계:<%=totalPay  %>원 </div>
+    <div class="button-container">
+        <button type="button" class="btn btn-success" onclick="location.href='index.jsp?main=gift/paymentlist.jsp'">결제 내역 목록으로</button>
+        <div class="total-payment" style="margin-right: 30px; color: red; font-size: 20pt;">총합계: <%=totalPay %>원</div>
     </div>
 </div>
 </body>

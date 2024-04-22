@@ -26,6 +26,7 @@ String num= request.getParameter("num");
 <jsp:useBean id="gdao" class="data.dao.GiftDao"/>
 <jsp:setProperty property="*" name="dto"/>
 
+<<<<<<< HEAD
 <%
  
  dao.insertPayment(dto, num);
@@ -38,6 +39,21 @@ String num= request.getParameter("num");
  
 %>
 
+=======
+
+<%
+ 
+ dao.insertPayment(dto, num);
+
+ gdao.deleteCartAfterPay(num);
+
+ //일단은 리스트...가입성공페이지로 바꿀예정 : ?id=아이디 이용해서 gaipSuccess.jsp에 id를 보내줘야한다.
+ response.sendRedirect("../index.jsp?main=gift/paysuccess.jsp");
+ 
+ 
+ 
+%>
+>>>>>>> refs/heads/main
 
 </body>
 </html>

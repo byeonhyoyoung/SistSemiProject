@@ -50,27 +50,89 @@
    }
    
    .lili{
-   
-  position: absolute;
-  top: 280px;
+  	position: absolute;
+  	top: 280px;
     right: 250px;
     z-index: 999;
    }
-
-
 
 .write-btn {
     color: black;
     background-color: #eeeeee;
     border-color: #eeeeee;
     z-index: 100;
-}s
+}
+
+   /* 검색기능 css */
+   .searching {
+      width: 250px; 
+      height: 45px; 
+      border:1px solid rgb(25,206,96);  
+      position:relative;
+      border-radius: 30px;
+      display: inline-block;
+    }
+    
+    #keyword {
+       height: 35px; 
+       width: calc(100% - 50px); 
+       position: absolute;
+       top: 5px; 
+       left: 10px; 
+       border: none;
+       font-size: 17px;
+       padding-right: 40px;
+   }  
+   
+   #keyword:focus {
+      outline: none;
+   }
+    
+    /* input[name="query"]{height: 35px; width: 420px; position: absolute;
+      top: 5px; left: 10px; border: none; font-size: 17px;}
+    input[name="query"]:focus{outline: none;} */
+       
+    .search {
+     width: 45px;
+     height: 46px; 
+     background: none;
+     position: absolute; 
+     right: 0; 
+     top: 0; 
+     border: none; 
+     font-size: 1.5em; /* 검색 아이콘 사이즈 */
+     font-weight: bold; 
+     color: black; /* 아이콘 색상 */
+   }
+   
+   /* 검색 아이콘 위치 조정 */
+   .searchicon {
+     position: absolute; 
+     right: 20px; 
+     top: 50%; 
+     transform: translateY(-50%);
+   }
+   
+   select {
+     box-sizing: border-box;
+     width: 80px;
+     height: 46px;
+     padding: 4px;
+     font-size: 1em;
+     border-radius: 30px;
+     border-color: rgb(25,206,96);
+   }
+   
+   .option {
+     padding: 4px;
+     font-size: 14px;
+     color: black;
+     background: white;
+   }
    
 </style>
 <script type="text/javascript">
   $(function(){
-     
-     
      $("a.goDetail").click(function(){
         var h_num=$(this).attr("h_num");
         var h_category=$(this).attr("h_category");
@@ -79,8 +141,47 @@
         //디테일 페이지로 이동
         location.href="index.jsp?main=hotel/hoteldetailview.jsp?h_num="+h_num+"&h_category="+h_category;
      })
+     
+    //검색기능
+    $("button.search").click(function(){
+    	
+    	var keyword=$("#keyword").val();
+    	var category=$("#category").val();
+    	//alert(keyword+","+category);
+    	$.ajax({
+    		type:"get",
+    		url:"hotel/search.jsp",
+    		data:{"keyword":keyword, "category":category},
+    		dataType:"json",
+    		success:function(res){
+    			//console.log(res); // 콘솔에서 응답 확인
+    			var s="<div class='gallery-image'><p>";
+    			$.each(res, function(i, ele){
+    				s+="<div class='img-box'>";
+    				s+="<a h_num='"+ele.h_num+"' h_category='"+ele.h_category+"' style='cursor: pointer; color: white' class='goDetail'>";
+    				s+="<img src='hotel/image_hotel/"+ele.h_image+"' class='photo'>";
+    				s+="<div class='transparent-box'>";
+    				s+="<div class='caption'>";
+    				s+="<p>"+ele.h_content+"</p>";
+    				s+="<p class='opacity-low'>"+ele.h_subject+"</p>";
+    				s+="</div></div></a></div>";
+    			})
+    			s+="</p></div>";
+    			$("div.searchlist").html(s);
+    			
+    			$("#tabs-total").hide();
+    			$("#tabs-hotel").hide();
+    			$("#tabs-ryokan").hide();
+    			
+    			$("li.nav-item").click(function(){
+    				location.reload();
+    			})
+    		}
+    	});
+    })
+    
+    
   });
-
 </script>
 </head>
 <%
@@ -99,8 +200,6 @@
 <body>
    <div class="container mt-3" align="center">
    
-
-  
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist">
          <li class="nav-item"><a class="nav-link active"
@@ -121,17 +220,27 @@
             class="bi bi-list fs-2 lili" data-bs-container="body"
             data-bs-toggle="popover" data-bs-placement="top"
             data-bs-content="목록형 보기"></i></a>
-   </div>
-
+   	  </div>
+	
+	<!-- 검색기능 -->
+  	<div class="d-inline-flex" style="margin-top: 100px; margin-bottom: -300px;">
+      <select name="category" id="category" style="margin-left: 780px;">
+      	<option class="option" style="text-align: center;" value="hotel">호텔</option>
+      	<option class="option" style="text-align: center;" value="ryokan">료칸</option>
+      </select>
+	  <div class="searching">
+		<input type="text" name="keyword" id="keyword" placeholder="검색하세요." maxlength="10">
+		<button type="button" class="search"><i class="bi bi-search searchicon"></i></button>
+	  </div>
+    </div>
+    <div class="searchlist"></div>
+	
       <!-- Tab panes -->
       <div class="tab-content">
          <div id="tabs-total" class="container tab-pane active">
           <br><br>
               <div class="gallery-image">
             <p>
-            
-           
-
                <%
              
                 for(HotelDto dto: list)

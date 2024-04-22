@@ -13,10 +13,10 @@
 <title>Insert title here</title>
 </head>
 <%
-	String t_num=request.getParameter("t_num");
-	
-	TourDao dao=new TourDao();
-	TourDto dto=dao.getTour(t_num);
+   String t_num=request.getParameter("t_num");
+   
+   TourDao dao=new TourDao();
+   TourDto dto=dao.getTour(t_num);
 %>
 <body>
 <div style="margin: 0 auto; width: 600px;">

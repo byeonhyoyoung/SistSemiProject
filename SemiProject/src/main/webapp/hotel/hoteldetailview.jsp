@@ -49,7 +49,11 @@
            
              %>
              
+<<<<<<< HEAD
+             <a style="color: gray; text-decoration: none;" href="#" onclick="history.back();">료칸</a>
+=======
              <a style="color: gray; text-decoration: none;" href="#" onclick="history.back();" >료칸</a>
+>>>>>>> refs/heads/main
              <% 
              
              }

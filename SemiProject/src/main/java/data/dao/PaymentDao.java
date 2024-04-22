@@ -78,7 +78,65 @@ public class PaymentDao {
 
        return list;
    }
+   
+   
+ 
+ /////////////////////
+   
+ //필수> 전체 목록: 마이페이지 -> 결제 내역 확인용
+   public List<PaymentDto> getAllPaymentsGroupedByDate2() {
+	    List<PaymentDto> list = new ArrayList<PaymentDto>();
 
+	    Connection conn = db.getConnection();
+	    PreparedStatement pstmt = null;
+	    ResultSet rs = null;
+
+	    // SQL query to retrieve payments joined with gift information
+	    String sql = "SELECT p.payment_id, p.g_num, p.num, p.cnt, p.cartday, p.payment_date, " +
+	                 "g.g_name, g.g_price, g.g_image_1 " +
+	                 "FROM payment p " +
+	                 "INNER JOIN gift g ON p.g_num = g.g_num " +
+	                 "ORDER BY p.payment_date DESC";
+
+	    try {
+	        pstmt = conn.prepareStatement(sql);
+	        rs = pstmt.executeQuery();
+
+	        while (rs.next()) {
+	            PaymentDto dto = new PaymentDto();
+
+	            // Set PaymentDto fields
+	            dto.setPayment_id(rs.getString("payment_id"));
+	            dto.setG_num(rs.getString("g_num"));
+	            dto.setNum(rs.getString("num"));
+	            dto.setCnt(rs.getInt("cnt"));
+	            dto.setCartday(rs.getTimestamp("cartday"));
+	            dto.setPayment_date(rs.getTimestamp("payment_date"));
+	            
+	            GiftDto gdto = new GiftDto();
+
+
+	            // Set additional gift information
+	            gdto.setG_name(rs.getString("g_name"));
+	            gdto.setG_price(rs.getString("g_price"));
+	            gdto.setG_image_1(rs.getString("g_image_1"));
+
+	            list.add(dto);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        db.dbClose(rs, pstmt, conn);
+	    }
+
+	    return list;
+	}
+
+   
+
+   ////////////
+   
+   
    
    
    //전체 목록: 상세 결제 페이지 -> 결제 내역 확인용:날짜 넣어서!!!
@@ -205,15 +263,15 @@ public class PaymentDao {
    
    //디테일 구매 페이지 리스트
    public List<PaymentDto> getAllPaymentsGroupedByDate2(String num ,Timestamp payment_date) {
-       List<PaymentDto> list = new ArrayList<PaymentDto>();
+	    List<PaymentDto> list = new ArrayList<PaymentDto>();
 
-       Connection conn = db.getConnection();
-       PreparedStatement pstmt = null;
-       ResultSet rs = null;
+	    Connection conn = db.getConnection();
+	    PreparedStatement pstmt = null;
+	    ResultSet rs = null;
 
-       // SQL query to retrieve distinct payments for the given member number and payment date
-       
-       String sql = "SELECT c.idx, g.g_name, g.g_num, g.g_image_1, g.g_price, c.cnt, c.cartday " +
+	    // SQL query to retrieve distinct payments for the given member number and payment date
+	    
+	    String sql = "SELECT c.idx, g.g_name, g.g_num, g.g_image_1, g.g_price, c.cnt, c.cartday " +
                 "FROM cart c " +
                 "INNER JOIN gift g ON c.g_num = g.g_num " +
                 "INNER JOIN semimember m ON c.num = m.num " +
@@ -221,33 +279,33 @@ public class PaymentDao {
                 "WHERE num = ? AND payment_date=?" +
                 "ORDER BY c.cartday DESC";
 
-       try {
-           pstmt = conn.prepareStatement(sql);
-           pstmt.setString(1, num);
-           pstmt.setTimestamp(2, payment_date);
-           rs = pstmt.executeQuery();
+	    try {
+	        pstmt = conn.prepareStatement(sql);
+	        pstmt.setString(1, num);
+	        pstmt.setTimestamp(2, payment_date);
+	        rs = pstmt.executeQuery();
 
-           while (rs.next()) {
-               PaymentDto dto = new PaymentDto();
+	        while (rs.next()) {
+	            PaymentDto dto = new PaymentDto();
 
-               // Assuming PaymentDto has fields for all columns in the payment table
-               dto.setPayment_id(rs.getString("payment_id"));
-               dto.setG_num(rs.getString("g_num"));
-               dto.setNum(rs.getString("num"));
-               dto.setCnt(rs.getInt("cnt"));
-               dto.setCartday(rs.getTimestamp("cartday"));
-               dto.setPayment_date(rs.getTimestamp("payment_date"));
+	            // Assuming PaymentDto has fields for all columns in the payment table
+	            dto.setPayment_id(rs.getString("payment_id"));
+	            dto.setG_num(rs.getString("g_num"));
+	            dto.setNum(rs.getString("num"));
+	            dto.setCnt(rs.getInt("cnt"));
+	            dto.setCartday(rs.getTimestamp("cartday"));
+	            dto.setPayment_date(rs.getTimestamp("payment_date"));
 
-               list.add(dto);
-           }
-       } catch (SQLException e) {
-           e.printStackTrace();
-       } finally {
-           db.dbClose(rs, pstmt, conn);
-       }
+	            list.add(dto);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        db.dbClose(rs, pstmt, conn);
+	    }
 
-       return list;
-   }
+	    return list;
+	}
 
 
    //get data
