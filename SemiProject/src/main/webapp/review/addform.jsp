@@ -1,3 +1,5 @@
+<%@page import="data.dto.SemiMemberDto"%>
+<%@page import="data.dao.SemiMemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,11 +11,19 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <title>Insert title here</title>
+<style type="text/css">
+	*{
+	font-family: 'Noto Sans KR';
+}
+</style>
 </head>
 <body>
 <%
 	//프로젝트의 경로
 	String root=request.getContextPath();
+	String myid=(String)session.getAttribute("myid");
+	SemiMemberDao sdao=new SemiMemberDao();
+	SemiMemberDto sdto=sdao.getMemberById(myid);
 %>
 <!-- se2 폴더에서 js 파일 가져오기 -->
 <script type="text/javascript" src="<%=root%>/se2/js/HuskyEZCreator.js"
@@ -28,10 +38,7 @@
 		<caption align="top"><b>후기게시판</b></caption>
 		<tr>
 			<th width="100" class="table-light" valign="middle">작성자</th>
-			<td>
-				<input type="text" name="r_writer" class="form-control"
-				required="required" style="width: 130px;">
-			</td>
+			<td name="loginid"><%=sdto.getId() %></td>
 		</tr>
 		<tr>
 			<th width="100" class="table-light" valign="middle">제목</th>

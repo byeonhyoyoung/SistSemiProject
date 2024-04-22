@@ -1,6 +1,6 @@
-<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="data.dto.QuestionDto"%>
 <%@page import="data.dao.QuestionDao"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,12 +9,17 @@
 <meta charset="UTF-8">
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Hahmlet:wght@100..900&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&family=Poor+Story&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+
 <title>Insert title here</title>
 <style type="text/css">
+	*{
+	font-family: 'Noto Sans KR';
+}
+
 	span.aday{
 		float: right;
 		font-size: 0.8em;
@@ -58,7 +63,7 @@
 				dataType:"html",
 				data:{"qa_num":qa_num,"qa_writer":qa_writer,"qa_content":qa_content},
 				success:function(){
-					alert("success!!");
+					//alert("success!!");
 					//초기화
 					$("#qa_writer").val("");
 					$("#qa_content").val("");
@@ -93,7 +98,7 @@
 	
 			$.ajax({
 				type:"get",
-				url:"questionanswer/jsonupDateForm.jsp",
+				url:"questionanswer/jsonUpdateForm.jsp",
 				dataType:"json",
 				data:{"qa_idx":qa_idx},
 				success:function(res){
@@ -222,8 +227,8 @@
 			<tr style="font-size: 12pt;">
 				<td style="text-align: center" valign="middle"><%=dto.getQ_subject() %></td>
 				<td style="text-align: center" valign="middle"><%=dto.getQ_writer() %></td>
-				<td style="text-align: center" valign="middle"><%=dto.getQ_content() %></td>
-				<td style="text-align: center" valign="middle"><%= sdf.format(dto.getQ_writeday()) %></td>
+				<td style="text-align: center" valign="middle"><%=dto.getQ_content() %></td>  <!-- .replace("\n", "<br>") --> 
+				<td style="text-align: center" valign="middle"><%=sdf.format(dto.getQ_writeday()) %></td>
 				<td style="text-align: center" valign="middle"><%=dto.getQ_readcount() %></td>
 			</tr>
 			
@@ -231,7 +236,7 @@
 				<td colspan="5" align="right">
 					<span class="likes" style="margin-left: 10px; float: left; cursor: pointer;" q_num=<%=dto.getQ_num() %>>
 					좋아요 <i class="bi bi-heart" style="color: red"></i></span>
-					<span class="likesnum" style="float: left; margin-left: 10px;"><%=dto.getQ_likes() %></span>
+					<span class="likesnum" style="float: left; margin-left: 10px;"><%=dto.getQ_likes()%></span>
 					<i class="bi bi-heart-fill" style="font-size: 0px; color: red"></i>
 					
 					<button type="button" class="btn btn-secondary btn-sm" name="btnlist"

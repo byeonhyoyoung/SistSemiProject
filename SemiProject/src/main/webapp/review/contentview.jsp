@@ -1,3 +1,5 @@
+<%@page import="data.dto.SemiMemberDto"%>
+<%@page import="data.dao.SemiMemberDao"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="data.dto.ReviewDto"%>
 <%@page import="data.dao.ReviewDao"%>
@@ -16,6 +18,10 @@
 
 <title>Insert title here</title>
 <style type="text/css">
+	*{
+	font-family: 'Noto Sans KR';
+}
+
 	span.aday{
 		float: right;
 		font-size: 0.8em;
@@ -198,6 +204,7 @@
 </head>
 <%
 	String num=request.getParameter("r_num");
+	String id=request.getParameter("id");
 	String currentPage=request.getParameter("currentPage");
 	ReviewDao dao=new ReviewDao();
 	
@@ -206,10 +213,17 @@
 	//조회수 1증가
 	dao.updateReadcount(num);
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+	
+	String loginok=(String)session.getAttribute("loginok");
+	String myid=(String)session.getAttribute("myid");
+	String loginid=request.getParameter("loginid");
+	SemiMemberDao sdao=new SemiMemberDao();
+	SemiMemberDto sdto=sdao.getMemberById(myid);
 %>
 <body>
 	<div style="margin: 0 auto; width: 900px;">
 	<form action="">
+		<input type="text" id="<%=sdto.getId()%>" value="<%=sdto.getId()%>">
 		<table class="table table-bordered">
 			<caption align="top"><b>상세페이지</b></caption>
 			<tr class="table-light" style="text-align: center">
@@ -222,7 +236,7 @@
 				
 			<tr style="font-size: 12pt;">
 				<td style="text-align: center" valign="middle"><%=dto.getR_subject() %></td>
-				<td style="text-align: center" valign="middle"><%=dto.getR_writer() %></td>
+				<td style="text-align: center" valign="middle"><%=loginid %></td>
 				<td style="text-align: center" valign="middle"><%=dto.getR_content() %></td>  <!-- .replace("\n", "<br>") --> 
 				<td style="text-align: center" valign="middle"><%=sdf.format(dto.getR_writeday()) %></td>
 				<td style="text-align: center" valign="middle"><%=dto.getR_readcount() %></td>
@@ -235,14 +249,25 @@
 					<span class="likesnum" style="float: left; margin-left: 10px;"><%=dto.getR_likes() %></span>
 					<i class="bi bi-heart-fill" style="font-size: 0px; color: red"></i>
 					
-					<button type="button" class="btn btn-secondary btn-sm" name="btnlist"
-					onclick="location.href='index.jsp?main=review/reviewlist.jsp?currentPage=<%=currentPage%>'">목록</button>
-					<button type="button" class="btn btn-secondary btn-sm" name="btnlist"
-					onclick="location.href='index.jsp?main=review/addform.jsp'">글쓰기</button>
-					<button type="button" class="btn btn-secondary btn-sm" name="btnupdate"
-					onclick="location.href='index.jsp?main=review/updateform.jsp?r_num=<%=num%>&currentPage=<%=currentPage%>'">수정</button>
-					<button type="button" class="btn btn-secondary btn-sm" name="btndelete"
-					onclick="funcdel(<%=num%>,<%=currentPage%>)">삭제</button>
+					<%
+						if(loginok!=null && sdto.getId().equals("admin")){
+						%>
+							<button type="button" class="btn btn-secondary btn-sm" name="btnlist"
+							onclick="location.href='index.jsp?main=review/reviewlist.jsp?currentPage=<%=currentPage%>'">목록</button>
+						<%}else if(loginok!=null && !sdto.getId().equals("admin") && loginid==myid){
+						%>	
+							<button type="button" class="btn btn-secondary btn-sm" name="btnlist"
+							onclick="location.href='index.jsp?main=review/reviewlist.jsp?currentPage=<%=currentPage%>'">목록</button>
+							<button type="button" class="btn btn-secondary btn-sm" name="btnupdate"
+							onclick="location.href='index.jsp?main=review/updateform.jsp?r_num=<%=num%>&currentPage=<%=currentPage%>'">수정</button>
+							<button type="button" class="btn btn-secondary btn-sm" name="btndelete"
+							onclick="funcdel(<%=num%>,<%=currentPage%>)">삭제</button>
+						<%}else if(loginok==null){
+						%>
+							<button type="button" class="btn btn-secondary btn-sm" name="btnlist"
+							onclick="location.href='index.jsp?main=review/reviewlist.jsp?currentPage=<%=currentPage%>'">목록</button>
+						<%}
+					%>
 				</td>
 			</tr>
 			

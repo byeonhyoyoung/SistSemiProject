@@ -1,8 +1,8 @@
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="data.dao.QuestionAnswerDao"%>
-<%@page import="data.dto.QuestionDto"%>
-<%@page import="java.util.List"%>
 <%@page import="data.dao.QuestionDao"%>
+<%@page import="data.dto.QuestionDto"%>
+<%@page import="data.dao.QuestionAnswerDao"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,6 +15,10 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <title>Insert title here</title>
 <style type="text/css">
+
+	*{
+	font-family: 'Noto Sans KR';
+      }
 
 	a:link, a:visited{
 	text-decoration: none;
@@ -57,9 +61,10 @@
        color: #fff; /* 활성 페이지의 텍스트 색상을 원하시는 색상으로 변경하세요 */
     }
     
-    .reviewimg {
+    .questionimg {
     	width: 65px;
-    	height: 65px;
+    	height: 60px;
+    	margin-left: 10px;
     }
 
 	.image-and-text {
@@ -80,8 +85,9 @@
 	}
 	
 	.totaltext {
-		margin-left: 5px;
+		margin-left: 3px;
 	}
+	
 </style>
 
 <script type="text/javascript">
@@ -118,7 +124,7 @@
 				console.log(n);
 				
 				//삭제파일로 전송
-				location.href="question/delete.jsp?nums="+n;
+				location.href="question/allDelete.jsp?nums="+n;
 			}
 		})
 	})
@@ -191,10 +197,10 @@
 <body>
 
 <div class="image-and-text" style="margin: 40px auto 0;">
-    <img class="reviewimg" src="noti/image_noti/qqqqq.png">
+    <img class="questionimg" src="noti/image_noti/question.png">
     <div class="totaltext">    
-        <b class="board-text">Q & A</b><br>
-        <span class="board-text" style="color: gray; font-size: 0.8em;">질문하고 답해요.</span>
+        <b class="board-text">후기게시판</b><br>
+        <span class="board-text" style="color: gray; font-size: 0.8em;">고객님들의 진솔한 후기를 들려주세요.</span>
     </div>
 </div>
 
@@ -211,7 +217,6 @@
                     <select class="select-dropbox">
                         <option value="s-title">제목</option>
                         <option value="s-writer">글쓴이</option>
-                        <option value="s-">작성일</option>
                     </select>
                 </span>
                 <span>
@@ -252,15 +257,7 @@
 						<input type="checkbox" value="<%=dto.getQ_num()%>" class="alldel">&nbsp;&nbsp;
 						<%=no-- %></td>
 						<td><a href="index.jsp?main=question/contentView.jsp?q_num=<%=dto.getQ_num()%>&currentPage=<%=currentPage %>">
-						<span style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 200px; display: block;"><%=dto.getQ_subject() %>  </a>
-						
-						<%-- <%
-							if(dto.getAnswercount()>0){
-							%> --%>
-								<a href="index.jsp?main=question/questionList.jsp?q_num=<%=dto.getQ_num()%>&currentPage=<%=currentPage %>"
-								style="color: red"><%-- [<%=dto.getAnswercount() %>] --%></a></span>
-							<%-- <%}
-						%> --%>
+						<span style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 200px; display: block;"><%=dto.getQ_subject() %></span></a>
 						</td>
 						<td align="center"><%=dto.getQ_writer() %></td>
 						<td align="center"><%=sdf.format(dto.getQ_writeday()) %></td>
@@ -293,7 +290,7 @@
 		if(startPage>1){
 		%>
 			<li class="page-item ">
-		       <a class="page-link" href="index.jsp?main=noti/boardList.jsp?currentPage=<%=startPage-1%>">
+		       <a class="page-link" href="index.jsp?main=question/questionList.jsp?currentPage=<%=startPage-1%>">
 		       <img src="image/semi/left-arrow-bold.png" style="width: 13px; height: 15px;"></a>
 		    </li>	
 		<%}
@@ -315,7 +312,7 @@
 		if(endPage<totalPage){
 		%>
 			<li class="page-item">
-	           <a  class="page-link" href="index.jsp?main=noti/boardList.jsp?currentPage=<%=endPage+1%>">
+	           <a  class="page-link" href="index.jsp?main=question/questionList.jsp?currentPage=<%=endPage+1%>">
 	           <img src="image/semi/right-arrow-bold.png" style="width: 13px; height: 15px;"></a>
 	        </li>
 		<%}

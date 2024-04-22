@@ -6,6 +6,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+*{
+	font-family: 'Noto Sans KR';
+}
+
+
 body {
 	background-color: white;
 }

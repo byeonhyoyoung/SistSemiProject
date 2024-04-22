@@ -11,6 +11,11 @@
 
 <title>Kyoto Inside</title>
 <style type="text/css">
+
+	*{
+	font-family: 'Noto Sans KR';
+}
+	
 	div.layout{
 		border: 0px solid gray;
 	}
@@ -20,8 +25,8 @@
 		height: 80px;
 		line-height: 80px;
 		font-size: 30pt;
-		font-family: 'Noto Serif KR';
 		text-align: center;
+		margin-top: 20px;
 	}
 	
 	div.menu{
@@ -29,9 +34,8 @@
 		height: 80px;
 		line-height: 80px;
 		font-size: 20pt;
-		font-family: 'Noto Serif KR';
 		text-align: center;
-		margin-top: 140px;
+		margin-top: 130px;
 	}
 </style>
 <link rel="shortcut icon" href="image/semi/logo.ico" type="image/x-icon">

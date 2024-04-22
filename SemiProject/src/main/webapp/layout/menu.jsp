@@ -13,6 +13,12 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
+
+*{
+	font-family: 'Noto Sans KR';
+ }
+
+
 #primary_nav_wrap
 {
    margin-top: -100px;
@@ -36,7 +42,7 @@
    font-size:12px;
    line-height:32px;
    padding:0 15px;
-   font-family:"HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
+
 }
 
 #primary_nav_wrap ul li
@@ -94,23 +100,17 @@ i.flower{
 <body>
 <nav id="primary_nav_wrap">
 <ul>
-  <li class="current-menu-item"><a href="#">홈</a></li>
-  <li><a href="index.jsp?main=kyotomap/kyotoMap.jsp"><i class="bi bi-flower3 flower"></i>벚꽃테마</a></li>
   <li><a href="index.jsp?main=intro/intromain.jsp">교토 소개</a></li>
   <li><a href="index.jsp?main=tour/tourmain.jsp">교토 관광</a></li>
-  <li><a href="index.jsp?main=food/foodmain.jsp">먹거리</a>
+  <li><a href="#">먹거리</a>
   	<ul>
-  	   <li><a href="#">음식점</a></li>
-	     <li><a href="#">카페</a></li>
+  	   <li><a href="index.jsp?main=food/foodmain.jsp">식당</a></li>
+	     <li><a href="index.jsp?main=gift/giftmain.jsp">특산품</a></li>
   	</ul>
   </li>
   
-  <li><a href="index.jsp?main=hotel/hotelmain.jsp">숙박시설</a>
-  	<ul>
-	   <li><a href="#">호텔</a></li>
-	   <li><a href="#">료칸</a></li>
-  	</ul>
-  </li>
+  <li><a href="index.jsp?main=hotel/hotelmain.jsp">숙박시설</a></li>
+  <li><a href="index.jsp?main=kyotomap/kyotoMap.jsp"><i class="bi bi-flower3 flower"></i>벚꽃테마</a></li>
   <li><a href="#">커뮤니티</a>
      <ul>  
       <li><a href="index.jsp?main=noti/boardList.jsp">공지사항</a></li>

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import data.dto.ReviewDto;
+import data.dto.SemiMemberDto;
 import mysql.db.DbConnect;
 
 public class ReviewDao {
@@ -80,7 +81,7 @@ public class ReviewDao {
 			PreparedStatement pstmt=null;
 			ResultSet rs=null;
 			
-			String sql="select * from review order by r_num desc limit ?,?";
+			String sql="SELECT r.*, sm.id FROM review r JOIN semimember sm ON r.r_writer = sm.id ORDER BY r.r_num DESC LIMIT ?, ?";
 			
 			try {
 				pstmt=conn.prepareStatement(sql);
@@ -90,6 +91,7 @@ public class ReviewDao {
 
 				while(rs.next()) {
 					ReviewDto dto=new ReviewDto();
+					SemiMemberDto sdto=new SemiMemberDto();
 					dto.setR_num(rs.getString("r_num"));
 					dto.setR_writer(rs.getString("r_writer"));
 					dto.setR_subject(rs.getString("r_subject"));
@@ -98,6 +100,7 @@ public class ReviewDao {
 					dto.setR_likes(rs.getInt("r_likes"));
 					dto.setR_readcount(rs.getInt("r_readcount"));
 					dto.setR_writeday(rs.getTimestamp("r_writeday"));
+					sdto.setId(rs.getString("id"));
 					
 					list.add(dto);
 				}
