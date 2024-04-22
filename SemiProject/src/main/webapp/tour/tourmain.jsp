@@ -209,11 +209,11 @@
         if(loginok!=null && myid.equals("admin"))
      	{%>
 	      <button type="button" class="btn btn-success" onclick="location.href='index.jsp?main=tour/addform.jsp'"
-	      style="margin-left: 20px; border-color: pink; background-color: pink;">등록</button>
+	      style="margin-left: 20px; border-color: gray; background-color: gray;  color: white;">등록</button>&nbsp;
 	      <button type="button" class="btn btn-info" style="border-color: gray; background-color: gray; color: white;" onclick="location.href='index.jsp?main=tour/tourlist.jsp'">목록</button>
      	<%}
      %>
-      <select name="category" id="category" style="margin-left: 780px;">
+      <select name="category" id="category" style="margin-left: 780px; ">
          <option class="option" style="text-align: center;" value="sawon">사원</option>
          <option class="option" style="text-align: center;" value="mus">박물관</option>
          <option class="option" style="text-align: center;" value="event">축제</option>

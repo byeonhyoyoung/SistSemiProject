@@ -136,9 +136,9 @@ $(document).ready(function(){
           <tr>
             <td colspan="2" align="center">
               <button type="submit" class="btn btn-info"
-              style="width: 100px; background-color: pink; border: pink;">내용저장</button>
+              style="width: 100px; background-color: gray; border: gray;">내용저장</button>
               <button type="button" class="btn btn-info"
-              style="width: 100px; background-color: #eeeeee; border: #eeeeee;" onclick="location.href='index.jsp?main=food/foodmain.jsp'">식당목록</button>
+              style="width: 100px; background-color: gray; border: gray;" onclick="location.href='index.jsp?main=food/foodmain.jsp'">식당목록</button>
             </td>
           </tr>
        </table>

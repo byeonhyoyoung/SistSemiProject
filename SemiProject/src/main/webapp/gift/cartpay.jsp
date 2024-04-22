@@ -61,7 +61,7 @@
  
 
 
-<h4 class="alert alert-info" style="width: 1000px; background: gray; border: gray; color: white;"><%=id %>님의 장바구니</h4>
+<h4 class="alert alert-info" style="width: 1000px; background: #eeeeee; border: #eeeeee; color: black;"><%=id %>님의 장바구니</h4>
 
 <table class="table table-striped" style="width: 1000px;">
    <tr>

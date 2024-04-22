@@ -15,11 +15,11 @@
 <style type="text/css">
 	*{
 	font-family: 'Noto Sans KR';
-}
+     }
 
     img.large {
         margin: 10px 0;
-        width: 400px;
+        width: 300px;
         height: auto; 
         transition: transform 0.3s ease-in-out; /* 호버 효과를 위한 transition */
     }
@@ -33,7 +33,7 @@
     }
 
     .product-info h4 {
-        font-family: 'Noto Sans KR', sans-serif;
+        font-family: 'Noto Sans KR';
         margin-bottom: 10px;
     }
 
@@ -48,6 +48,7 @@
     .btn-group {
         margin-top: 20px;
     }
+    
 </style>
 </head>
 <%
@@ -79,16 +80,16 @@
                   <img alt="" src="gift/image_gift/<%=dto.getG_image_2()%>" class="large img-thumbnail">
                </td>
                <td style="width: 500px; padding-top: 50px;" class="product-info">
-                  <h4>상품명: <%=dto.getG_name() %></h4>
-                  <h6>"<%=dto.getG_subject() %>"</h6>
+                  <h3><%=dto.getG_name() %></h3>
+                  <h6><%=dto.getG_subject() %></h6>
                   <h4 class="price">가격: <%=nf.format(Integer.parseInt(dto.getG_price())*1.15) %></h4>
                   <p><%=dto.getG_content()%></p>
                   <!-- 갯수 -->
                   <h4>갯수: <input type="number" min="1" max="10" value="1" step="1" name="cnt"></h4>
 
                   <div class="btn-group">
-                     <button type="button" class="btn btn-info" style="background: pink; border: pink; color: white;" id="btncart">상품추가</button>
-                     <button type="button" class="btn btn-success" style="background: gray; border: gray; color: white;" onclick="location.href='index.jsp?main=gift/giftmain.jsp'">상품목록</button>
+                     <button type="button" class="btn btn-secondary" id="btncart">상품추가</button> &nbsp;
+                     <button type="button" class="btn btn-secondary" onclick="location.href='index.jsp?main=gift/giftmain.jsp'">상품목록</button>
                   </div>
                </td>
             </tr>
