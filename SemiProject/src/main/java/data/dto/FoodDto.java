@@ -15,17 +15,8 @@ public class FoodDto {
       private String f_holiday;
       private String f_menu;
       private String f_googlemap;
+      private Timestamp f_writeday;
       private String f_category;
-      
-      public String getF_category() {
-		return f_category;
-	}
-
-	public void setF_category(String f_category) {
-		this.f_category = f_category;
-	}
-
-	private Timestamp f_writeday;
 
    public String getF_num() {
       return f_num;
@@ -122,5 +113,13 @@ public class FoodDto {
    public void setF_writeday(Timestamp f_writeday) {
       this.f_writeday = f_writeday;
    }
+
+	public String getF_category() {
+		return f_category;
+	}
+	
+	public void setF_category(String f_category) {
+		this.f_category = f_category;
+	}
 
 }

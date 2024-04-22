@@ -21,6 +21,10 @@
 %>
 <style type="text/css">
 
+*{
+	font-family: 'Noto Sans KR';
+}
+
 .section-products #product-1 .part-1::before {
     
 

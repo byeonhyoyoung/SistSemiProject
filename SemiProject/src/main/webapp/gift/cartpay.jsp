@@ -19,6 +19,10 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>장바구니와 결제</title>
 <style type="text/css">
+	*{
+	font-family: 'Noto Sans KR';
+}
+
    img.photo{
       width: 60px;
       height: 80px;
@@ -231,4 +235,3 @@
 </script>
 </body>
 </html>
-

@@ -19,6 +19,11 @@
 
 <title>Insert title here</title>
 <style type="text/css">
+
+  *{
+	font-family: 'Noto Sans KR';
+   }
+
   .container {
     position: relative;
   }
@@ -110,7 +115,7 @@
 <body>
 
  <div class="container mt-3" align="center">
-  <p class="heading">식당</p>
+  <p class="heading"></p>
   
   <a href="index.jsp?main=food/foodmainlist.jsp"><i class="bi bi-list fs-2 lili" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="목록형 보기"></i></a>
 	

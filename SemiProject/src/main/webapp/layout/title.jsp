@@ -20,6 +20,12 @@
 
 <title>Insert title here</title>
 <style type="text/css">
+
+*{
+	font-family: 'Noto Sans KR';
+}
+
+
 div.btnlog {
 	position: absolute;
 	top: 50px;

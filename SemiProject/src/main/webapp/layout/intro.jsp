@@ -126,7 +126,7 @@
     <p class="copyright">
       &copy; <span class="this-year"></span> Kyoto-Inside Company. All Rights Reseved.
     </p>
-      <img src="<%=root%>/image/semi/logo3.png" class="logo" />
+    <%--   <img src="<%=root%>/image/semi/logo3.png" class="logo" /> --%>
   </div>
   
   <div id="to-top">
