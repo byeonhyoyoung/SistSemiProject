@@ -11,6 +11,11 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <title>Insert title here</title>
+<style type="text/css">
+	*{
+	font-family: 'Noto Sans KR';
+}
+</style>
 </head>
 <%
 	//프로젝트의 경로

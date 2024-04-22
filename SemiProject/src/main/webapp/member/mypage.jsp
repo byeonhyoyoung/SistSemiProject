@@ -14,6 +14,10 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>My Page</title>
 <style type="text/css">
+	*{
+	font-family: 'Noto Sans KR';
+}
+
   #mainimg {
         width:120px;
         height:120px;

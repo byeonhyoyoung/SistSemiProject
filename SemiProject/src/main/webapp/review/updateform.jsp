@@ -11,6 +11,12 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <title>Insert title here</title>
+<style type="text/css">
+	*{
+	font-family: 'Noto Sans KR';
+}
+
+</style>
 </head>
 <body>
 <%
@@ -65,7 +71,7 @@
 			<td colspan="2" align="center">
 				<button type="button" class="btn btn-outline-warning"
 					style="width: 120px;"
-					onclick="submitContents(this)">DB수정</button>
+					onclick="submitContents(this)">수정</button>
 				
 				<button type="button" class="btn btn-outline-success"
 					style="width: 120px;"

@@ -4,6 +4,10 @@
 <html lang="en">
 
 <style type="text/css">
+	*{
+	font-family: 'Noto Sans KR';
+}
+
 .lil2{
 margin-top: 6px;
 font-size: 12pt;
@@ -46,7 +50,7 @@ font-size: 12pt;
 %>
 <body>
 <div class="half" style="margin-top: 50px; margin-left: 100px; margin-right: 100px;">
-    <div class="bg order-1 order-md-2 " style="background-image: url('login-form-03/images/bg_5.jpg');">
+    <div class="bg order-1 order-md-2 " style="">
         <!--  <div class="contents order-2 order-md-1"> -->
 
         <div class="container">
@@ -73,8 +77,8 @@ font-size: 12pt;
                                     <div class="control__indicator"></div>
                                 </label>
                                 <div class="ml-auto lil2">
-                                    <a href="#"  style="color: gray; text-decoration:none; margin-right: 10px;">아이디 찾기</a>                                    
-                                    <a href="#" style="color: gray; text-decoration:none;">비밀번호 찾기</a>
+                                    <a href="index.jsp?main=find/findIdForm.jsp"  style="color: gray; text-decoration:none; margin-right: 10px;">아이디 찾기</a>                                    
+                                    <a href="index.jsp?main=find/findPassForm.jsp" style="color: gray; text-decoration:none;">비밀번호 찾기</a>
                                 </div>
                             </div>
                 

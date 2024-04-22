@@ -15,6 +15,10 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <title>상세 페이지</title>
 <style type="text/css">
+	*{
+	font-family: 'Noto Sans KR';
+}
+
   span.aday{
     float: right;
     font-size: 0.8em;

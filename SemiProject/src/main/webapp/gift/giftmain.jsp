@@ -21,6 +21,10 @@
 %>
 <style type="text/css">
 
+*{
+	font-family: 'Noto Sans KR';
+}
+
 .section-products #product-1 .part-1::before {
     
 
@@ -52,7 +56,7 @@
 
                               <span class="discount">15% off</span>
                                     <ul>
-                                          <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                                          <li><a href="index.jsp?main=gift/cartpay.jsp?g_num=<%=dto.getG_num()%>"><i class="fas fa-shopping-cart"></i></a></li>
                                           <li><a href="#"><i class="fas fa-heart"></i></a></li>
                                           <li><a href="index.jsp?main=gift/giftdetailview.jsp?g_num=<%=dto.getG_num()%>"><i class="fas fa-expand"></i></a></li>
                                           <li><a href="#"><i class="fas fa-plus"></i></a></li>

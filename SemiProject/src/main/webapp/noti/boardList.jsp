@@ -16,6 +16,11 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
+
+*{
+	font-family: 'Noto Sans KR';
+}
+
    a:link ,a:visited{
    
    text-decoration: none;
@@ -238,14 +243,14 @@ SemiMemberDto sdto=sdao.getMemberById(myid);
 
 <body>
 <div class="image-and-text" style="margin: 40px auto 0;">
-	<img class="reviewimg" src="noti/image_noti/mega.png">
+	<img class="reviewimg" src="noti/image_noti/확성.png">
     <div>    
         <b class="board-text">공지사항</b><br>
         <span class="board-text" style="color: gray; font-size: 0.8em;">공지사항을 안내합니다.</span>
     </div>
 </div>
 
-<div style="margin: 0 auto; width: 900px;">
+<div style="margin: 20px auto; width: 900px;">
    </h6><br>
    <table class="table table-group-divider">
       <%

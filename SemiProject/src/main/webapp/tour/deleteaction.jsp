@@ -12,12 +12,12 @@
 </head>
 <body>
 <%
-	String t_num=request.getParameter("t_num");
-	
-	TourDao dao=new TourDao();
-	dao.deleteTour(t_num);
-	
-	response.sendRedirect("../index.jsp?main=tour/tourlist.jsp");
+   String t_num=request.getParameter("t_num");
+   
+   TourDao dao=new TourDao();
+   dao.deleteTour(t_num);
+   
+   response.sendRedirect("../index.jsp?main=tour/tourlist.jsp");
 %>
 </body>
 </html>

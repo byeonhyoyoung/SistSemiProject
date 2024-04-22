@@ -16,6 +16,10 @@
 <title>Insert title here</title>
 <style type="text/css">
 
+	*{
+	font-family: 'Noto Sans KR';
+      }
+
 	a:link, a:visited{
 	text-decoration: none;
 	color: black;
@@ -59,7 +63,8 @@
     
     .reviewimg {
     	width: 65px;
-    	height: 65px;
+    	height: 60px;
+    	margin-left: 10px;
     }
 
 	.image-and-text {
@@ -181,7 +186,7 @@
 				console.log(n);
 				
 				//삭제파일로 전송
-				location.href="smartboard/alldelete.jsp?nums="+n;
+				location.href="review/alldelete.jsp?nums="+n;
 			}
 		})
 		
@@ -231,7 +236,8 @@
 <%
 	ReviewDao dao=new ReviewDao();
 	//전체갯수
-	int totalCount=dao.getTotalCount();
+	int 
+  Count=dao.getTotalCount();
 	int perPage=5; //한페이지당 보여질 글의 갯수
 	int perBlock=5; //한 블럭당 보여질 페이지 갯수
 	int startNum; //db에서 가져올 글의 시작번호(mysql은 첫글이 0번, 오라클은 1번)
@@ -294,8 +300,8 @@
 <body>
 
 <div class="image-and-text" style="margin: 40px auto 0;">
-    <img class="reviewimg" src="noti/image_noti/reviewimg.png">
-    <div>    
+    <img class="reviewimg" src="noti/image_noti/review.png">
+    <div class="totaltext">    
         <b class="board-text">후기게시판</b><br>
         <span class="board-text" style="color: gray; font-size: 0.8em;">고객님들의 진솔한 후기를 들려주세요.</span>
     </div>
@@ -352,6 +358,7 @@
 						<%=no-- %></td>
 						<td><a href="index.jsp?main=review/contentview.jsp?r_num=<%=dto.getR_num()%>&currentPage=<%=currentPage %>">
 						<span style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 200px; display: block;"><%=dto.getR_subject() %>  </a>
+              
 						</td>
 						<td align="center"><%=dto.getR_writer() %></td>
 						<td align="center"><%=sdf.format(dto.getR_writeday()) %></td>

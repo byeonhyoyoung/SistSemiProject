@@ -13,6 +13,10 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>상품 상세 정보</title>
 <style type="text/css">
+	*{
+	font-family: 'Noto Sans KR';
+}
+
     img.large {
         margin: 10px 0;
         width: 400px;
@@ -52,7 +56,8 @@
    String myid=(String)session.getAttribute("myid");
    //아이디에 해당하는 멤버 시퀀스
    SemiMemberDao mdao=new SemiMemberDao();
-
+   String num=mdao.getNum(myid);
+   
    //해당상품에대한 데이타
    GiftDao sdao=new GiftDao();
    GiftDto dto=sdao.getGift(g_num);
@@ -65,7 +70,7 @@
 
          <!-- hidden: 장바구니 db에 넣어야 할것 -->
          <input type="hidden" name="g_num" value="<%=g_num%>">
-      
+      	 <input type="hidden" name="num" value="<%=num%>" >	
 
          <table class="table">
             <tr>
@@ -82,7 +87,7 @@
                   <h4>갯수: <input type="number" min="1" max="10" value="1" step="1" name="cnt"></h4>
 
                   <div class="btn-group">
-                     <button type="button" class="btn btn-info" style="background: pink; border: pink; color: white;" id="btncart">장바구니</button>
+                     <button type="button" class="btn btn-info" style="background: pink; border: pink; color: white;" id="btncart">상품추가</button>
                      <button type="button" class="btn btn-success" style="background: gray; border: gray; color: white;" onclick="location.href='index.jsp?main=gift/giftmain.jsp'">상품목록</button>
                   </div>
                </td>
@@ -110,13 +115,13 @@
               type: "post",
               dataType: "html",
               data: cartdata,
-              url: "shop/detailprocess.jsp",
+              url: "gift/detailprocess.jsp",
               success: function(){
                   // Confirmation message
                   var a = confirm("장바구니에 저장하였습니다.\n장바구니로 이동하려면 [확인]을 눌려주세요.");
                   if(a){
                       // Redirect to mycart.jsp
-                      location.href = "index.jsp?main=shop/mycart.jsp";
+                      location.href = "index.jsp?main=gift/cartpay.jsp";
                   }
               }
           });

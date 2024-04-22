@@ -16,6 +16,10 @@
 
 <title>Insert title here</title>
 <style type="text/css">
+	*{
+	font-family: 'Noto Sans KR';
+}
+
 	span.aday{
 		float: right;
 		font-size: 0.8em;
@@ -212,11 +216,11 @@
 	<form action="">
 		<table class="table table-bordered">
 			<caption align="top"><b>상세페이지</b></caption>
-			<tr class="responsive-table" style="text-align: center">
+			<tr class="table-light" style="text-align: center">
 				<th width="100"><b>제목</b></th>
 				<th width="80"><b>작성자</b></th>
-				<th width="400"><b>내용</b></th>
-				<th width="80"><b>작성일</b></th>
+				<th width="380"><b>내용</b></th>
+				<th width="100"><b>작성일</b></th>
 				<th width="60"><b>조회수</b></th>				
 			</tr>
 				

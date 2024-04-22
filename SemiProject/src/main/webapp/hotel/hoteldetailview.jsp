@@ -13,6 +13,11 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
+
+*{
+	font-family: 'Noto Sans KR';
+}
+
    img.large{
       height: 480px;
    }
@@ -49,7 +54,11 @@
            
              %>
              
+<<<<<<< HEAD
+             <a style="color: gray; text-decoration: none;" href="#" onclick="history.back();">료칸</a>
+=======
              <a style="color: gray; text-decoration: none;" href="#" onclick="history.back();" >료칸</a>
+>>>>>>> refs/heads/main
              <% 
              
              }

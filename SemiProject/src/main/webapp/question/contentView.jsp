@@ -15,6 +15,10 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
+	*{
+	font-family: 'Noto Sans KR';
+}	
+	
 	span.aday{
 		float: right;
 		font-size: 0.8em;
@@ -132,7 +136,7 @@
 		        // 이미 좋아요를 누른 상태이므로 좋아요 취소
 		        $.ajax({
 		            type: "get",
-		            url: "qusetion/decreLikes.jsp",
+		            url: "question/decreLikes.jsp",
 		            data: { "q_num": q_num },
 		            dataType: "json",
 		            success: function(res) {
@@ -145,7 +149,7 @@
 		        // 좋아요를 누르지 않은 상태이므로 좋아요 추가
 		        $.ajax({
 		            type: "get",
-		            url: "qusetion/increLikes.jsp",
+		            url: "question/increLikes.jsp",
 		            data: { "q_num": q_num },
 		            dataType: "json",
 		            success: function(res) {
@@ -207,15 +211,15 @@
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 %>
 <body>
-	<div style="margin: 0 auto; width: 1200px;">
+	<div style="margin: 0 auto; width: 900px;">
 	<form action="">
 		<table class="table table-bordered">
 			<caption align="top"><b>상세페이지</b></caption>
-			<tr class="table-dark" style="text-align: center">
+			<tr class="table-light" style="text-align: center">
 				<th width="100"><b>제목</b></th>
 				<th width="80"><b>작성자</b></th>
-				<th width="400"><b>내용</b></th>
-				<th width="80"><b>작성일</b></th>
+				<th width="380"><b>내용</b></th>
+				<th width="100"><b>작성일</b></th>
 				<th width="60"><b>조회수</b></th>				
 			</tr>
 				
@@ -223,7 +227,7 @@
 				<td style="text-align: center" valign="middle"><%=dto.getQ_subject() %></td>
 				<td style="text-align: center" valign="middle"><%=dto.getQ_writer() %></td>
 				<td style="text-align: center" valign="middle"><%=dto.getQ_content() %></td>
-				<td style="text-align: center" valign="middle"><%=sdf.format(dto.getQ_writeday()) %></td>
+				<td style="text-align: center" valign="middle"><%= sdf.format(dto.getQ_writeday()) %></td>
 				<td style="text-align: center" valign="middle"><%=dto.getQ_readcount() %></td>
 			</tr>
 			
@@ -234,13 +238,13 @@
 					<span class="likesnum" style="float: left; margin-left: 10px;"><%=dto.getQ_likes() %></span>
 					<i class="bi bi-heart-fill" style="font-size: 0px; color: red"></i>
 					
-					<button type="button" class="btn btn-success btn-sm" name="btnlist"
+					<button type="button" class="btn btn-secondary btn-sm" name="btnlist"
 					onclick="location.href='index.jsp?main=question/questionList.jsp?currentPage=<%=currentPage%>'">목록</button>
-					<button type="button" class="btn btn-primary btn-sm" name="btnlist"
-					onclick="location.href='index.jsp?main=questio/addForm.jsp'">글쓰기</button>
-					<button type="button" class="btn btn-warning btn-sm" name="btnupdate"
+					<button type="button" class="btn btn-secondary btn-sm" name="btnlist"
+					onclick="location.href='index.jsp?main=question/addForm.jsp'">글쓰기</button>
+					<button type="button" class="btn btn-secondary btn-sm" name="btnupdate"
 					onclick="location.href='index.jsp?main=question/updateForm.jsp?q_num=<%=num%>&currentPage=<%=currentPage%>'">수정</button>
-					<button type="button" class="btn btn-danger btn-sm" name="btndelete"
+					<button type="button" class="btn btn-secondary btn-sm" name="btndelete"
 					onclick="funcdel(<%=num%>,<%=currentPage%>)">삭제</button>
 				</td>
 			</tr>
@@ -256,7 +260,7 @@
 						placeholder="닉네임">
 						<input type="text" id="qa_content" class="form-control" style="width: 300px"
 						placeholder="댓글메세지">
-						<button type="button" id="btnsend" class="btn btn-primary">저장</button>
+						<button type="button" id="btnsend" class="btn btn-secondary btn-sm">저장</button>
 					</div>
 					
 					<div class="alist">

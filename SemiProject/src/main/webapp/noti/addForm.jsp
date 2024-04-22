@@ -10,6 +10,11 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
+
+*{
+	font-family: 'Noto Sans KR';
+}
+
    #head{
       font-size: 1.2em;
       text-align: center;
