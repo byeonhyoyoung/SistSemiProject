@@ -61,7 +61,7 @@
  
 
 
-<h4 class="alert alert-info" style="width: 1000px;"><%=id %>님의 장바구니</h4>
+<h4 class="alert alert-info" style="width: 1000px; background: gray; border: gray; color: white;"><%=id %>님의 장바구니</h4>
 
 <table class="table table-striped" style="width: 1000px;">
    <tr>
@@ -102,8 +102,8 @@
    
    <tr>
       <td colspan="3">
-        <button type="button" class="btn btn-danger btn-lg" style="margin-left: 100px;" id="btncartdel">선택상품삭제</button>
-        <button type="button" class="btn btn-danger btn-lg" style="margin-left: 100px;" id="btnpayment">결제하기</button>
+        <button type="button" class="btn btn-secondary btn-sm" style="margin-left: 100px;" id="btncartdel">선택상품삭제</button>
+        <button type="button" class="btn btn-secondary btn-sm" style="margin-left: 100px;" id="btnpayment">결제하기</button>
         <span style="font-size: 1.5em; float: right;">총주문금액  <b style="color: green;"> <%=nf.format(totalmoney) %>  원</b></span>
       </td>
    </tr>

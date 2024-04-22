@@ -40,8 +40,8 @@
             <div class="row justify-content-center text-center">
                   <div class="col-md-8 col-lg-6">
                         <div class="header">
-                              <h3>Featured Product</h3>
-                              <h2>Popular Products</h2>
+                              <h3>Kyoto Product</h3>
+                              <h2>기념품 판매</h2>
                         </div>
                   </div>
             </div>

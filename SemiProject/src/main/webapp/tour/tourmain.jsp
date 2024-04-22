@@ -208,9 +208,9 @@
           
         if(loginok!=null && myid.equals("admin"))
      	{%>
-	      <button type="button" class="btn btn-outline-success" onclick="location.href='index.jsp?main=tour/addform.jsp'"
-	      style="margin-left: 20px;">등록</button>
-	      <button type="button" class="btn btn-outline-info" onclick="location.href='index.jsp?main=tour/tourlist.jsp'">목록</button>
+	      <button type="button" class="btn btn-success" onclick="location.href='index.jsp?main=tour/addform.jsp'"
+	      style="margin-left: 20px; border-color: pink; background-color: pink;">등록</button>
+	      <button type="button" class="btn btn-info" style="border-color: gray; background-color: gray; color: white;" onclick="location.href='index.jsp?main=tour/tourlist.jsp'">목록</button>
      	<%}
      %>
       <select name="category" id="category" style="margin-left: 780px;">

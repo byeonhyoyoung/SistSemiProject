@@ -102,14 +102,14 @@ i.flower{
 <ul>
   <li><a href="index.jsp?main=intro/intromain.jsp">교토 소개</a></li>
   <li><a href="index.jsp?main=tour/tourmain.jsp">교토 관광</a></li>
+  <li><a href="index.jsp?main=hotel/hotelmain.jsp">숙박시설</a></li>
   <li><a href="#">먹거리</a>
   	<ul>
   	   <li><a href="index.jsp?main=food/foodmain.jsp">식당</a></li>
-	     <li><a href="index.jsp?main=gift/giftmain.jsp">특산품</a></li>
+	     <li><a href="index.jsp?main=gift/giftmain.jsp">상점</a></li>
   	</ul>
   </li>
-  
-  <li><a href="index.jsp?main=hotel/hotelmain.jsp">숙박시설</a></li>
+ 
   <li><a href="index.jsp?main=kyotomap/kyotoMap.jsp"><i class="bi bi-flower3 flower"></i>벚꽃테마</a></li>
   <li><a href="#">커뮤니티</a>
      <ul>  
