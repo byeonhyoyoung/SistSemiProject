@@ -16,6 +16,11 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <title>Insert title here</title>
+<style type="text/css">
+	*{
+	font-family: 'Noto Sans KR';
+}
+</style>
 <script type="text/javascript">
 function delfunc(num) {
     Swal.fire({

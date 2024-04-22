@@ -25,6 +25,10 @@
 <title>Insert title here</title>
 <style type="text/css">
 
+*{
+	font-family: 'Noto Sans KR';
+}
+
    a.goDetail {
       text-decoration: none;
       color: black;

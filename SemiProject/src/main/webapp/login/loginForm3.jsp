@@ -4,6 +4,10 @@
 <html lang="en">
 
 <style type="text/css">
+	*{
+	font-family: 'Noto Sans KR';
+}
+
 .lil2{
 margin-top: 6px;
 font-size: 12pt;

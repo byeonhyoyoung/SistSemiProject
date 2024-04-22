@@ -59,10 +59,6 @@ img.large:hover {
 	margin-top: 20px;
 }
 
-.mainBackground {
-	background-image: url('gift/image_gift/gift_background_01.jpg');
-	/* Additional background properties */
-}
 
 .sliderBlock_positionControls {
 	justify-content: center; /* Center align items horizontally */
@@ -143,7 +139,6 @@ $(document).ready(function() {
 
 			<main class="main">
 				<div class="mainWrapper">
-					<div class="mainBackground clearfix">
 						<div class="row">
 							<div class="column small-centered">
 								<div class="productCard_block">
@@ -261,7 +256,7 @@ $(document).ready(function() {
 							</div>
 						</div>
 					</div>
-				</div>
+				
 
 			</main>
 		</form>
