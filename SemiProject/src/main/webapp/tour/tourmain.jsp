@@ -165,6 +165,8 @@
 </head>
 <%
   String loginok=(String)session.getAttribute("loginok");
+  //아이디얻기
+  String myid=(String)session.getAttribute("myid");
 
   TourDao dao=new TourDao();
   List<TourDto> list=dao.getAllTour();
@@ -199,7 +201,7 @@
      <%
      	SemiMemberDto semidto=new SemiMemberDto();
           
-     	if(loginok!=null && semidto.getId().equals("admin"))
+     	if(loginok!=null && myid.equals("admin"))
      	{%>
 	      <button type="button" class="btn btn-outline-success" onclick="location.href='index.jsp?main=tour/addform.jsp'"
 	      style="margin-left: 20px;">등록</button>

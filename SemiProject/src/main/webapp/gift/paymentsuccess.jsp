@@ -1,6 +1,5 @@
 <%@page import="data.dto.SemiMemberDto"%>
 <%@page import="data.dao.SemiMemberDao"%>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,22 +14,43 @@
 	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
-
-
-
 </head>
+<body>
+
 <%
-//프로젝트 경로 : 이것이 사실상 메인 화면이다.
-String root = request.getContextPath();
+request.setCharacterEncoding("utf-8");
+
+String num= request.getParameter("num");
+System.out.println(num);
+
+
 String id=(String)session.getAttribute("myid");
 
 
 SemiMemberDao dao = new SemiMemberDao();
 SemiMemberDto dto = dao.getMemberById(id);
 String name = dto.getName(); // 수정된 부분
-String num=dto.getNum();
-	
 %>
+
+<jsp:useBean id="pdao" class="data.dao.PaymentDao"/>
+<jsp:useBean id="pdto" class="data.dto.PaymentDto"/>
+<jsp:useBean id="gdao" class="data.dao.GiftDao"/>
+<jsp:setProperty property="*" name="pdto"/>
+
+
+<%
+ 
+ pdao.insertPayment(pdto, num);
+
+ gdao.deleteCartAfterPay(num);
+
+ response.sendRedirect("../index.jsp?main=gift/paysuccess.jsp?num="+num);
+ 
+ 
+ 
+%>
+
+
 
 <body>
 	<div class="container mt-5">
@@ -43,7 +63,7 @@ String num=dto.getNum();
 				</h5>
 				<br>
 				<button type="button" class="btn btn-warning"
-					onclick="location.href='index.jsp?main=gift/paymentlist.jps?num=<%=num %>&id=<%=id %>'" style="background: pink; border-color: pink;">결제 기록</button>
+					onclick="location.href='index.jsp?main=gift/paymentlist.jsp?num=<%=num %>&id=<%=id %>'" style="background: pink; border-color: pink;">결제 기록</button>
 				<button type="button" class="btn btn-success" 
 					onclick="location.href='index.jsp'" >메인</button>
 			</div>
@@ -52,4 +72,5 @@ String num=dto.getNum();
 
 
 </body>
+
 </html>
