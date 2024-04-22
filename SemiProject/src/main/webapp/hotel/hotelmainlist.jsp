@@ -25,6 +25,10 @@
 
 <title>Insert title here</title>
 <style type="text/css">
+*{
+	font-family: 'Noto Sans KR';
+}
+
 a.goDetail {
     text-decoration: none;
     color: black;
@@ -195,9 +199,9 @@ String name=sdao.getName(myid);
                                     class="goDetail"> <%= dto.getH_subject() %>
                                 </a></td>
                             <% if(loginok!=null && myid.equals("admin")) { %>
-                            <td><a h_num="<%=dto.getH_num()%>" style="cursor: pointer;"
+                            <td><a h_num="<%=dto.getH_num()%>" style="cursor: pointer; text-decoration: none;"
                                     class="goUpdate"> <i class="bi bi-pencil-square fs-4 pencil"></i>
-                                </a> <a style="cursor: pointer;"
+                                </a> <a style="cursor: pointer; text-decoration: none;"
                                     onclick="delfunc('<%=dto.getH_num()%>')"><i
                                         class="bi bi-trash fs-4 trash"></i></a></td>
                             <% } %>
@@ -243,9 +247,9 @@ String name=sdao.getName(myid);
                                     class="goDetail"> <%= dto.getH_subject() %>
                                 </a></td>
                             <% if(loginok!=null && myid.equals("admin")) { %>
-                            <td><a h_num="<%=dto.getH_num()%>" style="cursor: pointer;"
+                            <td><a h_num="<%=dto.getH_num()%>" style="cursor: pointer; text-decoration: none;"
                                     class="goUpdate"> <i class="bi bi-pencil-square fs-4 pencil"></i>
-                                </a> <a style="cursor: pointer;"
+                                </a> <a style="cursor: pointer; text-decoration: none;"
                                     onclick="delfunc('<%=dto.getH_num()%>')"><i
                                         class="bi bi-trash fs-4 trash"></i></a></td>
                             <% } %>
@@ -291,9 +295,9 @@ String name=sdao.getName(myid);
                                     class="goDetail"> <%= dto.getH_subject() %>
                                 </a></td>
                             <% if(loginok!=null && myid.equals("admin")) { %>
-                            <td><a h_num="<%=dto.getH_num()%>" style="cursor: pointer;"
+                            <td><a h_num="<%=dto.getH_num()%>" style="cursor: pointer; text-decoration: none;"
                                     class="goUpdate"> <i class="bi bi-pencil-square fs-4 pencil"></i>
-                                </a> <a style="cursor: pointer;"
+                                </a> <a style="cursor: pointer; text-decoration: none;"
                                     onclick="delfunc('<%=dto.getH_num()%>')"><i
                                         class="bi bi-trash fs-4 trash"></i></a></td>
                             <% } %>

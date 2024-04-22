@@ -110,7 +110,7 @@ i.flower{
   	</ul>
   </li>
  
-  <li><a href="index.jsp?main=kyotomap/kyotoMap.jsp"><i class="bi bi-flower3 flower"></i>벚꽃테마</a></li>
+  <li><a href="index.jsp?main=kyotomap/kyotoMap.jsp"><i class="bi bi-flower3 flower"></i>벚꽃캘린더</a></li>
   <li><a href="#">커뮤니티</a>
      <ul>  
       <li><a href="index.jsp?main=noti/boardList.jsp">공지사항</a></li>
