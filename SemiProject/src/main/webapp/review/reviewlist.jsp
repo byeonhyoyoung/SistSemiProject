@@ -236,8 +236,7 @@
 <%
 	ReviewDao dao=new ReviewDao();
 	//전체갯수
-	int 
-  Count=dao.getTotalCount();
+	int totalCount=dao.getTotalCount();
 	int perPage=5; //한페이지당 보여질 글의 갯수
 	int perBlock=5; //한 블럭당 보여질 페이지 갯수
 	int startNum; //db에서 가져올 글의 시작번호(mysql은 첫글이 0번, 오라클은 1번)

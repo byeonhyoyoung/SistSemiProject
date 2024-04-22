@@ -35,7 +35,7 @@
 		line-height: 80px;
 		font-size: 20pt;
 		text-align: center;
-		margin-top: 130px;
+		margin-top: -60px;
 	}
 </style>
 <link rel="shortcut icon" href="image/semi/logo.ico" type="image/x-icon">
