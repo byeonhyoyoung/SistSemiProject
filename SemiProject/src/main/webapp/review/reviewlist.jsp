@@ -270,7 +270,7 @@
 						<td><a href="index.jsp?main=review/contentview.jsp?r_num=<%=dto.getR_num()%>&currentPage=<%=currentPage %>">
 						<span loginid="<%=loginid%>" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 200px; display: block;" ><%=dto.getR_subject() %></a></span>
 						</td>
-						<td align="center"><%=dto.get %></td>
+						<td align="center"><%=dto.getR_writer()%></td>
 						<td align="center"><%=sdf.format(dto.getR_writeday()) %></td>
 						<td align="center"><%=dto.getR_likes() %></td>
 						<td align="center"><%=dto.getR_readcount() %></td>
