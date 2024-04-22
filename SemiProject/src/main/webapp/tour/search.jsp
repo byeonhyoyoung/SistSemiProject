@@ -6,6 +6,7 @@
 <%@ page language="java" contentType="application/json; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+
    String keyword=request.getParameter("keyword");
    String category=request.getParameter("category");
    

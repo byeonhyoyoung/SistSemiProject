@@ -233,6 +233,7 @@ public class TourDao {
    
    //검색
    public List<TourDto> searchTours(String keyword, String category){
+
       List<TourDto> list=new ArrayList<TourDto>();
       
       Connection conn=db.getConnection();
@@ -257,6 +258,7 @@ public class TourDao {
         } else {
             pstmt.setString(1, category);
         }
+
       rs=pstmt.executeQuery();
       
       while(rs.next()) {

@@ -20,7 +20,7 @@
 <title>Insert title here</title>
 <style type="text/css">
    .tour{
-      padding: 10px;
+      padding: 10px; 
       height: 150px;
    }
    
@@ -188,7 +188,8 @@
       <a class="nav-link" data-bs-toggle="tab" href="#tabs-event" style="text-decoration: none; color:gray;">축제</a>
     </li>
   </ul>
-   <br>
+	<br>
+  
   <!-- tab panes -->
   <div class="tab-content">
   
