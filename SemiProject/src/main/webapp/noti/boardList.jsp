@@ -68,18 +68,6 @@
        background-color: #007bff; /* 활성 페이지의 배경색을 원하시는 색상으로 변경하세요 */
        color: #fff; /* 활성 페이지의 텍스트 색상을 원하시는 색상으로 변경하세요 */
    }
-   
-   .bs_ipt {
-    display: flex;
-    align-items: center;
-    width: 260px;
-    height: 42px;
-    border: 1px solid #e7e8ed;
-    border-left: none;
-    background: #f8f9fb;
-    font-size: 0;
-    float: right;
-    }
   
    .reviewimg {
     	width: 65px;
@@ -175,34 +163,6 @@
      
   })
   
-   $(document).ready(function() {
-    // 공지사항 제목을 클릭했을 때 내용 표시
-       $(".noti-link").click(function() {
-           var n_num = $(this).data("n_num"); // 해당 공지사항의 번호 가져오기
-           var contentDiv = $(this).next(".noti-content"); // 해당 공지사항의 내용을 담을 div 가져오기
-   
-           // 이미 내용이 로드되어 있는지 확인
-           if (contentDiv.html().trim().length === 0) {
-               // Ajax를 통해 공지사항 내용 가져오기
-               $.ajax({
-                   type: "get",
-                   url: "noti/contentView.jsp", // 내용을 가져올 서버의 주소
-                   data: { "n_num": n_num }, // 공지사항 번호 전달
-                   success: function (res) {
-                       contentDiv.html(res); // 가져온 내용을 해당 div에 삽입
-                       contentDiv.show(); // 내용을 보이도록 설정
-                   }
-               });
-           } else {
-               // 이미 내용이 로드되어 있는 경우, 내용을 보이거나 숨김
-               contentDiv.toggle();
-           }
-   
-           return false; // 링크의 기본 동작 방지
-       });
-    
-   });
-  
   function funcdel(n_num, currentPage){
       var ans = confirm("삭제하려면 [확인]을 눌러주세요");
       if(ans){
@@ -286,11 +246,6 @@ SemiMemberDto sdto=sdao.getMemberById(myid);
 </div>
 
 <div style="margin: 0 auto; width: 900px;">
-      <div class="bs_ipt">
-       <input type="text" id="searchKeyword" name="" class="search_input" autocomplete="off">
-          <a class="btn_del" style="display: none;">삭제</a>
-          <label id="searchButton"></label>
-      </div>
    </h6><br>
    <table class="table table-group-divider">
       <%

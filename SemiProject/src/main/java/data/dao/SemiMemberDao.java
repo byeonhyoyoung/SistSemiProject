@@ -372,7 +372,63 @@ public class SemiMemberDao {
 				return num;
 			}
 			
+	public String findId(String name, String email) {
 		
-
-
+		String id=null;
+		
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		String sql="select id from semimember where name=? and email=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, email);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				id=rs.getString("id");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		
+		return id;
+	}
+	
+	public String findPass(String name, String id, String email) {
+		
+		String pass=null;
+		
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		String sql="select pass from semimember where name=? and id=? and email=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, id);
+			pstmt.setString(3, email);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				pass=rs.getString("pass");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		
+		return pass;
+	}
+  
 }

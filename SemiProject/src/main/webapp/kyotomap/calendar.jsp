@@ -38,14 +38,14 @@ header h1 {
     font-size: 54px;
     font-weight: bold;
 }
-section {
+.BloomProgression {
     padding: 20px;
     display: flex;
     justify-content: center; /* 요소를 수평 중앙 정렬 */
     align-items: center; /* 요소를 수직 중앙 정렬 */
     border: 0px solid black;
 }
-section ul {
+.BloomProgression ul {
 	height: 200px;
     list-style: none;
     padding: 0;
@@ -56,11 +56,12 @@ section ul {
     border: 0px solid black;
 }
 
-section ul li {
+.BloomProgression ul li {
     flex-basis: 24%; /* 요소 너비를 조정하여 4개씩 배열 (약간 여유 공간 확보) */
     margin-bottom: 20px; /* 요소 아래 간격 설정 */
     text-align: center; /* 텍스트 가운데 정렬 */
     border: 0px solid black;
+
 }
 .location{
 	width: 200px;
@@ -80,7 +81,7 @@ table {
     border-collapse: collapse;
     width: 100%%; /* 테이블 전체 너비 지정 */
     margin-top: 20px; /* 위쪽 마진 설정 */
-    border: 1px solid #ccc; /* 테이블 테두리 설정 */
+    border: none; /* 테이블 테두리 설정 */
 }
 table th, table td {
     padding: 10px;
@@ -90,6 +91,7 @@ table th {
     background-color: #e7708d; /* 테이블 헤더 배경색 */
     color: #fff; /* 테이블 헤더 글자색 */
     font-weight: bold;
+    border: 1px solid #ccc; /* 셀 테두리 설정 */
 }
 .is-sticky {
     background-color: #fcf1f4; /* 테이블 셀(머리글) 배경색 */
@@ -108,7 +110,7 @@ table th {
 	left: 50%;
 	transform: translate(-50%, -50%) rotate(-45deg);
 	width: 40px; /* 대각선의 길이 조절 가능 */
-	height: 3px; /* 대각선의 두께 조절 가능 */
+	height: 2px; /* 대각선의 두께 조절 가능 */
 	background-color: #333; /* 대각선의 색상 설정 */
 }
 .month {
@@ -123,8 +125,84 @@ table th {
     left: 15px;
 }
 .image{
-	width: 300px;
+	width: 100%;
 	height: 200px;
+	background-size: cover;
+}
+.container {
+	width: 100%; /* 부모 요소의 너비를 확보 */
+    max-width: 1400px; /* 최대 너비 설정 */
+    margin: 0 auto;
+}
+.report {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+}
+.report header {
+    text-align: center;
+    width: 100%;
+}
+.report h2 {
+    font-size: 54px;
+    font-weight: bold;
+}
+.bloom-stage-container {
+	width: 1400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0px solid black;
+}
+.bloom-stage-select-wrapper {
+    flex: 1;
+    margin-left: 10px; /* 필요에 따라 마진 조정 */
+}
+#bloomStageSelect {
+    width: 250px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 16px;
+}
+#bloomStageResults{
+	display: flex;
+    justify-content: flex-start; /* 요소들을 왼쪽 정렬 */
+    align-items: flex-start; /* 요소들을 위쪽 정렬 */
+    padding: 20px; /* 요소들의 외부 여백 추가 */
+    box-sizing: border-box;
+    border: 0px solid black;
+}
+#bloomStageResults ul {
+    display: flex; /* 내부 li 요소를 가로 방향으로 정렬 */
+	flex-wrap: wrap; /* 내부 요소가 여러 줄에 걸쳐 표시될 수 있도록 설정 */
+	padding: 0;
+	list-style: none;
+	width: 100%;
+	
+}
+#bloomStageResults ul li {
+	margin-right:20px;
+	border: 0px solid #ccc;
+	box-sizing: border-box; /* 내부 여백, 테두리 포함 */
+	width: calc((100% - 60px)/4);
+	margin-bottom: 40px;
+}
+#bloomStageResults ul li:nth-last-child(4n) {
+   margin-right: 0
+}
+@media (max-width: 1200px) {
+    #bloomStageResults ul {
+        flex-basis: 33.33%; /* 화면이 작을 때 3개씩 배치 */
+    }
+}
+
+@media (max-width: 800px) {
+    #bloomStageResults ul {
+        flex-basis: 50%; /* 화면이 아주 작을 때 2개씩 배치 */
+    }
 }
 </style>
 </head>
@@ -134,7 +212,7 @@ table th {
 	<h1 class="">Kyoto Cherry Blossom Calendar</h1>
 </header>
 
-<section>
+<section class="BloomProgression">
 	<div>
 		<h3>Bloom Progression</h3>
 	</div>
@@ -608,86 +686,136 @@ table th {
 		</tbody>
 	</table>
 </div>
+
 <section>
-	<div>
-		<header>
-			<h2><b>벚꽃 리포트</b></h2>
+	<div class="container">
+		<header class="report">
+			<h2><b>Cherry Blossom Report</b></h2>
 		</header>
-		<div>
-			<ul>
-				<li>
-					<h3>개회 진행단계</h3>
-					<select>
-						<option value="Buds Only 0%">Buds Only 0%</option>
-						<option value="Beginning to Bloom 15%">Beginning to Bloom 15%</option>
-						<option value="Partial Bloom 30%">Partial Bloom 30%</option>
-						<option value="Half Bloom 50%">Half Bloom 50%</option>
-						<option value="Almost Full Bloom 70%">Almost Full Bloom 70%</option>
-						<option selected value="Full Bloom 100%">Full Bloom 100%</option>
-						<option value="Beginning to Fall">Beginning to Fall</option>
-						<option value="Blossoms Gone">Blossoms Gone</option>
+		<div class="bloom-stage-container">
+					<h3>개화 진행단계</h3>
+					<div class="bloom-stage-select-wrapper">
+					<select id="bloomStageSelect">
+						<option value="Buds_Only_0%">Buds Only 0%</option>
+						<option value="Beginning_to_Bloom_15%">Beginning to Bloom 15%</option>
+						<option value="Partial_Bloom_30%">Partial Bloom 30%</option>
+						<option value="Half_Bloom_50%">Half Bloom 50%</option>
+						<option value="Almost_Full_Bloom_70%">Almost Full Bloom 70%</option>
+						<option selected value="Full_Bloom_100%">Full Bloom 100%</option>
+						<option value="Beginning_to_Fall">Beginning to Fall</option>
+						<option value="Blossoms_Gone">Blossoms Gone</option>
 					</select>
-				</li>
-			</ul>
+					</div>
 		</div>
 		
-		<div>
-			<ul data-area="Buds Only 0%">
+		<div id="bloomStageResults">
+			<ul data-area="Buds_Only_0%">
 				<li class="noItem">이 개화 진행단계와 일치하는 결과는 없습니다</li>
 			</ul>
-			<ul data-area="Partial Bloom 15%">
+			<ul data-area="Beginning_to_Bloom_15%">
 				<li class="noItem">이 개화 진행단계와 일치하는 결과는 없습니다</li>
 			</ul>
-			<ul data-area="Partial Bloom 30%">
+			<ul data-area="Partial_Bloom_30%">
 				<li class="noItem">이 개화 진행단계와 일치하는 결과는 없습니다</li>
 			</ul>
-			<ul data-area="Partial Bloom 50%">
+			<ul data-area="Half_Bloom_50%">
 				<li class="noItem">이 개화 진행단계와 일치하는 결과는 없습니다</li>
 			</ul>
-			<ul data-area="Partial Bloom 70%">
+			<ul data-area="Almost_Full_Bloom_70%">
 				<li class="noItem">이 개화 진행단계와 일치하는 결과는 없습니다</li>
 			</ul>
-			<ul class="is-show" data-area="Full Bloom 100%">
+			<ul class="is-show" data-area="Full_Bloom_100%">
 				<li>
 					<p class="image" style="background-image: url('./kyotomap/image/location1.jpg')"></p>
 					<h4 class="title">쿠라메데라 절</h4>
 					<p class="tag"><span><img alt="" src="./kyotomap/image/ico_sakura06.png" width="15px;"></span><span class="text">Full Bloom 100%</span></p>
 				</li>
+				<li>
+					<p class="image" style="background-image: url('./kyotomap/image/location3.jpg')"></p>
+					<h4 class="title">금계광명사</h4>
+					<p class="tag"><span><img alt="" src="./kyotomap/image/ico_sakura06.png" width="15px;"></span><span class="text">Full Bloom 100%</span></p>
+				</li>
+				<li>
+					<p class="image" style="background-image: url('./kyotomap/image/location6.jpg')"></p>
+					<h4 class="title">헤이안 신궁</h4>
+					<p class="tag"><span><img alt="" src="./kyotomap/image/ico_sakura06.png" width="15px;"></span><span class="text">Full Bloom 100%</span></p>
+				</li>
+				<li>
+					<p class="image" style="background-image: url('./kyotomap/image/location7.jpg')"></p>
+					<h4 class="title">철학의 길</h4>
+					<p class="tag"><span><img alt="" src="./kyotomap/image/ico_sakura06.png" width="15px;"></span><span class="text">Full Bloom 100%</span></p>
+				</li>
+				<li>
+					<p class="image" style="background-image: url('./kyotomap/image/location8.jpg')"></p>
+					<h4 class="title">히라노 신사</h4>
+					<p class="tag"><span><img alt="" src="./kyotomap/image/ico_sakura06.png" width="15px;"></span><span class="text">Full Bloom 100%</span></p>
+				</li>
+				<li>
+					<p class="image" style="background-image: url('./kyotomap/image/location9.jpg')"></p>
+					<h4 class="title">닌나지</h4>
+					<p class="tag"><span><img alt="" src="./kyotomap/image/ico_sakura06.png" width="15px;"></span><span class="text">Full Bloom 100%</span></p>
+				</li>
+				<li>
+					<p class="image" style="background-image: url('./kyotomap/image/location10.jpg')"></p>
+					<h4 class="title">나카라기 길</h4>
+					<p class="tag"><span><img alt="" src="./kyotomap/image/ico_sakura06.png" width="15px;"></span><span class="text">Full Bloom 100%</span></p>
+				</li>
 			</ul>
+			<ul data-area="Beginning_to_Fall">
+                <li>
+					<p class="image" style="background-image: url('./kyotomap/image/location2.jpg')"></p>
+					<h4 class="title">교토부립 식물원</h4>
+					<p class="tag"><span><img alt="" src="./kyotomap/image/ico_sakura07.png" width="15px;"></span><span class="text">Beginning to Fall</span></p>
+				</li>
+				<li>
+					<p class="image" style="background-image: url('./kyotomap/image/location5.jpg')"></p>
+					<h4 class="title">니조 성</h4>
+					<p class="tag"><span><img alt="" src="./kyotomap/image/ico_sakura07.png" width="15px;"></span><span class="text">Beginning to Fall</span></p>
+				</li>
+            </ul>
+            <ul data-area="Blossoms_Gone">
+                <li>
+					<p class="image" style="background-image: url('./kyotomap/image/location4.jpg')"></p>
+					<h4 class="title">니조 성</h4>
+					<p class="tag"><span><img alt="" src="./kyotomap/image/ico_sakura08.png" width="15px;"></span><span class="text">Blossoms Gone</span></p>
+				</li>
+            </ul>
 		</div>
 	</div>
 </section>
+
 <script type="text/javascript">
-//DOM이 로드된 후 실행되는 함수
 document.addEventListener('DOMContentLoaded', function() {
-    // select 요소를 가져옵니다.
-    const select = document.querySelector('select');
+    const select = document.querySelector('#bloomStageSelect');
+    const resultsDiv = document.querySelector('#bloomStageResults');
 
-    // select 요소의 값이 변경될 때 실행되는 함수
-    select.addEventListener('change', function() {
-        // 선택된 옵션의 값(value)을 가져옵니다.
-        const selectedValue = select.value;
+    if (select && resultsDiv) {
+        // 초기 로드 시 선택된 옵션에 해당하는 결과를 표시합니다.
+        const initialSelectedValue = select.value;
+        showResults(initialSelectedValue);
 
-        // 모든 ul 요소를 숨깁니다.
-        const allUlElements = document.querySelectorAll('ul');
-        allUlElements.forEach(function(ul) {
-            ul.style.display = 'none';
+        // select 요소의 change 이벤트 리스너를 추가합니다.
+        select.addEventListener('change', function() {
+            const selectedValue = select.value;
+            showResults(selectedValue);
         });
+    }
 
-        // 선택된 값에 해당하는 ul 요소를 보여줍니다.
-        const selectedUlElement = document.querySelector(`ul[data-area="${selectedValue}"]`);
-        if (selectedUlElement) {
-            selectedUlElement.style.display = 'block';
-        }
-    });
-
-    // 페이지 로드 시 초기 선택된 값에 해당하는 ul 요소를 보여줍니다.
-    const initialValue = select.value;
-    const initialUlElement = document.querySelector(`ul[data-area="${initialValue}"]`);
-    if (initialUlElement) {
-        initialUlElement.style.display = 'block';
+    // 선택된 값에 해당하는 결과를 보여주는 함수
+    function showResults(selectedValue) {
+        // 모든 결과 항목을 숨김
+        const allResults = resultsDiv.querySelectorAll('ul');
+        allResults.forEach(function(result) {
+            const dataArea = result.getAttribute('data-area');
+            if (dataArea === selectedValue) {
+                result.style.display = 'flex'; // 선택된 값과 일치하는 결과를 표시
+            } else {
+                result.style.display = 'none'; // 선택된 값과 일치하지 않는 결과는 숨김
+            }
+        });
     }
 });
 </script>
+
 </body>
 </html>

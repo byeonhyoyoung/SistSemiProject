@@ -4,7 +4,6 @@ import java.sql.Timestamp;
 
 public class FoodDto {
    
-   
       private String f_num;
       private String f_subject;
       private String f_subject_k;
@@ -13,7 +12,6 @@ public class FoodDto {
       private String f_location;
       private String f_link;
       private String f_time;
-      
       private String f_holiday;
       private String f_menu;
       private String f_googlemap;
@@ -115,9 +113,5 @@ public class FoodDto {
    public void setF_writeday(Timestamp f_writeday) {
       this.f_writeday = f_writeday;
    }
-      
-      
-      
-     
 
 }
