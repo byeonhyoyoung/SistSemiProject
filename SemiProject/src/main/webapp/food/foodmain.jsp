@@ -115,7 +115,7 @@
 <body>
 
  <div class="container mt-3" align="center">
-  <p class="heading"></p>
+  <p class="heading">식당</p>
   
   <a href="index.jsp?main=food/foodmainlist.jsp"><i class="bi bi-list fs-2 lili" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="목록형 보기"></i></a>
 	

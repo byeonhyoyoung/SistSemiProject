@@ -62,14 +62,14 @@ $(document).ready(function(){
                </caption>
                <input type="hidden" name="h_num" value="<%=h_num %>">
                <tr>
-                  <td style="width: 150px;" class="table-light"><b>영어 이름</b></td>
+                  <td style="width: 150px;" class="table-light"><b>이름(영문)</b></td>
                   <td><input type="text" name="h_subject" class="form-control"
                      style="width: 200px;" required="required"
                      value="<%=dto.getH_subject()%>"></td>
                </tr>
 
                <tr>
-                  <td style="width: 150px;" class="table-light"><b>한글 이름</b></td>
+                  <td style="width: 150px;" class="table-light"><b>이름(한글)</b></td>
                   <td><input type="text" name="h_content"
                      class="form-control" style="width: 200px;" required="required"
                      value="<%=dto.getH_content()%>"></td>
