@@ -218,10 +218,6 @@
 <body>
 	<div style="margin: 0 auto; width: 900px;">
 	<form action="">
-			<!-- <div style="margin-top: 60px;">
-				<h4>상세페이지</h4>
-			</div> -->
-			
 			<div style="width: 900px; margin-top: 100px; font-size: 2.5em;">
 				<b><%=dto.getQ_subject() %></b>
 			</div>
@@ -239,22 +235,6 @@
 			<br>
 			<br>
 			
-			
-			<!-- <tr class="table-light" style="text-align: center">
-				<th width="100"><b>제목</b></th>
-				<th width="80"><b>작성자</b></th>
-				<th width="380"><b>내용</b></th>
-				<th width="100"><b>작성일</b></th>
-				<th width="60"><b>조회수</b></th>				
-			</tr> -->
-				
-			<%-- <tr style="font-size: 12pt;">
-				<td style="text-align: center" valign="middle"><%=dto.getQ_subject() %></td>
-				<td style="text-align: center" valign="middle"><%=dto.getQ_writer() %></td>
-				<td style="text-align: center" valign="middle"><%=dto.getQ_content() %></td>  <!-- .replace("\n", "<br>") --> 
-				<td style="text-align: center" valign="middle"><%=sdf.format(dto.getQ_writeday()) %></td>
-				<td style="text-align: center" valign="middle"><%=dto.getQ_readcount() %></td>
-			</tr> --%>
 				<div style="text-align: right;">
 					<div style="display: flex; justify-content: space-between;">
 					<span class="likes"  style="cursor: pointer;" q_num=<%=dto.getQ_num() %>>
