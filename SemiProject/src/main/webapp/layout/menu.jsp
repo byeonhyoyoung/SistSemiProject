@@ -117,7 +117,7 @@ i.flower{
    <li><a href="index.jsp?main=kyotomap/kyotoMap.jsp" style="font-size:12pt;">Cherry blossom Calendar</a></li>
   <li><a href="index.jsp?main=tour/tourmain.jsp" style="font-size:12pt;">Tour</a></li>
   <li><a href="index.jsp?main=hotel/hotelmain.jsp" style="font-size:12pt;">Accommodation</a></li>
-  <li><a href="#" style="font-size:12pt;">Cuisine</a>
+  <li><a href="#" style="font-size:12pt;">Food</a>
   	<ul>
   	   <li><a href="index.jsp?main=food/foodmain.jsp" style="font-size:12pt;">Restaurant</a></li>
 	     <li><a href="index.jsp?main=gift/giftmain.jsp" style="font-size:12pt;">Store</a></li>
