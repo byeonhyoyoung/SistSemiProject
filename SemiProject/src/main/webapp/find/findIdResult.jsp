@@ -17,6 +17,10 @@
 <link rel="stylesheet" href="login-form-03/css/style.css">
 <title>Insert title here</title>
 <style type="text/css">
+*{
+	font-family: 'Noto Sans KR';
+}
+
 body{
 	background-color: white;
 }
@@ -27,7 +31,7 @@ body{
 </head>
 <body>
 <div class="half" style="margin-top: 50px; margin-left: 100px; margin-right: 100px;">
-    <div class="bg order-1 order-md-2 " style="background-image: url('login-form-03/images/bg_5.jpg');">
+    <div class="bg order-1 order-md-2 ">
         <!--  <div class="contents order-2 order-md-1"> -->
 
         <div class="container">
@@ -39,7 +43,7 @@ body{
                             <!-- <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p> -->
                         </div>
 
-						<div>
+						<div style="text-align: center;">
 							<%
 								request.setCharacterEncoding("utf-8");	
 						
