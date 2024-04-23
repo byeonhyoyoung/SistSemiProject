@@ -18,11 +18,20 @@
 	font-family: 'Noto Sans KR';
  }
 
+#logo{
+	border: 0px solid black;
+	float: left;
+
+}
 
 #primary_nav_wrap
 {
    margin-top: -100px;
    text-align: center; /* 가운데 정렬을 위한 설정 */ 
+   border: 0px solid black;
+   width: 1000px;
+   margin: 0 auto;
+
    
 }
 
@@ -98,24 +107,34 @@ i.flower{
    String root=request.getContextPath();
 %>
 <body>
+
+<a href="<%=root%>" style="color: black;"><img
+		src="<%=root%>/image/semi/logo4.png" style="width: 200px; " id="logo"></a>
+
 <nav id="primary_nav_wrap">
 <ul>
-  <li><a href="index.jsp?main=intro/intromain.jsp">교토 소개</a></li>
-  <li><a href="index.jsp?main=tour/tourmain.jsp">교토 관광</a></li>
-  <li><a href="index.jsp?main=hotel/hotelmain.jsp">숙박시설</a></li>
-  <li><a href="#">먹거리</a>
+  <li><a href="index.jsp?main=intro/intromain.jsp" style="font-size:12pt;">About Kyoto</a></li>
+   <li><a href="index.jsp?main=kyotomap/kyotoMap.jsp" style="font-size:12pt;">Cherry blossom Calendar</a></li>
+  <li><a href="index.jsp?main=tour/tourmain.jsp" style="font-size:12pt;">Tour</a></li>
+  <li><a href="index.jsp?main=hotel/hotelmain.jsp" style="font-size:12pt;">Accommodation</a></li>
+  <li><a href="#" style="font-size:12pt;">Cuisine</a>
   	<ul>
-  	   <li><a href="index.jsp?main=food/foodmain.jsp">식당</a></li>
-	     <li><a href="index.jsp?main=gift/giftmain.jsp">상점</a></li>
+  	   <li><a href="index.jsp?main=food/foodmain.jsp" style="font-size:12pt;">Restaurant</a></li>
+	     <li><a href="index.jsp?main=gift/giftmain.jsp" style="font-size:12pt;">Store</a></li>
   	</ul>
   </li>
  
+<<<<<<< HEAD
   <li><a href="index.jsp?main=kyotomap/kyotoMap.jsp"><i class="bi bi-flower3 flower"></i>벚꽃캘린더</a></li>
   <li><a href="#">커뮤니티</a>
+=======
+ 
+  <li><a href="#" style="font-size:12pt;">Community</a>
+>>>>>>> refs/heads/main
      <ul>  
-      <li><a href="index.jsp?main=noti/boardList.jsp">공지사항</a></li>
-      <li><a href="index.jsp?main=review/reviewlist.jsp">후기<br>게시판</a></li>
-      <li><a href="index.jsp?main=question/questionList.jsp">Q&A</a></li>
+      <li><a href="index.jsp?main=noti/boardList.jsp" style="font-size:12pt;">Notice</a></li>
+      <li><a href="index.jsp?main=review/reviewlist.jsp" style="font-size:12pt;">Review</a></li>
+      <li><a href="index.jsp?main=question/questionList.jsp" style="font-size:12pt;">Q&A</a></li>
     </ul>
   </li>
  <!--  <li><a href="#">Contact Us</a></li> -->
