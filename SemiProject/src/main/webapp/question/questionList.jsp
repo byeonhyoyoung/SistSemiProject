@@ -208,10 +208,10 @@
 <body>
 
 <div class="image-and-text" style="margin: 40px auto 0;">
-    <img class="questionimg" src="noti/image_noti/question.png">
+    <img class="questionimg" src="noti/image_noti/QA.jpg">
     <div class="totaltext">    
-        <b class="board-text">후기게시판</b><br>
-        <span class="board-text" style="color: gray; font-size: 0.8em;">고객님들의 진솔한 후기를 들려주세요.</span>
+        <b class="board-text">질문게시판</b><br>
+        <span class="board-text" style="color: gray; font-size: 0.8em;">ㅇㅇ</span>
     </div>
 </div>
 
