@@ -26,7 +26,6 @@
 }
 
 .section-products #product-1 .part-1::before {
-    
 
       transition: all 0.3s;
 }
@@ -81,10 +80,10 @@ window.onload = function() {
   // 팝업을 나타내는 요소를 가져옴
   var span = document.getElementsByClassName("close")[0];
 
-  // 페이지 로드 후 3초 뒤에 팝업 창 표시
+  // 페이지 로드 후 0.1초 뒤에 팝업 창 표시
   setTimeout(function(){
     modal.style.display = "block";
-  }, 500);
+  }, 100);
 
   // 사용자가 팝업을 닫기 위해 x 버튼을 클릭할 때
   span.onclick = function() {
@@ -130,8 +129,8 @@ window.onload = function() {
                                     <ul>
                                           <li><a href="index.jsp?main=gift/cartpay.jsp?g_num=<%=dto.getG_num()%>"><i class="fas fa-shopping-cart"></i></a></li>
                                           <li><a href="#"><i class="fas fa-heart"></i></a></li>
-                                          <li><a href="index.jsp?main=gift/giftdetailview.jsp?g_num=<%=dto.getG_num()%>"><i class="fas fa-expand"></i></a></li>
-                                          <li><a href="#"><i class="fas fa-plus"></i></a></li>
+                                          <li><a href="index.jsp?main=gift/giftdetailview.jsp?g_num=<%=dto.getG_num()%>"><i class="fas fa-plus"></i></a></li>
+                                            <li><a href="#"><i class="fas fa-expand"></i></a></li>
                                     </ul>
                               </div>
                               <div class="part-2">
@@ -158,6 +157,7 @@ window.onload = function() {
     <img alt="popup_pink" src="gift/image_gift/popup_pink.PNG">
   </div>
 </div>
+
 
   
 </body>
