@@ -364,7 +364,7 @@
 							</tr>
 							<%}
 						%>	
-					
+
 			<%}else{
 				for(ReviewDto dto:list){%>
 					<tr class="hover-effect">

@@ -26,7 +26,7 @@
 <title>Insert title here</title>
 <style type="text/css">
 *{
-	font-family: 'Noto Sans KR';
+   font-family: 'Noto Sans KR';
 }
 
 a.goDetail {
@@ -165,9 +165,6 @@ String name=sdao.getName(myid);
             onclick="location.href='index.jsp?main=hotel/hoteladdform.jsp'">게시물 작성</button>
         <% } %>
 		</div>
-
-
-
 
         <!-- Tab panes -->
         <div class="tab-content">
