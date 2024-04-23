@@ -13,6 +13,10 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>상품 상세 정보</title>
 <style type="text/css">
+	*{
+	font-family: 'Noto Sans KR';
+}
+
     img.large {
         margin: 10px 0;
         width: 400px;

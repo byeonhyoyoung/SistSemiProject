@@ -55,7 +55,7 @@ $(document).ready(function(){
           <tr>
              <td style="width: 150px;" class="table-light"><b>이름</b></td>
              <td>
-               <input type="text" name="f_subject" class="form-control"
+               <input type="text" name="f_subject_k" class="form-control"
                style="width: 200px;" required="required" value="<%=dto.getF_subject_k()%>">
              </td>
           </tr>
@@ -63,7 +63,7 @@ $(document).ready(function(){
           <tr>
              <td style="width: 150px;" class="table-light"><b>영어이름</b></td>
              <td>
-               <input type="text" name="f_subject_k" class="form-control"
+               <input type="text" name="f_subject" class="form-control"
                style="width: 200px;" required="required" value="<%=dto.getF_subject()%>">
              </td>
           </tr>

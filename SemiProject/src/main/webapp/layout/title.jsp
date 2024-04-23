@@ -20,10 +20,17 @@
 
 <title>Insert title here</title>
 <style type="text/css">
+
+*{
+	font-family: 'Noto Sans KR';
+}
+
+
 div.btnlog {
 	position: absolute;
 	top: 50px;
 	right: 100px;
+	border: 0px solid gray;
 }
 
 i {
@@ -48,9 +55,8 @@ i {
    String root=request.getContextPath();
    
 %>
-<body>
-	<a href="<%=root%>" style="color: black;"><img
-		src="<%=root%>/image/semi/logo3.png" style="width: 200px;"></a>
+<body >
+	
 	<div class="btnlog">
 		<%
       //로그인 세션얻기
@@ -68,35 +74,20 @@ i {
 		<b style="font-size: 10pt; color: gray;"><i
 			class="bi bi-person-lock "></i><%=name %>님 로그인상태</b>
 		<!--lmy: 로그인한 상태에서 마이페이지로 넘어감! -->
-		<a href="index.jsp?main=member/mypage.jsp"> <i
-			class="bi bi-balloon-heart fs-2" data-bs-container="body"
-			data-bs-toggle="popover" data-bs-placement="bottom"
-			data-bs-content="마이페이지"></i></a> <a href="login/logoutAction.jsp"><i
-			class="bi bi-door-open-fill fs-2" data-bs-container="body"
-			data-bs-toggle="popover" data-bs-placement="bottom"
-			data-bs-content="로그아웃"></i></a>
+		<a href="index.jsp?main=member/mypage.jsp" style="font-size: 12pt; color: black; font-weight: bold;">mypage</a> 
+		
+		
+		<a href="login/logoutAction.jsp" style="font-size: 12pt; color: black;font-weight: bold;">logout</a>
 
-
-		<% 
-
-         if(myid.equals("admin")){%>
-
-		<a href="index.jsp?main=member/memberlist.jsp"><i
-			class="bi bi-person-lines-fill fs-2" data-bs-container="body"
-			data-bs-toggle="popover" data-bs-placement="bottom"
-			data-bs-content="회원목록"></i></a>
-		<%  }
+      
+      <%
+	
     	  
       }else{%>
-		 <a href="index.jsp?main=login/loginForm3.jsp"> <i
-			class="bi bi-door-open fs-2" data-bs-container="body"
-			data-bs-toggle="popover" data-bs-placement="bottom"
-			data-bs-content="로그인"></i></a> <a
-			href="index.jsp?main=member/addform2.jsp"> <i
-			class="bi bi-person-plus fs-2" data-bs-container="body"
-			data-bs-toggle="popover" data-bs-placement="bottom"
-			data-bs-content="회원가입"></i></a>
-		<%}
+		 <a href="index.jsp?main=login/loginForm3.jsp" style="font-size: 12pt; color: black; font-weight: bold;">login</a> 
+			
+	     <a href="index.jsp?main=member/addform2.jsp" style="font-size: 12pt; color: black; font-weight: bold;">join</a>
+    <%}
    %>
 
 

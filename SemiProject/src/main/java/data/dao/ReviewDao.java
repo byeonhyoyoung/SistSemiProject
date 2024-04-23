@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import data.dto.ReviewDto;
+import data.dto.TourDto;
 import mysql.db.DbConnect;
 
 public class ReviewDao {
@@ -293,4 +294,80 @@ public class ReviewDao {
 				db.dbClose(pstmt, conn);
 			}
 		}
+		
+		//검색
+	   public List<ReviewDto> searchReviews(String keyword, String category){
+		   List<ReviewDto> list=new ArrayList<ReviewDto>();
+		   
+		   Connection conn=db.getConnection();
+		   PreparedStatement pstmt=null;
+		   ResultSet rs=null;
+		   
+		   String sql = "";
+		    if (keyword != null && !keyword.trim().isEmpty() && category.equalsIgnoreCase("제목")) {
+		        // 키워드가 있고 제목으로 찾을 경우
+		        sql = "SELECT * FROM review WHERE r_subject LIKE ? ORDER BY r_num DESC";
+		    } else if(keyword != null && !keyword.trim().isEmpty() && category.equalsIgnoreCase("작성자")){
+		    	// 키워드가 있고 작성자로 찾을 경우
+		        sql = "SELECT * FROM review WHERE r_writer LIKE ? ORDER BY r_num DESC";
+		    }
+		   
+		   try {
+			pstmt=conn.prepareStatement(sql);
+			if (keyword != null && !keyword.trim().isEmpty() && category.equalsIgnoreCase("제목")) {
+	            pstmt.setString(1, "%" + keyword + "%");
+	        } else if(keyword != null && !keyword.trim().isEmpty() && category.equalsIgnoreCase("작성자")){
+	            pstmt.setString(1, "%" + keyword + "%");
+	        }
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				ReviewDto dto=new ReviewDto();
+				dto.setR_num(rs.getString("r_num"));
+				dto.setR_writer(rs.getString("r_writer"));
+				dto.setR_subject(rs.getString("r_subject"));
+				dto.setR_content(rs.getString("r_content"));
+				dto.setR_image(rs.getString("r_image"));
+				dto.setR_likes(rs.getInt("r_likes"));
+				dto.setR_readcount(rs.getInt("r_readcount"));
+				dto.setR_writeday(rs.getTimestamp("r_writeday"));
+				
+				list.add(dto);
+			}
+		   } catch (SQLException e) {
+			   // TODO Auto-generated catch block
+			   e.printStackTrace();
+		   }finally {
+			   db.dbClose(rs, pstmt, conn);
+		   }
+		   return list;
+	   }
+		
+		//검색 이후 페이징 리스트
+		/*
+		 * public List<ReviewDto> getList(int startNum,int perPage){ List<ReviewDto>
+		 * list=new ArrayList<ReviewDto>();
+		 * 
+		 * Connection conn=db.getConnection(); PreparedStatement pstmt=null; ResultSet
+		 * rs=null;
+		 * 
+		 * String sql="select * from review order by r_num desc limit ?,?";
+		 * 
+		 * try { pstmt=conn.prepareStatement(sql); pstmt.setInt(1, startNum);
+		 * pstmt.setInt(2, perPage); rs=pstmt.executeQuery();
+		 * 
+		 * while(rs.next()) { ReviewDto dto=new ReviewDto();
+		 * dto.setR_num(rs.getString("r_num"));
+		 * dto.setR_writer(rs.getString("r_writer"));
+		 * dto.setR_subject(rs.getString("r_subject"));
+		 * dto.setR_content(rs.getString("r_content"));
+		 * dto.setR_image(rs.getString("r_image"));
+		 * dto.setR_likes(rs.getInt("r_likes"));
+		 * dto.setR_readcount(rs.getInt("r_readcount"));
+		 * dto.setR_writeday(rs.getTimestamp("r_writeday"));
+		 * 
+		 * list.add(dto); } } catch (SQLException e) { // TODO Auto-generated catch
+		 * block e.printStackTrace(); }finally { db.dbClose(null, pstmt, conn); } return
+		 * list; }
+		 */
 }

@@ -19,6 +19,11 @@
 
 <title>Insert title here</title>
 <style type="text/css">
+
+  *{
+	font-family: 'Noto Sans KR';
+   }
+
   .container {
     position: relative;
   }

@@ -9,12 +9,19 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <title>Insert title here</title>
+<style type="text/css">
+	
+	*{
+	font-family: 'Noto Sans KR';
+	 }
+	
+</style>
 </head>
 <body>
-<div style="margin: 0 auto; width: 600px;">
+<div style="margin: 0 auto; width: 620px;">
    <form action="tour/addaction.jsp" method="post" enctype="multipart/form-data">
       <table class="table table-group-divider">
-         <caption align="top" style="margin-top: 20px;"><h5>상품등록</h5></caption>      
+         <caption align="top" style="margin-top: 20px;"><h5>관광지 등록</h5></caption>      
          <tr>
             <td align="center" valign="middle"><b>카테고리</b></td>
             <td>
@@ -27,14 +34,14 @@
          </tr>
             
          <tr>   
-            <td align="center" valign="middle"><b>한글이름</b></td>
+            <td align="center" valign="middle"><b>이름(한글)</b></td>
             <td>
                <input type="text" name="t_subject" class="form-control">
             </td>
          </tr>
          
          <tr>   
-            <td align="center" valign="middle"><b>영어이름</b></td>
+            <td align="center" valign="middle"><b>이름(영문)</b></td>
             <td>
                <input type="text" name="t_subject_j" class="form-control">
             </td>
@@ -43,7 +50,7 @@
          <tr>
             <td align="center" valign="middle"><b>내용</b></td>
             <td>
-               <textarea style="width: 500px;" name="t_content"></textarea>
+               <textarea style="width: 510px;" name="t_content"></textarea>
             </td>
          </tr>
          
@@ -99,7 +106,7 @@
          <tr>
             <td colspan="2" align="center" class="table table-group-divider">
 
-            <button type="submit" class="btn btn-info"
+            <button type="submit" class="btn btn-secondary btn-sm"
             style="width: 100px;">등록</button>
             </td>
          </tr>

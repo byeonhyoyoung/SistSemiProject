@@ -19,6 +19,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
+
+   *{
+		font-family: 'Noto Sans KR';
+	}
+
    .tour{
       padding: 10px; 
       height: 150px;
@@ -165,7 +170,9 @@
 </head>
 <%
   String loginok=(String)session.getAttribute("loginok");
-
+  //아이디얻기
+  String myid=(String)session.getAttribute("myid");	
+  
   TourDao dao=new TourDao();
   List<TourDto> list=dao.getAllTour();
   NumberFormat nf=NumberFormat.getCurrencyInstance();
@@ -199,11 +206,11 @@
      <%
      	SemiMemberDto semidto=new SemiMemberDto();
           
-     	if(loginok!=null && semidto.getId().equals("admin"))
+        if(loginok!=null && myid.equals("admin"))
      	{%>
-	      <button type="button" class="btn btn-outline-success" onclick="location.href='index.jsp?main=tour/addform.jsp'"
-	      style="margin-left: 20px;">등록</button>
-	      <button type="button" class="btn btn-outline-info" onclick="location.href='index.jsp?main=tour/tourlist.jsp'">목록</button>
+	      <button type="button" class="btn btn-success" onclick="location.href='index.jsp?main=tour/addform.jsp'"
+	      style="margin-left: 20px; border-color: pink; background-color: pink;">등록</button>
+	      <button type="button" class="btn btn-info" style="border-color: gray; background-color: gray; color: white;" onclick="location.href='index.jsp?main=tour/tourlist.jsp'">목록</button>
      	<%}
      %>
       <select name="category" id="category" style="margin-left: 780px;">

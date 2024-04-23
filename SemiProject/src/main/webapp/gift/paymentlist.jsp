@@ -18,6 +18,11 @@
 <meta charset="UTF-8">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <title>결제 내역</title>
+<style type="text/css">
+	*{
+	font-family: 'Noto Sans KR';
+}
+</style>
 </head>
 <body>
 <div class="container mt-3">
