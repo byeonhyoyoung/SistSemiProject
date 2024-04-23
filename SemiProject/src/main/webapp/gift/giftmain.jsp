@@ -41,7 +41,7 @@
                   <div class="col-md-8 col-lg-6">
                         <div class="header">
                               <h3>Kyoto Product</h3>
-                              <h2>기념품 판매</h2>
+                              <h2>Store</h2>
                         </div>
                   </div>
             </div>

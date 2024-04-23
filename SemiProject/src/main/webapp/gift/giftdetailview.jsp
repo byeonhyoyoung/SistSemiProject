@@ -13,13 +13,13 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>상품 상세 정보</title>
 <style type="text/css">
-	*{
-	font-family: 'Noto Sans KR';
-}
+    * {
+        font-family: 'Noto Sans KR';
+    }
 
     img.large {
         margin: 10px 0;
-        width: 400px;
+        width: 300px;
         height: auto; 
         transition: transform 0.3s ease-in-out; /* 호버 효과를 위한 transition */
     }
@@ -29,11 +29,14 @@
     }
 
     .product-info {
-        margin-top: 20px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        padding-left: 20px;
     }
 
     .product-info h4 {
-        font-family: 'Noto Sans KR', sans-serif;
+        font-family: 'Noto Sans KR';
         margin-bottom: 10px;
     }
 
@@ -48,6 +51,7 @@
     .btn-group {
         margin-top: 20px;
     }
+    
 </style>
 </head>
 <%
@@ -65,30 +69,46 @@
    NumberFormat nf=NumberFormat.getCurrencyInstance();
 %>
 <body>
-   <div style="margin: 0px auto; width: 1000px;">
+   <div style="margin: 0px auto; width: 1000px; position: relative;">
       <form id="frm" >
 
          <!-- hidden: 장바구니 db에 넣어야 할것 -->
          <input type="hidden" name="g_num" value="<%=g_num%>">
-      	 <input type="hidden" name="num" value="<%=num%>" >	
+         <input type="hidden" name="num" value="<%=num%>" >   
 
-         <table class="table">
+         <table class="table" style="margin-top: 100px;">
             <tr>
                <td style="width: 500px;">
-                  <img alt="" src="gift/image_gift/<%=dto.getG_image_1()%>" class="large img-thumbnail">
-                  <img alt="" src="gift/image_gift/<%=dto.getG_image_2()%>" class="large img-thumbnail">
+                  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000"> <!-- Add data-bs-interval attribute for automatic sliding every 2 seconds -->
+                     <div class="carousel-inner">
+                        <div class="carousel-item active">
+                           <img src="gift/image_gift/<%=dto.getG_image_1()%>" class="d-block w-100" alt="Image 1">
+                        </div>
+                        <div class="carousel-item">
+                           <img src="gift/image_gift/<%=dto.getG_image_2()%>" class="d-block w-100" alt="Image 2">
+                        </div>
+                     </div>
+                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                     </button>
+                     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                     </button>
+                  </div>
                </td>
-               <td style="width: 500px; padding-top: 50px;" class="product-info">
-                  <h4>상품명: <%=dto.getG_name() %></h4>
-                  <h6>"<%=dto.getG_subject() %>"</h6>
-                  <h4 class="price">가격: <%=nf.format(Integer.parseInt(dto.getG_price())*1.15) %></h4>
+               <td style="width: 500px;" class="product-info">
+                  <h3><%=dto.getG_name() %></h3>
+                  <h6><%=dto.getG_subject() %></h6>
+                  <h4 class="price"><%=nf.format(Integer.parseInt(dto.getG_price())*1.0) %></h4>
                   <p><%=dto.getG_content()%></p>
                   <!-- 갯수 -->
-                  <h4>갯수: <input type="number" min="1" max="10" value="1" step="1" name="cnt"></h4>
-
+                  <h4>갯수: <input type="number" min="1" max="10" value="1" step="1" name="cnt" id="cnt"></h4>
+				  
                   <div class="btn-group">
-                     <button type="button" class="btn btn-info" style="background: pink; border: pink; color: white;" id="btncart">상품추가</button>
-                     <button type="button" class="btn btn-success" style="background: gray; border: gray; color: white;" onclick="location.href='index.jsp?main=gift/giftmain.jsp'">상품목록</button>
+                     <button type="button" class="btn btn-secondary" id="btncart">상품추가</button> &nbsp;
+                     <button type="button" class="btn btn-secondary" onclick="location.href='index.jsp?main=gift/giftmain.jsp'">상품목록</button>
                   </div>
                </td>
             </tr>

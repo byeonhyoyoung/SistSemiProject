@@ -21,8 +21,8 @@
 <style type="text/css">
 
    *{
-		font-family: 'Noto Sans KR';
-	}
+      font-family: 'Noto Sans KR';
+   }
 
    .tour{
       padding: 10px; 
@@ -43,7 +43,7 @@
    .searching {
       width: 250px; 
       height: 45px; 
-      border:1px solid rgb(25,206,96);  
+      border:1px solid rgb(173,173,173);  
       position:relative;
       border-radius: 30px;
       display: inline-block;
@@ -96,7 +96,7 @@
      padding: 4px;
      font-size: 1em;
      border-radius: 30px;
-     border-color: rgb(25,206,96);
+     border-color: rgb(173,173,173);
    }
    
    .option {
@@ -171,7 +171,7 @@
 <%
   String loginok=(String)session.getAttribute("loginok");
   //아이디얻기
-  String myid=(String)session.getAttribute("myid");	
+  String myid=(String)session.getAttribute("myid");   
   
   TourDao dao=new TourDao();
   List<TourDto> list=dao.getAllTour();
@@ -195,7 +195,7 @@
       <a class="nav-link" data-bs-toggle="tab" href="#tabs-event" style="text-decoration: none; color:gray;">축제</a>
     </li>
   </ul>
-	<br>
+   <br>
   
   <!-- tab panes -->
   <div class="tab-content">
@@ -204,16 +204,16 @@
      <div class="d-inline-flex">
      
      <%
-     	SemiMemberDto semidto=new SemiMemberDto();
+        SemiMemberDto semidto=new SemiMemberDto();
           
         if(loginok!=null && myid.equals("admin"))
-     	{%>
-	      <button type="button" class="btn btn-success" onclick="location.href='index.jsp?main=tour/addform.jsp'"
-	      style="margin-left: 20px; border-color: pink; background-color: pink;">등록</button>
-	      <button type="button" class="btn btn-info" style="border-color: gray; background-color: gray; color: white;" onclick="location.href='index.jsp?main=tour/tourlist.jsp'">목록</button>
-     	<%}
+        {%>
+         <button type="button" class="btn btn-secondary btn-sm" onclick="location.href='index.jsp?main=tour/addform.jsp'"
+         style="margin-left: 20px;">등록</button>&nbsp;
+         <button type="button" class="btn btn-secondary btn-sm" onclick="location.href='index.jsp?main=tour/tourlist.jsp'">목록</button>
+        <%}
      %>
-      <select name="category" id="category" style="margin-left: 780px;">
+      <select name="category" id="category" style="margin-left: 780px; ">
          <option class="option" style="text-align: center;" value="sawon">사원</option>
          <option class="option" style="text-align: center;" value="mus">박물관</option>
          <option class="option" style="text-align: center;" value="event">축제</option>
