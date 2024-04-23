@@ -42,7 +42,7 @@
 			<th width="100" class="table-light" valign="middle">작성자</th>
 			<td>
 				<input type="text" name="q_writer" class="form-control"
-				required="required" style="width: 130px;" value="<%=dto.getQ_writer()%>">
+				required="required" style="width: 130px;" readonly="readonly" value="<%=dto.getQ_writer()%>">
 			</td>
 		</tr>
 		<tr>

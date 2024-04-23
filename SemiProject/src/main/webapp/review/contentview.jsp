@@ -1,3 +1,5 @@
+<%@page import="data.dto.SemiMemberDto"%>
+<%@page import="data.dao.SemiMemberDao"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="data.dto.ReviewDto"%>
 <%@page import="data.dao.ReviewDao"%>
@@ -210,6 +212,9 @@
 	//조회수 1증가
 	dao.updateReadcount(num);
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+	
+	String loginok=(String)session.getAttribute("loginok");
+	String myid=(String)session.getAttribute("myid");
 %>
 <body>
 	<div style="margin: 0 auto; width: 900px;">
@@ -239,14 +244,20 @@
 					<span class="likesnum" style="float: left; margin-left: 10px;"><%=dto.getR_likes() %></span>
 					<i class="bi bi-heart-fill" style="font-size: 0px; color: red"></i>
 					
-					<button type="button" class="btn btn-secondary btn-sm" name="btnlist"
-					onclick="location.href='index.jsp?main=review/reviewlist.jsp?currentPage=<%=currentPage%>'">목록</button>
-					<button type="button" class="btn btn-secondary btn-sm" name="btnlist"
-					onclick="location.href='index.jsp?main=review/addform.jsp'">글쓰기</button>
-					<button type="button" class="btn btn-secondary btn-sm" name="btnupdate"
-					onclick="location.href='index.jsp?main=review/updateform.jsp?r_num=<%=num%>&currentPage=<%=currentPage%>'">수정</button>
-					<button type="button" class="btn btn-secondary btn-sm" name="btndelete"
-					onclick="funcdel(<%=num%>,<%=currentPage%>)">삭제</button>
+					<%
+						if(loginok != null && dto.getR_writer() != null && dto.getR_writer().equals(myid) && myid != null){
+						%>
+							<button type="button" class="btn btn-secondary btn-sm" name="btnlist"
+							onclick="location.href='index.jsp?main=review/reviewlist.jsp?currentPage=<%=currentPage%>'">목록</button>
+							<button type="button" class="btn btn-secondary btn-sm" name="btnupdate"
+							onclick="location.href='index.jsp?main=review/updateform.jsp?r_num=<%=num%>&currentPage=<%=currentPage%>'">수정</button>
+							<button type="button" class="btn btn-secondary btn-sm" name="btndelete"
+							onclick="funcdel(<%=num%>,<%=currentPage%>)">삭제</button>
+						<% } else if (loginok == null || (dto.getR_writer() != null && !dto.getR_writer().equals(myid))) { %>
+							<button type="button" class="btn btn-secondary btn-sm" name="btnlist"
+							onclick="location.href='index.jsp?main=review/reviewlist.jsp?currentPage=<%=currentPage%>'">목록</button>
+						<%}
+					%>
 				</td>
 			</tr>
 			
