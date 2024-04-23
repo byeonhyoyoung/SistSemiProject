@@ -11,16 +11,16 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <title>Insert title here</title>
 <%
-	//프로젝트 경로
-	String root=request.getContextPath();
+   //프로젝트 경로
+   String root=request.getContextPath();
 %>
 <style type="text/css">
 body{
   background-color: white;
 }
 .swiper {
-  width:  1400px;
-  height:  600px;
+  width:  98%;
+  height:  700px;
 }
 .swiper-slide img {
   display: block;
@@ -53,16 +53,19 @@ body{
       <div class="swiper-wrapper">
         <!-- 슬라이드 -->
         <div class="swiper-slide">
-        	<img src="<%=root %>/image/semi/main1.jpg">
+        	<img src="<%=root %>/image/semi/cover1.jpg">
         </div>
         <div class="swiper-slide">
-        	<img src="<%=root %>/image/semi/main2.jpg">
+        	<img src="<%=root %>/image/semi/cover2.jpg">
         </div>
         <div class="swiper-slide">
-        	<img src="<%=root %>/image/semi/main3.jpg">
+        	<img src="<%=root %>/image/semi/cover3.jpg">
         </div>
         <div class="swiper-slide">
-        	<img src="<%=root %>/image/semi/main4.jpg">
+        	<img src="<%=root %>/image/semi/cover1.jpg">
+        </div>
+         <div class="swiper-slide">
+        	<img src="<%=root %>/image/semi/cover1.jpg">
         </div>
         ...
       </div>
@@ -81,27 +84,27 @@ body{
     
 <script type="text/javascript">
 const swiper = new Swiper('.swiper', {
-	  direction: 'horizontal',
-	  loop: true,
-	  slidesPerView: 'auto',
-	  centeredSlides: true,
-	  spaceBetween: 20,
-	  autoplay: {
-		  delay: 5000,
-		  disableOnInteraction: false // 필수
-	  },
-	  pagination: {
-	    el: '.swiper-pagination',
-	    clickable: true,
-	  },
-	  navigation: {
-	    nextEl: '.swiper-button-next',
-	    prevEl: '.swiper-button-prev',
-	  },
-	  scrollbar: {
-	    el: '.swiper-scrollbar',
-	  },
-	});
+     direction: 'horizontal',
+     loop: true,
+     slidesPerView: 'auto',
+     centeredSlides: true,
+     spaceBetween: 20,
+     autoplay: {
+        delay: 5000,
+        disableOnInteraction: false // 필수
+     },
+     pagination: {
+       el: '.swiper-pagination',
+       clickable: true,
+     },
+     navigation: {
+       nextEl: '.swiper-button-next',
+       prevEl: '.swiper-button-prev',
+     },
+     scrollbar: {
+       el: '.swiper-scrollbar',
+     },
+   });
 </script>
 </body>
 </html>

@@ -1,3 +1,5 @@
+<%@page import="data.dto.SemiMemberDto"%>
+<%@page import="data.dao.SemiMemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -19,6 +21,9 @@
 <%
 	//프로젝트의 경로
 	String root=request.getContextPath();
+	String myid=(String)session.getAttribute("myid");
+	SemiMemberDao sdao=new SemiMemberDao();
+	SemiMemberDto sdto=sdao.getMemberById(myid);
 %>
 <!-- se2 폴더에서 js 파일 가져오기 -->
 <script type="text/javascript" src="<%=root%>/se2/js/HuskyEZCreator.js"
@@ -35,7 +40,7 @@
 			<th width="100" class="table-light" valign="middle">작성자</th>
 			<td>
 				<input type="text" name="r_writer" class="form-control"
-				required="required" style="width: 130px;">
+				required="required" style="width: 130px;" value="<%=myid %>" readonly="readonly">
 			</td>
 		</tr>
 		<tr>

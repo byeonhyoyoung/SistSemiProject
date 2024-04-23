@@ -36,7 +36,8 @@
 		<tr>
 			<th width="100" class="table-light" valign="middle">작성자</th>
 			<td>
-				<input type="text" name="q_writer" class="form-control" required="required" style="width: 130px;" value="<%=myid%>">
+				<input type="text" name="q_writer" class="form-control" required="required"
+				style="width: 130px;" value="<%=myid%>" readonly="readonly">
 			</td>
 		</tr>
 		<tr>

@@ -25,6 +25,10 @@
 
 <title>Insert title here</title>
 <style type="text/css">
+*{
+   font-family: 'Noto Sans KR';
+}
+
 a.goDetail {
     text-decoration: none;
     color: black;
@@ -36,16 +40,16 @@ a:hover {
 }
 
 .nav-tabs {
-    width: 1100px; /* Adjust the width as needed */
+	
 }
 
 .nav-tabs .nav-item {
-    display: inline-block;
-    margin-right: 10px; /* Adjust margin between tabs */
+	display: inline-block;
+	margin-right: 10px; /* Adjust margin between tabs */
 }
 
 .nav-tabs .nav-link {
-    padding: .5rem 1.5rem; /* Increase padding */
+	padding: .5rem 1.5rem; /* Increase padding */
 }
 
 .container {
@@ -55,9 +59,6 @@ a:hover {
 }
 
 .lili {
-    position: absolute;
-    top: 50px;
-    right: 50px;
     z-index: 999;
 }
 
@@ -70,9 +71,7 @@ a:hover {
 }
 
 .write-btn {
-    position: absolute;
-    top: 50px;
-    left: 10px;
+
     color: black;
     background-color: #eeeeee;
     border-color: #eeeeee;
@@ -136,17 +135,11 @@ String name=sdao.getName(myid);
 %>
 <body>
     <div class="container mt-3" align="center">
-        <% if(loginok!=null && myid.equals("admin")) { %>
-        <button class="btn btn-outline-primary bt-sm write-btn"
-            onclick="location.href='index.jsp?main=hotel/hoteladdform.jsp'">게시물 작성</button>
-        <% } %>
-        <a href="index.jsp?main=hotel/hotelmain.jsp"><i
-            class="bi bi-grid-fill fs-2 lili" data-bs-container="body"
-            data-bs-toggle="popover" data-bs-placement="top"
-            data-bs-content="앨범형 보기"></i></a>
+
+       
 
         <!-- Nav tabs -->
-        <ul class="nav nav-tabs" role="tablist">
+        <ul class="nav nav-tabs" role="tablist" style="margin-left: 0 auto;">
             <li class="nav-item"><a class="nav-link active"
                 data-bs-toggle="tab" href="#tabs-total"
                 style="text-decoration: none; color: gray;">전체</a></li>
@@ -157,18 +150,33 @@ String name=sdao.getName(myid);
                 href="#tabs-ryokan" style="text-decoration: none; color: gray;">료칸</a>
             </li>
         </ul>
+        
+        
+        <!--  -->
+		<div class="d-inline-flex"
+			style="margin-top: 10px; margin-bottom: -300px;">
+         <a href="index.jsp?main=hotel/hotelmain.jsp"><i
+            class="bi bi-grid-fill fs-2 lili" data-bs-container="body"
+            data-bs-toggle="popover" data-bs-placement="top"
+            data-bs-content="앨범형 보기"></i></a>
+            
+        <% if(loginok!=null && myid.equals("admin")) { %>
+        <button style="margin-left: 820px;"  class="btn btn-outline-primary bt-sm write-btn"
+            onclick="location.href='index.jsp?main=hotel/hoteladdform.jsp'">게시물 작성</button>
+        <% } %>
+		</div>
 
         <!-- Tab panes -->
         <div class="tab-content">
             <div id="tabs-total" class="container tab-pane active">
-            <br><br><br>
+            <br>
                 <table class="table table-striped">
                     <thead>
                         <tr>
                             <th scope="col">번호</th>
                             <th scope="col">이미지</th>
-                            <th scope="col">한글 이름</th>
-                            <th scope="col">영어 이름</th>
+                            <th scope="col">이름(한글)</th>
+                            <th scope="col">이름(영문)</th>
                             <% if(loginok!=null && myid.equals("admin")) { %>
                             <th scope="col">관리자용</th>
                             <% } %>
@@ -195,9 +203,9 @@ String name=sdao.getName(myid);
                                     class="goDetail"> <%= dto.getH_subject() %>
                                 </a></td>
                             <% if(loginok!=null && myid.equals("admin")) { %>
-                            <td><a h_num="<%=dto.getH_num()%>" style="cursor: pointer;"
+                            <td><a h_num="<%=dto.getH_num()%>" style="cursor: pointer; text-decoration: none;"
                                     class="goUpdate"> <i class="bi bi-pencil-square fs-4 pencil"></i>
-                                </a> <a style="cursor: pointer;"
+                                </a> <a style="cursor: pointer; text-decoration: none;"
                                     onclick="delfunc('<%=dto.getH_num()%>')"><i
                                         class="bi bi-trash fs-4 trash"></i></a></td>
                             <% } %>
@@ -209,7 +217,7 @@ String name=sdao.getName(myid);
 
             <div id="tabs-hotel" class="container tab-pane fade">
                 <table class="table table-striped">
-                <br><br><br>
+                <br>
                     <thead>
                         <tr>
                             <th scope="col">번호</th>
@@ -243,9 +251,9 @@ String name=sdao.getName(myid);
                                     class="goDetail"> <%= dto.getH_subject() %>
                                 </a></td>
                             <% if(loginok!=null && myid.equals("admin")) { %>
-                            <td><a h_num="<%=dto.getH_num()%>" style="cursor: pointer;"
+                            <td><a h_num="<%=dto.getH_num()%>" style="cursor: pointer; text-decoration: none;"
                                     class="goUpdate"> <i class="bi bi-pencil-square fs-4 pencil"></i>
-                                </a> <a style="cursor: pointer;"
+                                </a> <a style="cursor: pointer; text-decoration: none;"
                                     onclick="delfunc('<%=dto.getH_num()%>')"><i
                                         class="bi bi-trash fs-4 trash"></i></a></td>
                             <% } %>
@@ -257,7 +265,7 @@ String name=sdao.getName(myid);
 
             <div id="tabs-ryokan" class="container tab-pane fade">
                 <table class="table table-striped">
-                <br><br><br>
+                <br>
                     <thead>
                         <tr>
                             <th scope="col">번호</th>
@@ -291,9 +299,9 @@ String name=sdao.getName(myid);
                                     class="goDetail"> <%= dto.getH_subject() %>
                                 </a></td>
                             <% if(loginok!=null && myid.equals("admin")) { %>
-                            <td><a h_num="<%=dto.getH_num()%>" style="cursor: pointer;"
+                            <td><a h_num="<%=dto.getH_num()%>" style="cursor: pointer; text-decoration: none;"
                                     class="goUpdate"> <i class="bi bi-pencil-square fs-4 pencil"></i>
-                                </a> <a style="cursor: pointer;"
+                                </a> <a style="cursor: pointer; text-decoration: none;"
                                     onclick="delfunc('<%=dto.getH_num()%>')"><i
                                         class="bi bi-trash fs-4 trash"></i></a></td>
                             <% } %>
