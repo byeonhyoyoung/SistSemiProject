@@ -19,13 +19,12 @@ body{
   background-color: white;
 }
 .swiper {
-  width:  1400px;
+  width:  96%;
   height:  600px;
 }
 .swiper-slide img {
-  display: block;
-  width: 100%; /* 이미지의 너비를 슬라이더의 너비에 맞게 조절 */
-  height: 100%; /* 이미지의 높이를 슬라이더의 높이에 맞게 조절 */
+  width: 100%; /* 이미지의 너비를 슬라이드의 너비에 맞게 조절 */
+  height: 100%; /* 이미지의 높이를 부모 요소인 .swiper-slide의 높이에 맞게 조절 */
   object-fit: cover; /* 이미지가 비율을 유지하면서 슬라이더에 맞춰지도록 설정 */
 }
 .swiper-button-next {
@@ -53,16 +52,16 @@ body{
       <div class="swiper-wrapper">
         <!-- 슬라이드 -->
         <div class="swiper-slide">
-        	<img src="<%=root %>/image/semi/main1.jpg">
+        	<img src="<%=root %>/image/semi/main5.jpg">
+        </div>
+        <div class="swiper-slide">
+        	<img src="<%=root %>/image/semi/main6.jpg">
+        </div>
+        <div class="swiper-slide">
+        	<img src="<%=root %>/image/semi/main7.jpg">
         </div>
         <div class="swiper-slide">
         	<img src="<%=root %>/image/semi/main2.jpg">
-        </div>
-        <div class="swiper-slide">
-        	<img src="<%=root %>/image/semi/main3.jpg">
-        </div>
-        <div class="swiper-slide">
-        	<img src="<%=root %>/image/semi/main4.jpg">
         </div>
         ...
       </div>

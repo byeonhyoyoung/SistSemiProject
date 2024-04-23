@@ -108,8 +108,9 @@ i.flower{
 %>
 <body>
 
-<a href="<%=root%>" style="color: black;"><img
-		src="<%=root%>/image/semi/logo4.png" style="width: 200px; " id="logo"></a>
+<a href="<%=root%>" style="color: black;">
+	<img src="<%=root%>/image/semi/logo4.png" style="width: 200px; " id="logo">
+</a>
 
 <nav id="primary_nav_wrap">
 <ul>
