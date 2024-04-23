@@ -19,15 +19,16 @@
 
 <title>식당 메뉴</title>
 <style type="text/css">
+  *{
+	font-family: 'Noto Sans KR';
+    } 	
+	
   .container {
     position: relative;
     max-width: 1000px;
     margin: 0 auto;
   }
   .lili {
-    position: absolute;
-    top: 50px;
-    right: 50px;
     z-index: 999;
   }
   .pencil {
@@ -37,10 +38,6 @@
     color: red;
   }
   .write-btn {
-  
-  position: absolute;
-  top: 50px;
-  left: 10px;
   color: black;
   background-color: #eeeeee;
   border-color: #eeeeee;
@@ -122,13 +119,21 @@ function delfunc(f_num) {
 
 <body>
 <div class="container mt-3" align="center">
-  <p class="heading">식당</p>
+  <p class="heading">Restaurant</p>
+  
+   <!--  -->
+<div class="d-inline-flex" style="margin-top: 10px; margin-bottom: -300px;">
+  <a href="index.jsp?main=food/foodmain.jsp"><i class="bi bi-grid-fill fs-2 lili" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="앨범형 보기"></i></a>
   
   <% if(loginok!=null && myid.equals("admin")) { %>
-  <button class="btn btn-outline-primary bt-sm write-btn" onclick="location.href='index.jsp?main=food/foodaddform.jsp'">게시물 작성</button>
+  <button  style="margin-left: 820px;" class="btn btn-outline-primary bt-sm write-btn" onclick="location.href='index.jsp?main=food/foodaddform.jsp'">게시물 작성</button>
   <% } %>
   
-  <a href="index.jsp?main=food/foodmain.jsp"><i class="bi bi-grid-fill fs-2 lili" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="앨범형 보기"></i></a>
+  
+  </div>
+  
+  <br><br>
+  
   <table class="table table-striped">
     <thead>
       <tr>
@@ -171,11 +176,11 @@ function delfunc(f_num) {
           <% if(loginok!=null && myid.equals("admin")) { %>
             <td>
             
-             <a f_num="<%=dto.getF_num()%>" style="cursor: pointer;"  class="goUpdate" >
+             <a f_num="<%=dto.getF_num()%>" style="cursor: pointer; text-decoration: none;"  class="goUpdate" >
               <i  class="bi bi-pencil-square fs-4 pencil"></i>
              </a>
              
-              <a style="cursor: pointer;" onclick="delfunc('<%=dto.getF_num()%>')"><i class="bi bi-trash fs-4 trash"></i></a>
+              <a style="cursor: pointer; text-decoration: none;" onclick="delfunc('<%=dto.getF_num()%>')"><i class="bi bi-trash fs-4 trash"></i></a>
             </td>
           <% } %>
           

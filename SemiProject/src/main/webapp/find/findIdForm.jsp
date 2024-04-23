@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="login-form-03/css/style.css">
 <title>Insert title here</title>
 <style type="text/css">
+*{
+	font-family: 'Noto Sans KR';
+}
 body{
 	background-color: white;
 }
@@ -23,7 +26,7 @@ body{
 </head>
 <body>
 <div class="half" style="margin-top: 50px; margin-left: 100px; margin-right: 100px;">
-    <div class="bg order-1 order-md-2 " style="background-image: url('login-form-03/images/bg_5.jpg');">
+    <div class="bg order-1 order-md-2">
         <!--  <div class="contents order-2 order-md-1"> -->
 
         <div class="container">
@@ -53,7 +56,7 @@ body{
 										<input type="submit" value="찾기" name="find" class="btn btn-block btn-primary" style="background-color: pink; border: pink;">
 									</div>
 									<div class="col">
-										<input type="button" value="뒤로76" name="cancel" class="btn btn-block btn-primary" style="background-color: pink; border: pink;" onclick="history.back()">
+										<input type="button" value="뒤로" name="cancel" class="btn btn-block btn-primary" style="background-color: pink; border: pink;" onclick="history.back()">
 									</div>
 								</div>
 							</div>
