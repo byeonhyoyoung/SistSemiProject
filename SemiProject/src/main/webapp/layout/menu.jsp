@@ -125,11 +125,11 @@ i.flower{
   </li>
  
  
-  <li><a href="#" style="font-size:14pt;">Community</a>
+  <li><a href="#" style="font-size:12pt;">Community</a>
      <ul>  
-      <li><a href="index.jsp?main=noti/boardList.jsp" style="font-size:14pt;">Notice</a></li>
-      <li><a href="index.jsp?main=review/reviewlist.jsp" style="font-size:14pt;">Review</a></li>
-      <li><a href="index.jsp?main=question/questionList.jsp" style="font-size:14pt;">Q&A</a></li>
+      <li><a href="index.jsp?main=noti/boardList.jsp" style="font-size:12pt;">Notice</a></li>
+      <li><a href="index.jsp?main=review/reviewlist.jsp" style="font-size:12pt;">Review</a></li>
+      <li><a href="index.jsp?main=question/questionList.jsp" style="font-size:12pt;">Q&A</a></li>
     </ul>
   </li>
  <!--  <li><a href="#">Contact Us</a></li> -->
