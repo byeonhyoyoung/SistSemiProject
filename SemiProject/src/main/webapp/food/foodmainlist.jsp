@@ -19,6 +19,10 @@
 
 <title>식당 메뉴</title>
 <style type="text/css">
+  *{
+	font-family: 'Noto Sans KR';
+    } 	
+	
   .container {
     position: relative;
     max-width: 1000px;
@@ -171,11 +175,11 @@ function delfunc(f_num) {
           <% if(loginok!=null && myid.equals("admin")) { %>
             <td>
             
-             <a f_num="<%=dto.getF_num()%>" style="cursor: pointer;"  class="goUpdate" >
+             <a f_num="<%=dto.getF_num()%>" style="cursor: pointer; text-decoration: none;"  class="goUpdate" >
               <i  class="bi bi-pencil-square fs-4 pencil"></i>
              </a>
              
-              <a style="cursor: pointer;" onclick="delfunc('<%=dto.getF_num()%>')"><i class="bi bi-trash fs-4 trash"></i></a>
+              <a style="cursor: pointer; text-decoration: none;" onclick="delfunc('<%=dto.getF_num()%>')"><i class="bi bi-trash fs-4 trash"></i></a>
             </td>
           <% } %>
           
