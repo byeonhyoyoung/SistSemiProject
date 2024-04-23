@@ -75,19 +75,19 @@ i {
 		<b style="font-size: 10pt; color: gray;"><i
 			class="bi bi-person-lock "></i><%=name %>님 로그인상태</b>
 		<!--lmy: 로그인한 상태에서 마이페이지로 넘어감! -->
-		<a href="index.jsp?main=member/mypage.jsp" style="font-size: 12pt; color: black; font-weight: bold;">mypage</a> 
+		<a href="index.jsp?main=member/mypage.jsp" style="font-size: 12pt; color: black; font-weight: bold; text-decoration: none;">mypage</a> 
 		
 		
-		<a href="login/logoutAction.jsp" style="font-size: 12pt; color: black;font-weight: bold;">logout</a>
+		<a href="login/logoutAction.jsp" style="font-size: 12pt; color: black;font-weight: bold; text-decoration: none;">logout</a>
 
       
       <%
 	
     	  
       }else{%>
-		 <a href="index.jsp?main=login/loginForm3.jsp" style="font-size: 12pt; color: black; font-weight: bold;">login</a> 
+		 <a href="index.jsp?main=login/loginForm3.jsp" style="font-size: 12pt; color: black; font-weight: bold; text-decoration: none;">login</a> 
 			
-	     <a href="index.jsp?main=member/addform2.jsp" style="font-size: 12pt; color: black; font-weight: bold;">join</a>
+	     <a href="index.jsp?main=member/addform2.jsp" style="font-size: 12pt; color: black; font-weight: bold; text-decoration: none;">join</a>
     <%}
    %>
 

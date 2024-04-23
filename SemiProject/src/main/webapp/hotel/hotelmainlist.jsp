@@ -40,16 +40,16 @@ a:hover {
 }
 
 .nav-tabs {
-   
+	
 }
 
 .nav-tabs .nav-item {
-   display: inline-block;
-   margin-right: 10px; /* Adjust margin between tabs */
+	display: inline-block;
+	margin-right: 10px; /* Adjust margin between tabs */
 }
 
 .nav-tabs .nav-link {
-   padding: .5rem 1.5rem; /* Increase padding */
+	padding: .5rem 1.5rem; /* Increase padding */
 }
 
 .container {
@@ -153,21 +153,18 @@ String name=sdao.getName(myid);
         
         
         <!--  -->
-      <div class="d-inline-flex"
-         style="margin-top: 10px; margin-bottom: -300px;">
+		<div class="d-inline-flex"
+			style="margin-top: 10px; margin-bottom: -300px;">
          <a href="index.jsp?main=hotel/hotelmain.jsp"><i
             class="bi bi-grid-fill fs-2 lili" data-bs-container="body"
             data-bs-toggle="popover" data-bs-placement="top"
             data-bs-content="앨범형 보기"></i></a>
             
         <% if(loginok!=null && myid.equals("admin")) { %>
-        <button style="margin-left: 820px;"  class="btn btn-secondary write-btn"
+        <button style="margin-left: 820px;"  class="btn btn-outline-primary bt-sm write-btn"
             onclick="location.href='index.jsp?main=hotel/hoteladdform.jsp'">게시물 작성</button>
         <% } %>
-      </div>
-
-
-
+		</div>
 
         <!-- Tab panes -->
         <div class="tab-content">

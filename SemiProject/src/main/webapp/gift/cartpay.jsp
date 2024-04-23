@@ -19,8 +19,8 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>장바구니와 결제</title>
 <style type="text/css">
-	*{
-	font-family: 'Noto Sans KR';
+   *{
+   font-family: 'Noto Sans KR';
 }
 
    img.photo{
@@ -123,69 +123,69 @@
 
 <script type="text/javascript">
   $(function(){
-	  
-	  $("#allcheck").click(function(){
-		  
-		  var chk=$(this).is(":checked");
-		  
-		  $(".idx").prop("checked",chk);
-	  });
-	  
-	  
-	  //상품클릭시 디테일 페이지로 이동
-	  $("div.sangpum").click(function(){
-		  
-		  var g_num=$(this).attr("g_num");
-		  
-		  location.href="index.jsp?main=gift/giftdetailview.jsp?g_num="+g_num;
-		  
-	  });
-	  
-	  // 선택한 상품 삭제버튼
-	  $("#btncartdel").click(function(){
-		  var cnt=$(".idx:checked").length;
-		  
-		  if(cnt==0){
-			  alert("먼저 삭제할 상품을 1개이상 선택해 주세요");
-			  return;
-		  };
-		  
-		  $(".idx:checked").each(function(i,elt){
-			  
-			  var idx=$(this).attr("idx");
-			  
-			  // 선택한 장바구니 상품 모두 삭제하기
-			  del(idx);
-		  });
-		  
-		  // 현재 페이지 새로고침
-		  location.reload();
-	  });
-	  
-	  // i 태그 한개 삭제 이벤트
-	  $("i.del").click(function(){
-		  var idx=$(this).attr("idx");
-		  
-		  var a=confirm("삭제하려면 [확인]을 눌러주세요");
-		  if(a){
-			  del(idx);
-			  location.reload();
-		  }
-	  });
-	  
-	  // 사용자 함수 - 상품 삭제
-	  function del(idx)
-	  {
-		  $.ajax({
-			  type:"get",
-			  url:"gift/cartdelete.jsp",
-			  dataType:"html",
-			  data:{"idx":idx},
-			  success:function(){
-				  
-			  }
-		  });
-	  }
+     
+     $("#allcheck").click(function(){
+        
+        var chk=$(this).is(":checked");
+        
+        $(".idx").prop("checked",chk);
+     });
+     
+     
+     //상품클릭시 디테일 페이지로 이동
+     $("div.sangpum").click(function(){
+        
+        var g_num=$(this).attr("g_num");
+        
+        location.href="index.jsp?main=gift/giftdetailview.jsp?g_num="+g_num;
+        
+     });
+     
+     // 선택한 상품 삭제버튼
+     $("#btncartdel").click(function(){
+        var cnt=$(".idx:checked").length;
+        
+        if(cnt==0){
+           alert("먼저 삭제할 상품을 1개이상 선택해 주세요");
+           return;
+        };
+        
+        $(".idx:checked").each(function(i,elt){
+           
+           var idx=$(this).attr("idx");
+           
+           // 선택한 장바구니 상품 모두 삭제하기
+           del(idx);
+        });
+        
+        // 현재 페이지 새로고침
+        location.reload();
+     });
+     
+     // i 태그 한개 삭제 이벤트
+     $("i.del").click(function(){
+        var idx=$(this).attr("idx");
+        
+        var a=confirm("삭제하려면 [확인]을 눌러주세요");
+        if(a){
+           del(idx);
+           location.reload();
+        }
+     });
+     
+     // 사용자 함수 - 상품 삭제
+     function del(idx)
+     {
+        $.ajax({
+           type:"get",
+           url:"gift/cartdelete.jsp",
+           dataType:"html",
+           data:{"idx":idx},
+           success:function(){
+              
+           }
+        });
+     }
 
     // 결제하기 버튼 클릭 시
     $("#btnpayment").click(function(){

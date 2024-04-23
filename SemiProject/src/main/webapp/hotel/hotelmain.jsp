@@ -52,8 +52,7 @@ a:hover {
 }
 
 .lili {
-
-   z-index: 999;
+	z-index: 999;
 }
 
 .write-btn {
@@ -65,12 +64,12 @@ a:hover {
 
 /* 검색기능 css */
 .searching {
-   width: 250px;
-   height: 45px;
-   border: 1px solid rgb(173, 173, 173);
-   position: relative;
-   border-radius: 30px;
-   display: inline-block;
+	width: 250px;
+	height: 45px;
+	border: 1px solid rgb(173, 173, 173);
+	position: relative;
+	border-radius: 30px;
+	display: inline-block;
 }
 
 #keyword {
@@ -113,13 +112,13 @@ a:hover {
 }
 
 select {
-   box-sizing: border-box;
-   width: 80px;
-   height: 46px;
-   padding: 4px;
-   font-size: 1em;
-   border-radius: 30px;
-   border-color: rgb(173, 173, 173);
+	box-sizing: border-box;
+	width: 80px;
+	height: 46px;
+	padding: 4px;
+	font-size: 1em;
+	border-radius: 30px;
+	border-color: rgb(173, 173, 173);
 }
 
 .option {
@@ -196,71 +195,62 @@ select {
 
 %>
 <body>
-   <div class="container mt-3" align="center">
+	<div class="container mt-3" align="center">
 
-      <div>
-         
-
-         <!-- Nav tabs -->
-         <ul class="nav nav-tabs" role="tablist" style="width: 1100px; margin-left: 0 auto;">
-            <li class="nav-item"><a class="nav-link active"
-               data-bs-toggle="tab" href="#tabs-total"
-               style="text-decoration: none; color: gray;">전체</a></li>
-            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab"
-               href="#tabs-hotel" style="text-decoration: none; color: gray;">호텔</a>
-            </li>
-            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab"
-               href="#tabs-ryokan" style="text-decoration: none; color: gray;">료칸</a>
-            </li>
-
-         </ul>
-
-      </div>
-
- 
+		<div>
 
 
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs" role="tablist"
+				style="width: 1100px; margin-left: 0 auto;">
+				<li class="nav-item"><a class="nav-link active"
+					data-bs-toggle="tab" href="#tabs-total"
+					style="text-decoration: none; color: gray;">전체</a></li>
+				<li class="nav-item"><a class="nav-link" data-bs-toggle="tab"
+					href="#tabs-hotel" style="text-decoration: none; color: gray;">호텔</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" data-bs-toggle="tab"
+					href="#tabs-ryokan" style="text-decoration: none; color: gray;">료칸</a>
+				</li>
+
+			</ul>
+
+		</div>
+
+		<!-- 검색기능 -->
+		<div class="d-inline-flex"
+			style="margin-top: 10px; margin-bottom: -300px; width: 1100px;">
+
+			<div>
+				<a href="index.jsp?main=hotel/hotelmainlist.jsp"><i
+					class="bi bi-list fs-2 lili" data-bs-container="body"
+					data-bs-toggle="popover" data-bs-placement="top"
+					data-bs-content="목록형 보기"></i></a>
+			</div>
 
 
-      <!-- 검색기능 -->
-      <div class="d-inline-flex"
-         style="margin-top: 10px; margin-bottom: -300px; width: 1100px;">
-         
-          <div>
-            <a href="index.jsp?main=hotel/hotelmainlist.jsp"><i
-               class="bi bi-list fs-2 lili" data-bs-container="body"
-               data-bs-toggle="popover" data-bs-placement="top"
-               data-bs-content="목록형 보기"></i></a>
-         </div>
-         
-         
-         <select name="category" id="category" style="margin-left: 780px;">
-            <option class="option" style="text-align: center;" value="hotel">호텔</option>
-            <option class="option" style="text-align: center;" value="ryokan">료칸</option>
-         </select>
-         <div class="searching">
-            <input type="text" name="keyword" id="keyword" placeholder="검색하세요."
-               maxlength="10">
-            <button type="button" class="search">
-               <i class="bi bi-search searchicon"></i>
-            </button>
-         </div>
-      </div>
-      
-      
-      <div class="searchlist"></div>
-      
-         
-      
+			<select name="category" id="category" style="margin-left: 780px;">
+				<option class="option" style="text-align: center;" value="hotel">호텔</option>
+				<option class="option" style="text-align: center;" value="ryokan">료칸</option>
+			</select>
+			<div class="searching">
+				<input type="text" name="keyword" id="keyword" placeholder="검색하세요."
+					maxlength="10">
+				<button type="button" class="search">
+					<i class="bi bi-search searchicon"></i>
+				</button>
+			</div>
+		</div>
 
-      <!-- Tab panes -->
-      <div class="tab-content">
-         <div id="tabs-total" class="container tab-pane active">
+		<div class="searchlist"></div>
 
-            <div class="gallery-image">
-               <p>
-                  <%
-             
+		<!-- Tab panes -->
+		<div class="tab-content">
+			<div id="tabs-total" class="container tab-pane active">
+
+				<div class="gallery-image">
+					<p>
+						<%
                 for(HotelDto dto: list)
                 {
                    

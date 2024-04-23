@@ -21,8 +21,8 @@
 <style type="text/css">
 
    *{
-		font-family: 'Noto Sans KR';
-	}
+      font-family: 'Noto Sans KR';
+   }
 
    .tour{
       padding: 10px; 
@@ -171,7 +171,7 @@
 <%
   String loginok=(String)session.getAttribute("loginok");
   //아이디얻기
-  String myid=(String)session.getAttribute("myid");	
+  String myid=(String)session.getAttribute("myid");   
   
   TourDao dao=new TourDao();
   List<TourDto> list=dao.getAllTour();
@@ -195,7 +195,7 @@
       <a class="nav-link" data-bs-toggle="tab" href="#tabs-event" style="text-decoration: none; color:gray;">축제</a>
     </li>
   </ul>
-	<br>
+   <br>
   
   <!-- tab panes -->
   <div class="tab-content">
@@ -204,14 +204,15 @@
      <div class="d-inline-flex">
      
      <%
-     	SemiMemberDto semidto=new SemiMemberDto();
+        SemiMemberDto semidto=new SemiMemberDto();
           
         if(loginok!=null && myid.equals("admin"))
-     	{%>
-	      <button type="button" class="btn btn-secondary btn-sm" onclick="location.href='index.jsp?main=tour/addform.jsp'"
-	      style="margin-left: 20px;">등록</button>&nbsp;
-	      <button type="button" class="btn btn-secondary btn-sm" onclick="location.href='index.jsp?main=tour/tourlist.jsp'">목록</button>
-     	<%}
+
+        {%>
+         <button type="button" class="btn btn-secondary btn-sm" onclick="location.href='index.jsp?main=tour/addform.jsp'"
+         style="margin-left: 20px;">등록</button>&nbsp;
+         <button type="button" class="btn btn-secondary btn-sm" onclick="location.href='index.jsp?main=tour/tourlist.jsp'">목록</button>
+        <%}
      %>
       <select name="category" id="category" style="margin-left: 780px; ">
          <option class="option" style="text-align: center;" value="sawon">사원</option>

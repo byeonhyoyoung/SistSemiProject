@@ -48,7 +48,7 @@
 			<th width="100" class="table-light" valign="middle">작성자</th>
 			<td>
 				<input type="text" name="r_writer" class="form-control"
-				required="required" style="width: 130px;" value="<%=dto.getR_writer()%>">
+				required="required" style="width: 130px;" readonly="readonly" value="<%=dto.getR_writer()%>">
 			</td>
 		</tr>
 		<tr>
