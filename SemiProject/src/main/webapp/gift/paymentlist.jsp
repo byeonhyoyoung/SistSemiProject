@@ -9,35 +9,50 @@
 <%@page import="java.text.SimpleDateFormat"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
 
 <head>
 <meta charset="UTF-8">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 <title>결제 내역</title>
 <style type="text/css">
-	*{
+* {
 	font-family: 'Noto Sans KR';
+}
+
+.container {
+	margin: 0 auto; /* This centers the container */
+	text-align: center; /* This centers the content inside the container */
+}
+
+.heading {
+	font-size: 20pt;
+}
+
+table {
+	margin: 0 auto; /* This centers the table inside the container */
 }
 </style>
 </head>
 <body>
-<div class="container mt-3">
-    <p class="heading">결제 내역</p>
+	<div class="container mt-3" style="">
+		<p class="heading">결제 내역</p>
+		<br>
+		<table class="table table-striped" style="width: 800px;">
+			<thead>
+				<tr>
+					<th scope="col">결제번호</th>
+					<th scope="col">결제일</th>
 
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">결제번호</th>
-                <th scope="col">결제일</th>
-            
-            </tr>
-        </thead>
-        <tbody>
-            <% 
+				</tr>
+			</thead>
+			<tbody>
+				<% 
             // 세션에서 로그인된 사용자 ID 가져오기
             String id = (String) session.getAttribute("myid");
             SemiMemberDao sdao = new SemiMemberDao();
@@ -65,16 +80,17 @@
             int index = 1;
             for (PaymentDto pdto : uniquePayments.values()) {
              %>
-                <tr>
-                    <td><%= index++ %></td>
-                    <td><a href="index.jsp?main=gift/paymentdetaillist.jsp?num=<%=num %>&payment_date=<%=pdto.getPayment_date()  %>"><%= pdto.getPayment_date() %></a><td>
-       
-                </tr>
-            <% } %>
-        </tbody>
-    </table>
-    
-    
-</div>
+				<tr>
+					<td><%= index++ %></td>
+					<td><a
+						href="index.jsp?main=gift/paymentdetaillist.jsp?num=<%=num %>&payment_date=<%=pdto.getPayment_date()  %>"><%= pdto.getPayment_date() %></a>
+					<td>
+				</tr>
+				<% } %>
+			</tbody>
+		</table>
+
+
+	</div>
 </body>
 </html>
