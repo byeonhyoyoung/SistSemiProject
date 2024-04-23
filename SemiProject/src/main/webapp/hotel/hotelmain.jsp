@@ -52,9 +52,6 @@ a:hover {
 }
 
 .lili {
-	position: relative;
-	float: right;
-	margin-right: 100px;
 	z-index: 999;
 }
 
@@ -69,7 +66,7 @@ a:hover {
 .searching {
 	width: 250px;
 	height: 45px;
-	border: 1px solid rgb(25, 206, 96);
+	border: 1px solid rgb(173, 173, 173);
 	position: relative;
 	border-radius: 30px;
 	display: inline-block;
@@ -121,7 +118,7 @@ select {
 	padding: 4px;
 	font-size: 1em;
 	border-radius: 30px;
-	border-color: rgb(25, 206, 96);
+	border-color: rgb(173, 173, 173);
 }
 
 .option {
@@ -201,15 +198,11 @@ select {
 	<div class="container mt-3" align="center">
 
 		<div>
-			<div>
-				<a href="index.jsp?main=hotel/hotelmainlist.jsp"><i
-					class="bi bi-list fs-2 lili" data-bs-container="body"
-					data-bs-toggle="popover" data-bs-placement="top"
-					data-bs-content="목록형 보기"></i></a>
-			</div>
+
 
 			<!-- Nav tabs -->
-			<ul class="nav nav-tabs" role="tablist" style="width: 1000px; margin-left: 0 auto;">
+			<ul class="nav nav-tabs" role="tablist"
+				style="width: 1100px; margin-left: 0 auto;">
 				<li class="nav-item"><a class="nav-link active"
 					data-bs-toggle="tab" href="#tabs-total"
 					style="text-decoration: none; color: gray;">전체</a></li>
@@ -221,16 +214,26 @@ select {
 				</li>
 
 			</ul>
+
 		</div>
 
- 
+
 
 
 
 
 		<!-- 검색기능 -->
 		<div class="d-inline-flex"
-			style="margin-top: 10px; margin-bottom: -300px;">
+			style="margin-top: 10px; margin-bottom: -300px; width: 1100px;">
+
+			<div>
+				<a href="index.jsp?main=hotel/hotelmainlist.jsp"><i
+					class="bi bi-list fs-2 lili" data-bs-container="body"
+					data-bs-toggle="popover" data-bs-placement="top"
+					data-bs-content="목록형 보기"></i></a>
+			</div>
+
+
 			<select name="category" id="category" style="margin-left: 780px;">
 				<option class="option" style="text-align: center;" value="hotel">호텔</option>
 				<option class="option" style="text-align: center;" value="ryokan">료칸</option>
@@ -243,12 +246,12 @@ select {
 				</button>
 			</div>
 		</div>
-		
-		
+
+
 		<div class="searchlist"></div>
-		
-			
-		
+
+
+
 
 		<!-- Tab panes -->
 		<div class="tab-content">
