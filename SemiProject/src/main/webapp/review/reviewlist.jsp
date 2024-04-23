@@ -236,8 +236,7 @@
 <%
 	ReviewDao dao=new ReviewDao();
 	//전체갯수
-	int 
-  Count=dao.getTotalCount();
+	int totalCount=dao.getTotalCount();
 	int perPage=5; //한페이지당 보여질 글의 갯수
 	int perBlock=5; //한 블럭당 보여질 페이지 갯수
 	int startNum; //db에서 가져올 글의 시작번호(mysql은 첫글이 0번, 오라클은 1번)
@@ -357,7 +356,7 @@
 						<input type="checkbox" value="<%=dto.getR_num()%>" class="alldel">&nbsp;&nbsp;
 						<%=no-- %></td>
 						<td><a href="index.jsp?main=review/contentview.jsp?r_num=<%=dto.getR_num()%>&currentPage=<%=currentPage %>">
-						<span style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 200px; display: block;"><%=dto.getR_subject() %>  </a>
+						<span><%=dto.getR_subject() %>  </a>
               
 						</td>
 						<td align="center"><%=dto.getR_writer() %></td>
