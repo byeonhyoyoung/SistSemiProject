@@ -135,10 +135,10 @@ $(document).ready(function(){
           
           <tr>
             <td colspan="2" align="center">
-              <button type="submit" class="btn btn-info"
-              style="width: 100px; background-color: gray; border: gray;">내용저장</button>
-              <button type="button" class="btn btn-info"
-              style="width: 100px; background-color: gray; border: gray;" onclick="location.href='index.jsp?main=food/foodmain.jsp'">식당목록</button>
+              <button type="submit" class="btn btn-secondary btn-sm"
+              style="width: 100px;">내용저장</button>
+              <button type="button" class="btn btn-secondary btn-sm"
+              style="width: 100px;" onclick="location.href='index.jsp?main=food/foodmain.jsp'">식당목록</button>
             </td>
           </tr>
        </table>

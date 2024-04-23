@@ -109,9 +109,9 @@ i.flower{
 <body>
 
 <a href="<%=root%>" style="color: black;"><img
-		src="<%=root%>/image/semi/logo4.png" style="width: 200px; " id="logo"></a>
+		src="<%=root%>/image/semi/logo4.png" style="width: 200px; margin-left: 50px; margin-top: 20px; " id="logo"></a>
 
-<nav id="primary_nav_wrap">
+<nav id="primary_nav_wrap" style="margin-top: 15px;">
 <ul>
   <li><a href="index.jsp?main=intro/intromain.jsp" style="font-size:12pt;">About Kyoto</a></li>
    <li><a href="index.jsp?main=kyotomap/kyotoMap.jsp" style="font-size:12pt;">Cherry blossom Calendar</a></li>
@@ -124,13 +124,8 @@ i.flower{
   	</ul>
   </li>
  
-<<<<<<< HEAD
-  <li><a href="index.jsp?main=kyotomap/kyotoMap.jsp"><i class="bi bi-flower3 flower"></i>벚꽃캘린더</a></li>
-  <li><a href="#">커뮤니티</a>
-=======
  
   <li><a href="#" style="font-size:12pt;">Community</a>
->>>>>>> refs/heads/main
      <ul>  
       <li><a href="index.jsp?main=noti/boardList.jsp" style="font-size:12pt;">Notice</a></li>
       <li><a href="index.jsp?main=review/reviewlist.jsp" style="font-size:12pt;">Review</a></li>

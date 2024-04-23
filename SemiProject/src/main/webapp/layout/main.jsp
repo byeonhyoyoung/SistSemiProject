@@ -19,8 +19,8 @@ body{
   background-color: white;
 }
 .swiper {
-  width:  1400px;
-  height:  600px;
+  width:  98%;
+  height:  700px;
 }
 .swiper-slide img {
   display: block;
@@ -62,7 +62,10 @@ body{
         	<img src="<%=root %>/image/semi/main3.jpg">
         </div>
         <div class="swiper-slide">
-        	<img src="<%=root %>/image/semi/main4.jpg">
+        	<img src="<%=root %>/image/semi/main1.jpg">
+        </div>
+         <div class="swiper-slide">
+        	<img src="<%=root %>/image/semi/main1.jpg">
         </div>
         ...
       </div>

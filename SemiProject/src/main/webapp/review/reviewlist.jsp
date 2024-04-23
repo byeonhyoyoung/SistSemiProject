@@ -344,9 +344,9 @@
 				</tr>
 				<tr>
 					<td colspan="6" align="right">
-						<button type="button" class="btn btn-info btn-sm"
+						<button type="button" class="btn btn-secondary btn-sm"
 						onclick="location.href='index.jsp?main=review/addform.jsp'">
-						<i class="bi bi-pencil-fill"></i> 글쓰기</button>
+						<i class="bi bi-pencil-fill" style="color: white;"></i> 글쓰기</button>
 					</td>		
 				</tr>
 			<%}else{
