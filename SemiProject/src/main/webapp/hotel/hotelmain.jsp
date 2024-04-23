@@ -5,50 +5,50 @@
 <%@page import="java.util.List"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-	rel="stylesheet">
+   href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+   rel="stylesheet">
 <link
-	href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&family=Noto+Serif+KR&display=swap"
-	rel="stylesheet">
+   href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&family=Noto+Serif+KR&display=swap"
+   rel="stylesheet">
 <script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+   src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Raleway:600,900"
-	rel="stylesheet">
+   rel="stylesheet">
 <link rel="stylesheet" href="food_menu_design_2/dist/style.css">
 <title>Insert title here</title>
 <style type="text/css">
 * {
-	font-family: 'Noto Sans KR';
+   font-family: 'Noto Sans KR';
 }
 
 a.goDetail {
-	text-decoration: none;
-	color: black;
+   text-decoration: none;
+   color: black;
 }
 
 a:hover {
-	text-decoration: underline;
-	color: gray;
+   text-decoration: underline;
+   color: gray;
 }
 
 .nav-tabs {
-	width: 1100px; /* Adjust the width as needed */
+   width: 1100px; /* Adjust the width as needed */
 }
 
 .nav-tabs .nav-item {
-	display: inline-block;
-	margin-right: 10px; /* Adjust margin between tabs */
+   display: inline-block;
+   margin-right: 10px; /* Adjust margin between tabs */
 }
 
 .nav-tabs .nav-link {
-	padding: .5rem 1.5rem; /* Increase padding */
+   padding: .5rem 1.5rem; /* Increase padding */
 }
 
 .lili {
@@ -56,10 +56,10 @@ a:hover {
 }
 
 .write-btn {
-	color: black;
-	background-color: #eeeeee;
-	border-color: #eeeeee;
-	z-index: 100;
+   color: black;
+   background-color: #eeeeee;
+   border-color: #eeeeee;
+   z-index: 100;
 }
 
 /* 검색기능 css */
@@ -73,42 +73,42 @@ a:hover {
 }
 
 #keyword {
-	height: 35px;
-	width: calc(100% - 50px);
-	position: absolute;
-	top: 5px;
-	left: 10px;
-	border: none;
-	font-size: 17px;
-	padding-right: 40px;
+   height: 35px;
+   width: calc(100% - 50px);
+   position: absolute;
+   top: 5px;
+   left: 10px;
+   border: none;
+   font-size: 17px;
+   padding-right: 40px;
 }
 
 #keyword:focus {
-	outline: none;
+   outline: none;
 }
 
 /* input[name="query"]{height: 35px; width: 420px; position: absolute;
       top: 5px; left: 10px; border: none; font-size: 17px;}
     input[name="query"]:focus{outline: none;} */
 .search {
-	width: 45px;
-	height: 46px;
-	background: none;
-	position: absolute;
-	right: 0;
-	top: 0;
-	border: none;
-	font-size: 1.5em; /* 검색 아이콘 사이즈 */
-	font-weight: bold;
-	color: black; /* 아이콘 색상 */
+   width: 45px;
+   height: 46px;
+   background: none;
+   position: absolute;
+   right: 0;
+   top: 0;
+   border: none;
+   font-size: 1.5em; /* 검색 아이콘 사이즈 */
+   font-weight: bold;
+   color: black; /* 아이콘 색상 */
 }
 
 /* 검색 아이콘 위치 조정 */
 .searchicon {
-	position: absolute;
-	right: 20px;
-	top: 50%;
-	transform: translateY(-50%);
+   position: absolute;
+   right: 20px;
+   top: 50%;
+   transform: translateY(-50%);
 }
 
 select {
@@ -122,10 +122,10 @@ select {
 }
 
 .option {
-	padding: 4px;
-	font-size: 14px;
-	color: black;
-	background: white;
+   padding: 4px;
+   font-size: 14px;
+   color: black;
+   background: white;
 }
 </style>
 <script type="text/javascript">
@@ -141,40 +141,40 @@ select {
      
     //검색기능
     $("button.search").click(function(){
-    	
-    	var keyword=$("#keyword").val();
-    	var category=$("#category").val();
-    	//alert(keyword+","+category);
-    	$.ajax({
-    		type:"get",
-    		url:"hotel/search.jsp",
-    		data:{"keyword":keyword, "category":category},
-    		dataType:"json",
-    		success:function(res){
-    			//console.log(res); // 콘솔에서 응답 확인
-    			var s="<div class='gallery-image'><p>";
-    			$.each(res, function(i, ele){
-    				s+="<div class='img-box'>";
-    				s+="<a h_num='"+ele.h_num+"' h_category='"+ele.h_category+"' style='cursor: pointer; color: white' class='goDetail'>";
-    				s+="<img src='hotel/image_hotel/"+ele.h_image+"' class='photo'>";
-    				s+="<div class='transparent-box'>";
-    				s+="<div class='caption'>";
-    				s+="<p>"+ele.h_content+"</p>";
-    				s+="<p class='opacity-low'>"+ele.h_subject+"</p>";
-    				s+="</div></div></a></div>";
-    			})
-    			s+="</p></div>";
-    			$("div.searchlist").html(s);
-    			
-    			$("#tabs-total").hide();
-    			$("#tabs-hotel").hide();
-    			$("#tabs-ryokan").hide();
-    			
-    			$("li.nav-item").click(function(){
-    				location.reload();
-    			})
-    		}
-    	});
+       
+       var keyword=$("#keyword").val();
+       var category=$("#category").val();
+       //alert(keyword+","+category);
+       $.ajax({
+          type:"get",
+          url:"hotel/search.jsp",
+          data:{"keyword":keyword, "category":category},
+          dataType:"json",
+          success:function(res){
+             //console.log(res); // 콘솔에서 응답 확인
+             var s="<div class='gallery-image'><p>";
+             $.each(res, function(i, ele){
+                s+="<div class='img-box'>";
+                s+="<a h_num='"+ele.h_num+"' h_category='"+ele.h_category+"' style='cursor: pointer; color: white' class='goDetail'>";
+                s+="<img src='hotel/image_hotel/"+ele.h_image+"' class='photo'>";
+                s+="<div class='transparent-box'>";
+                s+="<div class='caption'>";
+                s+="<p>"+ele.h_content+"</p>";
+                s+="<p class='opacity-low'>"+ele.h_subject+"</p>";
+                s+="</div></div></a></div>";
+             })
+             s+="</p></div>";
+             $("div.searchlist").html(s);
+             
+             $("#tabs-total").hide();
+             $("#tabs-hotel").hide();
+             $("#tabs-ryokan").hide();
+             
+             $("li.nav-item").click(function(){
+                location.reload();
+             })
+          }
+       });
     })
     
     
@@ -217,11 +217,6 @@ select {
 
 		</div>
 
-
-
-
-
-
 		<!-- 검색기능 -->
 		<div class="d-inline-flex"
 			style="margin-top: 10px; margin-bottom: -300px; width: 1100px;">
@@ -247,11 +242,7 @@ select {
 			</div>
 		</div>
 
-
 		<div class="searchlist"></div>
-
-
-
 
 		<!-- Tab panes -->
 		<div class="tab-content">
@@ -260,46 +251,45 @@ select {
 				<div class="gallery-image">
 					<p>
 						<%
-             
                 for(HotelDto dto: list)
                 {
                    
                    %>
-					
-					<div class="img-box">
+               
+               <div class="img-box">
 
-						<a h_num="<%=dto.getH_num()%>"
-							h_category=<%=dto.getH_category() %>
-							style="cursor: pointer; color: white" class="goDetail"> <img
-							alt="" src="hotel/image_hotel/<%=dto.getH_image()%>"
-							class="photo">
+                  <a h_num="<%=dto.getH_num()%>"
+                     h_category=<%=dto.getH_category() %>
+                     style="cursor: pointer; color: white" class="goDetail"> <img
+                     alt="" src="hotel/image_hotel/<%=dto.getH_image()%>"
+                     class="photo">
 
-							<div class="transparent-box">
-								<div class="caption">
-									<p><%=dto.getH_content() %></p>
-									<p class="opacity-low"><%=dto.getH_subject() %></p>
-								</div>
-							</div>
-						</a>
-					</div>
-
-
-					<%}%>}
+                     <div class="transparent-box">
+                        <div class="caption">
+                           <p><%=dto.getH_content() %></p>
+                           <p class="opacity-low"><%=dto.getH_subject() %></p>
+                        </div>
+                     </div>
+                  </a>
+               </div>
 
 
-					</p>
-				</div>
-			</div>
+               <%}%>}
+
+
+               </p>
+            </div>
+         </div>
 
 
 
-			<div id="tabs-hotel" class="container tab-pane fade">
+         <div id="tabs-hotel" class="container tab-pane fade">
 
-				<div class="gallery-image">
-					<p>
+            <div class="gallery-image">
+               <p>
 
 
-						<%
+                  <%
                
                 for(HotelDto dto: list)
                 {
@@ -308,38 +298,38 @@ select {
                  
                        
                        %>
-					
-					<div class="img-box">
+               
+               <div class="img-box">
 
-						<a h_num="<%=dto.getH_num()%>"
-							h_category=<%=dto.getH_category() %>
-							style="cursor: pointer; color: white" class="goDetail"> <img
-							alt="" src="hotel/image_hotel/<%=dto.getH_image()%>"
-							class="photo">
+                  <a h_num="<%=dto.getH_num()%>"
+                     h_category=<%=dto.getH_category() %>
+                     style="cursor: pointer; color: white" class="goDetail"> <img
+                     alt="" src="hotel/image_hotel/<%=dto.getH_image()%>"
+                     class="photo">
 
-							<div class="transparent-box">
-								<div class="caption">
-									<p><%=dto.getH_content() %></p>
-									<p class="opacity-low"><%=dto.getH_subject() %></p>
-								</div>
-							</div>
-						</a>
-					</div>
-
-
-					<%}}%>
+                     <div class="transparent-box">
+                        <div class="caption">
+                           <p><%=dto.getH_content() %></p>
+                           <p class="opacity-low"><%=dto.getH_subject() %></p>
+                        </div>
+                     </div>
+                  </a>
+               </div>
 
 
-					</p>
-				</div>
-			</div>
-			<div id="tabs-ryokan" class="container tab-pane fade">
-
-				<div class="gallery-image">
-					<p>
+               <%}}%>
 
 
-						<%
+               </p>
+            </div>
+         </div>
+         <div id="tabs-ryokan" class="container tab-pane fade">
+
+            <div class="gallery-image">
+               <p>
+
+
+                  <%
                  
                 for(HotelDto dto: list)
                 {
@@ -348,34 +338,34 @@ select {
 
                                       
                    %>
-					
-					<div class="img-box">
+               
+               <div class="img-box">
 
-						<a h_num="<%=dto.getH_num()%>"
-							h_category=<%=dto.getH_category() %>
-							style="cursor: pointer; color: white" class="goDetail"> <img
-							alt="" src="hotel/image_hotel/<%=dto.getH_image()%>"
-							class="photo">
+                  <a h_num="<%=dto.getH_num()%>"
+                     h_category=<%=dto.getH_category() %>
+                     style="cursor: pointer; color: white" class="goDetail"> <img
+                     alt="" src="hotel/image_hotel/<%=dto.getH_image()%>"
+                     class="photo">
 
-							<div class="transparent-box">
-								<div class="caption">
-									<p><%=dto.getH_content() %></p>
-									<p class="opacity-low"><%=dto.getH_subject() %></p>
-								</div>
-							</div>
-						</a>
-					</div>
-
-
-					<%}}%>
-
-					</p>
-				</div>
-			</div>
+                     <div class="transparent-box">
+                        <div class="caption">
+                           <p><%=dto.getH_content() %></p>
+                           <p class="opacity-low"><%=dto.getH_subject() %></p>
+                        </div>
+                     </div>
+                  </a>
+               </div>
 
 
+               <%}}%>
 
-		</div>
-	</div>
+               </p>
+            </div>
+         </div>
+
+
+
+      </div>
+   </div>
 </body>
 </html>

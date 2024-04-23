@@ -20,9 +20,9 @@
 <title>식당 메뉴</title>
 <style type="text/css">
   *{
-	font-family: 'Noto Sans KR';
-    } 	
-	
+   font-family: 'Noto Sans KR';
+    }    
+   
   .container {
     position: relative;
     max-width: 1000px;

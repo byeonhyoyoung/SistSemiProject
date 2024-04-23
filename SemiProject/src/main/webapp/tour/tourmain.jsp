@@ -207,6 +207,7 @@
         SemiMemberDto semidto=new SemiMemberDto();
           
         if(loginok!=null && myid.equals("admin"))
+
         {%>
          <button type="button" class="btn btn-secondary btn-sm" onclick="location.href='index.jsp?main=tour/addform.jsp'"
          style="margin-left: 20px;">등록</button>&nbsp;

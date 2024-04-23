@@ -19,8 +19,8 @@ body{
   background-color: white;
 }
 .swiper {
-  width:  100%;
-  height:  600px;
+  width:  98%;
+  height:  700px;
 }
 .swiper-slide img {
   display: block;
@@ -53,16 +53,19 @@ body{
       <div class="swiper-wrapper">
         <!-- 슬라이드 -->
         <div class="swiper-slide">
-           <img src="<%=root %>/image/semi/main1.jpg">
+        	<img src="<%=root %>/image/semi/cover1.jpg">
         </div>
         <div class="swiper-slide">
-           <img src="<%=root %>/image/semi/main2.jpg">
+        	<img src="<%=root %>/image/semi/cover2.jpg">
         </div>
         <div class="swiper-slide">
-           <img src="<%=root %>/image/semi/main3.jpg">
+        	<img src="<%=root %>/image/semi/cover3.jpg">
         </div>
         <div class="swiper-slide">
-           <img src="<%=root %>/image/semi/main4.jpg">
+        	<img src="<%=root %>/image/semi/cover1.jpg">
+        </div>
+         <div class="swiper-slide">
+        	<img src="<%=root %>/image/semi/cover1.jpg">
         </div>
         ...
       </div>
