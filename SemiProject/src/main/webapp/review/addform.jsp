@@ -38,7 +38,10 @@
 		<caption align="top"><b>후기게시판</b></caption>
 		<tr>
 			<th width="100" class="table-light" valign="middle">작성자</th>
-			<td name="loginid"><%=sdto.getId() %></td>
+			<td>
+				<input type="text" name="r_writer" class="form-control"
+				required="required" style="width: 130px;" value="<%=myid %>" readonly="readonly">
+			</td>
 		</tr>
 		<tr>
 			<th width="100" class="table-light" valign="middle">제목</th>

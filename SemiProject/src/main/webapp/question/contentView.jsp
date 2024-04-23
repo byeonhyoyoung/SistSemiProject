@@ -202,6 +202,7 @@
 </head>
 <%
 	String num=request.getParameter("q_num");
+	String id=request.getParameter("id");
 	String currentPage=request.getParameter("currentPage");
 	QuestionDao dao=new QuestionDao();
 	
@@ -210,6 +211,9 @@
 	//조회수 1증가
 	dao.updateReadcount(num);
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+	
+	String loginok=(String)session.getAttribute("loginok");
+	String myid=(String)session.getAttribute("myid");
 %>
 <body>
 	<div style="margin: 0 auto; width: 900px;">
@@ -239,14 +243,23 @@
 					<span class="likesnum" style="float: left; margin-left: 10px;"><%=dto.getQ_likes()%></span>
 					<i class="bi bi-heart-fill" style="font-size: 0px; color: red"></i>
 					
-					<button type="button" class="btn btn-secondary btn-sm" name="btnlist"
-					onclick="location.href='index.jsp?main=question/questionList.jsp?currentPage=<%=currentPage%>'">목록</button>
-					<button type="button" class="btn btn-secondary btn-sm" name="btnlist"
-					onclick="location.href='index.jsp?main=question/addForm.jsp'">글쓰기</button>
-					<button type="button" class="btn btn-secondary btn-sm" name="btnupdate"
-					onclick="location.href='index.jsp?main=question/updateForm.jsp?q_num=<%=num%>&currentPage=<%=currentPage%>'">수정</button>
-					<button type="button" class="btn btn-secondary btn-sm" name="btndelete"
-					onclick="funcdel(<%=num%>,<%=currentPage%>)">삭제</button>
+					<%
+						if(loginok!=null && dto.getQ_writer().equals(myid)){
+						%>
+							<button type="button" class="btn btn-secondary btn-sm" name="btnlist"
+							onclick="location.href='index.jsp?main=question/questionList.jsp?currentPage=<%=currentPage%>'">목록</button>
+							<button type="button" class="btn btn-secondary btn-sm" name="btnupdate"
+							onclick="location.href='index.jsp?main=question/updateForm.jsp?q_num=<%=num%>&currentPage=<%=currentPage%>'">수정</button>
+							<button type="button" class="btn btn-secondary btn-sm" name="btndelete"
+							onclick="funcdel(<%=num%>,<%=currentPage%>)">삭제</button>
+						<%}else if(loginok==null || !dto.getQ_writer().equals(myid)){
+						%>
+							<button type="button" class="btn btn-secondary btn-sm" name="btnlist"
+							onclick="location.href='index.jsp?main=question/questionList.jsp?currentPage=<%=currentPage%>'">목록</button>
+						<%}
+					%>
+					
+					
 				</td>
 			</tr>
 			

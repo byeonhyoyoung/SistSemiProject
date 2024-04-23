@@ -1,3 +1,5 @@
+<%@page import="data.dto.SemiMemberDto"%>
+<%@page import="data.dao.SemiMemberDao"%>
 <%@page import="data.dao.QuestionDao"%>
 <%@page import="data.dto.QuestionDto"%>
 <%@page import="data.dao.QuestionAnswerDao"%>
@@ -193,6 +195,15 @@
 	}
 	
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy.MM.dd");
+	
+	String q_num=request.getParameter("q_num");
+	
+	String loginok=(String)session.getAttribute("loginok");
+	String myid=(String)session.getAttribute("myid");
+	String loginid=request.getParameter("loginid");
+	SemiMemberDao sdao=new SemiMemberDao();
+	SemiMemberDto sdto=sdao.getMemberById(myid);
+	
 %>
 <body>
 
@@ -243,17 +254,23 @@
 						<h6><b>등록된 게시글이 없습니다</b></h6>
 					</td>
 				</tr>
-				<tr>
-					<td colspan="6" align="right">
-						<button type="button" class="btn btn-info btn-sm"
-						onclick="location.href='index.jsp?main=question/addForm.jsp'">
-						<i class="bi bi-pencil-fill"></i> 글쓰기</button>
-					</td>		
-				</tr>
+				
+				<%
+					if(loginok!=null){%>
+					<tr>
+						<td colspan="6" align="right">
+							<button type="button" class="btn btn-info btn-sm"
+							onclick="location.href='index.jsp?main=question/addForm.jsp'">
+							<i class="bi bi-pencil-fill"></i> 글쓰기</button>
+						</td>		
+					</tr>						
+					<%}
+				%>
+				
 			<%}else{
 				for(QuestionDto dto:list){%>
 					<tr class="hover-effect">
-						<td align="center">
+						<td>
 						<input type="checkbox" value="<%=dto.getQ_num()%>" class="alldel">&nbsp;&nbsp;
 						<%=no-- %></td>
 						<td><a href="index.jsp?main=question/contentView.jsp?q_num=<%=dto.getQ_num()%>&currentPage=<%=currentPage %>">
@@ -266,18 +283,35 @@
 					</tr>
 				<%}%>
 				
-				<tr>
-					<td colspan="6">
-						&nbsp;<input type="checkbox" class="alldelcheck">&nbsp;&nbsp;전체선택
-						<span style="float: right;">
+				
+				<%
+					if(loginok!=null){%>
+					<tr>
+						<td colspan="6">
+					<%
+						if(sdto.getId().equals("admin"))
+						{%>
+							<input type="checkbox" class="alldelcheck">&nbsp;&nbsp;전체선택
+							<span style="float: right;">
 							<button type="button" class="btn btn-secondary btn-sm" id="btndel">
 							삭제</button>
 							<button type="button" class="btn btn-secondary btn-sm"
 							onclick="location.href='index.jsp?main=question/addForm.jsp'">
 							글쓰기</button>
-						</span>
-					</td>
-				</tr>
+						<%}else{%>
+							<button type="button" class="btn btn-secondary btn-sm" style="float: right;"
+							onclick="location.href='index.jsp?main=question/addForm.jsp'">
+							글쓰기</button>
+						<%}%>
+							</span>
+						</td>
+					</tr>
+						
+					<%}
+				%>
+				
+							
+						
 			<%}
 		%>
 	</table>

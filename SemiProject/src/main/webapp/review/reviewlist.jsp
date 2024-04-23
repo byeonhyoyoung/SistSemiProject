@@ -200,12 +200,12 @@
 	
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy.MM.dd");
 	
+	String r_num=request.getParameter("r_num");
+	
 	String loginok=(String)session.getAttribute("loginok");
 	String myid=(String)session.getAttribute("myid");
-	String loginid=request.getParameter("loginid");
 	SemiMemberDao sdao=new SemiMemberDao();
 	SemiMemberDto sdto=sdao.getMemberById(myid);
-	
 %>
 <body>
 <div class="image-and-text" style="margin: 40px auto 0;">
@@ -254,21 +254,26 @@
 						<h6><b>등록된 게시글이 없습니다</b></h6>
 					</td>
 				</tr>
-				<tr>
-					<td colspan="6" align="right">
-						<button type="button" class="btn btn-info btn-sm"
-						onclick="location.href='index.jsp?main=review/addform.jsp'">
-						<i class="bi bi-pencil-fill"></i> 글쓰기</button>
-					</td>		
-				</tr>
+						<%
+							if(loginok!=null){%>
+							<tr>
+								<td colspan="6" align="right">
+									<button type="button" class="btn btn-secondary btn-sm" style="float: right;"
+									onclick="location.href='index.jsp?main=review/addform.jsp'">
+									글쓰기</button>
+								</td>		
+							</tr>
+							<%}
+						%>	
+					
 			<%}else{
 				for(ReviewDto dto:list){%>
 					<tr class="hover-effect">
-						<td align="center">
+						<td>
 						<input type="checkbox" value="<%=dto.getR_num()%>" class="alldel">&nbsp;&nbsp;
-						<%=no-- %></td>
+   						<%=no-- %></td>
 						<td><a href="index.jsp?main=review/contentview.jsp?r_num=<%=dto.getR_num()%>&currentPage=<%=currentPage %>">
-						<span loginid="<%=loginid%>" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 200px; display: block;" ><%=dto.getR_subject() %></a></span>
+						<span writer="<%=dto.getR_writer()%>" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 200px; display: block;"><%=dto.getR_subject() %></a></span>
 						</td>
 						<td align="center"><%=dto.getR_writer()%></td>
 						<td align="center"><%=sdf.format(dto.getR_writeday()) %></td>
@@ -277,26 +282,33 @@
 					</tr>
 				<%}%>
 				
-				<tr>
-					<td colspan="6">
+				
 						
 						<%
-							if(loginok!=null && sdto.getId().equals("admin"))
-							{%>
-								&nbsp;<input type="checkbox" class="alldelcheck">&nbsp;&nbsp;전체선택
-								<span style="float: right;">
-								<button type="button" class="btn btn-secondary btn-sm" id="btndel">
-								삭제</button>
+							if(loginok!=null){%>	
+							<tr>
+								<td colspan="6">
+							<%
+								if(sdto.getId().equals("admin"))
+								{%>
+									<input type="checkbox" class="alldelcheck">&nbsp;&nbsp;전체선택
+									<span style="float: right;">
+									<button type="button" class="btn btn-secondary btn-sm" id="btndel">
+									삭제</button>
+									<button type="button" class="btn btn-secondary btn-sm" style="float: right;"
+									onclick="location.href='index.jsp?main=review/addform.jsp'">
+									글쓰기</button>
+								<%}else{%>
+									<button type="button" class="btn btn-secondary btn-sm" style="float: right;"
+									onclick="location.href='index.jsp?main=review/addform.jsp'">
+									글쓰기</button>
+								<%}%>
+									</span>
+								</td>
+							</tr>
 							<%}
-						%>
+						%>						
 						
-							
-							<button type="button" class="btn btn-secondary btn-sm" style="float: right;"
-							onclick="location.href='index.jsp?main=review/addform.jsp'">
-							글쓰기</button>
-						</span>
-					</td>
-				</tr>
 			<%}
 		%>
 	</table>
