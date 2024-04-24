@@ -132,11 +132,11 @@ $(document).ready(function(){
                     <td width="150px;"><%=sdf.format(dto.getGaipday()) %></td>
                 </tr>
                 <td colspan="3" align="center">
-                    <button type="button" class="btn btn-outline-info btnUpdate" data-num="<%=dto.getNum()%>">
+                    <button type="button" class="btn btn-secondary btn-sm btnUpdate" data-num="<%=dto.getNum()%>">
                         <i class="bi bi-pencil-square"></i> 수정
                     </button>&nbsp;
-                    <button type="button" class="btn btn-outline-danger btnDelete" data-num="<%=dto.getNum()%>">
-                        <i class="bi bi-trash3" style="color: red;"></i> 탈퇴
+                    <button type="button" class="btn btn-secondary btn-sm btnDelete" data-num="<%=dto.getNum()%>">
+                        <i class="bi bi-trash3" style="color: white;"></i> 탈퇴
                     </button>
                 </td>
            <% } %>

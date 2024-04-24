@@ -1,3 +1,5 @@
+<%@page import="data.dto.SemiMemberDto"%>
+<%@page import="data.dao.SemiMemberDao"%>
 <%@page import="data.dao.ReviewAnswerDao"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="data.dto.ReviewDto"%>
@@ -82,6 +84,10 @@
 	    margin-left: 10px; /* 이미지와 텍스트 사이의 간격 조정 */
 	    font-size: 15px;
 	    font-weight: bold;
+	}
+	 
+	#btndel {
+		margin-right: 5px;
 	}
 	
 	/* 검색기능 css */
@@ -295,9 +301,15 @@
 	}
 	
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy.MM.dd");
+	
+	String r_num=request.getParameter("r_num");
+	
+	String loginok=(String)session.getAttribute("loginok");
+	String myid=(String)session.getAttribute("myid");
+	SemiMemberDao sdao=new SemiMemberDao();
+	SemiMemberDto sdto=sdao.getMemberById(myid);
 %>
 <body>
-
 <div class="image-and-text" style="margin: 40px auto 0;">
     <img class="reviewimg" src="noti/image_noti/review.png">
     <div class="totaltext">    
@@ -308,7 +320,6 @@
 
 <div style="margin: 0 auto; width: 900px;">	
 	<br>
-	<%-- <h6 align="left"><b>총 <%=totalCount %>개의 글이 있습니다</b></h6> --%>
 	
 	<!-- 검색기능 -->
   	<div class="d-inline-flex searchfunc" style="float: right; margin-bottom: 10px; margin-top: -20px;">
@@ -342,42 +353,63 @@
 						<h6><b>등록된 게시글이 없습니다</b></h6>
 					</td>
 				</tr>
-				<tr>
-					<td colspan="6" align="right">
-						<button type="button" class="btn btn-info btn-sm"
-						onclick="location.href='index.jsp?main=review/addform.jsp'">
-						<i class="bi bi-pencil-fill"></i> 글쓰기</button>
-					</td>		
-				</tr>
+						<%
+							if(loginok!=null){%>
+							<tr>
+								<td colspan="6" align="right">
+									<button type="button" class="btn btn-secondary btn-sm" style="float: right;"
+									onclick="location.href='index.jsp?main=review/addform.jsp'">
+									글쓰기</button>
+								</td>		
+							</tr>
+							<%}
+						%>	
+
 			<%}else{
 				for(ReviewDto dto:list){%>
 					<tr class="hover-effect">
-						<td align="center">
+						<td>
 						<input type="checkbox" value="<%=dto.getR_num()%>" class="alldel">&nbsp;&nbsp;
-						<%=no-- %></td>
+   						<%=no-- %></td>
 						<td><a href="index.jsp?main=review/contentview.jsp?r_num=<%=dto.getR_num()%>&currentPage=<%=currentPage %>">
-						<span style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 200px; display: block;"><%=dto.getR_subject() %>  </a>
-              
+
+						<span writer="<%=dto.getR_writer()%>" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 200px; display: block;"><%=dto.getR_subject() %></a></span>
+
 						</td>
-						<td align="center"><%=dto.getR_writer() %></td>
+						<td align="center"><%=dto.getR_writer()%></td>
 						<td align="center"><%=sdf.format(dto.getR_writeday()) %></td>
 						<td align="center"><%=dto.getR_likes() %></td>
 						<td align="center"><%=dto.getR_readcount() %></td>
 					</tr>
 				<%}%>
 				
-				<tr>
-					<td colspan="6">
-						&nbsp;<input type="checkbox" class="alldelcheck">&nbsp;&nbsp;전체선택
-						<span style="float: right;">
-							<button type="button" class="btn btn-secondary btn-sm" id="btndel">
-							삭제</button>
-							<button type="button" class="btn btn-secondary btn-sm"
-							onclick="location.href='index.jsp?main=review/addform.jsp'">
-							글쓰기</button>
-						</span>
-					</td>
-				</tr>
+				
+						
+						<%
+							if(loginok!=null){%>	
+							<tr>
+								<td colspan="6">
+							<%
+								if(sdto.getId().equals("admin"))
+								{%>
+									<input type="checkbox" class="alldelcheck">&nbsp;&nbsp;전체선택
+									<span style="float: right;">
+									<button type="button" class="btn btn-secondary btn-sm" id="btndel">
+									삭제</button>
+									<button type="button" class="btn btn-secondary btn-sm" style="float: right;"
+									onclick="location.href='index.jsp?main=review/addform.jsp'">
+									글쓰기</button>
+								<%}else{%>
+									<button type="button" class="btn btn-secondary btn-sm" style="float: right;"
+									onclick="location.href='index.jsp?main=review/addform.jsp'">
+									글쓰기</button>
+								<%}%>
+									</span>
+								</td>
+							</tr>
+							<%}
+						%>						
+						
 			<%}
 		%>
 	</table>

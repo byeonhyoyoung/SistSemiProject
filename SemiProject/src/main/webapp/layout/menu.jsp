@@ -15,13 +15,12 @@
 <style type="text/css">
 
 *{
-	font-family: 'Noto Sans KR';
+   font-family: 'Noto Sans KR';
  }
 
 #logo{
-	border: 0px solid black;
-	float: left;
-
+   border: 0px solid black;
+   float: left;
 }
 
 #primary_nav_wrap
@@ -31,8 +30,6 @@
    border: 0px solid black;
    width: 1000px;
    margin: 0 auto;
-
-   
 }
 
 #primary_nav_wrap ul
@@ -98,7 +95,7 @@
 }
 
 i.flower{
-	color: pink;
+   color: pink;
 }
 </style>
 </head>
@@ -107,22 +104,21 @@ i.flower{
    String root=request.getContextPath();
 %>
 <body>
-
 <a href="<%=root%>" style="color: black;">
-	<img src="<%=root%>/image/semi/logo4.png" style="width: 200px; " id="logo">
+	<img src="<%=root%>/image/semi/logo4.png" style="width: 200px; margin-left: 50px; margin-top: 20px; " id="logo">
 </a>
 
-<nav id="primary_nav_wrap">
+<nav id="primary_nav_wrap" style="margin-top: 15px;">
 <ul>
   <li><a href="index.jsp?main=intro/intromain.jsp" style="font-size:12pt;">About Kyoto</a></li>
-   <li><a href="index.jsp?main=kyotomap/kyotoMap.jsp" style="font-size:12pt;">Cherry blossom Calendar</a></li>
+   <li><a href="index.jsp?main=kyotomap/kyotoMap.jsp" style="font-size:12pt;">Cherry Blossom Calendar</a></li>
   <li><a href="index.jsp?main=tour/tourmain.jsp" style="font-size:12pt;">Tour</a></li>
   <li><a href="index.jsp?main=hotel/hotelmain.jsp" style="font-size:12pt;">Accommodation</a></li>
-  <li><a href="#" style="font-size:12pt;">Cuisine</a>
-  	<ul>
-  	   <li><a href="index.jsp?main=food/foodmain.jsp" style="font-size:12pt;">Restaurant</a></li>
-	     <li><a href="index.jsp?main=gift/giftmain.jsp" style="font-size:12pt;">Store</a></li>
-  	</ul>
+  <li><a href="#" style="font-size:12pt;">Food</a>
+     <ul>
+        <li><a href="index.jsp?main=food/foodmain.jsp" style="font-size:12pt;">Restaurant</a></li>
+        <li><a href="index.jsp?main=gift/giftmain.jsp" style="font-size:12pt;">Store</a></li>
+     </ul>
   </li>
  
  

@@ -1,8 +1,10 @@
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="data.dao.QuestionAnswerDao"%>
-<%@page import="data.dto.QuestionDto"%>
-<%@page import="java.util.List"%>
+<%@page import="data.dto.SemiMemberDto"%>
+<%@page import="data.dao.SemiMemberDao"%>
 <%@page import="data.dao.QuestionDao"%>
+<%@page import="data.dto.QuestionDto"%>
+<%@page import="data.dao.QuestionAnswerDao"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,7 +20,7 @@
 
 	*{
 	font-family: 'Noto Sans KR';
-}
+      }
 
 	a:link, a:visited{
 	text-decoration: none;
@@ -61,9 +63,10 @@
        color: #fff; /* 활성 페이지의 텍스트 색상을 원하시는 색상으로 변경하세요 */
     }
     
-    .reviewimg {
+    .questionimg {
     	width: 65px;
-    	height: 65px;
+    	height: 60px;
+    	margin-left: 10px;
     }
 
 	.image-and-text {
@@ -149,6 +152,7 @@
      color: black;
      background: white;
    }
+
 </style>
 
 <script type="text/javascript">
@@ -185,7 +189,7 @@
 				console.log(n);
 				
 				//삭제파일로 전송
-				location.href="question/delete.jsp?nums="+n;
+				location.href="question/allDelete.jsp?nums="+n;
 			}
 		})
 		
@@ -294,20 +298,30 @@
 	}
 	
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy.MM.dd");
+	
+	String q_num=request.getParameter("q_num");
+	
+	String loginok=(String)session.getAttribute("loginok");
+	String myid=(String)session.getAttribute("myid");
+	String loginid=request.getParameter("loginid");
+	SemiMemberDao sdao=new SemiMemberDao();
+	SemiMemberDto sdto=sdao.getMemberById(myid);
+	
 %>
 <body>
 
 <div class="image-and-text" style="margin: 40px auto 0;">
-    <img class="reviewimg" src="noti/image_noti/qqqqq.png">
+    <img class="questionimg" src="noti/image_noti/QA.jpg">
     <div class="totaltext">    
-        <b class="board-text">Q & A</b><br>
-        <span class="board-text" style="color: gray; font-size: 0.8em;">질문하고 답해요.</span>
+        <b class="board-text">질문게시판</b><br>
+        <span class="board-text" style="color: gray; font-size: 0.8em;">ㅇㅇ</span>
     </div>
 </div><br>
 
 <div style="margin: 0 auto; width: 900px;">	
 	<br>
 	<%-- <h6 align="left"><b>총 <%=totalCount %>개의 글이 있습니다</b></h6> --%>
+<<<<<<< HEAD
 	
 	<!-- 검색기능 -->
   	<div class="d-inline-flex searchfunc" style="float: right; margin-bottom: 10px; margin-top: -20px;">
@@ -320,7 +334,28 @@
 		<button type="button" class="search"><i class="bi bi-search searchicon"></i></button>
 	  </div>
     </div>
-		
+=======
+	<table class="table table-group-divider">
+		<caption align="top" class="list">
+        <!-- <b>후기게시판 목록</b> -->
+        <div class="d-flex justify-content-end" style="margin: 1px auto 0; ">
+            <form action="">
+                <span class="select-text"></span>
+                <span>
+                    <select class="select-dropbox">
+                        <option value="s-title">제목</option>
+                        <option value="s-writer">글쓴이</option>
+                    </select>
+                </span>
+                <span>
+                    <input type="text" name="search" class="select-textbox">
+                    <input type="submit" class="button-black" value="검색" />
+                </span>
+            </form>
+        </div>
+    	</caption>		
+>>>>>>> refs/heads/main		
+
 	<div class="searchlist"></div>
 	
 	<table class="table table-group-divider origintable">	
@@ -340,29 +375,27 @@
 						<h6><b>등록된 게시글이 없습니다</b></h6>
 					</td>
 				</tr>
-				<tr>
-					<td colspan="6" align="right">
-						<button type="button" class="btn btn-info btn-sm"
-						onclick="location.href='index.jsp?main=question/addForm.jsp'">
-						<i class="bi bi-pencil-fill"></i> 글쓰기</button>
-					</td>		
-				</tr>
+				
+				<%
+					if(loginok!=null){%>
+					<tr>
+						<td colspan="6" align="right">
+							<button type="button" class="btn btn-info btn-sm"
+							onclick="location.href='index.jsp?main=question/addForm.jsp'">
+							<i class="bi bi-pencil-fill"></i> 글쓰기</button>
+						</td>		
+					</tr>						
+					<%}
+				%>
+				
 			<%}else{
 				for(QuestionDto dto:list){%>
 					<tr class="hover-effect">
-						<td align="center">
+						<td>
 						<input type="checkbox" value="<%=dto.getQ_num()%>" class="alldel">&nbsp;&nbsp;
 						<%=no-- %></td>
 						<td><a href="index.jsp?main=question/contentView.jsp?q_num=<%=dto.getQ_num()%>&currentPage=<%=currentPage %>">
-						<span style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 200px; display: block;"><%=dto.getQ_subject() %>  </a>
-						
-						<%-- <%
-							if(dto.getAnswercount()>0){
-							%> --%>
-								<a href="index.jsp?main=question/questionList.jsp?q_num=<%=dto.getQ_num()%>&currentPage=<%=currentPage %>"
-								style="color: red"><%-- [<%=dto.getAnswercount() %>] --%></a></span>
-							<%-- <%}
-						%> --%>
+						<span style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 200px; display: block;"><%=dto.getQ_subject() %></span></a>
 						</td>
 						<td align="center"><%=dto.getQ_writer() %></td>
 						<td align="center"><%=sdf.format(dto.getQ_writeday()) %></td>
@@ -371,18 +404,35 @@
 					</tr>
 				<%}%>
 				
-				<tr>
-					<td colspan="6">
-						&nbsp;<input type="checkbox" class="alldelcheck">&nbsp;&nbsp;전체선택
-						<span style="float: right;">
+				
+				<%
+					if(loginok!=null){%>
+					<tr>
+						<td colspan="6">
+					<%
+						if(sdto.getId().equals("admin"))
+						{%>
+							<input type="checkbox" class="alldelcheck">&nbsp;&nbsp;전체선택
+							<span style="float: right;">
 							<button type="button" class="btn btn-secondary btn-sm" id="btndel">
 							삭제</button>
 							<button type="button" class="btn btn-secondary btn-sm"
 							onclick="location.href='index.jsp?main=question/addForm.jsp'">
 							글쓰기</button>
-						</span>
-					</td>
-				</tr>
+						<%}else{%>
+							<button type="button" class="btn btn-secondary btn-sm" style="float: right;"
+							onclick="location.href='index.jsp?main=question/addForm.jsp'">
+							글쓰기</button>
+						<%}%>
+							</span>
+						</td>
+					</tr>
+						
+					<%}
+				%>
+				
+							
+						
 			<%}
 		%>
 	</table>
@@ -395,7 +445,7 @@
 		if(startPage>1){
 		%>
 			<li class="page-item ">
-		       <a class="page-link" href="index.jsp?main=noti/boardList.jsp?currentPage=<%=startPage-1%>">
+		       <a class="page-link" href="index.jsp?main=question/questionList.jsp?currentPage=<%=startPage-1%>">
 		       <img src="image/semi/left-arrow-bold.png" style="width: 13px; height: 15px;"></a>
 		    </li>	
 		<%}
@@ -417,7 +467,7 @@
 		if(endPage<totalPage){
 		%>
 			<li class="page-item">
-	           <a  class="page-link" href="index.jsp?main=noti/boardList.jsp?currentPage=<%=endPage+1%>">
+	           <a  class="page-link" href="index.jsp?main=question/questionList.jsp?currentPage=<%=endPage+1%>">
 	           <img src="image/semi/right-arrow-bold.png" style="width: 13px; height: 15px;"></a>
 	        </li>
 		<%}
