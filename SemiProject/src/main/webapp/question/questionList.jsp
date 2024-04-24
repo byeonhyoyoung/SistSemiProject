@@ -341,7 +341,7 @@
 <div class="review-container">
     <div class="image-wrapper">
         <img class="reviewimg" src="question/quesimg1.jpg">
-        <div class="review-text">Review</div>
+        <div class="review-text">Q & A</div>
     </div>
 </div>
 <br>

@@ -230,7 +230,6 @@
 			
 			<div style="width: 900px; margin-top: 20px;">
 				<%=dto.getQ_content() %><br>
-				<%=dto.getQ_image() %>
 			</div>
 			<br>
 			<br>
