@@ -102,6 +102,7 @@
 	  bottom: 30px;
 	  right: 30px;
 	  z-index: 9;
+	  opacity: 0;
 	}
 </style>
 </head>

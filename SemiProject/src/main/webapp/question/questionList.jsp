@@ -90,6 +90,99 @@
 		margin-left: 3px;
 	}
 	
+		/* 검색기능 css */
+   .searching {
+      width: 250px; 
+      height: 45px; 
+      border:1px solid rgb(173,173,173);  
+      position:relative;
+      border-radius: 30px;
+      display: inline-block;
+    }
+    
+    #keyword {
+       height: 35px; 
+       width: calc(100% - 50px); 
+       position: absolute;
+       top: 5px; 
+       left: 10px; 
+       border: none;
+       font-size: 17px;
+       padding-right: 40px;
+   }  
+   
+   #keyword:focus {
+      outline: none;
+   }
+    
+    /* input[name="query"]{height: 35px; width: 420px; position: absolute;
+      top: 5px; left: 10px; border: none; font-size: 17px;}
+    input[name="query"]:focus{outline: none;} */
+       
+    .search {
+     width: 45px;
+     height: 46px; 
+     background: none;
+     position: absolute; 
+     right: 0; 
+     top: 0; 
+     border: none; 
+     font-size: 1.5em; /* 검색 아이콘 사이즈 */
+     font-weight: bold; 
+     color: black; /* 아이콘 색상 */
+   }
+   
+   /* 검색 아이콘 위치 조정 */
+   .searchicon {
+     position: absolute; 
+     right: 20px; 
+     top: 50%; 
+     transform: translateY(-50%);
+   }
+   
+   select {
+     box-sizing: border-box;
+     width: 83px;
+     height: 46px;
+     padding: 4px;
+     font-size: 1em;
+     border-radius: 30px;
+     border-color: rgb(173,173,173);
+   }
+   
+   .option {
+     padding: 4px;
+     font-size: 14px;
+     color: black;
+     background: white;
+   }
+   
+   	/* 게시판 이미지 글자 */
+	.review-container {
+    	text-align: center; /* 텍스트와 이미지를 가운데 정렬합니다. */
+	}
+
+	.image-wrapper {
+	    position: relative;
+	    display: inline-block;
+	    width: 100%; /* 이미지 래퍼의 너비를 100%로 설정하여 화면 가로에 맞춥니다. */
+	}
+	
+	.review-text {
+	    position: absolute; /* 텍스트를 이미지 안에 절대 위치로 설정합니다. */
+	    top: 50%; /* 상단 여백을 부모 요소의 50% 위치로 설정합니다. */
+	    left: 50%; /* 좌측 여백을 부모 요소의 50% 위치로 설정합니다. */
+	    transform: translate(-50%, -50%); /* 텍스트를 가운데로 정렬합니다. */
+	    color: white; /* 텍스트의 색상을 흰색으로 설정합니다. */
+	    font-weight: bold; /* 텍스트의 글꼴을 굵게 설정합니다. */
+	    font-size: 60px; /* 텍스트의 글꼴 크기를 설정합니다. */
+	    z-index: 1; /* 텍스트를 이미지 위로 올려줍니다. */
+	}
+	
+	.reviewimg {
+  		width: 100%; /* 이미지의 너비를 100%로 설정하여 화면 가로에 맞춥니다. */
+   		height: 300px;
+	}
 </style>
 
 <script type="text/javascript">
@@ -129,6 +222,46 @@
 				location.href="question/allDelete.jsp?nums="+n;
 			}
 		})
+		
+		//검색기능
+	    $("button.search").click(function(){
+	    	
+	    	var keyword=$("#keyword").val();
+	    	var category=$("#category").val();
+	    	//alert(keyword+","+category);
+	    	$.ajax({
+	    		type:"post",
+	    		url:"question/search.jsp",
+	    		data:{"keyword":keyword, "category":category},
+	    		dataType:"json",
+	    		success:function(res){
+	    			//console.log(res); // 콘솔에서 응답 확인
+	    			var s="<table class='table table-group-divider'><tr class='table-light'>";
+	    			s+="<th width='100' style='text-align: center'>번호</th>";
+	    			s+="<th width='380' style='text-align: center'>제목</th>";
+	    			s+="<th width='200' style='text-align: center'>작성자</th>";
+	    			s+="<th width='200' style='text-align: center'>작성일</th>";
+	    			s+="<th width='80' style='text-align: center'>추천</th>";
+	    			s+="<th width='80' style='text-align: center'>조회</th></tr>";
+	    			var rowCount = res.length;
+	                for (var i = 0; i < rowCount; i++) {
+	                    var rowNum = rowCount - i; // 내림차순으로 번호 부여
+	                    var ele = res[i];
+	                    s += "<tr class='hover-effect'><td align='center'>" + rowNum + "</td>";
+	                    s += "<td><a href='index.jsp?main=review/contentview.jsp?r_num=" + ele.q_num + "'>";
+	                    s += "<span>" + ele.q_subject + "</span></a></td>";
+	                    s += "<td align='center'>" + ele.q_writer + "</td>";
+	                    s += "<td align='center'>" + ele.q_writeday + "</td>";
+	                    s += "<td align='center'>" + ele.q_likes + "</td>";	
+	                    s += "<td align='center'>" + ele.q_readcount + "</td></tr>";
+	                }
+	                s += "</table>";
+	                $("table.origintable").hide();
+	                $("div.searchfunc").show();
+	                $("div.searchlist").html(s);
+	    		}
+	    	});
+	    })
 	})
 </script>
 </head>
@@ -200,44 +333,36 @@
 	
 	String loginok=(String)session.getAttribute("loginok");
 	String myid=(String)session.getAttribute("myid");
-	String loginid=request.getParameter("loginid");
 	SemiMemberDao sdao=new SemiMemberDao();
 	SemiMemberDto sdto=sdao.getMemberById(myid);
 	
 %>
 <body>
-
-<div class="image-and-text" style="margin: 40px auto 0;">
-    <img class="questionimg" src="noti/image_noti/QA.jpg">
-    <div class="totaltext">    
-        <b class="board-text">질문게시판</b><br>
-        <span class="board-text" style="color: gray; font-size: 0.8em;">ㅇㅇ</span>
+<div class="review-container">
+    <div class="image-wrapper">
+        <img class="reviewimg" src="question/quesimg1.jpg">
+        <div class="review-text">Review</div>
     </div>
 </div>
-
+<br>
 <div style="margin: 0 auto; width: 900px;">	
 	<br>
-	<%-- <h6 align="left"><b>총 <%=totalCount %>개의 글이 있습니다</b></h6> --%>
-	<table class="table table-group-divider">
-		<caption align="top" class="list">
-        <!-- <b>후기게시판 목록</b> -->
-        <div class="d-flex justify-content-end" style="margin: 1px auto 0; ">
-            <form action="">
-                <span class="select-text"></span>
-                <span>
-                    <select class="select-dropbox">
-                        <option value="s-title">제목</option>
-                        <option value="s-writer">글쓴이</option>
-                    </select>
-                </span>
-                <span>
-                    <input type="text" name="search" class="select-textbox">
-                    <input type="submit" class="button-black" value="검색" />
-                </span>
-            </form>
-        </div>
-    	</caption>		
+	
+	<!-- 검색기능 -->
+  	<div class="d-inline-flex searchfunc" style="float: right; margin-bottom: 10px; margin-top: -20px;">
+      <select name="category" id="category">
+      	<option class="option" style="text-align: center;" value="제목">제목</option>
+      	<option class="option" style="text-align: center;" value="작성자">작성자</option>
+      </select>
+	  <div class="searching">
+		<input type="text" name="keyword" id="keyword" placeholder="검색하세요." maxlength="10">
+		<button type="button" class="search"><i class="bi bi-search searchicon"></i></button>
+	  </div>
+    </div>
 		
+	<div class="searchlist"></div>
+	
+	<table class="table table-group-divider origintable">
 		<tr class="table-light">
 			<th width="100" style="text-align: center">번호</th>
 			<th width="380" style="text-align: center">제목</th>
@@ -266,7 +391,6 @@
 					</tr>						
 					<%}
 				%>
-				
 			<%}else{
 				for(QuestionDto dto:list){%>
 					<tr class="hover-effect">
@@ -274,7 +398,7 @@
 						<input type="checkbox" value="<%=dto.getQ_num()%>" class="alldel">&nbsp;&nbsp;
 						<%=no-- %></td>
 						<td><a href="index.jsp?main=question/contentView.jsp?q_num=<%=dto.getQ_num()%>&currentPage=<%=currentPage %>">
-						<span style="text-overflow: ellipsis; white-space: nowrap; width: 200px; display: block;"><%=dto.getQ_subject() %></span></a>
+						<span><%=dto.getQ_subject() %></span></a>
 						</td>
 						<td align="center"><%=dto.getQ_writer() %></td>
 						<td align="center"><%=sdf.format(dto.getQ_writeday()) %></td>
@@ -282,8 +406,6 @@
 						<td align="center"><%=dto.getQ_readcount() %></td>
 					</tr>
 				<%}%>
-				
-				
 				<%
 					if(loginok!=null){%>
 					<tr>
@@ -306,12 +428,8 @@
 							</span>
 						</td>
 					</tr>
-						
 					<%}
 				%>
-				
-							
-						
 			<%}
 		%>
 	</table>

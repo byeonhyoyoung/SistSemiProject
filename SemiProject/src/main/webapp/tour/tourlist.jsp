@@ -85,10 +85,7 @@ function delfunc(t_num) {
                   <td valign="middle">
                      <i class="bi bi-pencil-square fs-4" style="color: green;"
                      onclick="location.href='index.jsp?main=tour/updateform.jsp?t_num=<%=dto.getT_num() %>'"></i>&nbsp;
-                     <%-- <i class="bi bi-trash fs-2" style="color: red;"
-                     onclick="location.href='tour/deleteaction.jsp?t_num=<%=dto.getT_num() %>'"></i> --%>
                      <i class="bi bi-trash fs-4" style="color: red; cursor: pointer;" onclick="delfunc('<%=dto.getT_num() %>')"></i>
-                     
                   </td>
                </tr>
             <%}

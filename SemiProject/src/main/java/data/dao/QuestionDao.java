@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import data.dto.QuestionDto;
+import data.dto.ReviewDto;
 import mysql.db.DbConnect;
 
 public class QuestionDao {
@@ -293,4 +294,100 @@ public class QuestionDao {
 				db.dbClose(pstmt, conn);
 			}
 		}
+		
+		//검색
+		public List<QuestionDto> searchQuestion(String category, String keyword){
+			
+			List<QuestionDto> list=new ArrayList<QuestionDto>();
+			
+			Connection conn=db.getConnection();
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			
+			String sql = "";
+		    if (keyword != null && !keyword.trim().isEmpty() && category.equalsIgnoreCase("제목")) {
+		        // 키워드가 있고 제목으로 찾을 경우
+		        sql = "SELECT * FROM question WHERE q_subject LIKE ? ORDER BY q_num DESC";
+		    } else if(keyword != null && !keyword.trim().isEmpty() && category.equalsIgnoreCase("작성자")){
+		    	// 키워드가 있고 작성자로 찾을 경우
+		        sql = "SELECT * FROM question WHERE q_writer LIKE ? ORDER BY q_num DESC";
+		    }
+		   
+		   try {
+			pstmt=conn.prepareStatement(sql);
+			if (keyword != null && !keyword.trim().isEmpty() && category.equalsIgnoreCase("제목")) {
+	            pstmt.setString(1, "%" + keyword + "%");
+	        } else if(keyword != null && !keyword.trim().isEmpty() && category.equalsIgnoreCase("작성자")){
+	            pstmt.setString(1, "%" + keyword + "%");
+	        }
+				rs=pstmt.executeQuery();
+				
+				while(rs.next()) {
+					QuestionDto dto=new QuestionDto();
+					dto.setQ_num(rs.getString("q_num"));
+					dto.setQ_writer(rs.getString("q_writer"));
+					dto.setQ_subject(rs.getString("q_subject"));
+					dto.setQ_content(rs.getString("q_content"));
+					dto.setQ_image(rs.getString("q_image"));
+					dto.setQ_likes(rs.getInt("q_likes"));
+					dto.setQ_readcount(rs.getInt("q_readcount"));
+					dto.setQ_writeday(rs.getTimestamp("q_writeday"));
+					
+					list.add(dto);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				db.dbClose(rs, pstmt, conn);
+			}
+			
+			return list;
+		}
+	   public List<QuestionDto> searchQuestions(String keyword, String category){
+		   List<QuestionDto> list=new ArrayList<QuestionDto>();
+		   
+		   Connection conn=db.getConnection();
+		   PreparedStatement pstmt=null;
+		   ResultSet rs=null;
+		   
+		   String sql = "";
+		    if (keyword != null && !keyword.trim().isEmpty() && category.equalsIgnoreCase("제목")) {
+		        // 키워드가 있고 제목으로 찾을 경우
+		        sql = "SELECT * FROM question WHERE q_subject LIKE ? ORDER BY q_num DESC";
+		    } else if(keyword != null && !keyword.trim().isEmpty() && category.equalsIgnoreCase("작성자")){
+		    	// 키워드가 있고 작성자로 찾을 경우
+		        sql = "SELECT * FROM question WHERE q_writer LIKE ? ORDER BY q_num DESC";
+		    }
+		   
+		   try {
+			pstmt=conn.prepareStatement(sql);
+			if (keyword != null && !keyword.trim().isEmpty() && category.equalsIgnoreCase("제목")) {
+	            pstmt.setString(1, "%" + keyword + "%");
+	        } else if(keyword != null && !keyword.trim().isEmpty() && category.equalsIgnoreCase("작성자")){
+	            pstmt.setString(1, "%" + keyword + "%");
+	        }
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				QuestionDto dto=new QuestionDto();
+				dto.setQ_num(rs.getString("q_num"));
+				dto.setQ_writer(rs.getString("q_writer"));
+				dto.setQ_subject(rs.getString("q_subject"));
+				dto.setQ_content(rs.getString("q_content"));
+				dto.setQ_image(rs.getString("q_image"));
+				dto.setQ_likes(rs.getInt("q_likes"));
+				dto.setQ_readcount(rs.getInt("q_readcount"));
+				dto.setQ_writeday(rs.getTimestamp("q_writeday"));
+				
+				list.add(dto);
+			}
+		   } catch (SQLException e) {
+			   // TODO Auto-generated catch block
+			   e.printStackTrace();
+		   }finally {
+			   db.dbClose(rs, pstmt, conn);
+		   }
+		   return list;
+	   }
 }

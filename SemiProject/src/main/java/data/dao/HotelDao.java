@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import data.dto.HotelDto;
-import data.dto.TourDto;
 import mysql.db.DbConnect;
 
 public class HotelDao {

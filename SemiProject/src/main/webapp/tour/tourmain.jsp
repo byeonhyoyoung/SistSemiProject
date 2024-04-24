@@ -212,13 +212,19 @@
          <button type="button" class="btn btn-secondary btn-sm" onclick="location.href='index.jsp?main=tour/addform.jsp'"
          style="margin-left: 20px;">등록</button>&nbsp;
          <button type="button" class="btn btn-secondary btn-sm" onclick="location.href='index.jsp?main=tour/tourlist.jsp'">목록</button>
+         <select name="category" id="category" style="margin-left: 800px;">
+	         <option class="option" style="text-align: center;" value="sawon">사원</option>
+	         <option class="option" style="text-align: center;" value="mus">박물관</option>
+	         <option class="option" style="text-align: center;" value="event">축제</option>
+      	 </select>
+        <%}else{%>
+        	<select name="category" id="category" style="margin-left: 910px;">
+		        <option class="option" style="text-align: center;" value="sawon">사원</option>
+		        <option class="option" style="text-align: center;" value="mus">박물관</option>
+		        <option class="option" style="text-align: center;" value="event">축제</option>
+     	 	</select>
         <%}
      %>
-      <select name="category" id="category" style="margin-left: 780px; ">
-         <option class="option" style="text-align: center;" value="sawon">사원</option>
-         <option class="option" style="text-align: center;" value="mus">박물관</option>
-         <option class="option" style="text-align: center;" value="event">축제</option>
-      </select>
      <div class="searching">
       <input type="text" name="keyword" id="keyword" placeholder="검색하세요." maxlength="10">
       <button type="button" class="search"><i class="bi bi-search searchicon"></i></button>
