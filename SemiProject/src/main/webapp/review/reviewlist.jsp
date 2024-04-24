@@ -373,7 +373,7 @@
    						<%=no-- %></td>
 						<td><a href="index.jsp?main=review/contentview.jsp?r_num=<%=dto.getR_num()%>&currentPage=<%=currentPage %>">
 
-						<span writer="<%=dto.getR_writer()%>" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 200px; display: block;"><%=dto.getR_subject() %></a></span>
+						<span writer="<%=dto.getR_writer()%>" style="text-overflow: ellipsis; white-space: nowrap; width: 200px; display: block;"><%=dto.getR_subject() %></a></span>
 
 						</td>
 						<td align="center"><%=dto.getR_writer()%></td>

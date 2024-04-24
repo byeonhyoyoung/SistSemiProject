@@ -274,7 +274,7 @@
 						<input type="checkbox" value="<%=dto.getQ_num()%>" class="alldel">&nbsp;&nbsp;
 						<%=no-- %></td>
 						<td><a href="index.jsp?main=question/contentView.jsp?q_num=<%=dto.getQ_num()%>&currentPage=<%=currentPage %>">
-						<span style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 200px; display: block;"><%=dto.getQ_subject() %></span></a>
+						<span style="text-overflow: ellipsis; white-space: nowrap; width: 200px; display: block;"><%=dto.getQ_subject() %></span></a>
 						</td>
 						<td align="center"><%=dto.getQ_writer() %></td>
 						<td align="center"><%=sdf.format(dto.getQ_writeday()) %></td>
