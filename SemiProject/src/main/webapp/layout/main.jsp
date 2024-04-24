@@ -23,19 +23,18 @@ body{
   height:  700px;
 }
 .swiper-slide img {
-  display: block;
-  width: 100%; /* 이미지의 너비를 슬라이더의 너비에 맞게 조절 */
-  height: 100%; /* 이미지의 높이를 슬라이더의 높이에 맞게 조절 */
+  width: 100%; /* 이미지의 너비를 슬라이드의 너비에 맞게 조절 */
+  height: 100%; /* 이미지의 높이를 부모 요소인 .swiper-slide의 높이에 맞게 조절 */
   object-fit: cover; /* 이미지가 비율을 유지하면서 슬라이더에 맞춰지도록 설정 */
 }
 .swiper-button-next {
-  background: url(./image/semi/buttonRight.png) no-repeat;
+ /*  background: url(./image/semi/buttonRight.png) no-repeat; */
   background-size: cover;
   width: 50px;
   height: 50px;
 }
 .swiper-button-prev {
-  background: url(./image/semi/buttonLeft.png) no-repeat;
+ /*  background: url(./image/semi/buttonLeft.png) no-repeat; */
   background-size: cover;
   width: 50px;
   height: 50px;
@@ -44,6 +43,11 @@ body{
 .swiper-button-prev::after {
   display: none;
 }
+
+.swiper-pagination-bullet{
+	background-color: white;
+}
+
 </style>
 </head>
 <body>
@@ -53,19 +57,19 @@ body{
       <div class="swiper-wrapper">
         <!-- 슬라이드 -->
         <div class="swiper-slide">
-        	<img src="<%=root %>/image/semi/cover1.jpg">
+        	<a href="index.jsp?main=intro/intromain.jsp"><img src="<%=root %>/image/semi/cover1.jpg"></a>
         </div>
         <div class="swiper-slide">
-        	<img src="<%=root %>/image/semi/cover2.jpg">
+        	<a href="index.jsp?main=kyotomap/kyotoMap.jsp"><img src="<%=root %>/image/semi/cover2.jpg"></a>
         </div>
         <div class="swiper-slide">
-        	<img src="<%=root %>/image/semi/cover3.jpg">
+        	<a href="index.jsp?main=tour/tourmain.jsp"><img src="<%=root %>/image/semi/cover3.jpg"></a>
         </div>
         <div class="swiper-slide">
-        	<img src="<%=root %>/image/semi/cover1.jpg">
+        	<a href="index.jsp?main=hotel/hotelmain.jsp"><img src="<%=root %>/image/semi/cover4.jpg"></a>
         </div>
          <div class="swiper-slide">
-        	<img src="<%=root %>/image/semi/cover1.jpg">
+        	<a href="index.jsp?main=food/foodmain.jsp"><img src="<%=root %>/image/semi/cover5.jpg"></a>
         </div>
         ...
       </div>

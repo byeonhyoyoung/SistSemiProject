@@ -136,8 +136,6 @@ String name=sdao.getName(myid);
 <body>
     <div class="container mt-3" align="center">
 
-       
-
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist" style="margin-left: 0 auto;">
             <li class="nav-item"><a class="nav-link active"

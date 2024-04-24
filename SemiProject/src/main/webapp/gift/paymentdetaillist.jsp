@@ -111,7 +111,7 @@ int totalPay = 0;
         </tbody>
     </table>
     <div class="button-container">
-        <button type="button" class="btn btn-success" onclick="location.href='index.jsp?main=gift/paymentlist.jsp'">결제 내역 목록으로</button>
+        <button type="button" class="btn btn-secondary btn-sm" onclick="location.href='index.jsp?main=gift/paymentlist.jsp'">결제 내역 목록으로</button>
         <div class="total-payment" style="margin-right: 30px; color: red; font-size: 20pt;">총합계: <%=totalPay %>원</div>
     </div>
 </div>
