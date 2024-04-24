@@ -208,9 +208,9 @@
 	
 	//dto 내 데이터 가져오기
 	QuestionDto dto=dao.getData(num);
-	//조회수 1증가
+	//조회수 1증가 
 	dao.updateReadcount(num);
-	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm");
 	
 	String loginok=(String)session.getAttribute("loginok");
 	String myid=(String)session.getAttribute("myid");
@@ -218,51 +218,51 @@
 <body>
 	<div style="margin: 0 auto; width: 900px;">
 	<form action="">
-		<table class="table table-bordered">
-			<caption align="top"><b>상세페이지</b></caption>
-			<tr class="table-light" style="text-align: center">
-				<th width="100"><b>제목</b></th>
-				<th width="80"><b>작성자</b></th>
-				<th width="380"><b>내용</b></th>
-				<th width="100"><b>작성일</b></th>
-				<th width="60"><b>조회수</b></th>				
-			</tr>
-				
-			<tr style="font-size: 12pt;">
-				<td style="text-align: center" valign="middle"><%=dto.getQ_subject() %></td>
-				<td style="text-align: center" valign="middle"><%=dto.getQ_writer() %></td>
-				<td style="text-align: center" valign="middle"><%=dto.getQ_content() %></td>  <!-- .replace("\n", "<br>") --> 
-				<td style="text-align: center" valign="middle"><%=sdf.format(dto.getQ_writeday()) %></td>
-				<td style="text-align: center" valign="middle"><%=dto.getQ_readcount() %></td>
-			</tr>
+			<div style="width: 900px; margin-top: 100px; font-size: 2.5em;">
+				<b><%=dto.getQ_subject() %></b>
+			</div>
 			
-			<tr>
-				<td colspan="5" align="right">
-					<span class="likes" style="margin-left: 10px; float: left; cursor: pointer;" q_num=<%=dto.getQ_num() %>>
+			<div style="width: 900px; margin-top: 20px; font-size: 1.2em;">
+				<span><img src="./noti/image_noti/logo.png" style="width: 60px;">   <%=dto.getQ_writer() %></span>&nbsp;&nbsp;
+				<span style="color: gray; font-size: 0.8em;"><%=sdf.format(dto.getQ_writeday())%></span>&nbsp;&nbsp;&nbsp;&nbsp;
+				<span style="float: right; font-size: 0.8em;"><b>조회수</b>&nbsp;&nbsp;<%=dto.getQ_readcount() %></span><br><br>
+			</div>
+			
+			<div style="width: 900px; margin-top: 20px;">
+				<%=dto.getQ_content() %><br>
+				<%=dto.getQ_image() %>
+			</div>
+			<br>
+			<br>
+			
+				<div style="text-align: right;">
+					<div style="display: flex; justify-content: space-between;">
+					<span class="likes"  style="cursor: pointer;" q_num=<%=dto.getQ_num() %>>
 					좋아요 <i class="bi bi-heart" style="color: red"></i></span>
-					<span class="likesnum" style="float: left; margin-left: 10px;"><%=dto.getQ_likes()%></span>
+					<span class="likesnum" style="margin-right: 670px;"><%=dto.getQ_likes()%></span>
 					<i class="bi bi-heart-fill" style="font-size: 0px; color: red"></i>
 					
 					<%
 						if(loginok!=null && dto.getQ_writer().equals(myid)){
 						%>
+							<div>
 							<button type="button" class="btn btn-secondary btn-sm" name="btnlist"
 							onclick="location.href='index.jsp?main=question/questionList.jsp?currentPage=<%=currentPage%>'">목록</button>
 							<button type="button" class="btn btn-secondary btn-sm" name="btnupdate"
 							onclick="location.href='index.jsp?main=question/updateForm.jsp?q_num=<%=num%>&currentPage=<%=currentPage%>'">수정</button>
 							<button type="button" class="btn btn-secondary btn-sm" name="btndelete"
 							onclick="funcdel(<%=num%>,<%=currentPage%>)">삭제</button>
+							</div>
 						<%}else if(loginok==null || !dto.getQ_writer().equals(myid)){
 						%>
+							<div style="text-align: right;">
 							<button type="button" class="btn btn-secondary btn-sm" name="btnlist"
 							onclick="location.href='index.jsp?main=question/questionList.jsp?currentPage=<%=currentPage%>'">목록</button>
+							</div>
 						<%}
 					%>
-					
-					
-				</td>
-			</tr>
-			
+					</div>
+				</div>			
 						<!-- 댓글 -->
 			<tr>
 				<td colspan="5">

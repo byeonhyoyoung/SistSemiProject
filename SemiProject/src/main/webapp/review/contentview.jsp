@@ -219,47 +219,54 @@
 <body>
 	<div style="margin: 0 auto; width: 900px;">
 	<form action="">
-		<table class="table table-bordered">
-			<caption align="top"><b>상세페이지</b></caption>
-			<tr class="table-light" style="text-align: center">
-				<th width="100"><b>제목</b></th>
-				<th width="80"><b>작성자</b></th>
-				<th width="380"><b>내용</b></th>
-				<th width="100"><b>작성일</b></th>
-				<th width="60"><b>조회수</b></th>				
-			</tr>
-				
-			<tr style="font-size: 12pt;">
-				<td style="text-align: center" valign="middle"><%=dto.getR_subject() %></td>
-				<td style="text-align: center" valign="middle"><%=dto.getR_writer() %></td>
-				<td style="text-align: center" valign="middle"><%=dto.getR_content() %></td>  <!-- .replace("\n", "<br>") --> 
-				<td style="text-align: center" valign="middle"><%=sdf.format(dto.getR_writeday()) %></td>
-				<td style="text-align: center" valign="middle"><%=dto.getR_readcount() %></td>
-			</tr>
+			<div style="width: 900px; margin-top: 100px; font-size: 2.5em;">
+				<b><%=dto.getR_subject() %></b>
+			</div>
 			
-			<tr>
-				<td colspan="5" align="right">
-					<span class="likes" style="margin-left: 10px; float: left; cursor: pointer;" r_num=<%=dto.getR_num() %>>
+			<div style="width: 900px; margin-top: 20px; font-size: 1.2em;">
+				<span><img src="./noti/image_noti/logo.png" style="width: 60px;">   <%=dto.getR_writer() %></span>&nbsp;&nbsp;
+				<span style="color: gray; font-size: 0.8em;"><%=sdf.format(dto.getR_writeday())%></span>&nbsp;&nbsp;&nbsp;&nbsp;
+				<span style="float: right; font-size: 0.8em;"><b>조회수</b>&nbsp;&nbsp;<%=dto.getR_readcount() %></span><br><br>
+			</div>
+			
+			<div style="width: 900px; margin-top: 20px;">
+				<%=dto.getR_content() %><br>
+				<%=dto.getR_image() %>
+			</div>
+			<br>
+			<br>
+			
+				<div style="text-align: right;">
+					<div style="display: flex; justify-content: space-between;">
+					
+					<div> <!-- 내일 수정하기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11 -->
+					<span class="likes"  style="cursor: pointer;" r_num=<%=dto.getR_num() %>>
 					좋아요 <i class="bi bi-heart" style="color: red"></i></span>
-					<span class="likesnum" style="float: left; margin-left: 10px;"><%=dto.getR_likes() %></span>
+					<span class="likesnum" style="margin-right: 760px;"><%=dto.getR_likes()%></span>
 					<i class="bi bi-heart-fill" style="font-size: 0px; color: red"></i>
+					</div>
 					
 					<%
-						if(loginok != null && dto.getR_writer() != null && dto.getR_writer().equals(myid) && myid != null){
+						if(loginok!=null && dto.getR_writer().equals(myid)){
 						%>
+							<div>
 							<button type="button" class="btn btn-secondary btn-sm" name="btnlist"
-							onclick="location.href='index.jsp?main=review/reviewlist.jsp?currentPage=<%=currentPage%>'">목록</button>
+							onclick="location.href='index.jsp?main=question/questionList.jsp?currentPage=<%=currentPage%>'">목록</button>
 							<button type="button" class="btn btn-secondary btn-sm" name="btnupdate"
-							onclick="location.href='index.jsp?main=review/updateform.jsp?r_num=<%=num%>&currentPage=<%=currentPage%>'">수정</button>
+							onclick="location.href='index.jsp?main=question/updateForm.jsp?q_num=<%=num%>&currentPage=<%=currentPage%>'">수정</button>
 							<button type="button" class="btn btn-secondary btn-sm" name="btndelete"
 							onclick="funcdel(<%=num%>,<%=currentPage%>)">삭제</button>
-						<% } else if (loginok == null || (dto.getR_writer() != null && !dto.getR_writer().equals(myid))) { %>
+							</div>
+						<%}else if(loginok==null || !dto.getR_writer().equals(myid)){
+						%>
+							<div style="text-align: right;">
 							<button type="button" class="btn btn-secondary btn-sm" name="btnlist"
-							onclick="location.href='index.jsp?main=review/reviewlist.jsp?currentPage=<%=currentPage%>'">목록</button>
+							onclick="location.href='index.jsp?main=question/questionList.jsp?currentPage=<%=currentPage%>'">목록</button>
+							</div>
 						<%}
 					%>
-				</td>
-			</tr>
+					</div>
+				</div>
 			
 						<!-- 댓글 -->
 			<tr>

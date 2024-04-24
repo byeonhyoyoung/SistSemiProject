@@ -21,7 +21,6 @@
 #logo{
    border: 0px solid black;
    float: left;
-
 }
 
 #primary_nav_wrap
@@ -31,8 +30,6 @@
    border: 0px solid black;
    width: 1000px;
    margin: 0 auto;
-
-   
 }
 
 #primary_nav_wrap ul
@@ -107,9 +104,9 @@ i.flower{
    String root=request.getContextPath();
 %>
 <body>
-
-<a href="<%=root%>" style="color: black;"><img
-      src="<%=root%>/image/semi/logo4.png" style="width: 200px; margin-left: 50px; margin-top: 20px; " id="logo"></a>
+<a href="<%=root%>" style="color: black;">
+	<img src="<%=root%>/image/semi/logo4.png" style="width: 200px; margin-left: 50px; margin-top: 20px; " id="logo">
+</a>
 
 <nav id="primary_nav_wrap" style="margin-top: 15px;">
 <ul>
