@@ -86,7 +86,11 @@
 	    font-weight: bold;
 	}
 	
-	/* 검색기능 css */
+	.totaltext {
+		margin-left: 3px;
+	}
+	
+		/* 검색기능 css */
    .searching {
       width: 250px; 
       height: 45px; 
@@ -152,7 +156,6 @@
      color: black;
      background: white;
    }
-
 </style>
 
 <script type="text/javascript">
@@ -205,7 +208,7 @@
 	    		data:{"keyword":keyword, "category":category},
 	    		dataType:"json",
 	    		success:function(res){
-	    			console.log(res); // 콘솔에서 응답 확인
+	    			//console.log(res); // 콘솔에서 응답 확인
 	    			var s="<table class='table table-group-divider'><tr class='table-light'>";
 	    			s+="<th width='100' style='text-align: center'>번호</th>";
 	    			s+="<th width='380' style='text-align: center'>제목</th>";
@@ -218,8 +221,8 @@
 	                    var rowNum = rowCount - i; // 내림차순으로 번호 부여
 	                    var ele = res[i];
 	                    s += "<tr class='hover-effect'><td align='center'>" + rowNum + "</td>";
-	                    s += "<td><a href='index.jsp?main=review/contentview.jsp?q_num=" + ele.q_num + "'>";
-	                    s += "<span style='text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 200px; display: block;'>" + ele.q_subject + "</span></a></td>";
+	                    s += "<td><a href='index.jsp?main=review/contentview.jsp?r_num=" + ele.q_num + "'>";
+	                    s += "<span>" + ele.q_subject + "</span></a></td>";
 	                    s += "<td align='center'>" + ele.q_writer + "</td>";
 	                    s += "<td align='center'>" + ele.q_writeday + "</td>";
 	                    s += "<td align='center'>" + ele.q_likes + "</td>";	
@@ -303,7 +306,6 @@
 	
 	String loginok=(String)session.getAttribute("loginok");
 	String myid=(String)session.getAttribute("myid");
-	String loginid=request.getParameter("loginid");
 	SemiMemberDao sdao=new SemiMemberDao();
 	SemiMemberDto sdto=sdao.getMemberById(myid);
 	
@@ -314,14 +316,12 @@
     <img class="questionimg" src="noti/image_noti/QA.jpg">
     <div class="totaltext">    
         <b class="board-text">질문게시판</b><br>
-        <span class="board-text" style="color: gray; font-size: 0.8em;">ㅇㅇ</span>
+        <span class="board-text" style="color: gray; font-size: 0.8em;">정성껏 대답해 드리겠습니다.</span>
     </div>
-</div><br>
+</div>
 
 <div style="margin: 0 auto; width: 900px;">	
 	<br>
-	<%-- <h6 align="left"><b>총 <%=totalCount %>개의 글이 있습니다</b></h6> --%>
-<<<<<<< HEAD
 	
 	<!-- 검색기능 -->
   	<div class="d-inline-flex searchfunc" style="float: right; margin-bottom: 10px; margin-top: -20px;">
@@ -334,31 +334,10 @@
 		<button type="button" class="search"><i class="bi bi-search searchicon"></i></button>
 	  </div>
     </div>
-=======
-	<table class="table table-group-divider">
-		<caption align="top" class="list">
-        <!-- <b>후기게시판 목록</b> -->
-        <div class="d-flex justify-content-end" style="margin: 1px auto 0; ">
-            <form action="">
-                <span class="select-text"></span>
-                <span>
-                    <select class="select-dropbox">
-                        <option value="s-title">제목</option>
-                        <option value="s-writer">글쓴이</option>
-                    </select>
-                </span>
-                <span>
-                    <input type="text" name="search" class="select-textbox">
-                    <input type="submit" class="button-black" value="검색" />
-                </span>
-            </form>
-        </div>
-    	</caption>		
->>>>>>> refs/heads/main		
-
+		
 	<div class="searchlist"></div>
 	
-	<table class="table table-group-divider origintable">	
+	<table class="table table-group-divider origintable">
 		<tr class="table-light">
 			<th width="100" style="text-align: center">번호</th>
 			<th width="380" style="text-align: center">제목</th>
@@ -387,7 +366,6 @@
 					</tr>						
 					<%}
 				%>
-				
 			<%}else{
 				for(QuestionDto dto:list){%>
 					<tr class="hover-effect">
@@ -395,7 +373,7 @@
 						<input type="checkbox" value="<%=dto.getQ_num()%>" class="alldel">&nbsp;&nbsp;
 						<%=no-- %></td>
 						<td><a href="index.jsp?main=question/contentView.jsp?q_num=<%=dto.getQ_num()%>&currentPage=<%=currentPage %>">
-						<span style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 200px; display: block;"><%=dto.getQ_subject() %></span></a>
+						<span><%=dto.getQ_subject() %></span></a>
 						</td>
 						<td align="center"><%=dto.getQ_writer() %></td>
 						<td align="center"><%=sdf.format(dto.getQ_writeday()) %></td>
@@ -403,8 +381,6 @@
 						<td align="center"><%=dto.getQ_readcount() %></td>
 					</tr>
 				<%}%>
-				
-				
 				<%
 					if(loginok!=null){%>
 					<tr>
@@ -427,12 +403,8 @@
 							</span>
 						</td>
 					</tr>
-						
 					<%}
 				%>
-				
-							
-						
 			<%}
 		%>
 	</table>

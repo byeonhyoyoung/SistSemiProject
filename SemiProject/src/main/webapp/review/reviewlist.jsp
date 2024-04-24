@@ -208,7 +208,7 @@
 	    		data:{"keyword":keyword, "category":category},
 	    		dataType:"json",
 	    		success:function(res){
-	    			console.log(res); // 콘솔에서 응답 확인
+	    			//console.log(res); // 콘솔에서 응답 확인
 	    			var s="<table class='table table-group-divider'><tr class='table-light'>";
 	    			s+="<th width='100' style='text-align: center'>번호</th>";
 	    			s+="<th width='380' style='text-align: center'>제목</th>";
@@ -222,7 +222,7 @@
 	                    var ele = res[i];
 	                    s += "<tr class='hover-effect'><td align='center'>" + rowNum + "</td>";
 	                    s += "<td><a href='index.jsp?main=review/contentview.jsp?r_num=" + ele.r_num + "'>";
-	                    s += "<span style='text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 200px; display: block;'>" + ele.r_subject + "</span></a></td>";
+	                    s += "<span>" + ele.r_subject + "</span></a></td>";
 	                    s += "<td align='center'>" + ele.r_writer + "</td>";
 	                    s += "<td align='center'>" + ele.r_writeday + "</td>";
 	                    s += "<td align='center'>" + ele.r_likes + "</td>";	
@@ -372,9 +372,7 @@
 						<input type="checkbox" value="<%=dto.getR_num()%>" class="alldel">&nbsp;&nbsp;
    						<%=no-- %></td>
 						<td><a href="index.jsp?main=review/contentview.jsp?r_num=<%=dto.getR_num()%>&currentPage=<%=currentPage %>">
-
-						<span writer="<%=dto.getR_writer()%>" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 200px; display: block;"><%=dto.getR_subject() %></a></span>
-
+						<span><%=dto.getR_subject() %></span></a>
 						</td>
 						<td align="center"><%=dto.getR_writer()%></td>
 						<td align="center"><%=sdf.format(dto.getR_writeday()) %></td>
@@ -382,34 +380,30 @@
 						<td align="center"><%=dto.getR_readcount() %></td>
 					</tr>
 				<%}%>
-				
-				
-						
-						<%
-							if(loginok!=null){%>	
-							<tr>
-								<td colspan="6">
-							<%
-								if(sdto.getId().equals("admin"))
-								{%>
-									<input type="checkbox" class="alldelcheck">&nbsp;&nbsp;전체선택
-									<span style="float: right;">
-									<button type="button" class="btn btn-secondary btn-sm" id="btndel">
-									삭제</button>
-									<button type="button" class="btn btn-secondary btn-sm" style="float: right;"
-									onclick="location.href='index.jsp?main=review/addform.jsp'">
-									글쓰기</button>
-								<%}else{%>
-									<button type="button" class="btn btn-secondary btn-sm" style="float: right;"
-									onclick="location.href='index.jsp?main=review/addform.jsp'">
-									글쓰기</button>
-								<%}%>
-									</span>
-								</td>
-							</tr>
-							<%}
-						%>						
-						
+				<%
+					if(loginok!=null){%>	
+					<tr>
+						<td colspan="6">
+					<%
+						if(sdto.getId().equals("admin"))
+						{%>
+							<input type="checkbox" class="alldelcheck">&nbsp;&nbsp;전체선택
+							<span style="float: right;">
+							<button type="button" class="btn btn-secondary btn-sm" id="btndel">
+							삭제</button>
+							<button type="button" class="btn btn-secondary btn-sm" style="float: right;"
+							onclick="location.href='index.jsp?main=review/addform.jsp'">
+							글쓰기</button>
+						<%}else{%>
+							<button type="button" class="btn btn-secondary btn-sm" style="float: right;"
+							onclick="location.href='index.jsp?main=review/addform.jsp'">
+							글쓰기</button>
+						<%}%>
+							</span>
+						</td>
+					</tr>
+					<%}
+				%>						
 			<%}
 		%>
 	</table>

@@ -1,21 +1,23 @@
+<%@page import="data.dao.QuestionDao"%>
+<%@page import="data.dto.QuestionDto"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="org.json.simple.JSONArray"%>
-<%@page import="data.dto.QuestionDto"%>
-<%@page import="data.dao.QuestionDao"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="application/json; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	String category=request.getParameter("category");
+	request.setCharacterEncoding("utf-8");	
+
 	String keyword=request.getParameter("keyword");
+	String category=request.getParameter("category");
 	
-	if(category==null) category="";
-	if(keyword==null) keyword="";
-	
+	if (keyword == null) keyword = ""; // null 값 처리
+    //if (category == null) category = ""; // null 값 처리
+    
 	QuestionDao dao=new QuestionDao();
-	List<QuestionDto> list=dao.searchQuestion(category, keyword);
-	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+	List<QuestionDto> list=dao.searchQuestions(keyword, category);
+	SimpleDateFormat sdf=new SimpleDateFormat("yyyy.MM.dd");
 	
 	JSONArray arr=new JSONArray();
 	for(QuestionDto dto:list){
@@ -30,6 +32,6 @@
 		ob.put("q_writeday", sdf.format(dto.getQ_writeday()).toString());
 		
 		arr.add(ob);
-	}
+	} 
 %>
 <%=arr.toString()%>
