@@ -296,7 +296,6 @@ public class QuestionDao {
 		}
 		
 		//검색
-<<<<<<< HEAD
 		public List<QuestionDto> searchQuestion(String category, String keyword){
 			
 			List<QuestionDto> list=new ArrayList<QuestionDto>();
@@ -345,7 +344,6 @@ public class QuestionDao {
 			
 			return list;
 		}
-=======
 	   public List<QuestionDto> searchQuestions(String keyword, String category){
 		   List<QuestionDto> list=new ArrayList<QuestionDto>();
 		   
@@ -392,5 +390,4 @@ public class QuestionDao {
 		   }
 		   return list;
 	   }
->>>>>>> refs/heads/main
 }
