@@ -156,6 +156,33 @@
      color: black;
      background: white;
    }
+   
+   	/* 게시판 이미지 글자 */
+	.review-container {
+    	text-align: center; /* 텍스트와 이미지를 가운데 정렬합니다. */
+	}
+
+	.image-wrapper {
+	    position: relative;
+	    display: inline-block;
+	    width: 100%; /* 이미지 래퍼의 너비를 100%로 설정하여 화면 가로에 맞춥니다. */
+	}
+	
+	.review-text {
+	    position: absolute; /* 텍스트를 이미지 안에 절대 위치로 설정합니다. */
+	    top: 50%; /* 상단 여백을 부모 요소의 50% 위치로 설정합니다. */
+	    left: 50%; /* 좌측 여백을 부모 요소의 50% 위치로 설정합니다. */
+	    transform: translate(-50%, -50%); /* 텍스트를 가운데로 정렬합니다. */
+	    color: white; /* 텍스트의 색상을 흰색으로 설정합니다. */
+	    font-weight: bold; /* 텍스트의 글꼴을 굵게 설정합니다. */
+	    font-size: 60px; /* 텍스트의 글꼴 크기를 설정합니다. */
+	    z-index: 1; /* 텍스트를 이미지 위로 올려줍니다. */
+	}
+	
+	.reviewimg {
+  		width: 100%; /* 이미지의 너비를 100%로 설정하여 화면 가로에 맞춥니다. */
+   		height: 300px;
+	}
 </style>
 
 <script type="text/javascript">
@@ -311,15 +338,13 @@
 	
 %>
 <body>
-
-<div class="image-and-text" style="margin: 40px auto 0;">
-    <img class="questionimg" src="noti/image_noti/QA.jpg">
-    <div class="totaltext">    
-        <b class="board-text">질문게시판</b><br>
-        <span class="board-text" style="color: gray; font-size: 0.8em;">정성껏 대답해 드리겠습니다.</span>
+<div class="review-container">
+    <div class="image-wrapper">
+        <img class="reviewimg" src="question/quesimg1.jpg">
+        <div class="review-text">Review</div>
     </div>
 </div>
-
+<br>
 <div style="margin: 0 auto; width: 900px;">	
 	<br>
 	
