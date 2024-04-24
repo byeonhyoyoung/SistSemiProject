@@ -95,6 +95,33 @@
 	    font-size: 15px;
 	    font-weight: bold;
 	}
+	
+		/* 게시판 이미지 글자 */
+	.review-container {
+    	text-align: center; /* 텍스트와 이미지를 가운데 정렬합니다. */
+	}
+
+	.image-wrapper {
+	    position: relative;
+	    display: inline-block;
+	    width: 100%; /* 이미지 래퍼의 너비를 100%로 설정하여 화면 가로에 맞춥니다. */
+	}
+	
+	.review-text {
+	    position: absolute; /* 텍스트를 이미지 안에 절대 위치로 설정합니다. */
+	    top: 50%; /* 상단 여백을 부모 요소의 50% 위치로 설정합니다. */
+	    left: 50%; /* 좌측 여백을 부모 요소의 50% 위치로 설정합니다. */
+	    transform: translate(-50%, -50%); /* 텍스트를 가운데로 정렬합니다. */
+	    color: white; /* 텍스트의 색상을 흰색으로 설정합니다. */
+	    font-weight: bold; /* 텍스트의 글꼴을 굵게 설정합니다. */
+	    font-size: 60px; /* 텍스트의 글꼴 크기를 설정합니다. */
+	    z-index: 1; /* 텍스트를 이미지 위로 올려줍니다. */
+	}
+	
+	.reviewimg {
+  		width: 100%; /* 이미지의 너비를 100%로 설정하여 화면 가로에 맞춥니다. */
+   		height: 300px;
+	}
 </style>
 <script type="text/javascript">
   //head단에서는 $(function)
@@ -242,11 +269,10 @@ SemiMemberDto sdto=sdao.getMemberById(myid);
 %>
 
 <body>
-<div class="image-and-text" style="margin: 40px auto 0;">
-	<img class="reviewimg" src="noti/image_noti/확성.png">
-    <div>    
-        <b class="board-text">공지사항</b><br>
-        <span class="board-text" style="color: gray; font-size: 0.8em;">공지사항을 안내합니다.</span>
+<div class="review-container">
+    <div class="image-wrapper">
+        <img class="reviewimg" src="noti/image_noti/notiimg1.jpg">
+        <div class="review-text">Notice</div>
     </div>
 </div>
 

@@ -163,7 +163,8 @@
 		        });
 		    }
 		});
-		
+
+
 	})
 
 	function funcdel(r_num, currentPage){
@@ -231,7 +232,6 @@
 			
 			<div style="width: 900px; margin-top: 20px;">
 				<%=dto.getR_content() %><br>
-				<%=dto.getR_image() %>
 			</div>
 			<br>
 			<br>
@@ -239,21 +239,20 @@
 				<div style="text-align: right;">
 					<div style="display: flex; justify-content: space-between;">
 					
-					<div> <!-- 내일 수정하기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11 -->
-					<span class="likes"  style="cursor: pointer;" r_num=<%=dto.getR_num() %>>
-					좋아요 <i class="bi bi-heart" style="color: red"></i></span>
-					<span class="likesnum" style="margin-right: 760px;"><%=dto.getR_likes()%></span>
-					<i class="bi bi-heart-fill" style="font-size: 0px; color: red"></i>
-					</div>
+					<span class="likes" style="cursor: pointer; text-align: left;" r_num=<%=dto.getR_num() %>>
+			            좋아요 <i class="bi bi-heart" style="color: red"></i>
+			            <span class="likesnum"><%=dto.getR_likes()%></span>
+			            <i class="bi bi-heart-fill" style="font-size: 0px; color: red"></i>
+			        </span>
 					
 					<%
 						if(loginok!=null && dto.getR_writer().equals(myid)){
 						%>
 							<div>
 							<button type="button" class="btn btn-secondary btn-sm" name="btnlist"
-							onclick="location.href='index.jsp?main=question/questionList.jsp?currentPage=<%=currentPage%>'">목록</button>
+							onclick="location.href='index.jsp?main=review/reviewlist.jsp?currentPage=<%=currentPage%>'">목록</button>
 							<button type="button" class="btn btn-secondary btn-sm" name="btnupdate"
-							onclick="location.href='index.jsp?main=question/updateForm.jsp?q_num=<%=num%>&currentPage=<%=currentPage%>'">수정</button>
+							onclick="location.href='index.jsp?main=review/updateform.jsp?r_num=<%=num%>&currentPage=<%=currentPage%>'">수정</button>
 							<button type="button" class="btn btn-secondary btn-sm" name="btndelete"
 							onclick="funcdel(<%=num%>,<%=currentPage%>)">삭제</button>
 							</div>
@@ -261,7 +260,7 @@
 						%>
 							<div style="text-align: right;">
 							<button type="button" class="btn btn-secondary btn-sm" name="btnlist"
-							onclick="location.href='index.jsp?main=question/questionList.jsp?currentPage=<%=currentPage%>'">목록</button>
+							onclick="location.href='index.jsp?main=review/reviewlist.jsp?currentPage=<%=currentPage%>'">목록</button>
 							</div>
 						<%}
 					%>

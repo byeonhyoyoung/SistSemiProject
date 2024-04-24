@@ -23,9 +23,6 @@
 body{
 	background-color: white;
 }
-#find{
-	margin: 0 auto;
-}
 #btn{
 	margin-top: 20px;
 }
@@ -45,7 +42,7 @@ body{
                             <!-- <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p> -->
                         </div>
                         
-                        <div id="find">
+                        <div style="text-align: center;">
 							<%
 								request.setCharacterEncoding("utf-8");	
 						
