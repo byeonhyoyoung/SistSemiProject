@@ -430,5 +430,18 @@ public class SemiMemberDao {
 		
 		return pass;
 	}
+	
+	
+	//mypage:내가 쓴 후기 찾기 기능 (member>myreviewlist.jsp)
+	
+	
+	
+	
+	
+	//mypage:내가 쓴 질문 찾기 기능  (member>myquestionlist.jsp)
+	
+	
+	
+	
   
 }

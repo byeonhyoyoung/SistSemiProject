@@ -177,6 +177,14 @@ $(function(){
        //디테일 페이지로 이동
        location.href="index.jsp?main=food/fooddetailview.jsp?f_num="+f_num;
     })
+    
+    
+ // Replace existing event listener setup for a.goDetail with the modified code snippet
+    $(document).on("click", "a.goDetail", function() {
+        var f_num = $(this).attr("f_num");
+        location.href="index.jsp?main=food/fooddetailview.jsp?f_num="+f_num;
+    });
+    
  });
 
 //검색기능
