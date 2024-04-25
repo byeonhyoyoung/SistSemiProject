@@ -117,3 +117,38 @@ SEMIPROJECT
  ┗ README.md
 </div>
 ```
+
+## 5) 시연영상
+<br>
+### 메인페이지
+
+
+### 교토소개
+https://github.com/JunbroGit/SemiProject/assets/142892132/b80b5a54-344b-4568-8f82-0a9018094870
+
+### 벚꽃캘린더
+https://github.com/JunbroGit/SemiProject/assets/142892132/fabc0825-e85c-4985-a17c-59ac9d4eff6c
+
+### 관광지소개(메인페이지,검색기능)
+
+
+### 숙박시설(호텔,료칸)
+
+
+### 맛집
+
+
+### 특산품상점
+
+
+### 회원관리
+
+
+### 커뮤니티(공지사항)
+
+
+
+
+
+
+
