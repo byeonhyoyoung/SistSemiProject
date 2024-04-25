@@ -72,6 +72,29 @@ KyotoInside는 교토를 여행하는 모든 이들에게 편리함과 즐거움
 
 <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;">🛠️ Tech Stacks 🛠️</h2>
 
+<div><h4>프론트엔드</h4>
+    <img src="https://img.shields.io/badge/Bootstrap-7952B3?style=flat&logo=Bootstrap&logoColor=white">
+    <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white">
+    <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white">
+    <img src="https://img.shields.io/badge/jQuery-0769AD?style=flat&logo=jQuery&logoColor=white">
+    <img src="https://img.shields.io/badge/Javascript-F7DF1E?style=flat&logo=Javascript&logoColor=white">
+</div>
+
+<div><h4>백엔드</h4>
+  <img src="https://img.shields.io/badge/Java-007396?style=flat&logo=Java&logoColor=white">
+  <img src="https://img.shields.io/badge/JSP-007396?style=flat&logo=Java&logoColor=white">
+  <img src="https://img.shields.io/badge/API-FF9E0F?style=flat&logo=Java&logoColor=white">
+  <img src="https://img.shields.io/badge/Apache%20Tomcat-F8DC75?style=flat&logo=Apache%20Tomcat&logoColor=white">
+</div>
+
+<div><h4>DB</h4>
+  <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=MySQL&logoColor=white">
+  <img src="https://img.shields.io/badge/AWS-232F3E?style=flat&logo=amazonaws&logoColor=white">
+</div>
+
+<div><h4>형상관리</h4>
+  <img src="https://img.shields.io/badge/Github-181717?style=flat&logo=Github&logoColor=white">
+  <img src="https://img.shields.io/badge/eclipse-2C2255?style=flat&logo=eclipseide&logoColor=white">
 <br><br>
 
 🗂️ Directory Path
