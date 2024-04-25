@@ -153,7 +153,7 @@ https://github.com/JunbroGit/SemiProject/assets/142892132/c6007c14-d667-4476-883
 
 https://github.com/JunbroGit/SemiProject/assets/142892132/f95f0d21-4766-4f5a-8c4e-eb1e5ee15821
 
-### 커뮤니티
+### 커뮤니티게시판
 
 https://github.com/JunbroGit/SemiProject/assets/142892132/b8d5f478-3ff6-46a9-8742-f9008ad9dd7c
 
