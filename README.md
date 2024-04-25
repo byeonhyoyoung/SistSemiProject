@@ -143,8 +143,9 @@ SEMIPROJECT
 
 ## 5) 시연영상
 <br>
+
 ### 메인페이지
-10MB초과 병준에게
+https://github.com/JunbroGit/SemiProject/assets/155614410/3b11c38e-5361-4a8c-a6c3-3174c0167641
 
 ### 교토소개
 https://github.com/JunbroGit/SemiProject/assets/142892132/b80b5a54-344b-4568-8f82-0a9018094870
@@ -159,13 +160,13 @@ https://github.com/JunbroGit/SemiProject/assets/142892132/9006888c-f74a-4d0c-a52
 https://github.com/JunbroGit/SemiProject/assets/142892132/786148bb-af2d-401e-b443-17cd14cdc5d7
 
 ### 숙박시설
-10MB초과 병준에게
+https://github.com/JunbroGit/SemiProject/assets/155614410/2b7a62a7-1f93-41dd-9f80-1bc926a37cc8
 
 ### 맛집
-병준에게 토스
+https://github.com/JunbroGit/SemiProject/assets/155614410/f8b81890-c572-48e3-aaff-d9e295af05de
 
 ### 특산품상점
-병준에게!!!!!!!!!!!!!!
+https://github.com/JunbroGit/SemiProject/assets/155614410/a10a356b-2e2c-4e57-b20c-fbb334baa59d
 
 ### 회원가입
 https://github.com/JunbroGit/SemiProject/assets/142892132/8932dc06-e464-42ab-bb1c-a06cda0668a3
