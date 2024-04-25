@@ -29,10 +29,6 @@ KyotoInside는 교토를 여행하는 모든 이들에게 편리함과 즐거움
 
 ## 2) 팀 소개
 
-<div align="center">
-<img style="width: 700px; text-align: center;" src="https://github.com/JunbroGit/SemiProject/assets/142892132/8246b70a-e93c-4dbc-9ba3-2ed6028ab3ef">
-</div>
-
 ### 팀 맴버
 
  - 🐻 팀장 : 이준형 (@JunbroGit)
@@ -46,3 +42,13 @@ KyotoInside는 교토를 여행하는 모든 이들에게 편리함과 즐거움
 <div align="center">
 <img style="width: 700px; text-align: center;" src="https://github.com/JunbroGit/SemiProject/assets/142892132/52d651f0-aef5-42e1-b7e4-a490aaaa99a9">
 </div>
+
+### 연락처
+
+   프로젝트와 관련된 문의 및 협업은 아래 연락처로 연락바랍니다.
+
+   - 이준형 E-Mail : goo2913@gmail.com
+   - 변효영 E-Mail : gydud0109@naver.com
+   - 이병준 E-Mail : leebj4690@naver.com
+   - 이현주 E-Mail :
+   - 이민영 E-Mail : yukhoe31@gmail.com
