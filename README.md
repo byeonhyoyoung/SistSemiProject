@@ -139,10 +139,10 @@ https://github.com/JunbroGit/SemiProject/assets/142892132/786148bb-af2d-401e-b44
 10MB초과 병준에게
 
 ### 맛집
-
+병준에게 토스
 
 ### 특산품상점
-
+병준에게!!!!!!!!!!!!!!
 
 ### 회원가입
 https://github.com/JunbroGit/SemiProject/assets/142892132/8932dc06-e464-42ab-bb1c-a06cda0668a3
