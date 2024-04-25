@@ -39,6 +39,10 @@ KyotoInside는 교토를 여행하는 모든 이들에게 편리함과 즐거움
  - 🐰 팀원 : 변효영 (@#byeonhyoyoung)
  - 😺 팀원 : 이병준 (@byungjunnn)
  - 🐼 팀원 : 이현주 (@#3GANADAG)
- - 🐯 팀원 : 이민영 (@yukhoe31)
+ - 🐯 팀원 : 이민영 (@yukhoe31)<br><br>
 
 ### 역할 분담
+
+<div align="center">
+<img style="width: 700px; text-align: center;" src="https://github.com/JunbroGit/SemiProject/assets/142892132/52d651f0-aef5-42e1-b7e4-a490aaaa99a9">
+</div>
