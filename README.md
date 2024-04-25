@@ -130,7 +130,7 @@ https://github.com/JunbroGit/SemiProject/assets/142892132/b80b5a54-344b-4568-8f8
 https://github.com/JunbroGit/SemiProject/assets/142892132/fabc0825-e85c-4985-a17c-59ac9d4eff6c
 
 ### 관광지소개(메인페이지,검색기능)
-https://github.com/JunbroGit/SemiProject/assets/142892132/9006888c-f74a-4d0c-a52e-01dfac667d0a
+https://github.com/JunbroGit/SemiProject/assets/142892132/9006888c-f74a-4d0c-a52e-01dfac667d0a<br>
 https://github.com/JunbroGit/SemiProject/assets/142892132/786148bb-af2d-401e-b443-17cd14cdc5d7
 
 ### 숙박시설
@@ -146,11 +146,11 @@ https://github.com/JunbroGit/SemiProject/assets/142892132/786148bb-af2d-401e-b44
 https://github.com/JunbroGit/SemiProject/assets/142892132/8932dc06-e464-42ab-bb1c-a06cda0668a3
 
 ### 아이디,비밀번호찾기
-https://github.com/JunbroGit/SemiProject/assets/142892132/c6007c14-d667-4476-8839-b1936d03ba09
+https://github.com/JunbroGit/SemiProject/assets/142892132/c6007c14-d667-4476-8839-b1936d03ba09<br>
 https://github.com/JunbroGit/SemiProject/assets/142892132/f95f0d21-4766-4f5a-8c4e-eb1e5ee15821
 
 ### 커뮤니티
-https://github.com/JunbroGit/SemiProject/assets/142892132/b8d5f478-3ff6-46a9-8742-f9008ad9dd7c
+https://github.com/JunbroGit/SemiProject/assets/142892132/b8d5f478-3ff6-46a9-8742-f9008ad9dd7c<br>
 https://github.com/JunbroGit/SemiProject/assets/142892132/cfebc844-5b16-4218-a552-97a8be2893b7
 
 
