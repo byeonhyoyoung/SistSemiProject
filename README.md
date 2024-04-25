@@ -32,3 +32,13 @@ KyotoInside는 교토를 여행하는 모든 이들에게 편리함과 즐거움
 <div align="center">
 <img style="width: 700px; text-align: center;" src="https://github.com/JunbroGit/SemiProject/assets/142892132/8246b70a-e93c-4dbc-9ba3-2ed6028ab3ef">
 </div>
+
+### 팀 맴버
+
+ - 🐻 팀장 : 이준형 (@JunbroGit)
+ - 🐰 팀원 : 변효영 (@#byeonhyoyoung)
+ - 😺 팀원 : 이병준 (@byungjunnn)
+ - 🐼 팀원 : 이현주 (@#3GANADAG)
+ - 🐯 팀원 : 이민영 (@yukhoe31)
+
+### 역할 분담
