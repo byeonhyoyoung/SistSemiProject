@@ -238,12 +238,12 @@
 			
 				<div style="text-align: right;">
 					<div style="display: flex; justify-content: space-between;">
-					
+					<div>
 					<span class="likes" style="cursor: pointer; text-align: left;" r_num=<%=dto.getR_num() %>>
-			            좋아요 <i class="bi bi-heart" style="color: red"></i>
-			            <span class="likesnum"><%=dto.getR_likes()%></span>
-			            <i class="bi bi-heart-fill" style="font-size: 0px; color: red"></i>
-			        </span>
+			            좋아요 <i class="bi bi-heart" style="color: red"></i></span>
+			            <span class="likesnum" style=""><%=dto.getR_likes()%></span>
+			            <i class="bi bi-heart-fill" style="font-size: 0px; color: red"></i></div>
+			        
 					
 					<%
 						if(loginok!=null && dto.getR_writer().equals(myid)){
