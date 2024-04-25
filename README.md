@@ -53,7 +53,7 @@ KyotoInside는 교토를 여행하는 모든 이들에게 편리함과 즐거움
    - 이현주 E-Mail :
    - 이민영 E-Mail : yukhoe31@gmail.com<br><br>
 
-## DB설계 
+## 3)DB설계 
 
 ### Usecase diagram
 
@@ -67,3 +67,53 @@ KyotoInside는 교토를 여행하는 모든 이들에게 편리함과 즐거움
 <div align="center">
 <img style="width: 700px; text-align: center;" src="https://github.com/JunbroGit/SemiProject/assets/142892132/efbb6adc-67a8-4167-bb16-c9abb8b01c4f">
 </div><br><br>
+
+## 4) 프로젝트 진행
+
+<h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;">🛠️ Tech Stacks 🛠️</h2>
+
+<br><br>
+
+🗂️ Directory Path
+```
+<div>
+SEMIPROJECT
+ ┣ SemiProject
+ ┃  ┣ src
+ ┃  ┃  ┗ main
+ ┃  ┃     ┣ java
+ ┃  ┃     ┃  ┣ data
+ ┃  ┃     ┃  ┗ mysql
+ ┃  ┃     ┃
+ ┃  ┃     ┃
+ ┃  ┃     ┗ webapp
+ ┃  ┃        ┣ community
+ ┃  ┃        ┣ find
+ ┃  ┃        ┣ food
+ ┃  ┃        ┣ food_menu_design_2
+ ┃  ┃        ┣ gift
+ ┃  ┃        ┣ gift_detail_design
+ ┃  ┃        ┣ gift_menu_design
+ ┃  ┃        ┣ hotel
+ ┃  ┃        ┣ intro
+ ┃  ┃        ┣ kyotomap
+ ┃  ┃        ┣ layout
+ ┃  ┃        ┣ login
+ ┃  ┃        ┣ login-form-03
+ ┃  ┃        ┣ member
+ ┃  ┃        ┣ menu
+ ┃  ┃        ┣ menu_design
+ ┃  ┃        ┣ noti
+ ┃  ┃        ┣ question
+ ┃  ┃        ┣ questionanswer
+ ┃  ┃        ┣ review
+ ┃  ┃        ┣ reviewanswer
+ ┃  ┃        ┣ se2
+ ┃  ┃        ┣ tour
+ ┃  ┃        ┣ tour_menu_design_2
+ ┃  ┃        ┣ WEB-INF
+ ┃  ┃        ┗ index.jsp
+ ┃  ┗ .project
+ ┗ README.md
+</div>
+```
