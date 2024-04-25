@@ -22,3 +22,7 @@ KyotoInsdie에서는 교토의 아름다움과 독특한 매력을 최대한 즐
 </b><br>
 
 ## 2) 팀 소개
+
+<div align="center">
+<img style="width: 700px; text-align: center;" src="https://github.com/JunbroGit/SemiProject/assets/142892132/8246b70a-e93c-4dbc-9ba3-2ed6028ab3ef">
+</div>
