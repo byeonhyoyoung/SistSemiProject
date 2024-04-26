@@ -36,7 +36,7 @@ KyotoInside는 교토를 여행하는 모든 이들에게 편리함과 즐거움
 ### 팀 맴버
 
  - 🐻 팀장 : 이준형 (@JunbroGit)
- - 🐰 팀원 : 변효영 (@#byeonhyoyoung)
+ - 🐰 팀원 : 변효영 (@byeonhyoyoung)
  - 😺 팀원 : 이병준 (@byungjunnn)
  - 🐼 팀원 : 이현주 (@GANADAG)
  - 🐯 팀원 : 이민영 (@yukhoe31)<br><br>
