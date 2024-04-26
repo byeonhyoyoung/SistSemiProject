@@ -31,7 +31,7 @@
       String t_subject_j=multi.getParameter("t_subject_j");
       String t_content=multi.getParameter("t_content");
       String t_image=multi.getParameter("t_image");
-      String t_location=multi.getParameter("t_image");
+      String t_location=multi.getParameter("t_location");
       String t_link=multi.getParameter("t_link");
       String t_time=multi.getParameter("t_time");
       String t_tel=multi.getParameter("t_tel");

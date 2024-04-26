@@ -43,7 +43,7 @@ String name = dto.getName(); // 수정된 부분
 				</h5>
 				<br>
 				<button type="button" class="btn btn-warning"
-					onclick="location.href='index.jsp?main=login/loginMain.jsp'" style="background: pink; border-color: pink;">로그인</button>
+					onclick="location.href='index.jsp?main=login/loginForm3.jsp'" style="background: pink; border-color: pink;">로그인</button>
 				<button type="button" class="btn btn-success" 
 					onclick="location.href='index.jsp'" >메인</button>
 			</div>
