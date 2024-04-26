@@ -80,18 +80,7 @@ $(document).ready(function(){
     <div style="font-size: 15pt;">마이페이지
         <div class="float-end">
         
-            <a href="index.jsp?main=member/mypagereviewaction.jsp" style="text-decoration: none;">
-                <i class="bi bi-chat-left-quote-fill fs-2" data-bs-container="body"
-                    data-bs-toggle="popover" data-bs-placement="bottom"
-                    data-bs-content="내가 쓴 후기"></i>
-            </a>
-            &nbsp;
-            <a href="index.jsp?main=member/mypagequestionaction.jsp" style="text-decoration: none;">
-                <i class="bi bi-chat-left-heart fs-2" data-bs-container="body"
-                    data-bs-toggle="popover" data-bs-placement="bottom"
-                    data-bs-content="내가 쓴 질문"></i>
-            </a>
-             &nbsp;
+            
         
         
             <a href="index.jsp?main=gift/cartpay.jsp" style="text-decoration: none;">
