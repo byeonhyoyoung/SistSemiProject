@@ -54,7 +54,7 @@ KyotoInside는 교토를 여행하는 모든 이들에게 편리함과 즐거움
    - 이준형 E-Mail : goo2913@gmail.com
    - 변효영 E-Mail : gydud0109@naver.com
    - 이병준 E-Mail : leebj4690@naver.com
-   - 이현주 E-Mail :
+   - 이현주 E-Mail : leehj2330@gmail.com
    - 이민영 E-Mail : yukhoe31@gmail.com<br><br>
 
 ## 3)DB설계 
