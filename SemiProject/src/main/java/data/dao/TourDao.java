@@ -220,6 +220,7 @@ public class TourDao {
          pstmt.setString(9, dto.getT_tel());
          pstmt.setString(10, dto.getT_price());
          pstmt.setString(11, dto.getT_googlemap());
+         pstmt.setString(12, dto.getT_num());
          
          pstmt.execute();
       
